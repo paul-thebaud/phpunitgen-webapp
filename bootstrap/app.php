@@ -1,8 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
+use Illuminate\Contracts\Console\Kernel as ConsoleKernelContract;
+use Illuminate\Contracts\Debug\ExceptionHandler as ExceptionHandlerContract;
+use Laravel\Lumen\Application;
+use Laravel\Lumen\Bootstrap\LoadEnvironmentVariables;
+use Laravel\Lumen\Routing\Router;
+use PhpUnitGen\WebApp\Console\Kernel as ConsoleKernel;
+use PhpUnitGen\WebApp\Exceptions\Handler;
+use PhpUnitGen\WebApp\Http\Middleware\ThrottleRequests;
+use PhpUnitGen\WebApp\Providers\AppServiceProvider;
+
 require_once __DIR__.'/../vendor/autoload.php';
 
-(new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
+(new LoadEnvironmentVariables(
     dirname(__DIR__)
 ))->bootstrap();
 
@@ -17,13 +29,9 @@ require_once __DIR__.'/../vendor/autoload.php';
 |
 */
 
-$app = new Laravel\Lumen\Application(
+$app = new Application(
     dirname(__DIR__)
 );
-
-// $app->withFacades();
-
-// $app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -37,13 +45,13 @@ $app = new Laravel\Lumen\Application(
 */
 
 $app->singleton(
-    Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exceptions\Handler::class
+    ExceptionHandlerContract::class,
+    Handler::class
 );
 
 $app->singleton(
-    Illuminate\Contracts\Console\Kernel::class,
-    App\Console\Kernel::class
+    ConsoleKernelContract::class,
+    ConsoleKernel::class
 );
 
 /*
@@ -57,13 +65,9 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
-//     App\Http\Middleware\ExampleMiddleware::class
-// ]);
-
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    'throttle' => ThrottleRequests::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -76,9 +80,7 @@ $app->singleton(
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
+$app->register(AppServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -91,9 +93,7 @@ $app->singleton(
 |
 */
 
-$app->router->group([
-    'namespace' => 'App\Http\Controllers',
-], function ($router) {
+$app->router->group(['middleware' => 'throttle:60,1'], function (Router $router) {
     require __DIR__.'/../routes/web.php';
 });
 

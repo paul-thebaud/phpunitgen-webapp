@@ -1,29 +1,18 @@
 <?php
 
-namespace App\Console;
+declare(strict_types=1);
 
-use Illuminate\Console\Scheduling\Schedule;
+namespace PhpUnitGen\WebApp\Console;
+
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
 
+/**
+ * Class Kernel.
+ *
+ * @author  Paul Thébaud <paul.thebaud29@gmail.com>
+ * @author  Killian Hascoët <killianh@live.fr>
+ * @license MIT
+ */
 class Kernel extends ConsoleKernel
 {
-    /**
-     * The Artisan commands provided by your application.
-     *
-     * @var array
-     */
-    protected $commands = [
-        //
-    ];
-
-    /**
-     * Define the application's command schedule.
-     *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
-     * @return void
-     */
-    protected function schedule(Schedule $schedule)
-    {
-        //
-    }
 }
