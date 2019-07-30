@@ -1,8 +1,9 @@
 <?php
 
 use Laravel\Lumen\Routing\Router;
+use PhpUnitGen\WebApp\Http\Controllers\Api\TestController;
 use PhpUnitGen\WebApp\Http\Controllers\Api\TestGeneratorController;
-use PhpUnitGen\WebApp\Http\Controllers\HomeController;
+use PhpUnitGen\WebApp\Http\Controllers\AppController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,9 @@ use PhpUnitGen\WebApp\Http\Controllers\HomeController;
 
 /** @var Router $router */
 
-$router->group(['prefix' => 'api'], function (Router $router) {
-    $router->get('/test-generators', TestGeneratorController::class);
-    $router->post('/tests', TestGeneratorController::class);
+$router->group(['prefix' => 'api/v1'], function (Router $router) {
+    $router->get('test-generators', TestGeneratorController::class);
+    $router->post('tests', TestController::class);
 });
 
-$router->get('{any:.*}', HomeController::class);
+$router->get('{any:.*}', AppController::class);

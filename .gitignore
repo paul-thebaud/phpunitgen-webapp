@@ -1,5 +1,19 @@
-/vendor
-/.idea
-Homestead.json
-Homestead.yaml
+# Framework.
 .env
+
+# IDE.
+/\.idea/
+
+# Dependencies.
+/vendor/
+/node_modules/
+
+# Cache and coverage.
+/\.coverage/
+/\.phpunit\.result\.cache
+\.scannerwork/
+
+# Build.
+/public/js/
+/public/css/
+/public/mix-manifest.json

@@ -1,0 +1,24 @@
+{
+  "name": "phpunitgen-webapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/paul-thebaud/phpunitgen-webapp.git",
+  "author": "Paul Thébaud <paul.thebaud29@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "laravel-mix": "^4.1.2",
+    "resolve-url-loader": "3.1.0",
+    "sass": "^1.22.7",
+    "sass-loader": "7.*",
+    "tailwindcss": "^1.0.5",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.7",
+    "vue-template-compiler": "^2.6.10"
+  }
+}

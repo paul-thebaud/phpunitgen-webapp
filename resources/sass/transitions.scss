@@ -1,0 +1,16 @@
+*, :after, :before {
+  transition-duration: .25s;
+}
+
+.transition {
+  transition-property: all;
+  transition-duration: .25s;
+
+  &-fast {
+    transition-duration: .15s;
+  }
+
+  &-slow {
+    transition-duration: .75s;
+  }
+}
