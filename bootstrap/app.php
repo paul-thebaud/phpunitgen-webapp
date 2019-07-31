@@ -9,6 +9,7 @@ use Laravel\Lumen\Bootstrap\LoadEnvironmentVariables;
 use Laravel\Lumen\Routing\Router;
 use PhpUnitGen\WebApp\Console\Kernel as ConsoleKernel;
 use PhpUnitGen\WebApp\Exceptions\Handler;
+use PhpUnitGen\WebApp\Http\Middleware\DefineLanguage;
 use PhpUnitGen\WebApp\Http\Middleware\ThrottleRequests;
 use PhpUnitGen\WebApp\Providers\AppServiceProvider;
 
@@ -65,6 +66,9 @@ $app->singleton(
 |
 */
 
+$app->middleware([
+    DefineLanguage::class,
+]);
 $app->routeMiddleware([
     'throttle' => ThrottleRequests::class,
 ]);
