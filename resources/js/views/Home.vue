@@ -1,6 +1,6 @@
 <template>
     <div class="bg-primary text-primary">
-        <div class="pt-24">
+        <div class="pt-40">
             <div class="container mx-auto h-full text-center z-20">
                 <h1 class="text-5xl font-bold">Welcome to PhpUnitGen</h1>
                 <p class="text-2xl">
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="relative -mt-24 sm:-mt-12">
+            <div class="relative -mt-12 lg:-mt-24">
                 <HomeWaves/>
             </div>
 

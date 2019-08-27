@@ -12,6 +12,10 @@
     "prod": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.20",
+    "@fortawesome/free-regular-svg-icons": "^5.10.0",
+    "@fortawesome/free-solid-svg-icons": "^5.10.0",
+    "@fortawesome/vue-fontawesome": "^0.1.6",
     "laravel-mix": "^4.1.2",
     "resolve-url-loader": "3.1.0",
     "sass": "^1.22.7",

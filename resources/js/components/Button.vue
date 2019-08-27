@@ -44,13 +44,11 @@
             },
             classObject() {
                 return [
+                    'btn',
                     this.class,
-                    { 'rounded-full': this.rounded },
-                    { 'rounded': ! this.rounded },
-                    { 'py-4 px-8': this.large },
-                    { 'py-2 px-4': ! this.large },
+                    { 'btn-rounded': this.rounded },
+                    { 'btn-large': this.large },
                     `bg-${this.variant} text-${this.variant}`,
-                    'btn transition shadow font-bold',
                 ];
             },
         },
@@ -63,7 +61,19 @@
 </script>
 
 <style scoped>
+    .btn {
+        @apply shadow font-bold rounded py-2 px-4;
+    }
+
     .btn:hover {
         opacity: .9;
+    }
+
+    .btn-rounded {
+        @apply rounded-full;
+    }
+
+    .btn-large {
+        @apply py-4 px-8;
     }
 </style>

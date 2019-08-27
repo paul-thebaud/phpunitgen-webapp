@@ -1,10 +1,8 @@
 <?php
 
 use Laravel\Lumen\Routing\Router;
-use PhpUnitGen\WebApp\Http\Controllers\Api\MockGeneratorController;
-use PhpUnitGen\WebApp\Http\Controllers\Api\TestController;
-use PhpUnitGen\WebApp\Http\Controllers\Api\TestGeneratorController;
 use PhpUnitGen\WebApp\Http\Controllers\AppController;
+use PhpUnitGen\WebApp\Http\Routers\V1Router;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +17,12 @@ use PhpUnitGen\WebApp\Http\Controllers\AppController;
 
 /** @var Router $router */
 
+$router->group(['prefix' => 'api'], function (Router $router) {
+    V1Router::routes($router);
+});
+
 $router->group(['prefix' => 'api/v1'], function (Router $router) {
-    $router->get('test-generators', TestGeneratorController::class);
-    $router->get('mock-generators', MockGeneratorController::class);
-    $router->post('tests', TestController::class);
+    V1Router::routes($router);
 });
 
 $router->get('{any:.*}', AppController::class);

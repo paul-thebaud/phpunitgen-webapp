@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PhpUnitGen\WebApp\Http\Controllers\Api;
+namespace PhpUnitGen\WebApp\Http\Controllers\Api\Version1;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

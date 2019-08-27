@@ -12,7 +12,7 @@
                         rounded
                         large
                 >
-                    Menu
+                    <FontAwesomeIcon :icon="menuIcon"></FontAwesomeIcon>
                 </Button>
             </div>
 
@@ -48,22 +48,55 @@
                 </div>
             </HandleClickOutside>
         </div>
+
+        <Modal title="Language selection">
+            <template slot="body">
+                <div class="languages">
+                    <p>
+                        Choose your preferred language into the following list.
+                    </p>
+                    <div class="languages">
+                        <Button class="m-2 font-bold" variant="secondary">
+                            English
+                        </Button>
+                        <Button class="m-2 font-bold" variant="secondary">
+                            Français
+                        </Button>
+                    </div>
+                </div>
+            </template>
+        </Modal>
     </nav>
 </template>
 
 <script>
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+    import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
     import Button from '@/components/Button';
     import HandleClickOutside from '@/components/HandleClickOutside';
+    import Modal from '@/components/Modal';
 
     export default {
         name: 'Header',
-        components: { HandleClickOutside, Button },
+        components: {
+            Modal,
+            FontAwesomeIcon,
+            HandleClickOutside,
+            Button,
+        },
         data() {
             return {
                 displayNav: false,
             };
         },
         computed: {
+            menuIcon() {
+                if (this.displayNav) {
+                    return faTimes;
+                }
+
+                return faBars;
+            },
             classObject() {
                 if (this.displayNav) {
                     return [

@@ -1,5 +1,5 @@
 <template>
-    <div id="app" class="w-full h-full transition-slow theme-light">
+    <div id="app" class="theme-light">
         <Header/>
         <RouterView/>
         <Footer/>
@@ -20,4 +20,7 @@
 </script>
 
 <style scoped>
+    #app {
+        @apply w-full h-full;
+    }
 </style>
