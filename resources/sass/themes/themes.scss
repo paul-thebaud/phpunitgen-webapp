@@ -1,0 +1,55 @@
+@import "theme-light";
+@import "theme-dark";
+
+body {
+  .theme-switching {
+    transition-property: background, color, box-shadow, border !important;
+    transition-duration: .5s !important;
+  }
+}
+
+body, .bg-base, .dropdown-menu {
+  background-color: var(--base-bg-color);
+  color: var(--base-color);
+}
+
+.dropdown-item {
+  background-color: var(--base-bg-color);
+  color: var(--base-color);
+
+  &:hover, &:focus {
+    background-color: var(--base-bg-color);
+    color: var(--base-color);
+    filter: brightness(var(--hover-brightness));
+  }
+
+  &.active {
+    background-color: var(--primary-bg-color);
+    color: var(--primary-color);
+
+    &:hover, &:focus {
+      filter: brightness(var(--hover-brightness));
+    }
+  }
+}
+
+.bg-gradient {
+  background: linear-gradient(90deg, var(--gradient-bg-color));
+  color: var(--gradient-color);
+}
+
+$variants: (
+        "primary",
+        "secondary",
+);
+
+@each $variant in $variants {
+  .btn.btn-#{$variant} {
+    background-color: var(--#{$variant}-bg-color) !important;
+    color: var(--#{$variant}-color) !important;
+
+    &:hover, &:focus {
+      filter: brightness(var(--hover-brightness));
+    }
+  }
+}

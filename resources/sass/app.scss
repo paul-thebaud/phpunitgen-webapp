@@ -1,6 +1,10 @@
 @charset "UTF-8";
 
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
-@import "tailwind";
-@import "themes";
-@import "transitions";
+@import "bootstrap/bootstrap";
+@import "themes/themes";
+@import "utilities/utilities";
+
+body {
+  display: flex;
+  flex-flow: column;
+}

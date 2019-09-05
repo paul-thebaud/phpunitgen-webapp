@@ -1,0 +1,15 @@
+.theme-dark {
+  --base-bg-color: #1a202c;
+  --base-color: #ffffff;
+
+  --gradient-bg-color: #ec2f4b 0%, #009fff 100%;
+  --gradient-color: #ffffff;
+
+  --primary-bg-color: #009fff;
+  --primary-color: #ffffff;
+
+  --secondary-bg-color: var(--base-bg-color);
+  --secondary-color: var(--base-color);
+
+  --hover-brightness: 115%;
+}

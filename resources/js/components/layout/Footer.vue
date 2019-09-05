@@ -1,50 +1,87 @@
 <template>
-    <footer class="flex gradient">
-        <div class="container mx-auto text-center lg:text-right px-8 lg:w-1/2 lg:mr-0">
-            <div class="w-full flex flex-col md:flex-row py-6">
-                <div class="flex-1">
-                    <p class="uppercase text-white font-bold md:mb-6">Legal</p>
-                    <ul class="list-reset mb-6">
-                        <li class="mt-2 inline-block ml-2 md:block md:mr-0">
-                            <a href="#" class="no-underline hover:underline text-gray-300">Terms</a>
-                        </li>
-                        <li class="mt-2 inline-block ml-2 md:block md:mr-0">
-                            <a href="#" class="no-underline hover:underline text-gray-300">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex-1">
-                    <p class="uppercase text-white font-bold md:mb-6">Links</p>
-                    <ul class="list-reset mb-6">
-                        <li class="mt-2 inline-block ml-2 md:block md:mr-0">
-                            <a href="#" class="no-underline hover:underline text-gray-300">Documentation</a>
-                        </li>
-                        <li class="mt-2 inline-block ml-2 md:block md:mr-0">
-                            <a href="#" class="no-underline hover:underline text-gray-300">Support on GitHub</a>
+    <footer class="bg-gradient pt-3 pb-1 text-center text-lg-right">
+        <b-container>
+            <b-row>
+                <b-col md>
+                    <p class="text-uppercase font-weight-bold">
+                        Legal
+                    </p>
+                    <ul>
+                        <li>
+                            <b-link href="#">
+                                Terms
+                            </b-link>
                         </li>
                     </ul>
-                </div>
-                <div class="flex-1">
-                    <p class="uppercase text-white font-bold md:mb-6">Authors</p>
-                    <ul class="list-reset mb-6">
-                        <li class="mt-2 inline-block ml-2 md:block md:mr-0">
-                            <a href="#" class="no-underline hover:underline text-gray-300">Paul Thébaud</a>
+                </b-col>
+                <b-col md>
+                    <p class="text-uppercase font-weight-bold">
+                        Links
+                    </p>
+                    <ul>
+                        <li>
+                            <b-link href="#">
+                                Documentation
+                            </b-link>
                         </li>
-                        <li class="mt-2 inline-block ml-2 md:block md:mr-0">
-                            <a href="#" class="no-underline hover:underline text-gray-300">Killian Hascoët</a>
+                        <li>
+                            <b-link href="#">
+                                Support
+                            </b-link>
                         </li>
                     </ul>
-                </div>
-            </div>
-        </div>
+                </b-col>
+                <b-col md>
+                    <p class="text-uppercase font-weight-bold">
+                        Authors
+                    </p>
+                    <ul>
+                        <li>
+                            <b-link href="#">
+                                Paul Thébaud
+                            </b-link>
+                        </li>
+                        <li>
+                            <b-link href="#">
+                                Killian Hascoët
+                            </b-link>
+                        </li>
+                        <li>
+                            <b-link href="#">
+                                Contributors
+                            </b-link>
+                        </li>
+                    </ul>
+                </b-col>
+            </b-row>
+        </b-container>
     </footer>
 </template>
 
 <script>
     export default {
         name: 'Footer',
+        data() {
+            return {
+                theme: 'light',
+                language: 'english',
+            };
+        }
     };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    footer {
+        margin-top: auto;
+        width: 100%;
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        a, .btn-link {
+            color: inherit;
+        }
+    }
 </style>

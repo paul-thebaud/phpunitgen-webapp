@@ -3,12 +3,12 @@
 return [
     'basic'   => [
         'name'        => 'Basique',
-        'description' => 'Génère les tests pour une classe PHP. Instancie la classe et gère les méthodes getter/setter.',
+        'description' => "Il génère les tests vides pour une classe PHP. Avec la génération automatique, il instancie la classe et gère les méthodes getter/setter.",
     ],
     'laravel' => [
         'policy' => [
             'name'        => 'Policy Laravel',
-            'description' => 'Génère les tests pour une classe de Policy de Laravel.',
+            'description' => "Il génère les tests vides pour une classe de Policy de Laravel. Avec la génération automatique, il génère deux méthodes de tests par méthode à tester.",
         ],
     ],
 ];
