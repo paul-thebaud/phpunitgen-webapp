@@ -26,6 +26,6 @@
 
 <style scoped>
     svg > g > g {
-        fill: var(--bg-color);
+        fill: var(--base-bg-color);
     }
 </style>

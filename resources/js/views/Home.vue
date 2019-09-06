@@ -1,65 +1,76 @@
 <template>
-    <div class="bg-primary text-primary">
-        <div class="pt-40">
-            <div class="container mx-auto h-full text-center z-20">
-                <h1 class="text-5xl font-bold">Welcome to PhpUnitGen</h1>
-                <p class="text-2xl">
+    <div class="bg-gradient">
+        <div class="home-wrapper">
+            <b-container class="text-center">
+                <div class="home-title">
+                    Welcome to PhpUnitGen
+                </div>
+
+                <div class="home-description">
                     PhpUnitGen is a simple, powerful and modular tool to
                     generate your PHPUnit tests skeletons.
                     <br>
                     It is free and open-source.
-                </p>
-                <div class="py-10">
-                    <Button
-                            :to="{ name: 'home' }"
-                            class="relative z-20 mx-2"
-                            variant="secondary"
-                            large
-                            rounded
-                    >
+                </div>
+
+                <div class="home-actions">
+                    <b-button class="relative mx-2 px-4 py-3 rounded-full"
+                              size="lg"
+                              :to="{ name: 'home' }">
                         Use Online
-                    </Button>
-                    <Button
-                            :to="{ name: 'home' }"
-                            class="relative z-20 mx-2"
-                            variant="secondary"
-                            large
-                            rounded
-                    >
+                    </b-button>
+                    <b-button class="relative mx-2 px-4 py-3 rounded-full"
+                              size="lg"
+                              :to="{ name: 'home' }">
                         Documentation
-                    </Button>
+                    </b-button>
                 </div>
-            </div>
+            </b-container>
+        </div>
 
-            <div class="relative -mt-12 lg:-mt-24">
-                <HomeWaves/>
-            </div>
+        <div class="position-relative">
+            <HomeWaves/>
+        </div>
 
-            <div class="bg-theme text-theme">
-                <div class="container max-w-5xl mx-auto">
-                    <HomeFeature title="Console Toolkit"/>
+        <div class="bg-base">
+            <div class="container">
+                <HomeFeature title="Console Toolkit"/>
 
-                    <HomeFeature title="Opened API" reversed/>
+                <HomeFeature title="Opened API" reversed/>
 
-                    <HomeFeature title="Modularity"/>
+                <HomeFeature title="Modularity"/>
 
-                    <HomeFeature title="Fully Documented" reversed/>
-                </div>
+                <HomeFeature title="Fully Documented" reversed/>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import Button from '@/components/Button';
     import HomeWaves from '@/components/home/HomeWaves';
     import HomeFeature from '@/components/home/HomeFeature';
 
     export default {
         name: 'Home',
-        components: { Button, HomeWaves, HomeFeature },
+        components: { HomeWaves, HomeFeature },
     };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    .home-wrapper {
+        padding-top: 150px;
+        padding-bottom: 10px;
+
+        .home-title {
+            font-size: 3rem;
+        }
+
+        .home-description {
+            font-size: 1.5rem;
+        }
+
+        .home-actions {
+            margin-top: 40px;
+        }
+    }
 </style>

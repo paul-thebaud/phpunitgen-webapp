@@ -1,7 +1,9 @@
 <template>
-    <div id="app" class="theme-light">
+    <div id="app">
         <Header/>
-        <RouterView/>
+        <div class="wrapper">
+            <RouterView/>
+        </div>
         <Footer/>
     </div>
 </template>
@@ -19,8 +21,9 @@
     };
 </script>
 
-<style scoped>
-    #app {
-        @apply w-full h-full;
+<style>
+    #app > .container {
+        padding-top: 60px;
+        padding-bottom: 10px;
     }
 </style>

@@ -10,18 +10,19 @@
  */
 
 const mix = require('laravel-mix');
-const tailwindcss = require('tailwindcss');
 const webpackConfig = require('./webpack.config');
+require('laravel-mix-purgecss');
 
 mix
     .js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .webpackConfig(webpackConfig)
+    .sourceMaps()
     .options({
         processCssUrls: false,
-        postCss: [tailwindcss('./tailwind.js')],
     });
 
 if (mix.inProduction()) {
-    mix.sourceMaps().version();
+    mix.version()
+        .purgeCss();
 }

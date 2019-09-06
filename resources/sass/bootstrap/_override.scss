@@ -1,0 +1,4 @@
+.btn:not(.btn-link) {
+  border: none;
+  @extend .shadow;
+}
