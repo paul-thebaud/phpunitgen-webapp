@@ -4,6 +4,11 @@
 @import "themes/themes";
 @import "utilities/utilities";
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
   display: flex;
   flex-flow: column;

@@ -23,7 +23,7 @@
                     <b-nav-item-dropdown text="Language" class="mr-lg-2" right>
                         <b-dropdown-item v-for="(translation, targetLanguage) in languages"
                                          @click="onLanguageChange(targetLanguage)"
-                                         :key="targetLanguage"
+                                         :key="`lang-${targetLanguage}`"
                                          :active="language === targetLanguage"
                         >
                             {{ translation }}
@@ -33,7 +33,7 @@
                     <b-nav-item-dropdown text="Theme" class="mr-lg-2" right>
                         <b-dropdown-item v-for="(translation, targetTheme) in themes"
                                          @click="onThemeChange(targetTheme)"
-                                         :key="targetTheme"
+                                         :key="`theme-${targetTheme}`"
                                          :active="theme === targetTheme"
                         >
                             {{ translation }}
@@ -60,13 +60,14 @@
         },
         data() {
             return {
+                langs: ['fr', 'en'],
                 closedMenuIcon: faBars,
                 openedMenuIcon: faTimes,
-                language: 'english',
+                language: 'en',
                 theme: 'light',
                 languages: {
-                    english: 'English',
-                    french: 'Français',
+                    en: 'English',
+                    fr: 'Français',
                 },
                 themes: {
                     light: 'Light',
@@ -80,7 +81,7 @@
                     return;
                 }
 
-                this.language = language;
+                this.$i18n.locale = this.language = language;
             },
             onThemeChange(theme) {
                 if (theme === this.theme) {

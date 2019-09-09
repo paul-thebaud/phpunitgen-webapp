@@ -3,14 +3,11 @@
         <div class="home-wrapper">
             <b-container class="text-center">
                 <div class="home-title">
-                    Welcome to PhpUnitGen
+                    {{ $t('home.welcome.title') }}
                 </div>
 
                 <div class="home-description">
-                    PhpUnitGen is a simple, powerful and modular tool to
-                    generate your PHPUnit tests skeletons.
-                    <br>
-                    It is free and open-source.
+                    {{ $t('home.welcome.description') }}
                 </div>
 
                 <div class="home-actions">
