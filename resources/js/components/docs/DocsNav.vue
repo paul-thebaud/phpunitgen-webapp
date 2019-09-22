@@ -2,12 +2,12 @@
     <nav class="app-nav no-badge">
         <ul>
             <li>
-                {{ $t('header.links.theme') }}
+                {{ $t('header.links.language') }}
                 <ul>
-                    <li v-for="(translation, targetTheme) in themes"
-                        @click.prevent="onThemeChange(targetTheme)"
-                        :key="`lang-${targetTheme}`"
-                        :class="theme === targetTheme ? 'active' : ''"
+                    <li v-for="(translation, targetLocale) in locales"
+                        @click.prevent="onLocaleChange(targetLocale)"
+                        :key="`lang-${targetLocale}`"
+                        :class="locale === targetLocale ? 'active' : ''"
                     >
                         <a href="#">
                             {{ translation }}
@@ -16,14 +16,14 @@
                 </ul>
             </li>
             <li>
-                {{ $t('header.links.language') }}
+                {{ $t('header.links.theme') }}
                 <ul>
-                    <li v-for="(translation, targetLocale) in locales"
-                        @click="onLocaleChange(targetLocale)"
-                        :key="`lang-${targetLocale}`"
-                        :class="locale === targetLocale ? 'active' : ''"
+                    <li v-for="(translation, targetTheme) in themes"
+                        @click.prevent="onThemeChange(targetTheme)"
+                        :key="`lang-${targetTheme}`"
+                        :class="theme === targetTheme ? 'active' : ''"
                     >
-                        <a :href="targetLocale === 'en' ? '#/' : `#/${targetLocale}/`">
+                        <a href="#">
                             {{ translation }}
                         </a>
                     </li>
@@ -59,6 +59,10 @@
                 }
 
                 Locale.setLocale(this.locale = locale);
+
+                const path = window.location.href.replace(/^.*\/docs#\/?([a-z]{2}\/)?/, '');
+
+                window.location.hash = Locale.getDocumentationPath(path, locale).replace(/^\/docs#/, '');
             },
             onThemeChange(theme) {
                 if (theme === this.theme) {
@@ -72,5 +76,4 @@
 </script>
 
 <style scoped>
-
 </style>

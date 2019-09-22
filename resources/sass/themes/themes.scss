@@ -1,11 +1,9 @@
 @import "theme-light";
 @import "theme-dark";
 
-body {
-  .theme-switching {
-    transition-property: background, color, box-shadow, border !important;
-    transition-duration: .5s !important;
-  }
+body.theme-switching {
+  transition-property: background, color, box-shadow, border !important;
+  transition-duration: 0.5s !important;
 }
 
 body, .bg-base, .dropdown-menu {

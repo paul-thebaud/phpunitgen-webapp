@@ -19,5 +19,14 @@ export default {
 
     getLocale() {
         return i18n.locale;
-    }
+    },
+
+    getDocumentationPath(path = '', targetedLocale = null) {
+        const locale = targetedLocale || this.getLocale();
+        if (locale !== 'en') {
+            return `/docs#/${locale}/${path}`;
+        }
+
+        return `/docs#/${path}`;
+    },
 };
