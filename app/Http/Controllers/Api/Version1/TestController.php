@@ -11,9 +11,9 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Routing\Controller as BaseController;
-use PhpUnitGen\Core\Application as PhpUnitGen;
 use PhpUnitGen\Core\Contracts\Generators\MockGenerator;
 use PhpUnitGen\Core\Contracts\Renderers\Rendered;
+use PhpUnitGen\Core\CoreApplication;
 use PhpUnitGen\Core\Parsers\Sources\StringSource;
 use PhpUnitGen\WebApp\Http\Controllers\Resources\MockGeneratorResource;
 use PhpUnitGen\WebApp\Http\Controllers\Resources\TestGeneratorResource;
@@ -96,7 +96,7 @@ class TestController extends BaseController
             'config.php_doc'              => 'nullable|array',
             'config.php_doc.*'            => 'nullable|string|max:255',
             'config.options'              => 'nullable|array',
-            'code'                        => 'required|string',
+            'code'                        => 'required|string|max:10000',
         ]);
     }
 
@@ -140,7 +140,7 @@ class TestController extends BaseController
      */
     protected function buildAndExecutePhpUnitGen(array $config, string $code): string
     {
-        $phpUnitGen = PhpUnitGen::make($config);
+        $phpUnitGen = CoreApplication::make($config);
 
         return $phpUnitGen->run(new StringSource($code))->toString();
     }

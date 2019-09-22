@@ -6,8 +6,9 @@ namespace PhpUnitGen\WebApp\Http\Controllers\Api\Version1;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Laravel\Lumen\Routing\Controller as BaseController;
+use PackageVersions\Versions;
+use PhpUnitGen\Core\Helpers\Str;
 use PhpUnitGen\WebApp\Http\Controllers\Resources\TestGeneratorResource;
 
 /**
@@ -42,13 +43,9 @@ class VersionController extends BaseController
      */
     protected function getCoreVersion(): string
     {
-        $composerLock = json_decode(file_get_contents(base_path('composer.lock')), true);
+        $version = Versions::getVersion('phpunitgen/core');
 
-        $phpUnitGenInformation = Arr::first(Arr::where($composerLock['packages'], function ($package) {
-            return $package['name'] === 'phpunitgen/core';
-        }));
-
-        return $phpUnitGenInformation['version'];
+        return Str::beforeLast('@', $version);
     }
 
     /**
