@@ -4,36 +4,36 @@
             <b-row>
                 <b-col md>
                     <p class="text-uppercase font-weight-bold">
-                        Legal
+                        {{ $t('footer.legal.title') }}
                     </p>
                     <ul>
                         <li>
                             <b-link href="#">
-                                Terms
+                                {{ $t('footer.legal.links.terms') }}
                             </b-link>
                         </li>
                     </ul>
                 </b-col>
                 <b-col md>
                     <p class="text-uppercase font-weight-bold">
-                        Links
+                        {{ $t('footer.links.title') }}
                     </p>
                     <ul>
                         <li>
                             <b-link href="#">
-                                Documentation
+                                {{ $t('footer.links.links.documentation') }}
                             </b-link>
                         </li>
                         <li>
                             <b-link href="#">
-                                Support
+                                {{ $t('footer.links.links.support') }}
                             </b-link>
                         </li>
                     </ul>
                 </b-col>
                 <b-col md>
                     <p class="text-uppercase font-weight-bold">
-                        Authors
+                        {{ $t('footer.authors.title') }}
                     </p>
                     <ul>
                         <li>
@@ -48,7 +48,7 @@
                         </li>
                         <li>
                             <b-link href="#">
-                                Contributors
+                                {{ $t('footer.authors.links.contributors') }}
                             </b-link>
                         </li>
                     </ul>
@@ -66,7 +66,7 @@
                 theme: 'light',
                 language: 'english',
             };
-        }
+        },
     };
 </script>
 

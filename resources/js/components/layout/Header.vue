@@ -13,14 +13,10 @@
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav class="ml-auto">
                     <b-nav-item class="mr-lg-2" :to="{ name: 'home' }">
-                        Documentation
+                        {{ $t('header.links.documentation') }}
                     </b-nav-item>
 
-                    <b-nav-item class="mr-lg-2" :to="{ name: 'home' }">
-                        Profile
-                    </b-nav-item>
-
-                    <b-nav-item-dropdown text="Language" class="mr-lg-2" right>
+                    <b-nav-item-dropdown :text="$t('header.links.language')" class="mr-lg-2" right>
                         <b-dropdown-item v-for="(translation, targetLanguage) in languages"
                                          @click="onLanguageChange(targetLanguage)"
                                          :key="`lang-${targetLanguage}`"
@@ -30,7 +26,7 @@
                         </b-dropdown-item>
                     </b-nav-item-dropdown>
 
-                    <b-nav-item-dropdown text="Theme" class="mr-lg-2" right>
+                    <b-nav-item-dropdown :text="$t('header.links.theme')" class="mr-lg-2" right>
                         <b-dropdown-item v-for="(translation, targetTheme) in themes"
                                          @click="onThemeChange(targetTheme)"
                                          :key="`theme-${targetTheme}`"
@@ -41,7 +37,7 @@
                     </b-nav-item-dropdown>
 
                     <b-button class="rounded-full px-4 py-2" :to="{ name: 'home' }">
-                        Use Online
+                        {{ $t('header.links.online') }}
                     </b-button>
                 </b-navbar-nav>
             </b-collapse>

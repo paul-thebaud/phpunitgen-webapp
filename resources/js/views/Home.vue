@@ -1,28 +1,32 @@
 <template>
     <div class="bg-gradient">
         <div class="home-wrapper">
-            <b-container class="text-center">
+            <BContainer class="text-center">
                 <div class="home-title">
                     {{ $t('home.welcome.title') }}
                 </div>
 
                 <div class="home-description">
                     {{ $t('home.welcome.description') }}
+                    <br>
+                    {{ $t('home.welcome.open-source') }}
                 </div>
 
                 <div class="home-actions">
-                    <b-button class="relative mx-2 px-4 py-3 rounded-full"
-                              size="lg"
-                              :to="{ name: 'home' }">
-                        Use Online
-                    </b-button>
-                    <b-button class="relative mx-2 px-4 py-3 rounded-full"
-                              size="lg"
-                              :to="{ name: 'home' }">
-                        Documentation
-                    </b-button>
+                    <BButton class="relative mx-2 px-4 py-3 rounded-full"
+                             size="lg"
+                             :to="{ name: 'home' }">
+                        <FontAwesomeIcon class="mr-2" :icon="onlineButtonIcon"></FontAwesomeIcon>
+                        {{ $t('home.actions.online') }}
+                    </BButton>
+                    <BButton class="relative mx-2 px-4 py-3 rounded-full"
+                             size="lg"
+                             :to="{ name: 'home' }">
+                        <FontAwesomeIcon class="mr-2" :icon="documentationButtonIcon"></FontAwesomeIcon>
+                        {{ $t('home.actions.documentation') }}
+                    </BButton>
                 </div>
-            </b-container>
+            </BContainer>
         </div>
 
         <div class="position-relative">
@@ -31,25 +35,44 @@
 
         <div class="bg-base">
             <div class="container">
-                <HomeFeature title="Console Toolkit"/>
-
-                <HomeFeature title="Opened API" reversed/>
-
-                <HomeFeature title="Modularity"/>
-
-                <HomeFeature title="Fully Documented" reversed/>
+                <HomeFeature v-for="(feature, index) in features"
+                             :key="feature"
+                             :title="$t(`home.features.${feature}.title`)"
+                             :description="$t(`home.features.${feature}.description`)"
+                             :image-alt="$t(`home.features.${feature}.image_alt`)"
+                             :image="`/img/features/${feature}.jpg`"
+                             :reversed="index % 2 === 0"/>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+    import { faBook, faRocket } from '@fortawesome/free-solid-svg-icons';
     import HomeWaves from '@/components/home/HomeWaves';
     import HomeFeature from '@/components/home/HomeFeature';
 
     export default {
         name: 'Home',
-        components: { HomeWaves, HomeFeature },
+        components: {
+            FontAwesomeIcon,
+            HomeWaves,
+            HomeFeature,
+        },
+        data() {
+            return {
+                onlineButtonIcon: faRocket,
+                documentationButtonIcon: faBook,
+                features: [
+                    'console',
+                    'webapp',
+                    'api',
+                    'modularity',
+                    'documentation',
+                ],
+            };
+        },
     };
 </script>
 
