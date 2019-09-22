@@ -3,25 +3,50 @@
 
 body {
   --theme-color: var(--primary-bg-color);
-}
 
-body, .sidebar, .sidebar ul li a, .anchor span {
-  background-color: var(--base-bg-color);
-  color: var(--base-color);
-}
+  &, .sidebar, .sidebar ul li a, .anchor span {
+    background-color: var(--base-bg-color);
+    color: var(--base-color);
+  }
 
-.sidebar {
-  border-right-color: rgba(0, 0, 0, 0.1) !important;
-}
+  .markdown-section > pre {
+    border-radius: 0.25rem;
 
-.search, .search .matching-post {
-  border-bottom-color: rgba(0, 0, 0, 0.1) !important;
-}
+    .docsify-copy-code-button {
+      border-bottom-left-radius: 0.25rem;
+    }
+  }
 
-.clear-button > svg > path {
-  stroke: var(--base-bg-color);
-}
+  nav.app-nav.no-badge > ul > li > ul {
+    background-color: var(--base-bg-color);
+  }
 
-.sidebar-toggle {
-  background-color: transparent !important;
+  .sidebar {
+    border-right-color: rgba(0, 0, 0, 0.1) !important;
+
+    .search {
+      margin-bottom: 0;
+
+      &, .matching-post {
+        border-bottom-color: rgba(0, 0, 0, 0.1) !important;
+      }
+
+      .clear-button > svg > path {
+        stroke: var(--base-bg-color);
+      }
+
+      .input-wrap > input {
+        border-radius: 0.25rem;
+      }
+    }
+
+    .app-name {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  }
+
+  .sidebar-toggle {
+    background-color: transparent !important;
+  }
 }

@@ -21,7 +21,7 @@
                     </BButton>
                     <BButton class="relative mx-2 px-4 py-3 rounded-full"
                              size="lg"
-                             :to="{ name: 'home' }">
+                             href="/docs">
                         <FontAwesomeIcon class="mr-2" :icon="documentationButtonIcon"></FontAwesomeIcon>
                         {{ $t('home.actions.documentation') }}
                     </BButton>

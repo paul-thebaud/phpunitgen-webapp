@@ -2,7 +2,10 @@
 
 @section('title', 'PhpUnitGen Docs')
 
+@section('body-classes', 'theme-light')
+
 @section('content')
+    <nav id="nav" class="app-nav no-badge"></nav>
     <noscript>This application needs Javascript to run.</noscript>
     <div id="app"></div>
 @endsection
@@ -13,20 +16,14 @@
 @endpush
 
 @push('scripts')
-    <script type="text/javascript">
-        window.$docsify = {
-            name: 'PhpUnitGen',
-            loadSidebar: true,
-            basePath: '/docs',
-            search: 'auto',
-            notFoundPage: true,
-        };
-    </script>
-    <script type="text/javascript" src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-    <script type="text/javascript" src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
-    <script type="text/javascript" src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
-    <script type="text/javascript" src="//unpkg.com/prismjs/components/prism-php.min.js"></script>
     <script type="text/javascript" src="{{ mix('js/manifest.js') }}"></script>
     <script type="text/javascript" src="{{ mix('js/vendor.js') }}"></script>
     <script type="text/javascript" src="{{ mix('js/docs.js') }}"></script>
+    <script type="text/javascript" src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+    <script type="text/javascript" src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+    <script type="text/javascript" src="//unpkg.com/docsify/lib/plugins/external-script.min.js"></script>
+    <script type="text/javascript" src="//unpkg.com/docsify-copy-code"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsify-example-panels"></script>
+    <script type="text/javascript" src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+    <script type="text/javascript" src="//unpkg.com/prismjs/components/prism-php.min.js"></script>
 @endpush
