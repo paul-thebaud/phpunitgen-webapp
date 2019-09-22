@@ -17,10 +17,10 @@
                     </b-nav-item>
 
                     <b-nav-item-dropdown :text="$t('header.links.language')" class="mr-lg-2" right>
-                        <b-dropdown-item v-for="(translation, targetLanguage) in languages"
-                                         @click="onLanguageChange(targetLanguage)"
-                                         :key="`lang-${targetLanguage}`"
-                                         :active="language === targetLanguage"
+                        <b-dropdown-item v-for="(translation, targetLocale) in locales"
+                                         @click="onLocaleChange(targetLocale)"
+                                         :key="`lang-${targetLocale}`"
+                                         :active="locale === targetLocale"
                         >
                             {{ translation }}
                         </b-dropdown-item>
@@ -48,6 +48,8 @@
 <script>
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
     import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+    import Locale from '@/services/Locale';
+    import Theme from '@/services/Theme';
 
     export default {
         name: 'Header',
@@ -56,46 +58,28 @@
         },
         data() {
             return {
-                langs: ['fr', 'en'],
                 closedMenuIcon: faBars,
                 openedMenuIcon: faTimes,
-                language: 'en',
-                theme: 'light',
-                languages: {
-                    en: 'English',
-                    fr: 'Français',
-                },
-                themes: {
-                    light: 'Light',
-                    dark: 'Dark',
-                },
+                locale: Locale.getLocale(),
+                locales: Locale.availableLocales(),
+                theme: Theme.getTheme(),
+                themes: Theme.availableThemes(),
             };
         },
         methods: {
-            onLanguageChange(language) {
-                if (language === this.language) {
+            onLocaleChange(locale) {
+                if (locale === this.locale) {
                     return;
                 }
 
-                this.$i18n.locale = this.language = language;
+                Locale.setLocale(this.locale = locale);
             },
             onThemeChange(theme) {
                 if (theme === this.theme) {
                     return;
                 }
 
-                const previousTheme = this.theme;
-                const classList = document.body.classList;
-
-                this.theme = theme;
-
-                classList.add('theme-switching');
-                classList.add(`theme-${this.theme}`);
-                classList.remove(`theme-${previousTheme}`);
-
-                setTimeout(() => {
-                    classList.remove(`theme-switching`);
-                }, 500);
+                Theme.setTheme(this.theme = theme);
             },
         },
     };
