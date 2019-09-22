@@ -1,6 +1,9 @@
 # Framework.
 .env
 
+# System.
+.DS_Store
+
 # IDE.
 /\.idea/
 
