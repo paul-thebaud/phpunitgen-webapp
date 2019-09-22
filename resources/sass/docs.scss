@@ -1,0 +1,27 @@
+@import "themes/theme-light";
+@import "themes/theme-dark";
+
+body {
+  --theme-color: var(--primary-bg-color);
+}
+
+body, .sidebar, .sidebar ul li a, .anchor span {
+  background-color: var(--base-bg-color);
+  color: var(--base-color);
+}
+
+.sidebar {
+  border-right-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.search, .search .matching-post {
+  border-bottom-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.clear-button > svg > path {
+  stroke: var(--base-bg-color);
+}
+
+.sidebar-toggle {
+  background-color: transparent !important;
+}

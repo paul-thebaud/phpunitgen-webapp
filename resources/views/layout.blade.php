@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>PhpUnitGen</title>
+    <title>@yield('title')</title>
 
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-    <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
-
     @stack('style')
 </head>
 
-<body class="w-100 h-100 theme-light">
+<body class="@yield('body-classes')">
 
 @yield('content')
 

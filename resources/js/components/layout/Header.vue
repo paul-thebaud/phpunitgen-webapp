@@ -12,7 +12,7 @@
 
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav class="ml-auto">
-                    <b-nav-item class="mr-lg-2" :to="{ name: 'home' }">
+                    <b-nav-item class="mr-lg-2" href="/docs" target="_blank">
                         {{ $t('header.links.documentation') }}
                     </b-nav-item>
 

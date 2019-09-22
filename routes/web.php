@@ -2,6 +2,7 @@
 
 use Laravel\Lumen\Routing\Router;
 use PhpUnitGen\WebApp\Http\Controllers\AppController;
+use PhpUnitGen\WebApp\Http\Controllers\DocsController;
 use PhpUnitGen\WebApp\Http\Routers\V1Router;
 
 /*
@@ -24,5 +25,8 @@ $router->group(['prefix' => 'api'], function (Router $router) {
 $router->group(['prefix' => 'api/v1'], function (Router $router) {
     V1Router::routes($router);
 });
+
+$router->get('/docs', DocsController::class);
+$router->get('/docs/{any:.*}', DocsController::class);
 
 $router->get('{any:.*}', AppController::class);
