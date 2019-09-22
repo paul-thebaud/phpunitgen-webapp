@@ -24,7 +24,7 @@
                     <BCol md class="px-1 text-md-left mt-2 mt-md-0">
                         <BButton class="px-4 py-3 rounded-full"
                                  size="lg"
-                                 :href="getDocumentationPath()">
+                                 href="/docs#/">
                             <FontAwesomeIcon class="mr-2" :icon="documentationButtonIcon"></FontAwesomeIcon>
                             {{ $t('home.actions.documentation') }}
                         </BButton>
@@ -56,7 +56,6 @@
     import { faBook, faRocket } from '@fortawesome/free-solid-svg-icons';
     import HomeWaves from '@/components/home/HomeWaves';
     import HomeFeature from '@/components/home/HomeFeature';
-    import Locale from '@/services/Locale';
 
     export default {
         components: {
@@ -76,11 +75,6 @@
                     'documentation',
                 ],
             };
-        },
-        methods: {
-            getDocumentationPath() {
-                return Locale.getDocumentationPath();
-            },
         },
     };
 </script>
