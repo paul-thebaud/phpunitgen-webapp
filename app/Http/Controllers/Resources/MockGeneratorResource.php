@@ -16,8 +16,8 @@ class MockGeneratorResource extends AbstractResource
      */
     protected function map(array $item): array
     {
-        $item['name'] = $this->translator->trans("mock-generators.{$item['id']}.name");
-        $item['description'] = $this->translator->trans("mock-generators.{$item['id']}.description");
+        $item['name'] = $this->translator->get("mock-generators.{$item['id']}.name");
+        $item['description'] = $this->translator->get("mock-generators.{$item['id']}.description");
 
         return $item;
     }

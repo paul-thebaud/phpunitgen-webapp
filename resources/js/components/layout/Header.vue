@@ -36,7 +36,7 @@
                         </b-dropdown-item>
                     </b-nav-item-dropdown>
 
-                    <b-button class="rounded-full px-4 py-2" :to="{ name: 'home' }">
+                    <b-button class="rounded-full px-4 py-2" :to="{ name: 'tool' }">
                         {{ $t('header.links.online') }}
                     </b-button>
                 </b-navbar-nav>

@@ -14,7 +14,10 @@ const webpackConfig = require('./webpack.config');
 require('laravel-mix-purgecss');
 
 mix
-    .extract(['vue', 'bootstrap-vue'])
+    .extract([
+        'vue',
+        'bootstrap-vue',
+    ])
     .js('resources/js/app.js', 'public/js')
     .js('resources/js/docs.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')

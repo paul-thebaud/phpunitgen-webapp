@@ -22,7 +22,7 @@
 </script>
 
 <style>
-    #app > .container {
+    #app > .wrapper > .container {
         padding-top: 60px;
         padding-bottom: 10px;
     }

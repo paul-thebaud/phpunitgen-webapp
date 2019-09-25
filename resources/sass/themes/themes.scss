@@ -41,12 +41,28 @@ $variants: (
         "secondary",
 );
 
+.prism-editor-wrapper {
+  border-radius: 0.25rem;
+  min-height: 50vh;
+
+  &, > div, > pre {
+    background-color: var(--secondary-bg-color) !important;
+  }
+}
+
+pre {
+  &, > code {
+    background-color: var(--secondary-bg-color);
+    color: var(--base-color);
+  }
+}
+
 @each $variant in $variants {
   .btn.btn-#{$variant} {
     background-color: var(--#{$variant}-bg-color) !important;
     color: var(--#{$variant}-color) !important;
 
-    &:hover, &:focus {
+    &:not(.disabled):hover, &:not(.disabled):focus {
       filter: brightness(var(--hover-brightness));
     }
   }

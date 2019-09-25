@@ -16,7 +16,7 @@
                     <BCol md class="px-1 text-md-right">
                         <BButton class="px-4 py-3 rounded-full"
                                  size="lg"
-                                 :to="{ name: 'home' }">
+                                 :to="{ name: 'tool' }">
                             <FontAwesomeIcon class="mr-2" :icon="onlineButtonIcon"></FontAwesomeIcon>
                             {{ $t('home.actions.online') }}
                         </BButton>
@@ -38,7 +38,7 @@
         </div>
 
         <div class="bg-base">
-            <div class="container">
+            <BContainer>
                 <HomeFeature v-for="(feature, index) in features"
                              :key="feature"
                              :title="$t(`home.features.${feature}.title`)"
@@ -46,7 +46,7 @@
                              :image-alt="$t(`home.features.${feature}.image_alt`)"
                              :image="`/img/features/${feature}.jpg`"
                              :reversed="index % 2 === 0"/>
-            </div>
+            </BContainer>
         </div>
     </div>
 </template>

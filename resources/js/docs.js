@@ -34,8 +34,8 @@ window.$docsify = {
         },
         paths: 'auto',
         placeholder: {
-            '/fr/': 'Recherche',
-            '/': 'Search',
+            '/fr/': 'Recherche...',
+            '/': 'Search...',
         },
     },
 };
