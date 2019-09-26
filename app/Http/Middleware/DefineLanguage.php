@@ -19,11 +19,6 @@ use Symfony\Component\HttpFoundation\Response;
 class DefineLanguage
 {
     /**
-     * The custom language header PhpUnitGen uses to override classic one.
-     */
-    public const LANGUAGE_HEADER = 'PhpUnitGen-Language';
-
-    /**
      * The available languages on application.
      */
     public const LANGUAGES = ['en', 'fr'];
@@ -53,10 +48,7 @@ class DefineLanguage
      */
     public function handle($request, Closure $next)
     {
-        $locale = $request->header(self::LANGUAGE_HEADER);
-        if (! in_array($locale, self::LANGUAGES)) {
-            $locale = $request->getPreferredLanguage(self::LANGUAGES);
-        }
+        $locale = $request->getPreferredLanguage(self::LANGUAGES);
 
         $this->translator->setLocale($locale);
 

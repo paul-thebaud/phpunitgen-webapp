@@ -56,7 +56,7 @@ class TestController extends BaseController
             return new JsonResponse([
                 'message'   => 'PhpUnitGen Core execution thrown an exception',
                 'exception' => $exception->getMessage(),
-            ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+            ], JsonResponse::HTTP_BAD_REQUEST);
         }
 
         return new JsonResponse([

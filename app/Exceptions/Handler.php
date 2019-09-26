@@ -42,7 +42,9 @@ class Handler extends ExceptionHandler
             return $rendered;
         }
 
-        if (! $exception instanceof HttpException) {
+        if (! $exception instanceof HttpException
+            && ! $exception instanceof ValidationException
+        ) {
             $message = 'Server error';
         } else {
             $message = $exception->getMessage();
