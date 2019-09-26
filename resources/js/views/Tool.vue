@@ -12,6 +12,7 @@
 </template>
 
 <script>
+    import { testResource } from '@/resources';
     import EditorTab from '@/components/tool/EditorTab';
     import ResultTab from '@/components/tool/ResultTab';
 
@@ -35,28 +36,14 @@
         methods: {
             async generate(code) {
                 try {
-                    const response = await fetch('/api/tests', {
-                        method: 'post',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            config: this.config,
-                            code: code,
-                        }),
-                    });
-
-                    const payload = await response.json();
-                    if (response.status !== 201) {
-                        throw new Error(payload.exception);
-                    }
+                    const test = await testResource.create(code);
 
                     this.error = null;
-                    this.generated = payload['code'];
-                    this.executionTime = payload['execution_time'];
+                    this.generated = test.code;
+                    this.executionTime = test.execution_time;
                     this.tabIndex = 1;
                 } catch (error) {
+                    console.error(error.message);
                     console.error(error);
                     this.error = error.message;
                 }

@@ -39,17 +39,16 @@
 </template>
 
 <script>
-    import Locale from '@/services/Locale';
-    import Theme from '@/services/Theme';
+    import { configManager, localeManager, themeManager } from '@/services';
 
     export default {
         name: 'DocsNav',
         data() {
             return {
-                locale: Locale.getLocale(),
-                locales: Locale.availableLocales(),
-                theme: Theme.getTheme(),
-                themes: Theme.availableThemes(),
+                locale: configManager.get('locale'),
+                locales: localeManager.availableLocales,
+                theme: configManager.get('theme'),
+                themes: themeManager.availableThemes,
             };
         },
         methods: {
@@ -58,18 +57,20 @@
                     return;
                 }
 
-                Locale.setLocale(this.locale = locale);
+                localeManager.changeLocale(this.locale = locale);
 
                 const path = window.location.href.replace(/^.*\/docs#\/?([a-z]{2}\/)?/, '');
 
-                window.location.hash = Locale.getDocumentationPath(path, locale).replace(/^\/docs#/, '');
+                window.location.hash = localeManager
+                    .getDocumentationPath(path, locale)
+                    .replace(/^\/docs#/, '');
             },
             onThemeChange(theme) {
                 if (theme === this.theme) {
                     return;
                 }
 
-                Theme.setTheme(this.theme = theme);
+                themeManager.changeTheme(this.theme = theme);
             },
         },
     };

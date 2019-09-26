@@ -48,8 +48,7 @@
 <script>
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
     import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-    import Locale from '@/services/Locale';
-    import Theme from '@/services/Theme';
+    import { configManager, localeManager, themeManager } from '@/services';
 
     export default {
         name: 'Header',
@@ -60,10 +59,10 @@
             return {
                 closedMenuIcon: faBars,
                 openedMenuIcon: faTimes,
-                locale: Locale.getLocale(),
-                locales: Locale.availableLocales(),
-                theme: Theme.getTheme(),
-                themes: Theme.availableThemes(),
+                locale: configManager.get('locale'),
+                locales: localeManager.availableLocales,
+                theme: configManager.get('theme'),
+                themes: themeManager.availableThemes,
             };
         },
         methods: {
@@ -72,14 +71,14 @@
                     return;
                 }
 
-                Locale.setLocale(this.locale = locale);
+                localeManager.changeLocale(this.locale = locale);
             },
             onThemeChange(theme) {
                 if (theme === this.theme) {
                     return;
                 }
 
-                Theme.setTheme(this.theme = theme);
+                themeManager.changeTheme(this.theme = theme);
             },
         },
     };
