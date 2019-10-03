@@ -7,12 +7,16 @@ export default class {
     }
 
     async json(endpoint, payload = {}, method = 'get') {
-        const response = await fetch(endpoint, {
+        const request = {
             method,
             headers: this.headers,
-            body: JSON.stringify(payload),
-        });
+        };
 
+        if (method !== 'get' && payload) {
+            request.body = JSON.stringify(payload);
+        }
+
+        const response = await fetch(endpoint, request);
         const json = await response.json();
 
         if (response.status === 422) {
@@ -20,11 +24,14 @@ export default class {
         }
 
         if (response.status < 200 || response.status >= 300) {
-            /** @todo Translate message **/
-            throw new UnknownError(json.message || 'Unknown error', json.exception || {});
+            throw new UnknownError(json.message, json.exception || {});
         }
 
         return json;
+    }
+
+    async get(endpoint) {
+        return await this.json(endpoint, null, 'get');
     }
 
     async post(endpoint, payload = {}) {

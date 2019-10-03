@@ -11,8 +11,16 @@
   --secondary-bg-color: #2e343f;
   --secondary-color: var(--base-color);
 
-  --hover-brightness: 115%;
+  --success-bg-color: #28a745;
+  --success-color: var(--base-color);
 
+  --warning-bg-color: #ffc107;
+  --warning-color: var(--base-bg-color);
+
+  --danger-bg-color: #c82333;
+  --danger-color: var(--base-color);
+
+  --hover-brightness: 115%;
 
   @import '~prismjs/themes/prism-tomorrow';
 }

@@ -38,10 +38,7 @@
                 required: false,
                 type: String,
                 default: 'php',
-            }
-        },
-        mounted() {
-
+            },
         },
         methods: {
             handleChange(code) {

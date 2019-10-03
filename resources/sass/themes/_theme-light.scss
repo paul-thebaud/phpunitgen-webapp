@@ -11,6 +11,15 @@
   --secondary-bg-color: #f8f8f8;
   --secondary-color: var(--base-color);
 
+  --success-bg-color: #28a745;
+  --success-color: var(--base-bg-color);
+
+  --warning-bg-color: #ffc107;
+  --warning-color: var(--base-color);
+
+  --danger-bg-color: #c82333;
+  --danger-color: var(--base-bg-color);
+
   --hover-brightness: 95%;
 
   @import '~prismjs/themes/prism';

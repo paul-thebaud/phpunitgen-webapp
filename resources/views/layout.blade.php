@@ -7,8 +7,8 @@
 
     <title>@yield('title')</title>
 
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description"
+          content="PhpUnitGen is a simple, powerful and modular tool to generate your PHPUnit tests skeletons. It is free and open-source.">
 
     @stack('style')
 </head>
@@ -17,8 +17,8 @@
 
 @yield('content')
 
-<script type="text/javascript" src="{{ mix('js/manifest.js') }}"></script>
-<script type="text/javascript" src="{{ mix('js/vendor.js') }}"></script>
+<script type="text/javascript" src="{{ mix('js/manifest.js') }}" defer></script>
+<script type="text/javascript" src="{{ mix('js/vendor.js') }}" defer></script>
 @stack('scripts')
 
 </body>

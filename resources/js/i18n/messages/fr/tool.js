@@ -4,10 +4,10 @@ export default {
         'actions': {
             'configure': 'Configurer',
             'import': 'Importer',
-            'paste': 'Coller',
             'generate': 'Générer',
         },
-        'exception': 'Un erreur s\'est produite durant la génération. N\'oubliez pas que votre code doit être correct et contenir une seule classe ou un seul trait PHP.',
+        'unknown_exception': 'Une erreur inconnue s\'est produite.',
+        'exception': 'Une erreur s\'est produite durant la génération. N\'oubliez pas que votre code doit être correct et contenir une seule classe ou un seul trait PHP.',
         'show_exception_dump': 'Afficher l\'exception complète',
         'hide_exception_dump': 'Masquer l\'exception complète',
     },
@@ -21,5 +21,13 @@ export default {
         },
         'execution_time': 'Généré en {executionTime} ms !',
         'missing': 'Aucun tests générés pour l\'instant. Utilisez l\'éditeur pour écrire le code pour lequel vous voulez générer des tests.',
+    },
+    'versions': {
+        'api_connecting': 'Connexion à l\'API en cours ...',
+        'api_connected': 'Connexion à l\'API avec succès !',
+        'api_disconnected': 'Connexion à l\'API impossible !',
+        'api_disconnected_error': 'L\'erreur est affichée dans la console de développement, n\'hésitez pas à créer un issue GitHub en la fournissant.',
+        'core_version': '<strong>Version du cœur</strong> : <code>{version}</code>',
+        'api_version': '<strong>Version de l\'API</strong> : <code>{version}</code>',
     },
 };

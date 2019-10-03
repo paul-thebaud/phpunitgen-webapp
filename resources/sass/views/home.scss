@@ -19,6 +19,9 @@
   &-description, &-img {
     max-width: 350px;
     width: 100%;
+    @media (max-width: 767.98px) {
+      max-width: 100%;
+    }
   }
 }
 

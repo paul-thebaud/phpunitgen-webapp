@@ -1,4 +1,12 @@
 const STORAGE_CONFIG_KEY = 'phpunitgen_configuration';
+const DEFAULT_CONFIG = {
+    theme: 'light',
+    locale: 'en',
+    tool: {
+        test_generator: 'delegate',
+        mock_generator: 'mockery',
+    },
+};
 
 export default class {
     /**
@@ -13,14 +21,7 @@ export default class {
         if (storageConfig !== null) {
             this.config = JSON.parse(storageConfig);
         } else {
-            this.config = {
-                theme: 'light',
-                locale: 'en',
-                tool: {
-                    test_generator: 'delegate',
-                    mock_generator: 'mockery',
-                },
-            };
+            this.config = DEFAULT_CONFIG;
         }
     }
 

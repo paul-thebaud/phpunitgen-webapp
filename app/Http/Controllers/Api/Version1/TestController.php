@@ -12,7 +12,6 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use PhpUnitGen\Core\Contracts\Generators\MockGenerator;
-use PhpUnitGen\Core\Contracts\Renderers\Rendered;
 use PhpUnitGen\Core\CoreApplication;
 use PhpUnitGen\Core\Parsers\Sources\StringSource;
 use PhpUnitGen\WebApp\Http\Controllers\Resources\MockGeneratorResource;
@@ -51,7 +50,10 @@ class TestController extends BaseController
         $executionTime = microtime(true);
 
         try {
-            $testCode = $this->buildAndExecutePhpUnitGen($config, Arr::get($validatedData, 'code'));
+            [$testName, $testCode] = $this->buildAndExecutePhpUnitGen(
+                $config,
+                Arr::get($validatedData, 'code')
+            );
         } catch (Throwable $exception) {
             return new JsonResponse([
                 'message'   => 'PhpUnitGen Core execution thrown an exception',
@@ -60,6 +62,7 @@ class TestController extends BaseController
         }
 
         return new JsonResponse([
+            'name'           => $testName,
             'code'           => $testCode,
             'execution_time' => microtime(true) - $executionTime,
         ], JsonResponse::HTTP_CREATED);
@@ -131,20 +134,34 @@ class TestController extends BaseController
     }
 
     /**
-     * Build and execute the PhpUnitGen application for given configuration and code.
+     * Build and execute the PhpUnitGen application for given configuration and code. Return
+     * the test class name and code in an array.
      *
      * @param array  $config
      * @param string $code
      *
-     * @return Rendered
+     * @return array
      */
-    protected function buildAndExecutePhpUnitGen(array $config, string $code): string
+    protected function buildAndExecutePhpUnitGen(array $config, string $code): array
     {
         $phpUnitGen = CoreApplication::make($config);
 
-        return $phpUnitGen->run(new StringSource($code))->toString();
+        $reflectionClass = $phpUnitGen->getCodeParser()->parse(new StringSource($code));
+        $testClass = $phpUnitGen->getTestGenerator()->generate($reflectionClass);
+        $renderer = $phpUnitGen->getRenderer();
+        $renderer->visitTestClass($testClass);
+        $rendered = $renderer->getRendered();
+
+        return [$testClass->getShortName(), $rendered->toString()];
     }
 
+    /**
+     * Convert an exception to an array.
+     *
+     * @param Throwable $exception
+     *
+     * @return array
+     */
     protected function exceptionToArray(Throwable $exception): array
     {
         return [

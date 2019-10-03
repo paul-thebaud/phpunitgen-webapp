@@ -9,12 +9,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  display: flex;
-  flex-flow: column;
+html, body {
+  height: 100%;
 }
 
-#app > .wrapper > .container {
-  padding-top: 60px;
-  padding-bottom: 10px;
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  & > .wrapper > .container {
+    padding-top: 60px;
+    padding-bottom: 10px;
+  }
 }

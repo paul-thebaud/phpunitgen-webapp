@@ -11,7 +11,9 @@
                 <FontAwesomeIcon :icon="icons.faCopy"></FontAwesomeIcon>
                 {{ copyButtonLabel }}
             </BButton>
-            <BButton variant="secondary" :disabled="! hasGenerated">
+            <BButton variant="secondary"
+                     :disabled="! hasGenerated"
+                     @click="handleDownload">
                 <FontAwesomeIcon :icon="icons.faDownload"></FontAwesomeIcon>
                 {{ $t('tool.generated.actions.download') }}
             </BButton>
@@ -36,6 +38,10 @@
             FontAwesomeIcon,
         },
         props: {
+            name: {
+                required: false,
+                type: String,
+            },
             code: {
                 required: false,
                 type: String,
@@ -70,6 +76,16 @@
                     }, () => {
                         this.copyButtonLabel = this.$t('tool.generated.actions.copy_error');
                     });
+            },
+            handleDownload() {
+                const anchorElement = document.createElement('a');
+                anchorElement.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(this.code)}`);
+                anchorElement.setAttribute('download', `${this.name}.php`);
+                anchorElement.style.display = 'none';
+
+                document.body.appendChild(anchorElement);
+                anchorElement.click();
+                document.body.removeChild(anchorElement);
             },
         },
     };

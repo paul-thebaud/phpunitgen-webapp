@@ -1,27 +1,23 @@
 <template>
     <div>
         <div class="my-3 d-flex">
-            <BButton variant="primary">
+            <BButton variant="primary" :disabled="generating">
                 <FontAwesomeIcon :icon="icons.faCog"></FontAwesomeIcon>
                 {{ $t('tool.editor.actions.configure') }}
             </BButton>
-            <BButton variant="secondary" class="ml-2">
+            <BButton variant="secondary" class="ml-2" :disabled="generating">
                 <FontAwesomeIcon :icon="icons.faFileImport"></FontAwesomeIcon>
                 {{ $t('tool.editor.actions.import') }}
             </BButton>
-            <BButton variant="secondary" class="ml-2">
-                <FontAwesomeIcon :icon="icons.faPaste"></FontAwesomeIcon>
-                {{ $t('tool.editor.actions.paste') }}
-            </BButton>
             <BButton variant="primary"
                      class="ml-auto"
-                     :disabled="code === '' || code === null"
+                     :disabled="code === '' || code === null || generating"
                      @click="generate">
                 <FontAwesomeIcon :icon="icons.faPlayCircle"></FontAwesomeIcon>
                 {{ $t('tool.editor.actions.generate') }}
             </BButton>
         </div>
-        <div v-if="exceptionMessage !== null">
+        <div v-if="exceptionMessage !== null && ! generating">
             <div class="d-flex mb-3">
                 <BAlert class="flex-grow-1 mr-2 mb-0" variant="danger" :show="true">
                     {{ exceptionMessage }}
@@ -40,6 +36,7 @@
         </div>
         <Editor v-if="! showExceptionDumpEditor"
                 :code="code"
+                :readonly="generating"
                 @change="handleEditorChange"/>
     </div>
 </template>
@@ -55,6 +52,10 @@
             FontAwesomeIcon,
         },
         props: {
+            generating: {
+                required: true,
+                type: Boolean,
+            },
             exceptionMessage: {
                 required: false,
                 type: String,
