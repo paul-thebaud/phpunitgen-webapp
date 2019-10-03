@@ -6,7 +6,7 @@ export default class {
 
     async create(code) {
         return await this.apiManager.post('/api/tests', {
-            //config: this.configManager.get('tool'),
+            config: this.configManager.get('tool'),
             code,
         });
     }

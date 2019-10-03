@@ -11,23 +11,22 @@
 
 const mix = require('laravel-mix');
 const webpackConfig = require('./webpack.config');
-require('laravel-mix-purgecss');
 
-mix
+mix.webpackConfig(webpackConfig)
+    .options({
+        processCssUrls: false,
+    })
     .extract([
         'vue',
-        'bootstrap-vue',
+        'vue-i18n',
     ])
     .js('resources/js/app.js', 'public/js')
     .js('resources/js/docs.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .sass('resources/sass/docs.scss', 'public/css')
-    .webpackConfig(webpackConfig)
-    .sourceMaps()
-    .options({
-        processCssUrls: false,
-    });
+    .sass('resources/sass/docs.scss', 'public/css');
 
 if (mix.inProduction()) {
     mix.version();
+} else {
+    mix.sourceMaps();
 }

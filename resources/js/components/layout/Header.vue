@@ -1,57 +1,67 @@
 <template>
-    <b-navbar toggleable="lg" fixed="top" type="" class="shadow bg-gradient">
-        <b-container>
-            <b-navbar-brand :to="{ name: 'home' }">
+    <BNavbar toggleable="lg"
+             fixed="top"
+             class="shadow bg-gradient"
+             type="">
+        <BContainer>
+            <BNavbarBrand :to="{ name: 'home' }">
                 <strong>PhpUnitGen</strong>
-            </b-navbar-brand>
+            </BNavbarBrand>
 
-            <b-button class="d-lg-none rounded-full" v-b-toggle.nav-collapse>
+            <BButton class="d-lg-none rounded-full"
+                     v-b-toggle.nav-collapse>
                 <FontAwesomeIcon class="when-closed" :icon="closedMenuIcon"></FontAwesomeIcon>
                 <FontAwesomeIcon class="when-opened" :icon="openedMenuIcon"></FontAwesomeIcon>
-            </b-button>
+            </BButton>
 
-            <b-collapse id="nav-collapse" is-nav>
-                <b-navbar-nav class="ml-auto">
-                    <b-nav-item class="mr-lg-2" href="/docs#/">
+            <BCollapse id="nav-collapse"
+                       is-nav>
+                <BNavbarNav class="ml-auto">
+                    <BNavItem class="mr-lg-2"
+                              href="/docs#/">
                         {{ $t('header.links.documentation') }}
-                    </b-nav-item>
+                    </BNavItem>
 
-                    <b-nav-item-dropdown :text="$t('header.links.language')" class="mr-lg-2" right>
-                        <b-dropdown-item v-for="(translation, targetLocale) in locales"
-                                         @click="onLocaleChange(targetLocale)"
-                                         :key="`lang-${targetLocale}`"
-                                         :active="locale === targetLocale"
+                    <BNavItemDropdown class="mr-lg-2"
+                                      :text="$t('header.links.language')"
+                                      right>
+                        <BDropdownItem v-for="(translation, targetLocale) in locales"
+                                       @click="onLocaleChange(targetLocale)"
+                                       :key="`lang-${targetLocale}`"
+                                       :active="locale === targetLocale">
+                            {{ translation }}
+                        </BDropdownItem>
+                    </BNavItemDropdown>
+
+                    <BNavItemDropdown class="mr-lg-2"
+                                      :text="$t('header.links.theme')"
+                                      right>
+                        <BDropdownItem v-for="(translation, targetTheme) in themes"
+                                       @click="onThemeChange(targetTheme)"
+                                       :key="`theme-${targetTheme}`"
+                                       :active="theme === targetTheme"
                         >
                             {{ translation }}
-                        </b-dropdown-item>
-                    </b-nav-item-dropdown>
+                        </BDropdownItem>
+                    </BNavItemDropdown>
 
-                    <b-nav-item-dropdown :text="$t('header.links.theme')" class="mr-lg-2" right>
-                        <b-dropdown-item v-for="(translation, targetTheme) in themes"
-                                         @click="onThemeChange(targetTheme)"
-                                         :key="`theme-${targetTheme}`"
-                                         :active="theme === targetTheme"
-                        >
-                            {{ translation }}
-                        </b-dropdown-item>
-                    </b-nav-item-dropdown>
-
-                    <b-button class="rounded-full px-4 py-2" :to="{ name: 'tool' }">
+                    <BButton class="rounded-full px-4 py-2"
+                             :to="{ name: 'tool' }">
                         {{ $t('header.links.online') }}
-                    </b-button>
-                </b-navbar-nav>
-            </b-collapse>
-        </b-container>
-    </b-navbar>
+                    </BButton>
+                </BNavbarNav>
+            </BCollapse>
+        </BContainer>
+    </BNavbar>
 </template>
 
 <script>
+    import '@sass/components/layout/header.scss';
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
     import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
     import { configManager, localeManager, themeManager } from '@/services';
 
     export default {
-        name: 'Header',
         components: {
             FontAwesomeIcon,
         },
@@ -83,16 +93,3 @@
         },
     };
 </script>
-
-<style lang="scss">
-    .navbar {
-        .navbar-brand, .nav-link {
-            color: var(--gradient-color) !important;
-        }
-
-        .collapsed > .when-opened,
-        :not(.collapsed) > .when-closed {
-            display: none;
-        }
-    }
-</style>

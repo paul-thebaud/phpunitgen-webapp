@@ -7,8 +7,7 @@
                     <li v-for="(translation, targetLocale) in locales"
                         @click.prevent="onLocaleChange(targetLocale)"
                         :key="`lang-${targetLocale}`"
-                        :class="locale === targetLocale ? 'active' : ''"
-                    >
+                        :class="locale === targetLocale ? 'active' : ''">
                         <a href="#">
                             {{ translation }}
                         </a>
@@ -21,8 +20,7 @@
                     <li v-for="(translation, targetTheme) in themes"
                         @click.prevent="onThemeChange(targetTheme)"
                         :key="`lang-${targetTheme}`"
-                        :class="theme === targetTheme ? 'active' : ''"
-                    >
+                        :class="theme === targetTheme ? 'active' : ''">
                         <a href="#">
                             {{ translation }}
                         </a>
@@ -42,7 +40,6 @@
     import { configManager, localeManager, themeManager } from '@/services';
 
     export default {
-        name: 'DocsNav',
         data() {
             return {
                 locale: configManager.get('locale'),
@@ -75,6 +72,3 @@
         },
     };
 </script>
-
-<style scoped>
-</style>

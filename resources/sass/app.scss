@@ -13,3 +13,8 @@ body {
   display: flex;
   flex-flow: column;
 }
+
+#app > .wrapper > .container {
+  padding-top: 60px;
+  padding-bottom: 10px;
+}

@@ -52,6 +52,7 @@
 </template>
 
 <script>
+    import '@sass/views/home.scss';
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
     import { faBook, faRocket } from '@fortawesome/free-solid-svg-icons';
     import HomeWaves from '@/components/home/HomeWaves';
@@ -78,22 +79,3 @@
         },
     };
 </script>
-
-<style lang="scss" scoped>
-    .home-wrapper {
-        padding-top: 150px;
-        padding-bottom: 10px;
-
-        .home-title {
-            font-size: 3rem;
-        }
-
-        .home-description {
-            font-size: 1.5rem;
-        }
-
-        .home-actions {
-            margin-top: 40px;
-        }
-    }
-</style>

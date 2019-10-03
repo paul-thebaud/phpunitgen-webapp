@@ -1,0 +1,17 @@
+footer {
+  margin-top: auto;
+  width: 100%;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  a, .btn-link {
+    color: inherit;
+
+    &:hover {
+      color: inherit;
+    }
+  }
+}

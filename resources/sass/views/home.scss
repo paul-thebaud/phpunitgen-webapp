@@ -1,0 +1,27 @@
+.home-wrapper {
+  padding-top: 150px;
+  padding-bottom: 10px;
+
+  .home-title {
+    font-size: 3rem;
+  }
+
+  .home-description {
+    font-size: 1.5rem;
+  }
+
+  .home-actions {
+    margin-top: 40px;
+  }
+}
+
+.home-feature .home-feature {
+  &-description, &-img {
+    max-width: 350px;
+    width: 100%;
+  }
+}
+
+svg.home-waves > g > g {
+    fill: var(--base-bg-color);
+}

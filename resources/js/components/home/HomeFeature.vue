@@ -1,7 +1,7 @@
 <template>
-    <BRow class="py-5">
+    <BRow class="home-feature py-5">
         <BCol md="6" :order-md="reversed ? 0 : 1" class="d-flex align-items-center">
-            <div class="max-width text-center" :class="reversed ? 'text-md-right ml-md-auto' : 'text-md-left'">
+            <div class="home-feature-description text-center" :class="reversed ? 'text-md-right ml-md-auto' : 'text-md-left'">
                 <h3 class="font-bold mb-3">
                     {{ title }}
                 </h3>
@@ -10,7 +10,7 @@
         </BCol>
         <BCol md="6" :order-md="reversed ? 1 : 0">
             <div class="text-center" :class="reversed ? 'text-md-left' : 'text-md-right'">
-                <img :src="image" :alt="imageAlt" class="img-fluid max-width rounded shadow-lg"/>
+                <img :src="image" :alt="imageAlt" class="home-feature-img img-fluid rounded shadow-lg"/>
             </div>
         </BCol>
     </BRow>
@@ -18,7 +18,6 @@
 
 <script>
     export default {
-        name: 'HomeFeature',
         props: {
             title: {
                 required: true,
@@ -44,10 +43,3 @@
         },
     };
 </script>
-
-<style scoped>
-    .max-width {
-        max-width: 350px;
-        width: 100%;
-    }
-</style>

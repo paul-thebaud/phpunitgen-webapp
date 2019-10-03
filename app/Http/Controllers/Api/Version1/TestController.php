@@ -55,7 +55,7 @@ class TestController extends BaseController
         } catch (Throwable $exception) {
             return new JsonResponse([
                 'message'   => 'PhpUnitGen Core execution thrown an exception',
-                'exception' => $exception->getMessage(),
+                'exception' => $this->exceptionToArray($exception),
             ], JsonResponse::HTTP_BAD_REQUEST);
         }
 
@@ -143,5 +143,20 @@ class TestController extends BaseController
         $phpUnitGen = CoreApplication::make($config);
 
         return $phpUnitGen->run(new StringSource($code))->toString();
+    }
+
+    protected function exceptionToArray(Throwable $exception): array
+    {
+        return [
+            'message'   => $exception->getMessage(),
+            'exception' => get_class($exception),
+            'file'      => $exception->getFile(),
+            'line'      => $exception->getLine(),
+            'trace'     => (new Collection($exception->getTrace()))
+                ->map(function ($trace) {
+                    return Arr::except($trace, ['args']);
+                })
+                ->all(),
+        ];
     }
 }

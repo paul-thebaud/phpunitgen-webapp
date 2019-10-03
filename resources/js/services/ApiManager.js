@@ -21,7 +21,7 @@ export default class {
 
         if (response.status < 200 || response.status >= 300) {
             /** @todo Translate message **/
-            throw new UnknownError(json.message || 'Unknown error');
+            throw new UnknownError(json.message || 'Unknown error', json.exception || {});
         }
 
         return json;

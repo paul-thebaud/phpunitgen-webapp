@@ -17,6 +17,8 @@
 
 @yield('content')
 
+<script type="text/javascript" src="{{ mix('js/manifest.js') }}"></script>
+<script type="text/javascript" src="{{ mix('js/vendor.js') }}"></script>
 @stack('scripts')
 
 </body>

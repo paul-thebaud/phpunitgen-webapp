@@ -1,0 +1,24 @@
+@import "~vue-prism-editor/dist/VuePrismEditor.css";
+
+.tool-tabs {
+  .nav.nav-tabs {
+    border: none;
+
+    .nav-link {
+      background: none;
+      color: var(--base-color);
+      border: none;
+      border-bottom: 1px solid var(--secondary-bg-color);
+      transition: 300ms;
+
+      &.active {
+        border-bottom: 1px solid var(--primary-bg-color);
+      }
+
+      &:not(.active):hover {
+        color: var(--primary-bg-color);
+        border-bottom: 1px solid var(--primary-bg-color);
+      }
+    }
+  }
+}

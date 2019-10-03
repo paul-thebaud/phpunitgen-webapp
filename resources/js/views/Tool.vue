@@ -1,11 +1,16 @@
 <template>
     <BContainer class="my-5 tool-tabs">
-        <BTabs v-model="tabIndex" align="center" fill>
-            <BTab title="Editor">
-                <EditorTab :error="error" @generate="generate"></EditorTab>
+        <BTabs align="center"
+               v-model="tabIndex"
+               fill>
+            <BTab :title="$t('tool.editor.title')">
+                <EditorTab @generate="generate"
+                           :exception-message="exceptionMessage"
+                           :exception="exception"/>
             </BTab>
-            <BTab title="Generated">
-                <ResultTab :code="generated" :executionTime="executionTime"></ResultTab>
+            <BTab :title="$t('tool.generated.title')">
+                <GeneratedTab :code="generated"
+                              :executionTime="executionTime"/>
             </BTab>
         </BTabs>
     </BContainer>
@@ -14,20 +19,18 @@
 <script>
     import { testResource } from '@/resources';
     import EditorTab from '@/components/tool/EditorTab';
-    import ResultTab from '@/components/tool/ResultTab';
+    import GeneratedTab from '@/components/tool/GeneratedTab';
+    import UnknownError from '@/errors/UnknownError';
 
     export default {
         components: {
             EditorTab,
-            ResultTab,
+            GeneratedTab,
         },
         data() {
             return {
-                config: {
-                    test_generator: 'delegate',
-                    mock_generator: 'mockery',
-                },
-                error: null,
+                exceptionMessage: null,
+                exception: null,
                 generated: null,
                 executionTime: null,
                 tabIndex: 0,
@@ -38,41 +41,23 @@
                 try {
                     const test = await testResource.create(code);
 
-                    this.error = null;
+                    this.exceptionMessage = null;
+                    this.exception = null;
+
                     this.generated = test.code;
                     this.executionTime = test.execution_time;
+
                     this.tabIndex = 1;
                 } catch (error) {
-                    console.error(error.message);
-                    console.error(error);
-                    this.error = error.message;
+                    if (error.name === UnknownError.name) {
+                        this.exception = error.exception;
+                    } else {
+                        this.exception = null;
+                    }
+
+                    this.exceptionMessage = this.$t('tool.editor.exception');
                 }
             },
         },
     };
 </script>
-
-<style lang="scss">
-    .tool-tabs {
-        .nav.nav-tabs {
-            border: none;
-
-            .nav-link {
-                background: none;
-                color: var(--base-color);
-                border: none;
-                border-bottom: 1px solid var(--secondary-bg-color);
-                transition: 300ms;
-
-                &.active {
-                    border-bottom: 1px solid var(--primary-bg-color);
-                }
-
-                &:not(.active):hover {
-                    color: var(--primary-bg-color);
-                    border-bottom: 1px solid var(--primary-bg-color);
-                }
-            }
-        }
-    }
-</style>

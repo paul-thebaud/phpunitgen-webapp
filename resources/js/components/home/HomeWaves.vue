@@ -1,5 +1,5 @@
 <template>
-    <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <svg class="home-waves" viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <g transform="translate(-2.000000, 44.000000)"
                fill-rule="nonzero">
@@ -19,13 +19,5 @@
 </template>
 
 <script>
-    export default {
-        name: 'WavesSvg',
-    };
+    export default {};
 </script>
-
-<style scoped>
-    svg > g > g {
-        fill: var(--base-bg-color);
-    }
-</style>

@@ -1,0 +1,10 @@
+.navbar {
+  .navbar-brand, .nav-link {
+    color: var(--gradient-color) !important;
+  }
+
+  .collapsed > .when-opened,
+  :not(.collapsed) > .when-closed {
+    display: none;
+  }
+}

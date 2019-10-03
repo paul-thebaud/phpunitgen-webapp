@@ -1,87 +1,66 @@
 <template>
     <footer class="bg-gradient pt-3 pb-1 text-center text-lg-right">
-        <b-container>
-            <b-row>
-                <b-col md>
-                    <p class="text-uppercase font-weight-bold">
-                        {{ $t('footer.legal.title') }}
-                    </p>
-                    <ul>
-                        <li>
-                            <b-link href="#">
-                                {{ $t('footer.legal.links.terms') }}
-                            </b-link>
-                        </li>
-                    </ul>
-                </b-col>
-                <b-col md>
-                    <p class="text-uppercase font-weight-bold">
-                        {{ $t('footer.links.title') }}
-                    </p>
-                    <ul>
-                        <li>
-                            <b-link href="#">
-                                {{ $t('footer.links.links.documentation') }}
-                            </b-link>
-                        </li>
-                        <li>
-                            <b-link href="#">
-                                {{ $t('footer.links.links.support') }}
-                            </b-link>
-                        </li>
-                    </ul>
-                </b-col>
-                <b-col md>
-                    <p class="text-uppercase font-weight-bold">
-                        {{ $t('footer.authors.title') }}
-                    </p>
-                    <ul>
-                        <li>
-                            <b-link href="#">
-                                Paul Thébaud
-                            </b-link>
-                        </li>
-                        <li>
-                            <b-link href="#">
-                                Killian Hascoët
-                            </b-link>
-                        </li>
-                        <li>
-                            <b-link href="#">
-                                {{ $t('footer.authors.links.contributors') }}
-                            </b-link>
-                        </li>
-                    </ul>
-                </b-col>
-            </b-row>
-        </b-container>
+        <BContainer>
+            <BRow>
+                <FooterLinks v-for="(link, key) in links"
+                             :key="key"
+                             :title="link.title"
+                             :links="link.links"/>
+            </BRow>
+        </BContainer>
     </footer>
 </template>
 
 <script>
+    import '@sass/components/layout/footer.scss';
+    import FooterLinks from '@/components/layout/FooterLinks';
+
     export default {
-        name: 'Footer',
+        components: { FooterLinks },
         data() {
             return {
-                theme: 'light',
-                language: 'english',
+                links: {
+                    legal: {
+                        title: this.$t('footer.legal.title'),
+                        links: [
+                            {
+                                title: this.$t('footer.legal.links.terms'),
+                                href: '#',
+                            },
+                        ],
+                    },
+                    links: {
+                        title: this.$t('footer.links.title'),
+                        links: [
+                            {
+                                title: this.$t('footer.links.links.documentation'),
+                                href: 'https://phpunitgen.io/docs',
+                            },
+                            {
+                                title: this.$t('footer.links.links.support'),
+                                href: 'https://github.com/paul-thebaud/phpunitgen-core/issues',
+                            },
+                        ],
+                    },
+                    authors: {
+                        title: this.$t('footer.authors.title'),
+                        links: [
+                            {
+                                title: 'Paul Thébaud',
+                                href: 'https://github.com/paul-thebaud',
+                            },
+                            {
+                                title: 'Killian Hascoët',
+                                href: 'https://github.com/KillianH',
+                            },
+                            {
+                                title: this.$t('footer.authors.links.contributors'),
+                                href: 'https://github.com/paul-thebaud/phpunitgen-core/graphs/contributors',
+                            },
+                        ],
+                    },
+                },
             };
         },
     };
 </script>
-
-<style lang="scss" scoped>
-    footer {
-        margin-top: auto;
-        width: 100%;
-
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        a, .btn-link {
-            color: inherit;
-        }
-    }
-</style>
