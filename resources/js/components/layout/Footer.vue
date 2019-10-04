@@ -25,7 +25,7 @@
                         links: [
                             {
                                 title: this.$t('footer.legal.links.terms'),
-                                href: '#',
+                                href: '/legal',
                             },
                         ],
                     },

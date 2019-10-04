@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/views/Home';
 import Tool from '@/views/Tool';
+import Configuration from '@/views/Configuration';
+import Legal from '@/views/Legal';
 
 Vue.use(Router);
 
@@ -10,5 +12,7 @@ export default new Router({
     routes: [
         { path: '/', name: 'home', component: Home },
         { path: '/tool', name: 'tool', component: Tool },
+        { path: '/tool/configuration', name: 'configuration', component: Configuration },
+        { path: '/legal', name: 'legal', component: Legal },
     ],
 });

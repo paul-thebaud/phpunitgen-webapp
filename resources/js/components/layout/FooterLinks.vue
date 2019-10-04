@@ -6,7 +6,14 @@
         <ul>
             <li v-for="link in links"
                 :key="link.url">
-                <b-link :href="link.href" target="_blank" rel="noopener">
+                <b-link v-if="link.href.indexOf('/') !== 0"
+                        :href="link.href"
+                        target="_blank"
+                        rel="noopener">
+                    {{ link.title }}
+                </b-link>
+                <b-link v-if="link.href.indexOf('/') === 0"
+                        :to="link.href">
                     {{ link.title }}
                 </b-link>
             </li>

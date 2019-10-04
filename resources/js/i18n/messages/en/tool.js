@@ -7,7 +7,7 @@ export default {
             'generate': 'Generate',
         },
         'unknown_exception': 'An unknown error occurred.',
-        'exception': 'An error occurred during generation. Do not forget that your code must correct and contains only one PHP class or trait.',
+        'exception': 'An error occurred during generation. Do not forget that your code must be correct and contains only one PHP class or trait.',
         'show_exception_dump': 'Display exception dump',
         'hide_exception_dump': 'Hide exception dump',
     },
