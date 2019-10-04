@@ -43,10 +43,6 @@ class DocsController extends BaseController
      */
     public function __invoke(Request $request): View
     {
-        if ($request->route('any')) {
-            throw new NotFoundHttpException();
-        }
-
         return $this->viewFactory->make('docs');
     }
 }

@@ -27,6 +27,5 @@ $router->group(['prefix' => 'api/v1'], function (Router $router) {
 });
 
 $router->get('/docs', DocsController::class);
-$router->get('/docs/{any:.*}', DocsController::class);
 
 $router->get('{any:.*}', AppController::class);
