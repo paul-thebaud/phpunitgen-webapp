@@ -1,11 +1,19 @@
 <template>
     <div>
         <div class="my-3 d-flex">
+            <input ref="file"
+                   type="file"
+                   accept=".php"
+                   class="d-none"
+                   @change="handleFileChanged"/>
             <BButton variant="primary" :disabled="generating">
                 <FontAwesomeIcon :icon="icons.faCog"></FontAwesomeIcon>
                 {{ $t('tool.editor.actions.configure') }}
             </BButton>
-            <BButton variant="secondary" class="ml-2" :disabled="generating">
+            <BButton variant="secondary"
+                     class="ml-2"
+                     :disabled="generating"
+                     @click="handleFileBrowser">
                 <FontAwesomeIcon :icon="icons.faFileImport"></FontAwesomeIcon>
                 {{ $t('tool.editor.actions.import') }}
             </BButton>
@@ -83,6 +91,22 @@
             },
             handleEditorChange(code) {
                 this.code = code;
+            },
+            handleFileBrowser() {
+                this.$refs.file.click();
+            },
+            handleFileChanged(event) {
+                const file = event.target.files[0];
+
+                if (! file) {
+                    return;
+                }
+
+                const fileReader = new FileReader();
+                fileReader.onload = () => {
+                    this.code = fileReader.result;
+                };
+                fileReader.readAsText(file);
             },
             toggleShowExceptionDump() {
                 this.showExceptionDump = ! this.showExceptionDump;
