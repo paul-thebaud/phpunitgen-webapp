@@ -3,8 +3,27 @@ const DEFAULT_CONFIG = {
     theme: 'light',
     locale: 'en',
     tool: {
+        automatic_generation: true,
         test_generator: 'delegate',
         mock_generator: 'mockery',
+        base_namespace: '',
+        base_test_namespace: 'Tests',
+        test_case: 'PHPUnit\\Framework\\TestCase',
+        excluded_methods: [
+            '__construct',
+            '__destruct',
+        ],
+        merged_php_doc: [
+            'author',
+            'copyright',
+            'license',
+            'version',
+        ],
+        phpDoc: [],
+        options: {
+            context: 'laravel',
+            'laravel.user': 'App\\User',
+        },
     },
 };
 

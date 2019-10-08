@@ -1,0 +1,18 @@
+.list-field-item {
+  transition: 300ms;
+  cursor: pointer;
+
+  h4 {
+    word-break: break-all;
+  }
+
+  &:not(.active) {
+    border: 1px solid var(--secondary-bg-color);
+  }
+  &.active, &:hover:not(.no-hover) {
+    border: 1px solid var(--primary-bg-color);
+  }
+  &:hover:not(.no-hover) {
+    transform: scale(1.1);
+  }
+}

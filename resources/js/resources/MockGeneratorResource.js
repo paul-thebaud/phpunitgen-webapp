@@ -4,6 +4,6 @@ export default class {
     }
 
     async all() {
-        return await this.apiManager.get('/api/test-generators');
+        return await this.apiManager.get('/api/mock-generators');
     }
 }

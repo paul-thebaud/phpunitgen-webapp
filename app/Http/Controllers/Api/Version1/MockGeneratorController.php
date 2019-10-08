@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace PhpUnitGen\WebApp\Http\Controllers\Api\Version1;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use PhpUnitGen\WebApp\Http\Controllers\Resources\MockGeneratorResource;
 
@@ -21,12 +20,11 @@ class MockGeneratorController extends BaseController
     /**
      * Retrieve the list of available test generators.
      *
-     * @param Request               $request
      * @param MockGeneratorResource $mockGeneratorResource
      *
      * @return JsonResponse
      */
-    public function __invoke(Request $request, MockGeneratorResource $mockGeneratorResource): JsonResponse
+    public function __invoke(MockGeneratorResource $mockGeneratorResource): JsonResponse
     {
         return new JsonResponse(
             $mockGeneratorResource->all(),

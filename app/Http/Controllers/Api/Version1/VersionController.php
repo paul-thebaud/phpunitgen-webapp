@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace PhpUnitGen\WebApp\Http\Controllers\Api\Version1;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use PackageVersions\Versions;
 use PhpUnitGen\Core\Helpers\Str;
-use PhpUnitGen\WebApp\Http\Controllers\Resources\TestGeneratorResource;
 
 /**
  * Class VersionController.
@@ -23,12 +21,9 @@ class VersionController extends BaseController
     /**
      * Retrieve the information about API version.
      *
-     * @param Request               $request
-     * @param TestGeneratorResource $testGeneratorResource
-     *
      * @return JsonResponse
      */
-    public function __invoke(Request $request, TestGeneratorResource $testGeneratorResource): JsonResponse
+    public function __invoke(): JsonResponse
     {
         return new JsonResponse([
             'core_version' => $this->getCoreVersion(),

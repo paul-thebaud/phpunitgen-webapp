@@ -8,6 +8,8 @@ use App\User;
 /**
  * Class PostPolicy.
  *
+ * This class is an example to try PhpUnitGen. Enjoy!
+ *
  * @author  John Doe <john.doe@example.com>
  * @version 1.0.0
  */

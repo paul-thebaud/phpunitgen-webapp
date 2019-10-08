@@ -1,10 +1,10 @@
 <template>
     <PrismEditor v-if="show"
-                 @change="handleChange"
                  :code="code"
                  :line-numbers="true"
                  :readonly="readonly"
-                 :language="language"/>
+                 :language="language"
+                 @change="handleChange"/>
 </template>
 
 <script>
@@ -23,6 +23,7 @@
             code: {
                 required: false,
                 type: String,
+                default: '',
             },
             show: {
                 required: false,
@@ -42,7 +43,7 @@
         },
         methods: {
             handleChange(code) {
-                this.$emit('change', code);
+                this.$emit('input', code);
             },
         },
     };

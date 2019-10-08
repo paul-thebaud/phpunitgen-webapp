@@ -6,10 +6,7 @@
                    accept=".php"
                    class="d-none"
                    @change="handleFileChanged"/>
-            <BButton variant="primary" :disabled="generating">
-                <FontAwesomeIcon :icon="icons.faCog"></FontAwesomeIcon>
-                {{ $t('tool.editor.actions.configure') }}
-            </BButton>
+            <ConfigurationButton :disabled="generating"/>
             <BButton variant="secondary"
                      class="ml-2"
                      :disabled="generating"
@@ -45,7 +42,7 @@
         <Editor v-if="! showExceptionDumpEditor"
                 :code="code"
                 :readonly="generating"
-                @change="handleEditorChange"/>
+                @input="handleEditorChange"/>
     </div>
 </template>
 
@@ -53,10 +50,14 @@
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
     import { faCog, faFileImport, faPaste, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
     import Editor from '@/components/tool/Editor';
+    import ConfigurationButton from '@/components/tool/ConfigurationButton';
+    import { testGeneratorResource } from '@/resources';
+    import { configManager } from '@/services';
 
     export default {
         components: {
             Editor,
+            ConfigurationButton,
             FontAwesomeIcon,
         },
         props: {
@@ -75,7 +76,7 @@
         },
         data() {
             return {
-                code: '<\?php class H {',
+                code: '',
                 showExceptionDump: false,
                 icons: {
                     faCog,
@@ -84,6 +85,12 @@
                     faPlayCircle,
                 },
             };
+        },
+        async created() {
+            const testGenerator = await testGeneratorResource.find(
+                configManager.get('tool').test_generator,
+            );
+            this.code = testGenerator.example;
         },
         methods: {
             generate() {

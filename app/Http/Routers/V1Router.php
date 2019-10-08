@@ -21,7 +21,8 @@ class V1Router
     public static function routes(Router $router): void
     {
         $router->get('/', VersionController::class);
-        $router->get('/test-generators', TestGeneratorController::class);
+        $router->get('/test-generators', TestGeneratorController::class.'@index');
+        $router->get('/test-generators/{id}', TestGeneratorController::class.'@show');
         $router->get('/mock-generators', MockGeneratorController::class);
         $router->post('/tests', TestController::class);
     }

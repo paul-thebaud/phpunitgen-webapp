@@ -1,9 +1,12 @@
 <template>
     <div>
         <div class="my-3 d-flex justify-content-end">
-            <p v-if="hasGenerated" class="my-auto mr-auto">
-                {{ $t('tool.generated.execution_time', { executionTime: formattedExecutionTime }) }}
-            </p>
+            <div class="mr-auto d-flex">
+                <ConfigurationButton/>
+                <p v-if="hasGenerated" class="ml-2 my-auto">
+                    {{ $t('tool.generated.execution_time', { executionTime: formattedExecutionTime }) }}
+                </p>
+            </div>
             <BButton variant="secondary"
                      class="mr-2"
                      :disabled="! hasGenerated"
@@ -31,10 +34,12 @@
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
     import { faCopy, faDownload } from '@fortawesome/free-solid-svg-icons';
     import Editor from '@/components/tool/Editor';
+    import ConfigurationButton from '@/components/tool/ConfigurationButton';
 
     export default {
         components: {
             Editor,
+            ConfigurationButton,
             FontAwesomeIcon,
         },
         props: {

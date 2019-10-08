@@ -19,6 +19,7 @@
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.28",
     "laravel-mix": "^4.1.2",
+    "lodash.debounce": "^4.0.8",
     "prismjs": "^1.17.1",
     "resolve-url-loader": "3.1.0",
     "sass": "^1.22.7",

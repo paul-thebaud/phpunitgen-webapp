@@ -26,6 +26,7 @@
                             {
                                 title: this.$t('footer.legal.links.terms'),
                                 href: '/legal',
+                                internal: true,
                             },
                         ],
                     },
@@ -34,7 +35,7 @@
                         links: [
                             {
                                 title: this.$t('footer.links.links.documentation'),
-                                href: 'https://phpunitgen.io/docs',
+                                href: '/docs',
                             },
                             {
                                 title: this.$t('footer.links.links.support'),

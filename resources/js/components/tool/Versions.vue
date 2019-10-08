@@ -1,12 +1,6 @@
 <template>
-    <div class="mt-3">
-        <span id="versions-button" class="btn" :class="apiStatusVariant">
-            <FontAwesomeIcon :icon="apiStatusIcon"
-                             :class="apiStatus === 'connecting' ? 'fa-spin' : ''"></FontAwesomeIcon>
-            {{ apiStatusMessage }}
-        </span>
-        <b-tooltip v-if="apiStatus !== 'connecting'"
-                   target="versions-button">
+    <StateIndicator id="versions-button" class="mt-3" :variant="apiStatusVariant" :text="apiStatusMessage">
+        <div v-if="apiStatus !== 'connecting'">
             <div v-if="apiStatus === 'connected'" class="text-left">
                 <span v-html="$t('tool.versions.core_version', { version: coreVersion })"></span>
                 <br>
@@ -15,18 +9,17 @@
             <div v-if="apiStatus === 'disconnected'" class="text-center">
                 {{ $t(`tool.versions.api_disconnected_error`) }}
             </div>
-        </b-tooltip>
-    </div>
+        </div>
+    </StateIndicator>
 </template>
 
 <script>
-    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-    import { faCheckCircle, faCircleNotch, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
     import { apiManager } from '@/services';
+    import StateIndicator from '@/components/tool/StateIndicator';
 
     export default {
         components: {
-            FontAwesomeIcon,
+            StateIndicator,
         },
         data() {
             return {
@@ -50,21 +43,12 @@
         computed: {
             apiStatusVariant() {
                 if (this.apiStatus === 'connecting') {
-                    return 'btn-warning';
+                    return 'warning';
                 }
 
                 return this.apiStatus === 'disconnected'
-                    ? 'btn-danger'
-                    : 'btn-success';
-            },
-            apiStatusIcon() {
-                if (this.apiStatus === 'connecting') {
-                    return faCircleNotch;
-                }
-
-                return this.apiStatus === 'disconnected'
-                    ? faTimesCircle
-                    : faCheckCircle;
+                    ? 'danger'
+                    : 'success';
             },
             apiStatusMessage() {
                 return this.$t(`tool.versions.api_${this.apiStatus}`);

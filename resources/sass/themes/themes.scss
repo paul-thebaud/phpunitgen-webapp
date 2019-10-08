@@ -73,4 +73,30 @@ $variants: (
       filter: brightness(var(--hover-brightness));
     }
   }
+
+  .bg-#{$variant} {
+    background-color: var(--#{$variant}-bg-color) !important;
+  }
+}
+
+.form-control {
+  border: none;
+  background-color: var(--secondary-bg-color);
+  color: var(--secondary-color);
+
+  &:active, &:focus {
+    background-color: var(--secondary-bg-color);
+    color: var(--secondary-color);
+  }
+}
+
+.custom-control-label::before {
+  background-color: var(--secondary-bg-color);
+}
+
+.input-group .input-group-text {
+  border: none;
+  color: var(--secondary-color);
+  background-color: var(--secondary-bg-color);
+  filter: brightness(var(--hover-brightness));
 }
