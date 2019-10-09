@@ -1,3 +1,8 @@
+.home-container {
+  background: linear-gradient(90deg, var(--gradient-bg-color));
+  color: var(--gradient-color);
+}
+
 .home-wrapper {
   padding-top: 150px;
   padding-bottom: 10px;
@@ -15,16 +20,24 @@
   }
 }
 
-.home-feature .home-feature {
-  &-description, &-img {
-    max-width: 350px;
-    width: 100%;
-    @media (max-width: 767.98px) {
-      max-width: 100%;
+.home-features {
+  background-color: var(--base-bg-color);
+  color: var(--base-color);
+
+  .home-feature .home-feature {
+    &-description, &-img {
+      max-width: 350px;
+      width: 100%;
+      @media (max-width: 767.98px) {
+        max-width: 100%;
+      }
     }
   }
 }
 
 svg.home-waves > g > g {
-    fill: var(--base-bg-color);
+  transition-timing-function: ease;
+  transition-property: fill !important;
+  transition-duration: 0.5s !important;
+  fill: var(--base-bg-color);
 }

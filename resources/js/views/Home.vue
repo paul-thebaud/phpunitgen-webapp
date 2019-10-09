@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gradient">
+    <div class="home-container">
         <div class="home-wrapper">
             <BContainer class="text-center">
                 <div class="home-title">
@@ -37,7 +37,7 @@
             <HomeWaves/>
         </div>
 
-        <div class="bg-base">
+        <div class="home-features">
             <BContainer>
                 <HomeFeature v-for="(feature, index) in features"
                              :key="feature"

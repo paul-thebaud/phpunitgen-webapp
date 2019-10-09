@@ -1,0 +1,10 @@
+@import "theme-light";
+@import "theme-dark";
+@import "theme-unicorn";
+@import "theme-rainbow";
+
+body.theme-switching * {
+  transition-timing-function: ease;
+  transition-property: background, box-shadow, border !important;
+  transition-duration: 0.5s !important;
+}

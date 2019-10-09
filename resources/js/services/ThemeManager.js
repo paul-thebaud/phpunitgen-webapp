@@ -3,6 +3,8 @@ export default class {
         return {
             light: 'Light',
             dark: 'Dark',
+            unicorn: 'Unicorn',
+            rainbow: 'Rainbow',
         };
     }
 

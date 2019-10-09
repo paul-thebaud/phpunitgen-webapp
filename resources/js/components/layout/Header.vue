@@ -1,7 +1,7 @@
 <template>
     <BNavbar toggleable="lg"
              fixed="top"
-             class="shadow bg-gradient"
+             class="shadow"
              type="">
         <BContainer>
             <BNavbarBrand :to="{ name: 'home' }">

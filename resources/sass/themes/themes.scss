@@ -1,14 +1,13 @@
-@import "theme-light";
-@import "theme-dark";
-
-body.theme-switching {
-  transition-property: background, color, box-shadow, border !important;
-  transition-duration: 0.5s !important;
-}
+@import "common";
 
 body, .bg-base {
   background-color: var(--base-bg-color);
   color: var(--base-color);
+}
+
+nav.navbar, footer {
+  background: linear-gradient(90deg, var(--gradient-bg-color));
+  color: var(--gradient-color);
 }
 
 .dropdown-menu {
@@ -33,11 +32,6 @@ body, .bg-base {
       }
     }
   }
-}
-
-.bg-gradient {
-  background: linear-gradient(90deg, var(--gradient-bg-color));
-  color: var(--gradient-color);
 }
 
 .prism-editor-wrapper {
