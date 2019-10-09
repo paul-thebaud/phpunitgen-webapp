@@ -3,7 +3,7 @@ export default {
     'description': 'Cette page vous permet de configurer une grande partie du fonctionnement de PhpUnitGen. Toute la configuration est sauvegardée dans votre navigateur.',
     'automatic_generation': {
         'name': 'Génération automatique',
-        'help': 'Définit si le générateur doit tenter de générer des propriétés, des tests ou juste des méthodes vides à remplir.',
+        'help': 'Définit si le générateur doit tenter de générer des propriétés et des tests avancés ou juste des méthodes vides à remplir.',
     },
     'test_generator': {
         'name': 'Générateur de tests',
@@ -16,7 +16,7 @@ export default {
     'base_namespace': {
         'name': 'Namespace de base',
         'placeholder': 'PhpUnitGen\\App',
-        'help': 'Définit le namespace de base de votre code source. Il sera retiré et remplacé par le namespace de test.',
+        'help': 'Définit le namespace de base de votre code source. Il sera remplacé par le namespace de test.',
     },
     'base_test_namespace': {
         'name': 'Namespace de base des tests',
@@ -31,7 +31,7 @@ export default {
     'excluded_methods': {
         'name': 'Méthodes à exclure de la génération',
         'placeholder': '__construct',
-        'help': 'Définit les méthodes pour lesquelles aucun squelettes de test ne doit être généré. Peut être au format d\'une expression régulière ("__.*" par exemple).',
+        'help': 'Définit les méthodes pour lesquelles aucun squelette de tests ne doit être généré. Peut être au format d\'une expression régulière ("__.*" par exemple).',
     },
     'merged_php_doc': {
         'name': 'Annotation PHPDoc à conserver',

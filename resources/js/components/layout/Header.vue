@@ -72,7 +72,11 @@
                 locale: configManager.get('locale'),
                 locales: localeManager.availableLocales,
                 theme: configManager.get('theme'),
-                themes: themeManager.availableThemes,
+                themes: themeManager.availableThemes.reduce((themes, theme) => {
+                    themes[theme] = this.$t(`themes.${theme}`);
+
+                    return themes;
+                }, {}),
             };
         },
         methods: {

@@ -5,6 +5,15 @@ body, .bg-base {
   color: var(--base-color);
 }
 
+a {
+  color: var(--primary-bg-color);
+
+  &:hover, &:focus {
+    color: var(--primary-bg-color);
+    filter: brightness(var(--hover-brightness));
+  }
+}
+
 nav.navbar, footer {
   background: linear-gradient(90deg, var(--gradient-bg-color));
   color: var(--gradient-color);
@@ -82,6 +91,11 @@ $variants: (
     background-color: var(--secondary-bg-color);
     color: var(--secondary-color);
   }
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  background-color: var(--primary-bg-color);
+  border-color: var(--primary-bg-color);
 }
 
 .custom-control-label::before {

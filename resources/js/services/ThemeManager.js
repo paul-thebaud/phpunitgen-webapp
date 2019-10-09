@@ -1,11 +1,11 @@
 export default class {
     get availableThemes() {
-        return {
-            light: 'Light',
-            dark: 'Dark',
-            unicorn: 'Unicorn',
-            rainbow: 'Rainbow',
-        };
+        return [
+            'light',
+            'dark',
+            'unicorn',
+            'rainbow',
+        ];
     }
 
     constructor(configManager, bodyClassList) {
