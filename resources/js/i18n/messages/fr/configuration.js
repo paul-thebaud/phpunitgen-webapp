@@ -49,8 +49,14 @@ export default {
         'placeholder_value': 'laravel',
         'help': 'Définit les options à utiliser dans les générateurs. Pour plus de détails, référez-vous à la documentation.',
     },
-    'generator': {
+    'state': {
+        'saving': 'Sauvegarde en cours ...',
+        'saved': 'Sauvegardée',
+    },
+    'list_field': {
         'display_more': 'Afficher plus',
         'created_by': 'Créé par',
+        'search': 'Recherche ...',
+        'no_result': 'Aucun résultat correspondant à la recherche.',
     },
 };

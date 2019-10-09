@@ -1,0 +1,37 @@
+nav.app-nav.no-badge {
+  * {
+    font-size: 1rem !important;
+    line-height: 1.5;
+  }
+
+  > ul > li > ul {
+    z-index: 10;
+
+    background-color: var(--secondary-bg-color);
+    color: var(--secondary-color);
+
+    border: none;
+
+    padding: 0.5rem 0;
+
+    > li {
+      margin: 0;
+      padding: 0;
+
+      > a {
+        padding: 0.25rem 1.5rem;
+
+        &:hover, &:focus {
+          background-color: var(--secondary-bg-color);
+          color: var(--secondary-color);
+          filter: brightness(var(--hover-brightness));
+        }
+
+        &.active {
+          background-color: var(--primary-bg-color);
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+}

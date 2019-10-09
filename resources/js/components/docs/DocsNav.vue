@@ -6,9 +6,9 @@
                 <ul>
                     <li v-for="(translation, targetLocale) in locales"
                         @click.prevent="onLocaleChange(targetLocale)"
-                        :key="`lang-${targetLocale}`"
-                        :class="locale === targetLocale ? 'active' : ''">
-                        <a href="#">
+                        :key="`lang-${targetLocale}`">
+                        <a href="#"
+                           :class="locale === targetLocale ? 'active' : ''">
                             {{ translation }}
                         </a>
                     </li>
@@ -19,9 +19,9 @@
                 <ul>
                     <li v-for="(translation, targetTheme) in themes"
                         @click.prevent="onThemeChange(targetTheme)"
-                        :key="`lang-${targetTheme}`"
-                        :class="theme === targetTheme ? 'active' : ''">
-                        <a href="#">
+                        :key="`lang-${targetTheme}`">
+                        <a href="#"
+                           :class="theme === targetTheme ? 'active' : ''">
                             {{ translation }}
                         </a>
                     </li>
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+    import '@sass/components/docs/docs-nav.scss';
     import { configManager, localeManager, themeManager } from '@/services';
 
     export default {

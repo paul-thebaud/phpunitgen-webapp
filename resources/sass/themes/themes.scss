@@ -16,11 +16,11 @@ body, .bg-base {
 
   .dropdown-item {
     background-color: var(--secondary-bg-color);
-    color: var(--base-color);
+    color: var(--secondary-color);
 
     &:hover, &:focus {
       background-color: var(--secondary-bg-color);
-      color: var(--base-color);
+      color: var(--secondary-color);
       filter: brightness(var(--hover-brightness));
     }
 

@@ -4,7 +4,7 @@
             <h1>{{ $t('configuration.title') }}</h1>
             <StateIndicator id="configuration-saving-state"
                             class="my-auto ml-auto"
-                            :text="'Saving'"
+                            :text="configSaving ? $t('configuration.state.saving') : $t('configuration.state.saved')"
                             :variant="configSaving ? 'warning' : 'success'"/>
         </div>
         <p>{{ $t('configuration.description') }}</p>
