@@ -101,7 +101,7 @@
 
 <script>
     import debounce from 'lodash.debounce';
-    import { configManager } from '@/services';
+    import { storage } from '@/services';
     import StateIndicator from '@/components/tool/StateIndicator';
     import ArrayField from '@/components/configuration/ArrayField';
     import TextField from '@/components/configuration/TextField';
@@ -120,7 +120,7 @@
         data() {
             return {
                 configSaving: false,
-                config: configManager.get('tool'),
+                config: storage.get('tool'),
                 testGenerators: [],
                 mockGenerators: [],
             };
@@ -142,7 +142,7 @@
         methods: {
             debounceConfigSave: debounce(function () {
                 this.configSaving = false;
-                configManager.set('tool', this.config);
+                storage.set('tool', this.config);
             }, 500),
         },
     };

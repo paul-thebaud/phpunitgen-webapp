@@ -38,15 +38,15 @@
 
 <script>
     import '@sass/components/docs/docs-nav.scss';
-    import { configManager, localeManager, themeManager } from '@/services';
+    import { storage, locale, theme, docs } from '@/services';
 
     export default {
         data() {
             return {
-                locale: configManager.get('locale'),
-                locales: localeManager.constructor.availableLocales,
-                theme: configManager.get('theme'),
-                themes: themeManager.availableThemes.reduce((themes, theme) => {
+                locale: storage.get('locale'),
+                locales: locale.constructor.availableLocales,
+                theme: storage.get('theme'),
+                themes: theme.constructor.availableThemes.reduce((themes, theme) => {
                     themes[theme] = this.$t(`themes.${theme}`);
 
                     return themes;
@@ -54,25 +54,25 @@
             };
         },
         methods: {
-            onLocaleChange(locale) {
-                if (locale === this.locale) {
+            onLocaleChange(newLocale) {
+                if (newLocale === this.locale) {
                     return;
                 }
 
-                localeManager.changeLocale(this.locale = locale);
+                locale.changeLocale(this.locale = newLocale);
 
                 const path = window.location.href.replace(/^.*\/docs#\/?([a-z]{2}\/)?/, '');
+                console.log(path);
 
-                window.location.hash = localeManager
-                    .getDocumentationPath(path, locale)
+                window.location.hash = docs.getDocumentationPath(path, newLocale)
                     .replace(/^\/docs#/, '');
             },
-            onThemeChange(theme) {
-                if (theme === this.theme) {
+            onThemeChange(newTheme) {
+                if (newTheme === this.theme) {
                     return;
                 }
 
-                themeManager.changeTheme(this.theme = theme);
+                theme.changeTheme(this.theme = newTheme);
             },
         },
     };

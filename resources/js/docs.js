@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import i18n from '@/i18n';
 import DocsNav from '@/components/docs/DocsNav';
-import { docsManager } from '@/services';
+import { docs } from '@/services';
 
-docsManager.initialize();
+docs.initialize();
 
 new Vue({
     el: 'nav.app-nav.no-badge',

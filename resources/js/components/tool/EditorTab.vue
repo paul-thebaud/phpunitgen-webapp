@@ -52,7 +52,7 @@
     import Editor from '@/components/tool/Editor';
     import ConfigurationButton from '@/components/tool/ConfigurationButton';
     import { testGeneratorResource } from '@/resources';
-    import { configManager } from '@/services';
+    import { storage } from '@/services';
 
     export default {
         components: {
@@ -88,7 +88,7 @@
         },
         async created() {
             const testGenerator = await testGeneratorResource.find(
-                configManager.get('tool').test_generator,
+                storage.get('tool').test_generator,
             );
             this.code = testGenerator.example;
         },

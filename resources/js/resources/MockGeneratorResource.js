@@ -1,9 +1,9 @@
 export default class {
-    constructor(apiManager) {
-        this.apiManager = apiManager;
+    constructor(api) {
+        this.api = api;
     }
 
     async all() {
-        return await this.apiManager.get('/api/mock-generators');
+        return await this.api.get('/api/mock-generators');
     }
 }

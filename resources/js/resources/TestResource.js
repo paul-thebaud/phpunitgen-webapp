@@ -1,12 +1,12 @@
 export default class {
-    constructor(configManager, apiManager) {
-        this.configManager = configManager;
-        this.apiManager = apiManager;
+    constructor(storage, api) {
+        this.storage = storage;
+        this.api = api;
     }
 
     async create(code) {
-        return await this.apiManager.post('/api/tests', {
-            config: this.configManager.get('tool'),
+        return await this.api.post('/api/tests', {
+            config: this.storage.get('tool'),
             code,
         });
     }

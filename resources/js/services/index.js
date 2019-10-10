@@ -1,14 +1,14 @@
 import i18n from '@/i18n';
-import ApiManager from '@/services/ApiManager';
-import ConfigManager from '@/services/ConfigManager';
-import DocsManager from '@/services/DocsManager';
-import LocaleManager from '@/services/LocaleManager';
-import ThemeManager from '@/services/ThemeManager';
+import Api from '@/services/Api';
+import Storage from '@/services/Storage';
+import Docs from '@/services/Docs';
+import Locale from '@/services/Locale';
+import Theme from '@/services/Theme';
 
-const configManager = new ConfigManager(localStorage, navigator, window);
-const themeManager = new ThemeManager(configManager, document.body.classList);
-const localeManager = new LocaleManager(configManager, i18n);
-const apiManager = new ApiManager(configManager);
-const docsManager = new DocsManager(configManager, localeManager, window);
+const storage = new Storage(localStorage, navigator, window);
+const theme = new Theme(storage, document.body.classList);
+const locale = new Locale(storage, i18n);
+const api = new Api(storage);
+const docs = new Docs(storage, window);
 
-export { apiManager, configManager, docsManager, themeManager, localeManager };
+export { api, storage, docs, theme, locale };

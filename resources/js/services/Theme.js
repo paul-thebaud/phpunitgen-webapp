@@ -1,5 +1,5 @@
 export default class {
-    get availableThemes() {
+    static get availableThemes() {
         return [
             'light',
             'dark',
@@ -13,19 +13,19 @@ export default class {
         ];
     }
 
-    constructor(configManager, bodyClassList) {
-        this.configManager = configManager;
+    constructor(storage, bodyClassList) {
+        this.storage = storage;
         this.bodyClassList = bodyClassList;
 
-        const theme = this.configManager.get('theme');
+        const theme = this.storage.get('theme');
         if (theme !== 'light') {
             this.updateDOM('light', theme);
         }
     }
 
     changeTheme(theme) {
-        const previous = this.configManager.get('theme');
-        this.configManager.set('theme', theme);
+        const previous = this.storage.get('theme');
+        this.storage.set('theme', theme);
         this.updateDOM(previous, theme);
     }
 

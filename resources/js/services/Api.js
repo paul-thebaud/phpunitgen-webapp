@@ -2,8 +2,8 @@ import UnknownError from '@/errors/UnknownError';
 import ValidationError from '@/errors/ValidationError';
 
 export default class {
-    constructor(configManager) {
-        this.configManager = configManager;
+    constructor(storage) {
+        this.storage = storage;
     }
 
     async json(endpoint, payload = {}, method = 'get') {
@@ -41,7 +41,7 @@ export default class {
     get headers() {
         return {
             'Accept': 'application/json',
-            'Accept-Language': this.configManager.get('locale'),
+            'Accept-Language': this.storage.get('locale'),
             'Content-Type': 'application/json',
         };
     }

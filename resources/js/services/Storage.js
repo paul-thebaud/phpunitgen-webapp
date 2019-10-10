@@ -1,4 +1,4 @@
-import LocaleManager from '@/services/LocaleManager';
+import LocaleManager from '@/services/Locale';
 
 const STORAGE_CONFIG_KEY = 'phpunitgen_configuration';
 

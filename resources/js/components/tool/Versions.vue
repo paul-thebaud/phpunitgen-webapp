@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import { apiManager } from '@/services';
+    import { api } from '@/services';
     import StateIndicator from '@/components/tool/StateIndicator';
 
     export default {
@@ -30,7 +30,7 @@
         },
         async mounted() {
             try {
-                const versions = await apiManager.get('/api');
+                const versions = await api.get('/api');
 
                 this.apiStatus = 'connected';
                 this.coreVersion = versions.core_version;

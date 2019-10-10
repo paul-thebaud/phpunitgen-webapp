@@ -1,7 +1,6 @@
 export default class {
-    constructor(configManager, localeManager, window) {
-        this.configManager = configManager;
-        this.localeManager = localeManager;
+    constructor(storage, window) {
+        this.storage = storage;
         this.window = window;
     }
 
@@ -11,7 +10,7 @@ export default class {
     }
 
     redirectIfNeeded() {
-        const locale = this.configManager.get('locale');
+        const locale = this.storage.get('locale');
         const path = this.window.location.href.replace(/^.*\/docs#?\/?/, '');
         const realPath = path.replace(/^[a-z]{2}\//, '');
         if (locale === 'en') {
@@ -47,7 +46,16 @@ export default class {
     }
 
     changeHash(realPath, locale) {
-        this.window.location.hash = this.localeManager
-            .getDocumentationPath(realPath, locale).replace(/^\/docs#/, '');
+        this.window.location.hash = this.getDocumentationPath(realPath, locale)
+            .replace(/^\/docs#/, '');
+    }
+
+    getDocumentationPath(path = '', targetedLocale = null) {
+        const locale = targetedLocale || this.storage.get('locale', 'en');
+        if (locale !== 'en') {
+            return `/docs#/${locale}/${path}`;
+        }
+
+        return `/docs#/${path}`;
     }
 }

@@ -1,13 +1,13 @@
 export default class {
-    constructor(apiManager) {
-        this.apiManager = apiManager;
+    constructor(api) {
+        this.api = api;
     }
 
     async find(id) {
-        return await this.apiManager.get(`/api/test-generators/${id}`);
+        return await this.api.get(`/api/test-generators/${id}`);
     }
 
     async all() {
-        return await this.apiManager.get('/api/test-generators');
+        return await this.api.get('/api/test-generators');
     }
 }

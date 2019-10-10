@@ -59,7 +59,7 @@
     import '@sass/components/layout/header.scss';
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
     import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-    import { configManager, localeManager, themeManager } from '@/services';
+    import { storage, locale, theme } from '@/services';
 
     export default {
         components: {
@@ -69,10 +69,10 @@
             return {
                 closedMenuIcon: faBars,
                 openedMenuIcon: faTimes,
-                locale: configManager.get('locale'),
-                locales: localeManager.constructor.availableLocales,
-                theme: configManager.get('theme'),
-                themes: themeManager.availableThemes.reduce((themes, theme) => {
+                locale: storage.get('locale'),
+                locales: locale.constructor.availableLocales,
+                theme: storage.get('theme'),
+                themes: theme.constructor.availableThemes.reduce((themes, theme) => {
                     themes[theme] = this.$t(`themes.${theme}`);
 
                     return themes;
@@ -80,19 +80,19 @@
             };
         },
         methods: {
-            onLocaleChange(locale) {
-                if (locale === this.locale) {
+            onLocaleChange(newLocale) {
+                if (newLocale === this.locale) {
                     return;
                 }
 
-                localeManager.changeLocale(this.locale = locale);
+                locale.changeLocale(this.locale = newLocale);
             },
-            onThemeChange(theme) {
-                if (theme === this.theme) {
+            onThemeChange(newTheme) {
+                if (newTheme === this.theme) {
                     return;
                 }
 
-                themeManager.changeTheme(this.theme = theme);
+                theme.changeTheme(this.theme = newTheme);
             },
         },
     };
