@@ -1,26 +1,41 @@
 export default class {
-    static get availableThemes() {
-        return [
-            'light',
-            'dark',
-            'unicorn',
-            'rainbow',
-            'night',
-            'ocean',
-            'forest',
-            'desert',
-            'original',
-        ];
+    static get themes() {
+        return {
+            'light': 0,
+            'dark': 0,
+            'night': 1,
+            'forest': 3,
+            'ocean': 5,
+            'desert': 7,
+            'rainbow': 9,
+            'unicorn': 12,
+            'original': 15,
+        };
     }
 
-    constructor(storage, bodyClassList) {
+    constructor(storage, i18n, bodyClassList) {
         this.storage = storage;
+        this.i18n = i18n;
         this.bodyClassList = bodyClassList;
 
         const theme = this.storage.get('theme');
         if (theme !== 'light') {
             this.updateDOM('light', theme);
         }
+    }
+
+    unlockedThemes() {
+        const generationsCount = this.storage.get('generationsCount');
+
+        const availableThemes = [];
+        const themes = this.constructor.themes;
+        for (const theme in themes) {
+            if (generationsCount >= themes[theme]) {
+                availableThemes.push(theme);
+            }
+        }
+
+        return availableThemes;
     }
 
     changeTheme(theme) {

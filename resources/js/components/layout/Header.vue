@@ -36,12 +36,12 @@
                     <BNavItemDropdown class="mr-lg-2"
                                       :text="$t('header.links.theme')"
                                       right>
-                        <BDropdownItem v-for="(translation, targetTheme) in themes"
+                        <BDropdownItem v-for="targetTheme in themes"
                                        @click="onThemeChange(targetTheme)"
                                        :key="`theme-${targetTheme}`"
                                        :active="theme === targetTheme"
                         >
-                            {{ translation }}
+                            {{ $t(`themes.${targetTheme}`) }}
                         </BDropdownItem>
                     </BNavItemDropdown>
 
@@ -65,6 +65,12 @@
         components: {
             FontAwesomeIcon,
         },
+        props: {
+            themes: {
+                required: true,
+                type: Array,
+            }
+        },
         data() {
             return {
                 closedMenuIcon: faBars,
@@ -72,11 +78,6 @@
                 locale: storage.get('locale'),
                 locales: locale.constructor.availableLocales,
                 theme: storage.get('theme'),
-                themes: theme.constructor.availableThemes.reduce((themes, theme) => {
-                    themes[theme] = this.$t(`themes.${theme}`);
-
-                    return themes;
-                }, {}),
             };
         },
         methods: {

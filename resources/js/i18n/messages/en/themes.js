@@ -8,4 +8,8 @@ export default {
     'forest': '🌳 Forest',
     'desert': '🏜️ Desert',
     'original': '📟 Original',
+    'unlocked': {
+        'title': 'New theme!',
+        'description': 'You\'ve earned a new theme: {theme}',
+    },
 };

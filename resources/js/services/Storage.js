@@ -1,10 +1,11 @@
 import LocaleManager from '@/services/Locale';
 
-const STORAGE_CONFIG_KEY = 'phpunitgen_configuration';
+const STORAGE_KEY = 'phpunitgen_storage';
 
 export default class {
     static defaultConfig(navigator, window) {
         return {
+            generationsCount: 0,
             theme: this.defaultTheme(window),
             locale: this.defaultLocale(navigator),
             tool: {
@@ -66,7 +67,7 @@ export default class {
     constructor(storage, navigator, window) {
         this.storage = storage;
 
-        const storageConfig = this.storage.getItem(STORAGE_CONFIG_KEY);
+        const storageConfig = this.storage.getItem(STORAGE_KEY);
         if (storageConfig !== null) {
             this.config = JSON.parse(storageConfig);
         } else {
@@ -79,7 +80,7 @@ export default class {
      * Save the configuration in storage.
      */
     save() {
-        this.storage.setItem(STORAGE_CONFIG_KEY, JSON.stringify(this.config));
+        this.storage.setItem(STORAGE_KEY, JSON.stringify(this.config));
     }
 
     /**

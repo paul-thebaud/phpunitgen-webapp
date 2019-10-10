@@ -6,7 +6,7 @@ import Locale from '@/services/Locale';
 import Theme from '@/services/Theme';
 
 const storage = new Storage(localStorage, navigator, window);
-const theme = new Theme(storage, document.body.classList);
+const theme = new Theme(storage, i18n, document.body.classList);
 const locale = new Locale(storage, i18n);
 const api = new Api(storage);
 const docs = new Docs(storage, window);

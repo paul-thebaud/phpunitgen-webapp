@@ -17,12 +17,12 @@
             <li>
                 {{ $t('header.links.theme') }}
                 <ul>
-                    <li v-for="(translation, targetTheme) in themes"
+                    <li v-for="targetTheme in themes"
                         @click.prevent="onThemeChange(targetTheme)"
                         :key="`lang-${targetTheme}`">
                         <a href="#"
                            :class="theme === targetTheme ? 'active' : ''">
-                            {{ translation }}
+                            {{ $t(`themes.${targetTheme}`) }}
                         </a>
                     </li>
                 </ul>
@@ -46,7 +46,7 @@
                 locale: storage.get('locale'),
                 locales: locale.constructor.availableLocales,
                 theme: storage.get('theme'),
-                themes: theme.constructor.availableThemes.reduce((themes, theme) => {
+                themes: theme.unlockedThemes().reduce((themes, theme) => {
                     themes[theme] = this.$t(`themes.${theme}`);
 
                     return themes;
