@@ -1,5 +1,5 @@
 export default class {
-    get availableLocales() {
+    static get availableLocales() {
         return {
             en: 'English',
             fr: 'Français',

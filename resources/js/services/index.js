@@ -5,7 +5,7 @@ import DocsManager from '@/services/DocsManager';
 import LocaleManager from '@/services/LocaleManager';
 import ThemeManager from '@/services/ThemeManager';
 
-const configManager = new ConfigManager(localStorage);
+const configManager = new ConfigManager(localStorage, navigator, window);
 const themeManager = new ThemeManager(configManager, document.body.classList);
 const localeManager = new LocaleManager(configManager, i18n);
 const apiManager = new ApiManager(configManager);

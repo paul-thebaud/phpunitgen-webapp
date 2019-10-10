@@ -44,7 +44,7 @@
         data() {
             return {
                 locale: configManager.get('locale'),
-                locales: localeManager.availableLocales,
+                locales: localeManager.constructor.availableLocales,
                 theme: configManager.get('theme'),
                 themes: themeManager.availableThemes.reduce((themes, theme) => {
                     themes[theme] = this.$t(`themes.${theme}`);
