@@ -1,6 +1,6 @@
 .theme-rainbow {
-  --base-bg-color: #1a202c;
-  --base-color: #ffffff;
+  --base-bg-color: #ffffff;
+  --base-color: #1a202c;
 
   --gradient-bg-color: #FF3BA6 0, #e2453c 16%, #e07e39 32%, #e5d667 48%, #51b95b 66%, #1e72b7 86%, #6f5ba7 100%;
   --gradient-color: #ffffff;
@@ -8,17 +8,19 @@
   --primary-bg-color: #FF8503;
   --primary-color: #ffffff;
 
-  --secondary-bg-color: #2e343f;
+  --secondary-bg-color: #f8f8f8;
   --secondary-color: var(--base-color);
 
   --success-bg-color: #28a745;
-  --success-color: var(--base-color);
+  --success-color: var(--base-bg-color);
 
   --warning-bg-color: #ffc107;
-  --warning-color: var(--base-bg-color);
+  --warning-color: var(--base-color);
 
   --danger-bg-color: #c82333;
-  --danger-color: var(--base-color);
+  --danger-color: var(--base-bg-color);
+
+  --muted-color: #6c757d;
 
   --hover-brightness: 115%;
 

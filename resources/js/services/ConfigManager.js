@@ -1,6 +1,9 @@
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+// console.log(navigator.languages);
+
 const STORAGE_CONFIG_KEY = 'phpunitgen_configuration';
 const DEFAULT_CONFIG = {
-    theme: 'light',
+    theme: isDarkMode ? 'dark' : 'light',
     locale: 'en',
     tool: {
         automatic_generation: true,

@@ -1,14 +1,14 @@
-.theme-unicorn {
-  --base-bg-color: #1a202c;
+.theme-night {
+  --base-bg-color: #271E54;
   --base-color: #ffffff;
 
-  --gradient-bg-color: #c100ff 0%, #ff0080 100%;
+  --gradient-bg-color: #49399A 0%, #39559A 100%;
   --gradient-color: #ffffff;
 
-  --primary-bg-color: #8300FF;
+  --primary-bg-color: #634DD2;
   --primary-color: #ffffff;
 
-  --secondary-bg-color: #2e343f;
+  --secondary-bg-color: #362973;
   --secondary-color: var(--base-color);
 
   --success-bg-color: #28a745;
@@ -20,7 +20,7 @@
   --danger-bg-color: #c82333;
   --danger-color: var(--base-color);
 
-  --muted-color: #6c757d;
+  --muted-color: #aeb3b8;
 
   --hover-brightness: 115%;
 

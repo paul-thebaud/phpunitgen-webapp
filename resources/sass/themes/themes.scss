@@ -67,6 +67,10 @@ $variants: (
         "danger",
 );
 
+.text-muted, input::placeholder {
+  color: var(--muted-color) !important;
+}
+
 @each $variant in $variants {
   .btn.btn-#{$variant} {
     background-color: var(--#{$variant}-bg-color) !important;

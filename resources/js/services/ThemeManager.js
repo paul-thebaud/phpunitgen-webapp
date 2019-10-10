@@ -5,6 +5,11 @@ export default class {
             'dark',
             'unicorn',
             'rainbow',
+            'night',
+            'ocean',
+            'forest',
+            'desert',
+            'original',
         ];
     }
 
