@@ -6,7 +6,7 @@
                     {{ name }}
                 </label>
             </BCol>
-            <BCol cols="6" md="4" lg="3">
+            <BCol v-if="this.values.length > 3" cols="6" md="4" lg="3">
                 <BInputGroup class="ml-auto">
                     <BInputGroupPrepend>
                         <BInputGroupText>
@@ -116,10 +116,10 @@
         },
         computed: {
             hasMoreToDisplay() {
-                return this.displayedValues.length > this.displayed;
+                return this.filteredValues.length > this.displayed;
             },
-            displayedValues() {
-                const displayedValues = [];
+            filteredValues() {
+                const filteredValues = [];
                 const normalizedSearch = this.normalizeString(this.search);
 
                 for (const key in this.values) {
@@ -127,12 +127,15 @@
                     if (this.values.hasOwnProperty(key)
                         && (this.values[key].id.includes(normalizedSearch) || normalizedName.includes(normalizedSearch))
                     ) {
-                        displayedValues.push(this.values[key]);
+                        filteredValues.push(this.values[key]);
                     }
 
                 }
 
-                return displayedValues.slice(0, this.displayed);
+                return filteredValues;
+            },
+            displayedValues() {
+                return this.filteredValues.slice(0, this.displayed);
             },
         },
         methods: {

@@ -8,11 +8,22 @@ body {
 
   .markdown-section code {
     background-color: var(--secondary-bg-color);
+    color: var(--muted-color);
+  }
+
+  .markdown-section p.tip code {
+    background-color: var(--base-bg-color);
+    color: var(--muted-color);
   }
 
   .markdown-section p.tip {
     border-radius: 0.25rem;
     background-color: var(--secondary-bg-color);
+    color: var(--secondary-color);
+
+    & em {
+      color: var(--secondary-color);
+    }
   }
 
   .markdown-section pre > code {

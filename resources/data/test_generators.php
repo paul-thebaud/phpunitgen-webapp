@@ -32,4 +32,22 @@ return [
         ],
         'example' => 'laravel/PostPolicy.php',
     ],
+    [
+        'id'      => 'laravel.auth',
+        'class'   => PolicyTestGenerator::class,
+        'author'  => [
+            'name'    => 'Paul Thébaud',
+            'website' => 'https://github.com/paul-thebaud',
+        ],
+        'example' => 'laravel/PostPolicy.php',
+    ],
+    [
+        'id'      => 'laravel.controller',
+        'class'   => PolicyTestGenerator::class,
+        'author'  => [
+            'name'    => 'Paul Thébaud',
+            'website' => 'https://github.com/paul-thebaud',
+        ],
+        'example' => 'laravel/PostPolicy.php',
+    ],
 ];

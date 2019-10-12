@@ -44,7 +44,7 @@
                              :title="$t(`home.features.${feature}.title`)"
                              :description="$t(`home.features.${feature}.description`)"
                              :image-alt="$t(`home.features.${feature}.image_alt`)"
-                             :image="`/img/features/${feature}.jpg`"
+                             :image="`/img/features/console.jpg`"
                              :reversed="index % 2 === 0"/>
             </BContainer>
         </div>

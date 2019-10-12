@@ -32,6 +32,7 @@ export default class {
             notFoundPage: true,
             auto2top: true,
             search: {
+                hideOtherSidebarContent: true,
                 noData: {
                     '/fr/': 'Aucun résultat !',
                     '/': 'No results!',

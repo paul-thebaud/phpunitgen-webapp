@@ -1,5 +1,5 @@
 <template>
-    <footer class="pt-3 pb-1 text-center text-lg-right">
+    <footer class="pt-3 pb-1 text-center text-lg-left">
         <BContainer>
             <BRow>
                 <FooterLinks v-for="(link, key) in links"
@@ -20,13 +20,20 @@
         data() {
             return {
                 links: {
-                    legal: {
-                        title: this.$t('footer.legal.title'),
+                    authors: {
+                        title: this.$t('footer.authors.title'),
                         links: [
                             {
-                                title: this.$t('footer.legal.links.terms'),
-                                href: '/legal',
-                                internal: true,
+                                title: 'Paul Thébaud',
+                                href: 'https://github.com/paul-thebaud',
+                            },
+                            {
+                                title: 'Killian Hascoët',
+                                href: 'https://github.com/KillianH',
+                            },
+                            {
+                                title: this.$t('footer.authors.links.contributors'),
+                                href: 'https://github.com/paul-thebaud/phpunitgen-core/graphs/contributors',
                             },
                         ],
                     },
@@ -43,20 +50,13 @@
                             },
                         ],
                     },
-                    authors: {
-                        title: this.$t('footer.authors.title'),
+                    legal: {
+                        title: this.$t('footer.legal.title'),
                         links: [
                             {
-                                title: 'Paul Thébaud',
-                                href: 'https://github.com/paul-thebaud',
-                            },
-                            {
-                                title: 'Killian Hascoët',
-                                href: 'https://github.com/KillianH',
-                            },
-                            {
-                                title: this.$t('footer.authors.links.contributors'),
-                                href: 'https://github.com/paul-thebaud/phpunitgen-core/graphs/contributors',
+                                title: this.$t('footer.legal.links.terms'),
+                                href: '/legal',
+                                internal: true,
                             },
                         ],
                     },

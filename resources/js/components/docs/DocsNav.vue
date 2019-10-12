@@ -46,11 +46,7 @@
                 locale: storage.get('locale'),
                 locales: locale.constructor.availableLocales,
                 theme: storage.get('theme'),
-                themes: theme.unlockedThemes().reduce((themes, theme) => {
-                    themes[theme] = this.$t(`themes.${theme}`);
-
-                    return themes;
-                }, {}),
+                themes: theme.unlockedThemes(),
             };
         },
         methods: {

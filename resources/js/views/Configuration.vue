@@ -8,9 +8,9 @@
                             :variant="configSaving ? 'warning' : 'success'"/>
         </div>
         <p>{{ $t('configuration.description') }}</p>
-        <BForm>
+        <BForm class="configuration">
             <BRow>
-                <BCol class="my-2" md="6">
+                <BCol class="my-3" md="6">
                     <BFormCheckbox v-model="config.automatic_generation"
                                    switch>
                         {{ $t('configuration.automatic_generation.name') }}
@@ -22,7 +22,7 @@
 
                 <div class="w-100"></div>
 
-                <BCol class="my-2" md="12">
+                <BCol class="my-3" md="12">
                     <ListField v-model="config.test_generator"
                                id="test-generator"
                                :name="$t('configuration.test_generator.name')"
@@ -32,7 +32,7 @@
 
                 <div class="w-100"></div>
 
-                <BCol class="my-2" md="12">
+                <BCol class="my-3" md="12">
                     <ListField v-model="config.mock_generator"
                                id="mock-generator"
                                :name="$t('configuration.mock_generator.name')"
@@ -40,21 +40,21 @@
                                :help="$t('configuration.mock_generator.help')"/>
                 </BCol>
 
-                <BCol class="my-2" md="6">
+                <BCol class="my-3" md="6">
                     <TextField v-model="config.base_namespace"
                                id="base-namespace"
                                :name="$t('configuration.base_namespace.name')"
                                :placeholder="$t('configuration.base_namespace.placeholder')"
                                :help="$t('configuration.base_namespace.help')"/>
                 </BCol>
-                <BCol class="my-2" md="6">
+                <BCol class="my-3" md="6">
                     <TextField v-model="config.base_test_namespace"
                                id="base-test-namespace"
                                :name="$t('configuration.base_test_namespace.name')"
                                :placeholder="$t('configuration.base_test_namespace.placeholder')"
                                :help="$t('configuration.base_test_namespace.help')"/>
                 </BCol>
-                <BCol class="my-2" md="6">
+                <BCol class="my-3" md="6">
                     <TextField v-model="config.test_case"
                                id="test-case"
                                :name="$t('configuration.test_case.name')"
@@ -64,21 +64,21 @@
 
                 <div class="w-100"></div>
 
-                <BCol class="my-2" md="12">
+                <BCol class="my-3" md="12">
                     <ArrayField v-model="config.excluded_methods"
                                 id="excluded-methods"
                                 :name="$t('configuration.excluded_methods.name')"
                                 :placeholder="$t('configuration.excluded_methods.placeholder')"
                                 :help="$t('configuration.excluded_methods.help')"/>
                 </BCol>
-                <BCol class="my-2" md="12">
+                <BCol class="my-3" md="12">
                     <ArrayField v-model="config.merged_php_doc"
                                 id="merged-php-doc"
                                 :name="$t('configuration.merged_php_doc.name')"
                                 :placeholder="$t('configuration.merged_php_doc.placeholder')"
                                 :help="$t('configuration.merged_php_doc.help')"/>
                 </BCol>
-                <BCol class="my-2" md="12">
+                <BCol class="my-3" md="12">
                     <ArrayField v-model="config.php_doc"
                                 id="php-doc"
                                 :name="$t('configuration.php_doc.name')"
@@ -86,7 +86,7 @@
                                 :help="$t('configuration.php_doc.help')"/>
                 </BCol>
 
-                <BCol class="my-2" md="12">
+                <BCol class="my-3" md="12">
                     <ObjectField v-model="config.options"
                                  id="options"
                                  :name="$t('configuration.options.name')"
@@ -100,6 +100,7 @@
 </template>
 
 <script>
+    import '@sass/views/configuration.scss';
     import debounce from 'lodash.debounce';
     import { storage } from '@/services';
     import StateIndicator from '@/components/tool/StateIndicator';

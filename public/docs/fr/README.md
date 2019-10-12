@@ -1,40 +1,48 @@
-# PhpUnitGen FR
+# PhpUnitGen
 
-## About PhpUnitGen
+## A propos
 
-PhpUnitGen is an online and command line tool to generate your unit tests'
-skeletons on your projects.
+PhpUnitGen est un outil sur le Web et en ligne de commande pour générer les
+squelettes des tests unitaires de vos projets PHP.
 
-**Requirements**
+L'outil est décomposé en trois répertoires GitHub.
 
-- PHP `7.2` and up.
-- Laravel `5.8` and up if you want to use `make` binding.
+- [phpunitgen-core](https://github.com/paul-thebaud/phpunitgen-core), qui contient le cœur du fonctionnement de l'outil.
+- [phpunitgen-console](https://github.com/paul-thebaud/phpunitgen-console), qui contient l'outil en ligne de commande.
+- [phpunitgen-webapp](https://github.com/paul-thebaud/phpunitgen-webapp), qui contient l'application Web et l'API.
 
-## This documentation
+## Contenu de la documentation
 
-In this documentation, you will find many information about the project:
+Voici les informations que vous pourrez trouver dans documentation :
 
-- How to install and use the command line package.
-- How to use the web application.
-- How to use the API.
-- How to extends and use the core features on your projects.
+- [Description du fonctionnement de l'outil](/fr/how-does-it-works.md)
+- [Configuration de l'outil](/fr/configuration.md)
+- [Comment utiliser l'application en ligne ?](/fr/webapp.md)
+- [Comment utiliser l'outil en ligne de commande ?](/fr/command-line.md)
+- [Comment utiliser l'API ?](/fr/api.md)
+- [Utilisation avancée](/fr/advanced-usage.md)
 
-## You want to support the project?
+## Vous voulez supporter le projet ?
 
-Just leave a star on the 3 GitHub repositories:
+Si vous avez des idées d'améliorations, nous acceptons volontiers les pull-requests et les issues sur GitHub.
 
-- [PhpUnitGen Core](https://github.com/paul-thebaud/phpunitgen-core)
-- [PhpUnitGen Console](https://github.com/paul-thebaud/phpunitgen-console)
-- [PhpUnitGen Webapp](https://github.com/paul-thebaud/phpunitgen-webapp)
+Nous n'avons pas de page de donation ou de sponsoring, donc si vous appréciez le projet, vous pouvez
+mettre des étoiles sur les 3 répertoires GitHub : 
 
-## Credits
+- [phpunitgen-core](https://github.com/paul-thebaud/phpunitgen-core)
+- [phpunitgen-console](https://github.com/paul-thebaud/phpunitgen-console)
+- [phpunitgen-webapp](https://github.com/paul-thebaud/phpunitgen-webapp)
+
+Merci !
+
+## Crédits
 
 - [Paul Thébaud](https://github/paul-thebaud)
 - [Killian Hascoët](https://github.com/KillianH)
-- [All Contributors](https://github.com/paul-thebaud/phpunitgen-core/graphs/contributors)
+- [Contributeurs GitHub](https://github.com/paul-thebaud/phpunitgen-core/graphs/contributors)
 
 ## License
 
-PhpUnitGen is an open-sourced software licensed under the
-[MIT license](https://opensource.org/licenses/MIT).
+PhpUnitGen est un outil open source sous
+[license MIT](https://opensource.org/licenses/MIT).
 

@@ -3,7 +3,7 @@ import LocaleManager from '@/services/Locale';
 const STORAGE_KEY = 'phpunitgen_storage';
 
 export default class {
-    static defaultConfig(navigator, window) {
+    static defaultStorage(navigator, window) {
         return {
             generationsCount: 0,
             theme: this.defaultTheme(window),
@@ -25,7 +25,7 @@ export default class {
                     'license',
                     'version',
                 ],
-                phpDoc: [],
+                php_doc: [],
                 options: {
                     context: 'laravel',
                     'laravel.user': 'App\\User',
@@ -71,7 +71,7 @@ export default class {
         if (storageConfig !== null) {
             this.config = JSON.parse(storageConfig);
         } else {
-            this.config = this.constructor.defaultConfig(navigator, window);
+            this.config = this.constructor.defaultStorage(navigator, window);
             this.save();
         }
     }

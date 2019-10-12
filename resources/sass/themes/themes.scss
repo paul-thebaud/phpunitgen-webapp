@@ -14,9 +14,14 @@ a {
   }
 }
 
-nav.navbar, footer {
+nav.navbar {
   background: linear-gradient(90deg, var(--gradient-bg-color));
   color: var(--gradient-color);
+}
+
+footer {
+  background-color: var(--secondary-bg-color);
+  color: var(--secondary-color);
 }
 
 .dropdown-menu {
