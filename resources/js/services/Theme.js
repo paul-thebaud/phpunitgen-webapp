@@ -13,6 +13,20 @@ export default class {
         };
     }
 
+    static get icons() {
+        return {
+            'light': '💡',
+            'dark': '🕶️',
+            'night': '🌙',
+            'forest': '🌳',
+            'ocean': '🌊',
+            'desert': '🏜️',
+            'rainbow': '🌈',
+            'unicorn': '🦄',
+            'original': '📟',
+        };
+    }
+
     constructor(storage, i18n, bodyClassList) {
         this.storage = storage;
         this.i18n = i18n;
@@ -22,6 +36,36 @@ export default class {
         if (theme !== 'light') {
             this.updateDOM('light', theme);
         }
+    }
+
+    icon(theme) {
+        return this.constructor.icons[theme];
+    }
+
+    nextThemeUnlock() {
+        const generationsCount = this.storage.get('generationsCount');
+
+        const themes = this.constructor.themes;
+        for (const theme in themes) {
+            if (generationsCount < themes[theme]) {
+                return theme;
+            }
+        }
+
+        return null;
+    }
+
+    nextThemeUnlockAt() {
+        const generationsCount = this.storage.get('generationsCount');
+
+        const themes = this.constructor.themes;
+        for (const theme in themes) {
+            if (generationsCount < themes[theme]) {
+                return themes[theme];
+            }
+        }
+
+        return null;
     }
 
     unlockedThemes() {

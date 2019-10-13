@@ -2,7 +2,9 @@
   --base-bg-color: #ffffff;
   --base-color: #212121;
 
-  --gradient-bg-color: #2196f3 0%, #ff9800 100%;
+  --gradient-start-color: #2196f3;
+  --gradient-stop-color: #ff9800;
+  --gradient-bg-color: var(--gradient-start-color) 0%, var(--gradient-stop-color) 100%;
   --gradient-color: #ffffff;
 
   --primary-bg-color: #ff9800;

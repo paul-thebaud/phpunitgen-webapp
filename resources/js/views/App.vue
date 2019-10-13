@@ -30,7 +30,7 @@
                 this.$bvToast.toast(
                     this.$i18n.t('themes.unlocked.description', { theme: this.$i18n.t(`themes.${newTheme}`) }),
                     {
-                        title: this.$i18n.t('themes.unlocked.title'),
+                        title: `${theme.icon(newTheme)} ${this.$i18n.t('themes.unlocked.title')}`,
                         autoHideDelay: 5000,
                     },
                 );

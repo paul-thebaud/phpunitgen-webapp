@@ -2,10 +2,12 @@
   --base-bg-color: #ffffff;
   --base-color: #1a202c;
 
-  --gradient-bg-color: #FF3BA6 0, #e2453c 16%, #e07e39 32%, #e5d667 48%, #51b95b 66%, #1e72b7 86%, #6f5ba7 100%;
+  --gradient-start-color: #ff3ba6;
+  --gradient-stop-color: #6f5ba7;
+  --gradient-bg-color: var(--gradient-start-color) 0, #e2453c 16%, #e07e39 32%, #e5d667 48%, #51b95b 66%, #1e72b7 86%, var(--gradient-stop-color) 100%;
   --gradient-color: #ffffff;
 
-  --primary-bg-color: #FF8503;
+  --primary-bg-color: #ff8503;
   --primary-color: #ffffff;
 
   --secondary-bg-color: #f8f8f8;

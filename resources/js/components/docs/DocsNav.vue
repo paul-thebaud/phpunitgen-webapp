@@ -22,6 +22,7 @@
                         :key="`lang-${targetTheme}`">
                         <a href="#"
                            :class="theme === targetTheme ? 'active' : ''">
+                            {{ themeService.icon(targetTheme) }}
                             {{ $t(`themes.${targetTheme}`) }}
                         </a>
                     </li>
@@ -43,6 +44,7 @@
     export default {
         data() {
             return {
+                themeService: theme,
                 locale: storage.get('locale'),
                 locales: locale.constructor.availableLocales,
                 theme: storage.get('theme'),

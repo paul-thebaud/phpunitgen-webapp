@@ -1,11 +1,26 @@
 <template>
     <BContainer class="my-5 tool-tabs">
-        <p v-if="generationsCount < maxGenerationsCountUnlock"
-           v-html="$t('tool.themes_unlocking', { count: generationsCount })"></p>
-        <p v-else
-           v-html="$t('tool.themes_unlocked', { count: generationsCount })"></p>
-        <BTabs align="center"
-               v-model="tabIndex"
+        <div class="d-flex align-items-center">
+            <RadialProgress start-color="var(--gradient-start-color)"
+                            stop-color="var(--gradient-stop-color)"
+                            inner-stroke-color="var(--secondary-bg-color)"
+                            :diameter="100"
+                            :completed-steps="generationsCount"
+                            :total-steps="nextThemeUnlockAt || generationsCount">
+                <span>
+                    {{ nextThemeUnlock ? themeService.icon(nextThemeUnlock) : '🔥' }}
+                </span>
+                <strong>
+                    {{ generationsCount }}{{ nextThemeUnlockAt ? ` / ${nextThemeUnlockAt}` : '' }}
+                </strong>
+            </RadialProgress>
+            <p class="ml-2 mb-0">
+                {{ nextThemeUnlock ? $t('tool.unlock_themes') : $t('tool.all_themes_unlocked') }}
+            </p>
+        </div>
+        <BTabs v-model="tabIndex"
+               align="center"
+               class="my-3"
                fill>
             <BTab :title="$t('tool.editor.title')">
                 <EditorTab @generate="handleGenerate"
@@ -19,12 +34,12 @@
                               :executionTime="executionTime"/>
             </BTab>
         </BTabs>
-        <Versions/>
     </BContainer>
 </template>
 
 <script>
-    import { storage } from '@/services';
+    import RadialProgress from 'vue-radial-progress';
+    import { storage, theme } from '@/services';
     import { testResource } from '@/resources';
     import Theme from '@/services/Theme';
     import EditorTab from '@/components/tool/EditorTab';
@@ -34,12 +49,14 @@
 
     export default {
         components: {
+            RadialProgress,
             EditorTab,
             GeneratedTab,
             Versions,
         },
         data() {
             return {
+                themeService: theme,
                 generating: false,
                 exceptionMessage: null,
                 exception: null,
@@ -47,8 +64,9 @@
                 generatedCode: null,
                 executionTime: null,
                 tabIndex: 0,
-                maxGenerationsCountUnlock: Math.max(...Object.values(Theme.themes)),
                 generationsCount: storage.get('generationsCount'),
+                nextThemeUnlock: theme.nextThemeUnlock(),
+                nextThemeUnlockAt: theme.nextThemeUnlockAt(),
             };
         },
         methods: {
@@ -75,6 +93,9 @@
                             this.$emit('theme-unlock', theme);
                         }
                     }
+
+                    this.nextThemeUnlock = theme.nextThemeUnlock();
+                    this.nextThemeUnlockAt = theme.nextThemeUnlockAt();
                 } catch (error) {
                     if (error.name === UnknownError.name) {
                         this.exception = error.exception;

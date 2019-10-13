@@ -99,9 +99,8 @@ export default class {
      * Get a configuration value.
      *
      * @param {String} key
-     * @param {*} defaultValue
      */
-    get(key, defaultValue = null) {
-        return this.config[key] || null;
+    get(key) {
+        return this.config[key];
     }
 }

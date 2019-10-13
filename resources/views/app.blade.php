@@ -2,7 +2,7 @@
 
 @section('title', 'PhpUnitGen')
 
-@section('body-classes', 'w-100 h-100 theme-light theme-switching')
+@section('body-classes', 'w-100 h-100 theme-light')
 
 @section('content')
     <noscript>This application needs Javascript to run.</noscript>

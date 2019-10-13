@@ -1,6 +1,6 @@
 export default {
-    'themes_unlocking': '<h3>Welcome on the generator !</h3>You generated {count} tests. The more you generate tests, the more you will unlock new themes for PhpUnitGen 🔥️',
-    'themes_unlocked': '<h3>Welcome on the generator !</h3>You generated {count} tests. And you unlocked all PhpUnitGen themes 👑️',
+    'unlock_themes': 'Unlock new themes by generating tests!',
+    'all_themes_unlocked': 'Congrats! You unlocked all available themes!',
     'editor': {
         'title': 'Editor',
         'actions': {

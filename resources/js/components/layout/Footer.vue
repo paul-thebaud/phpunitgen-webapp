@@ -1,5 +1,5 @@
 <template>
-    <footer class="pt-3 pb-1 text-center text-lg-left">
+    <footer class="p-5 text-center text-lg-left">
         <BContainer>
             <BRow>
                 <FooterLinks v-for="(link, key) in links"

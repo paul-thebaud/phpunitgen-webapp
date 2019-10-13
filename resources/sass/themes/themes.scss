@@ -86,8 +86,8 @@ $variants: (
     }
   }
 
-  .bg-#{$variant} {
-    background-color: var(--#{$variant}-bg-color) !important;
+  .text-#{$variant} {
+    color: var(--#{$variant}-bg-color) !important;
   }
 }
 

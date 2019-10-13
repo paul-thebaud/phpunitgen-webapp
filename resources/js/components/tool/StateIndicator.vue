@@ -1,6 +1,6 @@
 <template>
     <div>
-        <span :id="id" class="btn" :class="variantClass">
+        <span :id="id" class="" :class="variantClass">
             <FontAwesomeIcon :icon="variantIcon"
                              :class="variantIconClass"></FontAwesomeIcon>
             {{ text }}
@@ -53,7 +53,7 @@
         },
         computed: {
             variantClass() {
-                return `btn-${this.variant}`;
+                return `text-${this.variant}`;
             },
             variantIcon() {
                 return this.icons[this.variant];

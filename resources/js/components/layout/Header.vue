@@ -41,6 +41,7 @@
                                        :key="`theme-${targetTheme}`"
                                        :active="theme === targetTheme"
                         >
+                            {{ themeService.icon(targetTheme) }}
                             {{ $t(`themes.${targetTheme}`) }}
                         </BDropdownItem>
                     </BNavItemDropdown>
@@ -73,6 +74,7 @@
         },
         data() {
             return {
+                themeService: theme,
                 closedMenuIcon: faBars,
                 openedMenuIcon: faTimes,
                 locale: storage.get('locale'),
