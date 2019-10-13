@@ -1,7 +1,7 @@
 export default {
     'welcome': {
         'title': 'Welcome on PhpUnitGen',
-        'description': 'PhpUnitGen is a simple, powerful and modular tool to generate your PHPUnit tests skeletons.',
+        'description': 'PhpUnitGen is a simple, powerful and modular tool to generate your PHP tests skeletons.',
         'open-source': 'It is free and open-source.',
     },
     'actions': {
