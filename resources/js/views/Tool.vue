@@ -1,21 +1,26 @@
 <template>
     <BContainer class="my-5 tool-tabs">
         <div class="d-flex align-items-center">
-            <RadialProgress start-color="var(--gradient-start-color)"
-                            stop-color="var(--gradient-stop-color)"
-                            inner-stroke-color="var(--secondary-bg-color)"
-                            :diameter="100"
-                            :completed-steps="generationsCount"
-                            :total-steps="nextThemeUnlockAt || generationsCount">
+            <RouterLink :to="{ name: 'themes' }">
+                <RadialProgress start-color="var(--gradient-start-color)"
+                                stop-color="var(--gradient-stop-color)"
+                                inner-stroke-color="var(--secondary-bg-color)"
+                                :diameter="100"
+                                :completed-steps="generationsCount"
+                                :total-steps="nextThemeUnlockAt || generationsCount">
                 <span>
                     {{ nextThemeUnlock ? themeService.icon(nextThemeUnlock) : '🔥' }}
                 </span>
-                <strong>
-                    {{ generationsCount }}{{ nextThemeUnlockAt ? ` / ${nextThemeUnlockAt}` : '' }}
-                </strong>
-            </RadialProgress>
+                    <strong>
+                        {{ generationsCount }}{{ nextThemeUnlockAt ? ` / ${nextThemeUnlockAt}` : '' }}
+                    </strong>
+                </RadialProgress>
+            </RouterLink>
             <p class="ml-2 mb-0">
                 {{ nextThemeUnlock ? $t('tool.unlock_themes') : $t('tool.all_themes_unlocked') }}
+                <RouterLink :to="{ name: 'themes' }">
+                    {{ $t('tool.themes_list') }}
+                </RouterLink>
             </p>
         </div>
         <BTabs v-model="tabIndex"

@@ -1,5 +1,5 @@
 <template>
-    <BCol md>
+    <BCol cols="6" md="4">
         <p class="text-uppercase font-weight-bold">
             {{ this.title }}
         </p>

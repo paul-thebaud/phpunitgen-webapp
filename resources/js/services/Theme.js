@@ -3,13 +3,13 @@ export default class {
         return {
             'light': 0,
             'dark': 0,
-            'night': 1,
-            'forest': 3,
-            'ocean': 5,
-            'desert': 7,
-            'rainbow': 9,
-            'unicorn': 12,
-            'original': 15,
+            'night': 2,
+            'forest': 5,
+            'ocean': 10,
+            'desert': 15,
+            'rainbow': 20,
+            'unicorn': 25,
+            'original': 30,
         };
     }
 

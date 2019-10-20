@@ -1,6 +1,7 @@
 export default {
     'unlock_themes': 'Débloquez de nouveaux thèmes en générant vos tests !',
     'all_themes_unlocked': 'Félicitations ! Vous avez débloquez tous les thèmes !',
+    'themes_list': 'Voir la liste des thèmes.',
     'editor': {
         'title': 'Editeur',
         'actions': {
