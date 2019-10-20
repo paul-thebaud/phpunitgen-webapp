@@ -2,7 +2,8 @@
     <div>
         <span :id="id" class="" :class="variantClass">
             <FontAwesomeIcon :icon="variantIcon"
-                             :class="variantIconClass"></FontAwesomeIcon>
+                             :class="variantIconClass"
+                             class="mr-1"></FontAwesomeIcon>
             {{ text }}
         </span>
         <BTooltip v-if="hasToolTip"

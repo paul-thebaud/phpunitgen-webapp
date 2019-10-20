@@ -22,13 +22,21 @@
                align="center"
                class="my-3"
                fill>
-            <BTab :title="$t('tool.editor.title')">
+            <BTab>
+                <template v-slot:title>
+                    <FontAwesomeIcon :icon="icons.faTerminal" class="mr-2"></FontAwesomeIcon>
+                    {{ $t('tool.editor.title') }}
+                </template>
                 <EditorTab @generate="handleGenerate"
                            :generating="generating"
                            :exception-message="exceptionMessage"
                            :exception="exception"/>
             </BTab>
-            <BTab :title="$t('tool.generated.title')">
+            <BTab>
+                <template v-slot:title>
+                    <FontAwesomeIcon :icon="icons.faPlay" class="mr-2"></FontAwesomeIcon>
+                    {{ $t('tool.generated.title') }}
+                </template>
                 <GeneratedTab :name="generatedName"
                               :code="generatedCode"
                               :executionTime="executionTime"/>
@@ -39,6 +47,8 @@
 
 <script>
     import RadialProgress from 'vue-radial-progress';
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+    import { faPlay, faTerminal } from '@fortawesome/free-solid-svg-icons';
     import { storage, theme } from '@/services';
     import { testResource } from '@/resources';
     import Theme from '@/services/Theme';
@@ -50,12 +60,17 @@
     export default {
         components: {
             RadialProgress,
+            FontAwesomeIcon,
             EditorTab,
             GeneratedTab,
             Versions,
         },
         data() {
             return {
+                icons: {
+                    faPlay,
+                    faTerminal,
+                },
                 themeService: theme,
                 generating: false,
                 exceptionMessage: null,

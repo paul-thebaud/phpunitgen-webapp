@@ -20,12 +20,13 @@ nav.navbar {
 }
 
 footer {
-  background-color: var(--secondary-bg-color);
+  background: linear-gradient(180deg, var(--base-bg-color) 0%, var(--secondary-bg-color) 50%);
   color: var(--secondary-color);
 }
 
 .dropdown-menu {
   background-color: var(--secondary-bg-color);
+  border: none;
 
   .dropdown-item {
     background-color: var(--secondary-bg-color);
@@ -48,9 +49,14 @@ footer {
   }
 }
 
+.card {
+  border: none;
+  background-color: var(--secondary-bg-color);
+  color: var(--secondary-color);
+}
+
 .prism-editor-wrapper {
   border-radius: 0.25rem;
-  min-height: 50vh;
 
   &, > div, > pre {
     background-color: var(--secondary-bg-color) !important;

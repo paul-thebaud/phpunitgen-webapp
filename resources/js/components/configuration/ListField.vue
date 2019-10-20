@@ -1,12 +1,12 @@
 <template>
     <div :id="id">
         <BRow>
-            <BCol cols="6" md="8" lg="9">
+            <BCol cols="6" md="6" lg="9">
                 <label>
                     {{ name }}
                 </label>
             </BCol>
-            <BCol v-if="this.values.length > 3" cols="6" md="4" lg="3">
+            <BCol v-if="this.values.length > 3" cols="6" md="6" lg="3">
                 <BInputGroup class="ml-auto">
                     <BInputGroupPrepend>
                         <BInputGroupText>
@@ -30,7 +30,9 @@
                      :class="selected === value.id ? 'active' : ''"
                      class="list-field-item d-flex flex-column align-items-center justify-content-center text-center rounded p-2 h-100"
                      @click="handleChange(value.id)">
-                    <h4>{{ value.name }}</h4>
+                    <strong>
+                        {{ value.name }}
+                    </strong>
                     <small>
                         {{ $t('configuration.list_field.created_by') }}
                         <a :href="value.author.website" target="_blank" rel="noopener">

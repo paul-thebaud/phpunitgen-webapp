@@ -1,4 +1,17 @@
+.configuration-quick-links {
+  top: 80px;
+
+  > a {
+    color: var(--base-color);
+
+    &:hover, &:active {
+      color: var(--base-color);
+    }
+  }
+}
+
 .configuration {
+
   label.custom-control-label {
     font-size: 110%;
   }

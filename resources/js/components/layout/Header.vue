@@ -46,7 +46,7 @@
                         </BDropdownItem>
                     </BNavItemDropdown>
 
-                    <BButton class="rounded-full px-4 py-2"
+                    <BButton class="rounded-pill px-4 py-2"
                              :to="{ name: 'tool' }">
                         {{ $t('header.links.online') }}
                     </BButton>

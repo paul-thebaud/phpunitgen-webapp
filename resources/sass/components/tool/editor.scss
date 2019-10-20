@@ -2,23 +2,22 @@
 
 .tool-tabs {
   .nav.nav-tabs {
-    font-size: 120%;
-    padding: 1rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
     border: none;
-    border-radius: 0.25rem;
-    background-color: var(--secondary-bg-color);
 
     .nav-link {
       background: none;
       color: var(--base-color);
       border: none;
       transition: 300ms;
-      border-radius: 0.25rem;
+      border-radius: 0;
+      border-bottom: 3px solid transparent;
+      padding-bottom: 0.75rem;
 
       &.active {
-        font-weight: bold;
-        background-color: var(--primary-bg-color);
-        color: var(--primary-color);
+        color: var(--primary-bg-color);
+        border-bottom: 3px solid var(--primary-bg-color);
 
         &:focus {
           filter: none;
@@ -26,7 +25,7 @@
       }
 
       &:not(.active):hover {
-        color: var(--primary-bg-color);
+        color: var(--muted-color);
       }
     }
   }

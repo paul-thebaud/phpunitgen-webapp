@@ -1,14 +1,12 @@
 <template>
-    <div>
-        <label :for="id">
+    <div :id="id">
+        <label>
             {{ name }}
         </label>
         <BInputGroup class="mb-2">
             <BInput v-model="input"
                     type="text"
-                    :id="id"
                     :placeholder="placeholder"
-                    :aria-describedby="helpId"
                     @keyup.enter="handleAdd"/>
             <BInputGroupAppend>
                 <BButton variant="primary" @click="handleAdd">
@@ -30,7 +28,7 @@
             </BInputGroupAppend>
         </BInputGroup>
 
-        <BFormText :id="helpId">
+        <BFormText>
             {{ help }}
         </BFormText>
     </div>
@@ -67,11 +65,6 @@
                 type: Array,
             },
         },
-        computed: {
-            helpId() {
-                return `${this.id}-help`;
-            },
-        },
         data() {
             return {
                 input: '',
@@ -95,7 +88,7 @@
                 this.handleChange();
             },
             handleChange() {
-                this.values = [... new Set(this.values.filter((el) => el !== ''))];
+                this.values = [...new Set(this.values.filter((el) => el !== ''))];
 
                 this.$emit('input', this.values);
             },

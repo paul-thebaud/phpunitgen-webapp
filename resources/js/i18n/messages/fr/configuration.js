@@ -1,6 +1,7 @@
 export default {
     'title': 'Configuration',
     'description': 'Cette page vous permet de configurer une grande partie du fonctionnement de PhpUnitGen. Toute la configuration est sauvegardée dans votre navigateur.',
+    'quick_links': 'Liens rapides vers les champs',
     'automatic_generation': {
         'name': 'Génération automatique',
         'help': 'Définit si le générateur doit tenter de générer des propriétés et des tests avancés ou juste des méthodes vides à remplir.',
@@ -49,9 +50,10 @@ export default {
         'placeholder_value': 'laravel',
         'help': 'Définit les options à utiliser dans les générateurs. Pour plus de détails, référez-vous à la documentation.',
     },
+    'save_indicator': 'Etat de la sauvegarde',
     'state': {
         'saving': 'Sauvegarde en cours ...',
-        'saved': 'Sauvegardée',
+        'saved': 'Configuration sauvegardée',
     },
     'list_field': {
         'display_more': 'Afficher plus',

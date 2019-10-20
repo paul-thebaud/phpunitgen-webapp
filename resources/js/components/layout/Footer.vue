@@ -1,6 +1,13 @@
 <template>
     <footer class="p-5 text-center text-lg-left">
         <BContainer>
+            <BRow class="mb-2">
+                <BCol>
+                    <h4>
+                        <strong>PhpUnitGen</strong>
+                    </h4>
+                </BCol>
+            </BRow>
             <BRow>
                 <FooterLinks v-for="(link, key) in links"
                              :key="key"

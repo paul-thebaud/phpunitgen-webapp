@@ -1,6 +1,7 @@
 export default {
     'title': 'Configuration',
     'description': 'This page allows you to configure most of PhpUnitGen working. Configuration is saved in your browser storage.',
+    'quick_links': 'Quick links to fields',
     'automatic_generation': {
         'name': 'Automatic generation',
         'help': 'Defines if the generator should try to generate properties and advanced tests or only empty methods to complet.',
@@ -50,8 +51,8 @@ export default {
         'help': 'Defines the options to use in generators. For more details, check out the documentation.',
     },
     'state': {
-        'saving': 'Saving...',
-        'saved': 'Saved',
+        'saving': 'Saving configuration...',
+        'saved': 'Configuration saved',
     },
     'list_field': {
         'display_more': 'Display more',

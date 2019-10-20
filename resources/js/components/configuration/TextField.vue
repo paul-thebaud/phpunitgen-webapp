@@ -1,15 +1,13 @@
 <template>
-    <div>
-        <label :for="id">
+    <div :id="id">
+        <label>
             {{ name }}
         </label>
         <BInput type="text"
-                :id="id"
                 :value="value"
                 :placeholder="placeholder"
-                :aria-describedby="helpId"
                 @input="handleInput"/>
-        <BFormText :id="helpId">
+        <BFormText>
             {{ help }}
         </BFormText>
     </div>
@@ -37,11 +35,6 @@
             value: {
                 required: false,
                 type: String,
-            },
-        },
-        computed: {
-            helpId() {
-                return `${this.id}-help`;
             },
         },
         methods: {

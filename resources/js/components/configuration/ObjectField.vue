@@ -1,20 +1,16 @@
 <template>
-    <div>
-        <label :for="id">
+    <div :id="id">
+        <label>
             {{ name }}
         </label>
         <BInputGroup class="mb-2">
             <BInput v-model="inputKey"
                     type="text"
-                    :id="`${id}-key`"
                     :placeholder="placeholderKey"
-                    :aria-describedby="helpId"
                     @keyup.enter="handleAdd"/>
             <BInput v-model="inputValue"
                     type="text"
-                    :id="`${id}-value`"
                     :placeholder="placeholderValue"
-                    :aria-describedby="helpId"
                     @keyup.enter="handleAdd"/>
             <BInputGroupAppend>
                 <BButton variant="primary" @click="handleAdd">
@@ -41,7 +37,7 @@
             </BInputGroupAppend>
         </BInputGroup>
 
-        <BFormText :id="helpId">
+        <BFormText>
             {{ help }}
         </BFormText>
     </div>
@@ -80,11 +76,6 @@
             value: {
                 required: false,
                 type: Object,
-            },
-        },
-        computed: {
-            helpId() {
-                return `${this.id}-help`;
             },
         },
         data() {

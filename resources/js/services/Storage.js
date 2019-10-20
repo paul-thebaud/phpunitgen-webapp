@@ -1,3 +1,4 @@
+import LZString from 'lz-string';
 import LocaleManager from '@/services/Locale';
 
 const STORAGE_KEY = 'phpunitgen_storage';
@@ -69,18 +70,25 @@ export default class {
 
         const storageConfig = this.storage.getItem(STORAGE_KEY);
         if (storageConfig !== null) {
-            this.config = JSON.parse(storageConfig);
-        } else {
-            this.config = this.constructor.defaultStorage(navigator, window);
-            this.save();
+            try {
+                this.config = JSON.parse(LZString.decompressFromUTF16(storageConfig));
+
+                return;
+            } catch (error) {
+                console.log('Following error during extracting config from localStorage. Creating default config...');
+                console.error(error);
+            }
         }
+
+        this.config = this.constructor.defaultStorage(navigator, window);
+        this.save();
     }
 
     /**
      * Save the configuration in storage.
      */
     save() {
-        this.storage.setItem(STORAGE_KEY, JSON.stringify(this.config));
+        this.storage.setItem(STORAGE_KEY, LZString.compressToUTF16(JSON.stringify(this.config)));
     }
 
     /**
