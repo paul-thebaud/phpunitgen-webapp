@@ -158,10 +158,12 @@
             };
         },
         async created() {
-            this.testGenerators = await testGeneratorResource.all();
-            this.mockGenerators = await mockGeneratorResource.all();
+            await this.loadGenerators();
         },
         watch: {
+            '$i18n.locale': async function () {
+                await this.loadGenerators();
+            },
             config: {
                 handler() {
                     this.configSaving = true;
@@ -172,6 +174,10 @@
             },
         },
         methods: {
+            async loadGenerators() {
+                this.testGenerators = await testGeneratorResource.all();
+                this.mockGenerators = await mockGeneratorResource.all();
+            },
             debounceConfigSave: debounce(function () {
                 this.configSaving = false;
                 storage.set('tool', this.config);
