@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Console\Commands;
+
+use App\Post;
+use Illuminate\Console\Command;
+
+/**
+ * Class PrunePostsCommand.
+ *
+ * This class is an example to try PhpUnitGen. Enjoy!
+ *
+ * @author  John Doe <john.doe@example.com>
+ * @version 1.0.0
+ */
+class PrunePostsCommand extends Command
+{
+    protected $signature = 'prune:posts';
+
+    public function handle(): int
+    {
+        $this->info('Prune posts running');
+
+        Post::query()->delete();
+
+        return 0;
+    }
+}

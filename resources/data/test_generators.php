@@ -2,6 +2,8 @@
 
 use PhpUnitGen\Core\Generators\Tests\Basic\BasicTestGenerator;
 use PhpUnitGen\Core\Generators\Tests\DelegateTestGenerator;
+use PhpUnitGen\Core\Generators\Tests\Laravel\Channel\ChannelTestGenerator;
+use PhpUnitGen\Core\Generators\Tests\Laravel\Command\CommandTestGenerator;
 use PhpUnitGen\Core\Generators\Tests\Laravel\Policy\PolicyTestGenerator;
 
 return [
@@ -12,7 +14,7 @@ return [
             'name'    => 'Paul Thébaud',
             'website' => 'https://github.com/paul-thebaud',
         ],
-        'example' => 'Person.php',
+        'example' => 'Person.stub',
     ],
     [
         'id'      => 'basic',
@@ -21,7 +23,25 @@ return [
             'name'    => 'Paul Thébaud',
             'website' => 'https://github.com/paul-thebaud',
         ],
-        'example' => 'Person.php',
+        'example' => 'Person.stub',
+    ],
+    [
+        'id'      => 'laravel.channel',
+        'class'   => ChannelTestGenerator::class,
+        'author'  => [
+            'name'    => 'Paul Thébaud',
+            'website' => 'https://github.com/paul-thebaud',
+        ],
+        'example' => 'laravel/NewPostChannel.stub',
+    ],
+    [
+        'id'      => 'laravel.command',
+        'class'   => CommandTestGenerator::class,
+        'author'  => [
+            'name'    => 'Paul Thébaud',
+            'website' => 'https://github.com/paul-thebaud',
+        ],
+        'example' => 'laravel/PrunePostsCommand.stub',
     ],
     [
         'id'      => 'laravel.policy',
@@ -30,24 +50,6 @@ return [
             'name'    => 'Paul Thébaud',
             'website' => 'https://github.com/paul-thebaud',
         ],
-        'example' => 'laravel/PostPolicy.php',
-    ],
-    [
-        'id'      => 'laravel.auth',
-        'class'   => PolicyTestGenerator::class,
-        'author'  => [
-            'name'    => 'Paul Thébaud',
-            'website' => 'https://github.com/paul-thebaud',
-        ],
-        'example' => 'laravel/PostPolicy.php',
-    ],
-    [
-        'id'      => 'laravel.controller',
-        'class'   => PolicyTestGenerator::class,
-        'author'  => [
-            'name'    => 'Paul Thébaud',
-            'website' => 'https://github.com/paul-thebaud',
-        ],
-        'example' => 'laravel/PostPolicy.php',
+        'example' => 'laravel/PostPolicy.stub',
     ],
 ];

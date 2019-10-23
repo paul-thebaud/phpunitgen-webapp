@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Broadcasting;
+
+use App\User;
+
+/**
+ * Class NewPostChannel.
+ *
+ * This class is an example to try PhpUnitGen. Enjoy!
+ *
+ * @author  John Doe <john.doe@example.com>
+ * @version 1.0.0
+ */
+class NewPostChannel
+{
+    public function join(User $user): bool
+    {
+        return $user->hasVerifiedEmail();
+    }
+}
