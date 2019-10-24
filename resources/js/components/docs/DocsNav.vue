@@ -60,7 +60,6 @@
                 locale.changeLocale(this.locale = newLocale);
 
                 const path = window.location.href.replace(/^.*\/docs#\/?([a-z]{2}\/)?/, '');
-                console.log(path);
 
                 window.location.hash = docs.getDocumentationPath(path, newLocale)
                     .replace(/^\/docs#/, '');
