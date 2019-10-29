@@ -6,7 +6,7 @@ namespace PhpUnitGen\WebApp\Http\Controllers\Api\Version1;
 
 use Illuminate\Http\JsonResponse;
 use Laravel\Lumen\Routing\Controller as BaseController;
-use PhpUnitGen\WebApp\Http\Controllers\Resources\MockGeneratorResource;
+use PhpUnitGen\WebApp\Http\Resources\MockGeneratorResource;
 
 /**
  * Class MockGeneratorController.

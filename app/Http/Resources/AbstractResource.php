@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpUnitGen\WebApp\Http\Controllers\Resources;
+namespace PhpUnitGen\WebApp\Http\Resources;
 
 use Illuminate\Contracts\Translation\Translator;
 use Illuminate\Support\Collection;
