@@ -11,10 +11,20 @@
 const path = require('path');
 
 module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                options: { appendTsSuffixTo: [/\.vue$/] },
+                exclude: /node_modules/,
+            },
+        ],
+    },
     resolve: {
-        extensions: ['.js', '.json', '.vue'],
+        extensions: ['*', '.js', '.jsx', '.vue', '.ts', '.tsx'],
         alias: {
-            '@': path.resolve(__dirname, './resources/js'),
+            '@': path.resolve(__dirname, './resources/ts'),
             '@sass': path.resolve(__dirname, './resources/sass'),
         },
     },

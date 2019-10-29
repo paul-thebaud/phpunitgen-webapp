@@ -20,10 +20,12 @@ mix.webpackConfig(webpackConfig)
         'vue',
         'vue-i18n',
     ])
-    .js('resources/js/app.js', 'public/js')
-    .js('resources/js/docs.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .sass('resources/sass/docs.scss', 'public/css');
+    //.js('resources/js/app.js', 'public/js')
+    //.js('resources/js/docs.js', 'public/js')
+    .js('resources/ts/entries/app.ts', 'public/js')
+    //.js('resources/ts/docs.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css');
+    //.sass('resources/sass/docs.scss', 'public/css');
 
 if (mix.inProduction()) {
     mix.version();
