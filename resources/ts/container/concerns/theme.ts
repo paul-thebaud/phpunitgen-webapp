@@ -12,7 +12,7 @@ export class Theme {
     /**
      * The codemirror editor class to use.
      */
-    protected codeMirrorClass: string;
+    protected codeMirror: string;
 
     /**
      * The number of generations needed to unlock the theme.
@@ -24,13 +24,13 @@ export class Theme {
      *
      * @param {string} key
      * @param {string} emoji
-     * @param {string} codeMirrorClass
+     * @param {string} codeMirror
      * @param {number} generationsToUnlock
      */
-    public constructor(key: string, emoji: string, codeMirrorClass: string, generationsToUnlock: number) {
+    public constructor(key: string, emoji: string, codeMirror: string, generationsToUnlock: number) {
         this.key = key;
         this.emoji = emoji;
-        this.codeMirrorClass = codeMirrorClass;
+        this.codeMirror = codeMirror;
         this.generationsToUnlock = generationsToUnlock;
     }
 
@@ -51,8 +51,8 @@ export class Theme {
     /**
      * @returns {string}
      */
-    public getCodeMirrorClass(): string {
-        return this.codeMirrorClass;
+    public getCodeMirror(): string {
+        return this.codeMirror;
     }
 
     /**

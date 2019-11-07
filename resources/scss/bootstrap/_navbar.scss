@@ -1,0 +1,16 @@
+@import "~bootstrap/scss/navbar";
+
+nav.navbar {
+  background: linear-gradient(90deg, var(--gradient-bg-color));
+  color: var(--gradient-color);
+
+  .navbar-brand, .nav-link {
+    color: var(--gradient-color) !important;
+  }
+
+  .collapsed > .when-opened,
+  :not(.collapsed) > .when-closed {
+    display: none;
+  }
+}
+

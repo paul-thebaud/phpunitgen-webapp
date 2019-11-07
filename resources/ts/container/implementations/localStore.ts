@@ -9,6 +9,7 @@ import { inject, injectable } from "inversify";
  */
 type LocalStoreContent = {
     generationsCount: number,
+    forceEditorTabs: boolean,
     theme: string,
     locale: string,
     tool: ToolType,
@@ -134,6 +135,22 @@ export class LocalStore implements StoreI {
     /**
      * @inheritDoc
      */
+    public getForceEditorTabs(): boolean {
+        return this.content.forceEditorTabs;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public setForceEditorTabs(forceEditorTabs: boolean): StoreI {
+        this.content.forceEditorTabs = forceEditorTabs;
+
+        return this;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public fetch(): StoreI {
         const existing = this.window.localStorage.getItem(this.localeStorageKey);
         if (existing === null) {
@@ -165,6 +182,7 @@ export class LocalStore implements StoreI {
     protected defaultContent(): LocalStoreContent {
         return {
             generationsCount: 0,
+            forceEditorTabs: false,
             theme: this.defaultTheme(),
             locale: this.defaultLocale(),
             tool: {

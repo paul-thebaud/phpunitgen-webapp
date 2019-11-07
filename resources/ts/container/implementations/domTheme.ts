@@ -13,15 +13,15 @@ const baseTheme: string = "light";
  * The list of themes map by key.
  */
 const themes: { [key: string]: Theme } = {
-    light: new Theme("light", "💡", "cm-s-default", 0),
-    dark: new Theme("dark", "🕶️", "cm-s-darcula", 0),
-    night: new Theme("night", "🌙", "cm-s-erlang-dark", 2),
-    forest: new Theme("forest", "🌳", "cm-s-blackboard", 5),
-    ocean: new Theme("ocean", "🌊", "cm-s-tomorrow-night-eighties", 10),
-    desert: new Theme("desert", "🏜️", "cm-s-pastel-on-dark", 15),
-    rainbow: new Theme("rainbow", "🌈", "cm-s-default", 20),
-    unicorn: new Theme("unicorn", "🦄", "cm-s-darcula", 25),
-    original: new Theme("original", "📟", "cm-s-default", 30),
+    light: new Theme("light", "💡", "default", 0),
+    dark: new Theme("dark", "🕶️", "darcula", 0),
+    night: new Theme("night", "🌙", "erlang-dark", 2),
+    forest: new Theme("forest", "🌳", "blackboard", 5),
+    ocean: new Theme("ocean", "🌊", "tomorrow-night-eighties", 10),
+    desert: new Theme("desert", "🏜️", "pastel-on-dark", 15),
+    rainbow: new Theme("rainbow", "🌈", "default", 20),
+    unicorn: new Theme("unicorn", "🦄", "darcula", 25),
+    original: new Theme("original", "📟", "default", 30),
 };
 
 /**
@@ -129,10 +129,10 @@ export class DomTheme implements ThemeI {
 
         bodyClassList.add("theme-switching");
         bodyClassList.add(this.computeThemeClass(newTheme));
-        if (codeMirror && previousTheme.getCodeMirrorClass() !== newTheme.getCodeMirrorClass()) {
+        if (codeMirror && previousTheme.getCodeMirror() !== newTheme.getCodeMirror()) {
             const codeMirrorClassList = codeMirror.classList;
-            codeMirrorClassList.add(newTheme.getCodeMirrorClass());
-            codeMirrorClassList.remove(previousTheme.getCodeMirrorClass());
+            codeMirrorClassList.add(`cm-s-${newTheme.getCodeMirror()}`);
+            codeMirrorClassList.remove(`cm-s-${previousTheme.getCodeMirror()}`);
         }
         bodyClassList.remove(this.computeThemeClass(previousTheme));
 

@@ -1,28 +1,26 @@
 <template>
     <CodeMirror v-if="show"
-                :value="code"
+                :code="code"
                 :options="codeMirrorOptions"
                 @input="handleInput"></CodeMirror>
 </template>
 
 <script lang="ts">
-    import "@sass/components/tool/editor.scss";
     import Vue from "vue";
-    import Component from "vue-class-component";
-    import { Prop } from "vue-property-decorator";
-    import { container } from "@/container/container";
+    import { Component, Inject, Prop } from "vue-property-decorator";
     import { ThemeI } from "@/container/contracts/themeI";
     import { TYPES } from "@/container/types";
     import CodeMirror from "@/components/tool/CodeMirror.vue";
-
-    const theme: ThemeI = container.get<ThemeI>(TYPES.Theme);
 
     @Component({
         components: {
             CodeMirror,
         },
     })
-    export default class App extends Vue {
+    export default class Editor extends Vue {
+        @Inject(TYPES.Theme)
+        protected theme!: ThemeI;
+
         @Prop(String)
         protected readonly code!: string;
 
@@ -37,7 +35,7 @@
 
         protected codeMirrorOptions = {
             viewportMargin: Infinity,
-            theme: theme.getTheme().getCodeMirrorClass(),
+            theme: this.theme.getTheme().getCodeMirror(),
             mode: this.mode,
             indentUnit: 4,
             tabSize: 4,

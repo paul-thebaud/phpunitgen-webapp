@@ -4,6 +4,8 @@ export class ValidationError extends Error {
     public constructor(message: string, errors: object) {
         super(message);
 
+        Object.setPrototypeOf(this, ValidationError.prototype);
+
         this.errors = errors;
     }
 

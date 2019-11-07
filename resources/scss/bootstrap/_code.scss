@@ -1,0 +1,6 @@
+pre {
+  &, > code {
+    background-color: var(--secondary-bg-color);
+    color: var(--base-color);
+  }
+}

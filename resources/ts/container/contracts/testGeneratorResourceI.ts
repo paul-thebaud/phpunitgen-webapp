@@ -23,6 +23,15 @@ export type TestGenerator = {
  */
 export interface TestGeneratorResourceI {
     /**
+     * Retrieve one test generator.
+     *
+     * @param {string} id
+     *
+     * @returns {Promise<TestGenerator>}
+     */
+    find(id: string): Promise<TestGenerator>;
+
+    /**
      * Retrieve all test generators.
      *
      * @returns {Promise<TestGenerator[]>}

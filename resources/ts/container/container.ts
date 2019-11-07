@@ -13,7 +13,7 @@ import { JsonSerializer } from "@/container/implementations/jsonSerializer";
 import { ApiClient } from "@/container/implementations/apiClient";
 import { TYPES } from "@/container/types";
 import { en, fr } from "@/lang";
-import { routes, scrollBehavior } from "@/routes";
+import { routes, scrollBehavior } from "@/router";
 import { TestResourceI } from "@/container/contracts/testResourceI";
 import { TestResource } from "@/container/implementations/testResource";
 import { TestGeneratorResourceI } from "@/container/contracts/testGeneratorResourceI";
@@ -61,5 +61,11 @@ container.bind<TestGeneratorResourceI>(TYPES.TestGeneratorResource)
 container.bind<MockGeneratorResourceI>(TYPES.MockGeneratorResource)
     .to(MockGeneratorResource)
     .inSingletonScope();
+
+export type Resolver<T> = () => T;
+
+export function makeResolver<T>(symbol: symbol): Resolver<T> {
+    return () => container.get<T>(symbol);
+}
 
 export { container };

@@ -1,0 +1,26 @@
+@import "~bootstrap/scss/dropdown";
+
+.dropdown-menu {
+  background-color: var(--secondary-bg-color);
+  border: none;
+
+  .dropdown-item {
+    background-color: var(--secondary-bg-color);
+    color: var(--secondary-color);
+
+    &:hover, &:focus {
+      background-color: var(--secondary-bg-color);
+      color: var(--secondary-color);
+      filter: brightness(var(--hover-brightness));
+    }
+
+    &.active {
+      background-color: var(--primary-bg-color);
+      color: var(--primary-color);
+
+      &:hover, &:focus {
+        filter: brightness(var(--hover-brightness));
+      }
+    }
+  }
+}

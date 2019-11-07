@@ -1,12 +1,10 @@
 <template>
-    <codemirror v-if="show"
-                :value="code"
+    <codemirror :value="code"
                 :options="options"
                 @input="handleInput"/>
 </template>
 
 <script>
-    import "codemirror/lib/codemirror.css";
     import "codemirror/mode/javascript/javascript";
     import "codemirror/mode/php/php";
     import { codemirror } from "vue-codemirror";
@@ -16,8 +14,14 @@
             codemirror,
         },
         props: {
-            code: String,
-            options: Object,
+            code: {
+                required: true,
+                type: String,
+            },
+            options: {
+                required: true,
+                type: Object,
+            },
         },
         methods: {
             handleInput(code) {

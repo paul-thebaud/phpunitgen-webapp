@@ -1,8 +1,9 @@
 import { ApiClientI } from "@/container/contracts/apiClientI";
-import { inject } from "inversify";
+import { inject, injectable } from "inversify";
 import { TYPES } from "@/container/types";
 import { TestGenerator, TestGeneratorResourceI } from "@/container/contracts/testGeneratorResourceI";
 
+@injectable()
 export class TestGeneratorResource implements TestGeneratorResourceI {
     /**
      * The API client to retrieve test generators.
@@ -18,6 +19,13 @@ export class TestGeneratorResource implements TestGeneratorResourceI {
         @inject(TYPES.ApiClient) apiClient: ApiClientI
     ) {
         this.apiClient = apiClient;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public async find(id: string): Promise<TestGenerator> {
+        return this.apiClient.get(`/api/test-generators/${id}`);
     }
 
     /**

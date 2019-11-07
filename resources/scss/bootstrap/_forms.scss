@@ -1,0 +1,12 @@
+@import "~bootstrap/scss/forms";
+
+.form-control {
+  border: none;
+  background-color: var(--secondary-bg-color);
+  color: var(--secondary-color);
+
+  &:active, &:focus {
+    background-color: var(--secondary-bg-color);
+    color: var(--secondary-color);
+  }
+}

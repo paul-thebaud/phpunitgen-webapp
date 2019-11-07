@@ -1,10 +1,10 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
+import { VueRouter } from "vue-router/types/router";
 import "@/entries/bootstrap";
 import { container } from "@/container/container";
 import { TYPES } from "@/container/types";
 import App from "@/components/layout/App.vue";
-import { VueRouter } from "vue-router/types/router";
 
 new Vue({
     el: "#app",

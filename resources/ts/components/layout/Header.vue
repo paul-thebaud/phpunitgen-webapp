@@ -10,8 +10,8 @@
 
             <BButton class="d-lg-none rounded-full"
                      v-b-toggle.nav-collapse>
-                <FontAwesomeIcon class="when-closed" :icon="icons.faBars"></FontAwesomeIcon>
-                <FontAwesomeIcon class="when-opened" :icon="icons.faTimes"></FontAwesomeIcon>
+                <FontAwesomeIcon class="when-closed" icon="bars"></FontAwesomeIcon>
+                <FontAwesomeIcon class="when-opened" icon="times"></FontAwesomeIcon>
             </BButton>
 
             <BCollapse id="nav-collapse"
@@ -28,7 +28,7 @@
                         <BDropdownItem v-for="(translation, targetLocale) in locales"
                                        @click="handleLocaleChange(targetLocale)"
                                        :key="`lang-${targetLocale}`"
-                                       :active="locale === targetLocale">
+                                       :active="currentLocale === targetLocale">
                             {{ translation }}
                         </BDropdownItem>
                     </BNavItemDropdown>
@@ -39,14 +39,14 @@
                         <BDropdownItem v-for="targetTheme in themes"
                                        @click="handleThemeChange(targetTheme)"
                                        :key="`theme-${targetTheme.getKey()}`"
-                                       :active="theme === targetTheme">
+                                       :active="currentTheme.getKey() === targetTheme.getKey()">
                             {{ targetTheme.getEmoji() }}
                             {{ $t(`common.themes.${targetTheme.getKey()}`) }}
                         </BDropdownItem>
                     </BNavItemDropdown>
 
-                    <BButton class="rounded-pill px-4 py-2"
-                             :to="{ name: 'tool' }">
+                    <BButton :to="{ name: 'tool' }"
+                             class="mt-2 mt-lg-0 rounded-pill px-4 py-2">
                         {{ $t("layout.header.useOnline") }}
                     </BButton>
                 </BNavbarNav>
@@ -56,46 +56,37 @@
 </template>
 
 <script lang="ts">
-    import "@sass/components/layout/header.scss";
     import Vue from "vue";
-    import Component from "vue-class-component";
-    import { Prop } from "vue-property-decorator";
-    import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+    import { Component, Inject, Prop } from "vue-property-decorator";
     import { TYPES } from "@/container/types";
     import { ThemeI } from "@/container/contracts/themeI";
     import { LocaleI } from "@/container/contracts/localeI";
-    import { container } from "@/container/container";
     import { Theme } from "@/container/concerns/theme";
 
-    const theme: ThemeI = container.get<ThemeI>(TYPES.Theme);
-    const locale: LocaleI = container.get<LocaleI>(TYPES.Locale);
-
     @Component
-    export default class App extends Vue {
+    export default class Header extends Vue {
+        @Inject(TYPES.Theme)
+        protected theme!: ThemeI;
+
+        @Inject(TYPES.Locale)
+        protected locale!: LocaleI;
+
         @Prop(Array)
         protected readonly themes!: Theme[];
 
-        protected icons = {
-            faBars,
-            faTimes,
-        };
+        protected locales = this.locale.getLocales();
 
-        protected locales: { [key: string]: string } = locale.getLocales();
+        protected currentTheme = this.theme.getTheme();
 
-        protected theme: Theme = theme.getTheme();
-
-        protected locale: string = locale.getLocale();
-
-        protected handleLocaleChange(newLocale: string): void {
-            locale.changeLocale(this.locale = newLocale);
-        }
+        protected currentLocale = this.locale.getLocale();
 
         protected handleThemeChange(newTheme: Theme): void {
-            theme.changeTheme(this.theme = newTheme);
+            this.currentTheme = newTheme;
+            this.theme.changeTheme(this.currentTheme);
+        }
+
+        protected handleLocaleChange(newLocale: string): void {
+            this.locale.changeLocale(this.currentLocale = newLocale);
         }
     };
 </script>
-
-<style scoped>
-
-</style>

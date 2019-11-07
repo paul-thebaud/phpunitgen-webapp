@@ -1,0 +1,17 @@
+@import "~bootstrap/scss/toasts";
+
+.toast {
+  border: none;
+  border-radius: 0.25rem;
+
+  .close {
+    color: var(--secondary-color);
+    text-shadow: none;
+  }
+
+  .toast-header, .toast-body {
+    border: none;
+    background-color: var(--secondary-bg-color);
+    color: var(--secondary-color);
+  }
+}

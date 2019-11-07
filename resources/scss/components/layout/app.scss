@@ -1,0 +1,10 @@
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  & > .wrapper > .container {
+    padding-top: 60px;
+    padding-bottom: 10px;
+  }
+}

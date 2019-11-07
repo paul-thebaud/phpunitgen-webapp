@@ -1,0 +1,10 @@
+@import "~bootstrap/scss/custom-forms";
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  background-color: var(--primary-bg-color);
+  border-color: var(--primary-bg-color);
+}
+
+.custom-control-label::before {
+  background-color: var(--secondary-bg-color);
+}

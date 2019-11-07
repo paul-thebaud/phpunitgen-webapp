@@ -1,10 +1,15 @@
-import { Route, RouteConfig } from "vue-router";
+import { Route } from "vue-router";
 import { Position } from "vue-router/types/router";
+import Home from "@/views/Home.vue";
+import Tool from "@/views/Tool.vue";
 
 /**
  * The routes of application.
  */
-export const routes: RouteConfig[] = [];
+export const routes = [
+    { path: "/", name: "home", component: Home },
+    { path: "/tool", name: "tool", component: Tool },
+];
 
 /**
  * Tells to scroll to previous position or top using previous position.

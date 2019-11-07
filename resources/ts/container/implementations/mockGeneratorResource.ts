@@ -1,8 +1,9 @@
 import { ApiClientI } from "@/container/contracts/apiClientI";
-import { inject } from "inversify";
+import { inject, injectable } from "inversify";
 import { TYPES } from "@/container/types";
 import { MockGenerator, MockGeneratorResourceI } from "@/container/contracts/mockGeneratorResourceI";
 
+@injectable()
 export class MockGeneratorResource implements MockGeneratorResourceI {
     /**
      * The API client to retrieve mock generators.

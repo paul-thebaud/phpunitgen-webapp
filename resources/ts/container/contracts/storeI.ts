@@ -90,6 +90,20 @@ export interface StoreI {
     incrementGenerationsCount(): StoreI;
 
     /**
+     * Check if the tabs display should be forced even if the user is on a wide screen.
+     *
+     * @returns {boolean}
+     */
+    getForceEditorTabs(): boolean;
+
+    /**
+     * Check if the tabs display should be forced even if the user is on a wide screen.
+     *
+     * @param {boolean} forceEditorTabs
+     */
+    setForceEditorTabs(forceEditorTabs: boolean): StoreI;
+
+    /**
      * Fetch the store content.
      *
      * @returns {Store}

@@ -1,5 +1,5 @@
 import { ApiClientI } from "@/container/contracts/apiClientI";
-import { inject } from "inversify";
+import { inject, injectable } from "inversify";
 import { TYPES } from "@/container/types";
 import { LocaleI } from "@/container/contracts/localeI";
 import { ValidationError } from "@/errors/ValidationError";
@@ -14,6 +14,7 @@ import { UnknownError } from "@/errors/UnknownError";
  * @author  Killian Hascoët <killianh@live.fr>
  * @license MIT
  */
+@injectable()
 export class ApiClient implements ApiClientI {
     /**
      * The window to call "fetch" method.

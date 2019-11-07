@@ -24,7 +24,7 @@ mix.webpackConfig(webpackConfig)
     //.js('resources/js/docs.js', 'public/js')
     .js('resources/ts/entries/app.ts', 'public/js')
     //.js('resources/ts/docs.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/scss/entries/app.scss', 'public/css');
     //.sass('resources/sass/docs.scss', 'public/css');
 
 if (mix.inProduction()) {

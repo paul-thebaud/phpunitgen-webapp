@@ -118,8 +118,8 @@ class TestController extends BaseController
     ): array {
         $config = new Collection(Arr::get($validatedData, 'config'));
 
-        $mockGenerator = $mockGeneratorResource->find($config->pull('mock_generator'))['class'];
-        $testGenerator = $testGeneratorResource->find($config->pull('test_generator'))['class'];
+        $mockGenerator = $mockGeneratorResource->find($config->pull('mockGenerator'))['class'];
+        $testGenerator = $testGeneratorResource->find($config->pull('testGenerator'))['class'];
 
         $implementations = call_user_func([$testGenerator, 'implementations']);
         $implementations[MockGenerator::class] = $mockGenerator;

@@ -1,0 +1,28 @@
+.theme-unicorn {
+  --base-bg-color: #1a202c;
+  --base-color: #ffffff;
+
+  --gradient-start-color: #c100ff;
+  --gradient-stop-color: #ff0080;
+  --gradient-bg-color: var(--gradient-start-color) 0%, var(--gradient-stop-color) 100%;
+  --gradient-color: #ffffff;
+
+  --primary-bg-color: #8300FF;
+  --primary-color: #ffffff;
+
+  --secondary-bg-color: #2e343f;
+  --secondary-color: var(--base-color);
+
+  --success-bg-color: #28a745;
+  --success-color: var(--base-color);
+
+  --warning-bg-color: #ffc107;
+  --warning-color: var(--base-bg-color);
+
+  --danger-bg-color: #c82333;
+  --danger-color: var(--base-color);
+
+  --muted-color: #6c757d;
+
+  --hover-brightness: 115%;
+}
