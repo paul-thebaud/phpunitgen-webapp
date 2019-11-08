@@ -1,17 +1,17 @@
 <template>
     <div id="app">
-        <Header :themes="unlockedThemes"/>
+        <HeaderNav :themes="unlockedThemes"/>
         <div class="wrapper">
             <RouterView @theme-unlock="handleThemeUnlock"/>
         </div>
-        <Footer/>
+        <FooterNav/>
     </div>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
-    import Header from "@/components/layout/Header.vue";
-    import Footer from "@/components/layout/Footer.vue";
+    import HeaderNav from "@/components/layout/HeaderNav.vue";
+    import FooterNav from "@/components/layout/FooterNav.vue";
     import { TYPES } from "@/container/types";
     import { ThemeI } from "@/container/contracts/themeI";
     import { Theme } from "@/container/concerns/theme";
@@ -19,8 +19,8 @@
 
     @Component({
         components: {
-            Header,
-            Footer,
+            HeaderNav,
+            FooterNav,
         },
     })
     export default class Layout extends Vue {

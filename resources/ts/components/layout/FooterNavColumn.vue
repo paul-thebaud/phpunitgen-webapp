@@ -21,7 +21,7 @@
     import { Component, Prop } from "vue-property-decorator";
 
     @Component
-    export default class Footer extends Vue {
+    export default class FooterNavColumn extends Vue {
         @Prop(String)
         protected name!: string;
 

@@ -49,7 +49,7 @@
 <script>
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
     import { faCog, faFileImport, faPaste, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
-    import Editor from '@/components/tool/Editor';
+    import Editor from '@/components/tool/CodeEditor';
     import ConfigurationButton from '@/components/tool/ConfigurationButton';
     import { testGeneratorResource } from '@/resources';
     import { storage } from '@/services';

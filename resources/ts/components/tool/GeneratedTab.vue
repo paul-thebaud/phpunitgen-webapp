@@ -2,7 +2,7 @@
     <div>
         <div class="my-3 d-flex justify-content-end">
             <div class="mr-auto d-flex">
-                <p v-if="hasCode" class="ml-2 my-auto">
+                <p v-if="hasCode" class="my-auto">
                     {{ $t("components.tool.generatedTab.executionTime", { executionTime: formattedExecutionTime }) }}
                 </p>
             </div>
@@ -24,9 +24,9 @@
                 variant="warning">
             {{ $t("components.tool.generatedTab.missingCode") }}
         </BAlert>
-        <Editor :show="hasCode"
-                :code="test ? test.code : ''"
-                :read-only="true"/>
+        <CodeEditor :show="hasCode"
+                    :code="test ? test.code : ''"
+                    :read-only="true"/>
     </div>
 </template>
 
@@ -34,12 +34,12 @@
     import Vue from "vue";
     import { Component, Prop } from "vue-property-decorator";
     import { TranslateResult } from "vue-i18n";
-    import Editor from "@/components/tool/Editor.vue";
+    import CodeEditor from "@/components/tool/CodeEditor.vue";
     import { Test } from "@/container/contracts/testResourceI";
 
     @Component({
         components: {
-            Editor
+            CodeEditor,
         }
     })
     export default class GeneratedTab extends Vue {

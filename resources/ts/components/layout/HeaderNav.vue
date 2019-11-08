@@ -64,7 +64,7 @@
     import { Theme } from "@/container/concerns/theme";
 
     @Component
-    export default class Header extends Vue {
+    export default class HeaderNav extends Vue {
         @Inject(TYPES.Theme)
         protected theme!: ThemeI;
 

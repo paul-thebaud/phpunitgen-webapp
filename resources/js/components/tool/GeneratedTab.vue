@@ -33,7 +33,7 @@
 <script>
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
     import { faCopy, faDownload } from '@fortawesome/free-solid-svg-icons';
-    import Editor from '@/components/tool/Editor';
+    import Editor from '@/components/tool/CodeEditor';
     import ConfigurationButton from '@/components/tool/ConfigurationButton';
 
     export default {

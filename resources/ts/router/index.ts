@@ -1,14 +1,14 @@
 import { Route } from "vue-router";
 import { Position } from "vue-router/types/router";
-import Home from "@/views/Home.vue";
-import Tool from "@/views/Tool.vue";
+import HomeView from "@/views/HomeView.vue";
+import ToolView from "@/views/ToolView.vue";
 
 /**
  * The routes of application.
  */
 export const routes = [
-    { path: "/", name: "home", component: Home },
-    { path: "/tool", name: "tool", component: Tool },
+    { path: "/", name: "home", component: HomeView },
+    { path: "/tool", name: "tool", component: ToolView },
 ];
 
 /**

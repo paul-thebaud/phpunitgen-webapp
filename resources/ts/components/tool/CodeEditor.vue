@@ -1,23 +1,25 @@
 <template>
-    <CodeMirror v-if="show"
-                :code="code"
+    <codemirror v-if="show"
+                :value="code"
                 :options="codeMirrorOptions"
-                @input="handleInput"></CodeMirror>
+                @input="handleInput"></codemirror>
 </template>
 
 <script lang="ts">
+    import "codemirror/mode/javascript/javascript";
+    import "codemirror/mode/php/php";
     import Vue from "vue";
+    import { codemirror } from "vue-codemirror";
     import { Component, Inject, Prop } from "vue-property-decorator";
     import { ThemeI } from "@/container/contracts/themeI";
     import { TYPES } from "@/container/types";
-    import CodeMirror from "@/components/tool/CodeMirror.vue";
 
     @Component({
         components: {
-            CodeMirror,
+            codemirror,
         },
     })
-    export default class Editor extends Vue {
+    export default class CodeEditor extends Vue {
         @Inject(TYPES.Theme)
         protected theme!: ThemeI;
 

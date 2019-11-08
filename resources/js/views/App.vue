@@ -10,8 +10,8 @@
 
 <script>
     import { theme } from '@/services';
-    import Header from '@/components/layout/Header';
-    import Footer from '@/components/layout/Footer';
+    import Header from '@/components/layout/HeaderNav';
+    import Footer from '@/components/layout/FooterNav';
 
     export default {
         components: {

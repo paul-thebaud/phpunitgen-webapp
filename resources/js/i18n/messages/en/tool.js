@@ -3,7 +3,7 @@ export default {
     'all_themes_unlocked': 'Congrats! You unlocked all available themes!',
     'themes_list': 'See the themes list.',
     'editor': {
-        'title': 'Editor',
+        'title': 'CodeEditor.vue',
         'actions': {
             'configure': 'Configure',
             'import': 'Import',

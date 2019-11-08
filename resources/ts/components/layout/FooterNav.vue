@@ -9,10 +9,10 @@
                 </BCol>
             </BRow>
             <BRow>
-                <FooterColumn v-for="(linksList, key) in links"
-                              :key="key"
-                              :name="key"
-                              :links="linksList"/>
+                <FooterNavColumn v-for="(linksList, key) in links"
+                                 :key="key"
+                                 :name="key"
+                                 :links="linksList"/>
             </BRow>
         </BContainer>
     </footer>
@@ -20,15 +20,15 @@
 
 <script lang="ts">
     import Vue from "vue";
-    import FooterColumn from "@/components/layout/FooterColumn.vue";
+    import FooterNavColumn from "@/components/layout/FooterNavColumn.vue";
     import { Component, Watch } from "vue-property-decorator";
 
     @Component({
         components: {
-            FooterColumn
+            FooterNavColumn
         }
     })
-    export default class Footer extends Vue {
+    export default class FooterNav extends Vue {
         protected links = {};
 
         protected mounted(): void {

@@ -41,22 +41,22 @@
                     {{ showExceptionButtonLabel }}
                 </BButton>
             </div>
-            <Editor v-if="showExceptionEditor"
-                    :code="JSON.stringify(exception, null, 2)"
-                    :read-only="true"
-                    mode="application/json"/>
+            <CodeEditor v-if="showExceptionEditor"
+                        :code="JSON.stringify(exception, null, 2)"
+                        :read-only="true"
+                        mode="application/json"/>
         </div>
-        <Editor v-if="! showExceptionEditor"
-                @input="handleEditorChange"
-                :code="code"
-                :read-only="loading"/>
+        <CodeEditor v-if="! showExceptionEditor"
+                    @input="handleEditorChange"
+                    :code="code"
+                    :read-only="loading"/>
     </div>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
     import { Component, Inject, Prop } from "vue-property-decorator";
-    import Editor from "@/components/tool/Editor.vue";
+    import CodeEditor from "@/components/tool/CodeEditor.vue";
     import { StoreI } from "@/container/contracts/storeI";
     import { TYPES } from "@/container/types";
     import { TestGeneratorResourceI } from "@/container/contracts/testGeneratorResourceI";
@@ -64,7 +64,7 @@
 
     @Component({
         components: {
-            Editor
+            CodeEditor,
         }
     })
     export default class EditorTab extends Vue {

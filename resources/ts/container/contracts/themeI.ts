@@ -25,6 +25,13 @@ export interface ThemeI {
     getUnlockedThemes(): Theme[];
 
     /**
+     * Get the next theme to unlock, null if all unlocked.
+     *
+     * @returns {Theme | null}
+     */
+    getNextUnlockedTheme(): Theme | null;
+
+    /**
      * Get the current theme.
      *
      * @returns {Theme}

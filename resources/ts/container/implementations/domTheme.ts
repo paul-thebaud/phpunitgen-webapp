@@ -113,6 +113,21 @@ export class DomTheme implements ThemeI {
     /**
      * @inheritDoc
      */
+    public getNextUnlockedTheme(): Theme | null {
+        const generationsCount = this.store.getGenerationsCount();
+
+        for (const theme of this.getThemes()) {
+            if (generationsCount < theme.getGenerationsToUnlock()) {
+                return theme;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public isUnlocked(theme: Theme): boolean {
         return this.store.getGenerationsCount() >= theme.getGenerationsToUnlock();
     }
