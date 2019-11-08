@@ -74,15 +74,15 @@
         @Prop(Array)
         protected readonly themes!: Theme[];
 
-        protected locales = this.locale.getLocales();
+        @Prop(Object)
+        protected currentTheme!: Theme;
 
-        protected currentTheme = this.theme.getTheme();
+        protected locales = this.locale.getLocales();
 
         protected currentLocale = this.locale.getLocale();
 
         protected handleThemeChange(newTheme: Theme): void {
-            this.currentTheme = newTheme;
-            this.theme.changeTheme(this.currentTheme);
+            this.$emit("theme-change", newTheme);
         }
 
         protected handleLocaleChange(newLocale: string): void {

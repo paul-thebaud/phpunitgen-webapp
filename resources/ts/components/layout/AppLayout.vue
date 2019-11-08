@@ -1,8 +1,12 @@
 <template>
     <div id="app">
-        <HeaderNav :themes="unlockedThemes"/>
+        <HeaderNav @theme-change="handleThemeChange"
+                   :themes="unlockedThemes"
+                   :current-theme="currentTheme"/>
         <div class="wrapper">
-            <RouterView @theme-unlock="handleThemeUnlock"/>
+            <RouterView @theme-unlock="handleThemeUnlock"
+                        @theme-change="handleThemeChange"
+                        :current-theme="currentTheme"/>
         </div>
         <FooterNav/>
     </div>
@@ -16,6 +20,7 @@
     import { ThemeI } from "@/container/contracts/themeI";
     import { Theme } from "@/container/concerns/theme";
     import { Component, Inject } from "vue-property-decorator";
+    import { StoreI } from "@/container/contracts/storeI";
 
     @Component({
         components: {
@@ -27,7 +32,23 @@
         @Inject(TYPES.Theme)
         protected theme!: ThemeI;
 
+        @Inject(TYPES.Store)
+        protected store!: StoreI;
+
+        protected currentTheme: Theme = this.theme.getTheme();
+
         protected unlockedThemes = this.theme.getUnlockedThemes();
+
+        protected generationsCount = this.store.getGenerationsCount();
+
+        protected handleThemeChange(newTheme: Theme) {
+            if (newTheme.getGenerationsToUnlock() > this.generationsCount) {
+                return;
+            }
+
+            this.currentTheme = newTheme;
+            this.theme.changeTheme(this.currentTheme);
+        }
 
         protected handleThemeUnlock(newTheme: Theme): void {
             const themeName = this.$i18n.t(`common.themes.${newTheme.getKey()}`);

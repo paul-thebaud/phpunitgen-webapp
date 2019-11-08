@@ -2,6 +2,7 @@ import { Route } from "vue-router";
 import { Position } from "vue-router/types/router";
 import HomeView from "@/views/HomeView.vue";
 import ToolView from "@/views/ToolView.vue";
+import ThemesView from "@/views/ThemesView.vue";
 
 /**
  * The routes of application.
@@ -9,6 +10,7 @@ import ToolView from "@/views/ToolView.vue";
 export const routes = [
     { path: "/", name: "home", component: HomeView },
     { path: "/tool", name: "tool", component: ToolView },
+    { path: "/themes", name: "themes", component: ThemesView },
 ];
 
 /**
