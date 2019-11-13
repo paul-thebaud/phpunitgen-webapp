@@ -42,7 +42,7 @@
         protected generationsCount = this.store.getGenerationsCount();
 
         protected handleThemeChange(newTheme: Theme) {
-            if (newTheme.getGenerationsToUnlock() > this.generationsCount) {
+            if (! this.theme.isUnlocked(newTheme)) {
                 return;
             }
 

@@ -3,6 +3,7 @@ import { Position } from "vue-router/types/router";
 import HomeView from "@/views/HomeView.vue";
 import ToolView from "@/views/ToolView.vue";
 import ThemesView from "@/views/ThemesView.vue";
+import ConfigurationView from "@/views/ConfigurationView.vue";
 
 /**
  * The routes of application.
@@ -11,6 +12,7 @@ export const routes = [
     { path: "/", name: "home", component: HomeView },
     { path: "/tool", name: "tool", component: ToolView },
     { path: "/themes", name: "themes", component: ThemesView },
+    { path: "/configuration", name: "configuration", component: ConfigurationView },
 ];
 
 /**

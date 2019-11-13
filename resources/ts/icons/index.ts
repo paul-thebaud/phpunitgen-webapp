@@ -2,6 +2,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
     faBars,
     faBook,
+    faCheckCircle,
+    faCircleNotch,
     faCog,
     faCopy,
     faDownload,
@@ -9,7 +11,10 @@ import {
     faPaste,
     faPlay,
     faPlayCircle,
+    faPlus,
+    faPlusCircle,
     faRocket,
+    faSearch,
     faTerminal,
     faTimes
 } from "@fortawesome/free-solid-svg-icons";
@@ -17,6 +22,8 @@ import {
 library.add(
     faBars,
     faBook,
+    faCheckCircle,
+    faCircleNotch,
     faCog,
     faCopy,
     faDownload,
@@ -24,7 +31,10 @@ library.add(
     faPaste,
     faPlay,
     faPlayCircle,
+    faPlus,
+    faPlusCircle,
     faRocket,
+    faSearch,
     faTerminal,
     faTimes
 );

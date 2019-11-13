@@ -2,26 +2,22 @@
     <BContainer class="my-5">
         <h1>{{ $t("views.themes.title") }}</h1>
         <p>{{ $t("views.themes.description") }}</p>
-        <BRow>
-            <BCol v-for="targetTheme in themes"
-                  :key="targetTheme.getKey()"
-                  class="theme-wrapper pb-4"
-                  sm="6"
-                  md="4"
-                  lg="3">
-                <BCard @click="handleThemeChange(targetTheme)"
-                       :class="getThemeCardClass(targetTheme)"
-                       class="text-center">
-                    <h4 class="mb-0">
-                        {{ targetTheme.getEmoji() }}
-                        {{ $t(`common.themes.${targetTheme.getKey()}`) }}
-                    </h4>
-                    <small>
-                        {{ getThemeCardText(targetTheme) }}
-                    </small>
-                </BCard>
-            </BCol>
-        </BRow>
+        <CardSelect @input="handleThemeChange"
+                    :values="themesMap"
+                    :value="currentTheme.getKey()"
+                    :compute-classes="getThemeCardClass"
+                    :display-all="true"
+                    id="themes-card-select">
+            <template v-slot:value="{ value: targetTheme }">
+                <h4 class="mb-0">
+                    {{ targetTheme.getEmoji() }}
+                    {{ $t(`common.themes.${targetTheme.getKey()}`) }}
+                </h4>
+                <small>
+                    {{ getThemeCardText(targetTheme) }}
+                </small>
+            </template>
+        </CardSelect>
     </BContainer>
 </template>
 
@@ -32,8 +28,11 @@
     import { ThemeI } from "@/container/contracts/themeI";
     import { StoreI } from "@/container/contracts/storeI";
     import { Theme } from "@/container/concerns/theme";
+    import CardSelect from "@/components/forms/CardSelectField.vue";
 
-    @Component
+    @Component({
+        components: { CardSelect }
+    })
     export default class ThemesView extends Vue {
         @Inject(TYPES.Store)
         protected store!: StoreI;
@@ -48,9 +47,21 @@
 
         protected themes = this.theme.getThemes();
 
-        protected getThemeCardClass(theme: Theme): string {
+        protected get themesMap(): { [key: string]: Theme } {
+            const themes: { [key: string]: Theme } = {};
+
+            this.themes.forEach(theme => {
+                themes[theme.getKey()] = theme;
+            });
+
+            return themes;
+        }
+
+        protected getThemeCardClass(themeKey: string): string {
+            const theme = this.themesMap[themeKey];
+
             return theme.getGenerationsToUnlock() > this.generationsCount
-                ? "theme-locked"
+                ? "disabled"
                 : (theme === this.currentTheme ? "active" : "");
         }
 
@@ -60,8 +71,8 @@
                 : this.$t("views.themes.unlocked");
         }
 
-        protected handleThemeChange(newTheme: Theme): void {
-            this.$emit("theme-change", newTheme);
+        protected handleThemeChange(newThemeKey: string): void {
+            this.$emit("theme-change", this.themesMap[newThemeKey]);
         }
     };
 </script>
