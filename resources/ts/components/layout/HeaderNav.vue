@@ -17,8 +17,8 @@
             <BCollapse id="nav-collapse"
                        is-nav>
                 <BNavbarNav class="ml-auto">
-                    <BNavItem class="mr-lg-2"
-                              href="/docs#/">
+                    <BNavItem href="/docs#/"
+                              class="mr-lg-2">
                         {{ $t("layout.header.documentation") }}
                     </BNavItem>
 

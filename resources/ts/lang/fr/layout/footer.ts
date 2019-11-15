@@ -1,21 +1,21 @@
 export default {
-    'legal': {
-        'title': 'Légal',
-        'links': {
-            'terms': 'Conditions d\'utilisation',
+    "legal": {
+        "title": "Légal",
+        "links": {
+            "terms": "Informations légales & conditions",
         },
     },
-    'links': {
-        'title': 'Liens',
-        'links': {
-            'documentation': 'Documentation',
-            'support': 'Support',
+    "links": {
+        "title": "Liens",
+        "links": {
+            "documentation": "Documentation",
+            "support": "Support",
         },
     },
-    'authors': {
-        'title': 'Auteurs',
-        'links': {
-            'contributors': 'Contributeurs',
+    "authors": {
+        "title": "Auteurs",
+        "links": {
+            "contributors": "Contributeurs",
         },
     },
 };

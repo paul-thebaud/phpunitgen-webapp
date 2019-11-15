@@ -140,14 +140,16 @@ export class DomTheme implements ThemeI {
      */
     protected updateDom(previousTheme: Theme, newTheme: Theme): void {
         const bodyClassList = window.document.body.classList;
-        const codeMirror = window.document.querySelector(".CodeMirror");
+        const codeMirrors = window.document.querySelectorAll(".CodeMirror");
 
         bodyClassList.add("theme-switching");
         bodyClassList.add(this.computeThemeClass(newTheme));
-        if (codeMirror && previousTheme.getCodeMirror() !== newTheme.getCodeMirror()) {
-            const codeMirrorClassList = codeMirror.classList;
-            codeMirrorClassList.add(`cm-s-${newTheme.getCodeMirror()}`);
-            codeMirrorClassList.remove(`cm-s-${previousTheme.getCodeMirror()}`);
+        if (codeMirrors.length && previousTheme.getCodeMirror() !== newTheme.getCodeMirror()) {
+            codeMirrors.forEach(codeMirror => {
+                const codeMirrorClassList = codeMirror.classList;
+                codeMirrorClassList.add(`cm-s-${newTheme.getCodeMirror()}`);
+                codeMirrorClassList.remove(`cm-s-${previousTheme.getCodeMirror()}`);
+            });
         }
         bodyClassList.remove(this.computeThemeClass(previousTheme));
 

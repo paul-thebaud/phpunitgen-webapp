@@ -11,6 +11,7 @@
   --primary-color: #ffffff;
 
   --secondary-bg-color: #2e343f;
+  --secondary-bg-color-hover: #{lighten(#2e343f, 5%)};
   --secondary-color: var(--base-color);
 
   --success-bg-color: #28a745;

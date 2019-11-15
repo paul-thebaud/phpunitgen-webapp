@@ -4,6 +4,8 @@ import HomeView from "@/views/HomeView.vue";
 import ToolView from "@/views/ToolView.vue";
 import ThemesView from "@/views/ThemesView.vue";
 import ConfigurationView from "@/views/ConfigurationView.vue";
+import LegalView from "@/views/LegalView.vue";
+import LostView from "@/views/LostView.vue";
 
 /**
  * The routes of application.
@@ -13,6 +15,8 @@ export const routes = [
     { path: "/tool", name: "tool", component: ToolView },
     { path: "/themes", name: "themes", component: ThemesView },
     { path: "/configuration", name: "configuration", component: ConfigurationView },
+    { path: "/legal", name: "legal", component: LegalView },
+    { path: "*", name: "lost", component: LostView },
 ];
 
 /**

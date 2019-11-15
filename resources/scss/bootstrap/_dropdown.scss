@@ -2,7 +2,7 @@
 
 .dropdown-menu {
   background-color: var(--secondary-bg-color);
-  border: none;
+  border: 1px solid var(--secondary-bg-color-hover);
 
   .dropdown-item {
     background-color: var(--secondary-bg-color);

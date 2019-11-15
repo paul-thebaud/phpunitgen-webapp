@@ -9,23 +9,24 @@
  |
  */
 
-const mix = require('laravel-mix');
-const webpackConfig = require('./webpack.config');
+const mix = require("laravel-mix");
+const webpackConfig = require("./webpack.config");
 
 mix.webpackConfig(webpackConfig)
     .options({
         processCssUrls: false,
     })
     .extract([
-        'vue',
-        'vue-i18n',
+        "vue",
+        "vue-i18n",
+        "inversify",
+        "reflect-metadata",
+        "vue-property-decorator",
     ])
-    //.js('resources/js/app.js', 'public/js')
-    //.js('resources/js/docs.js', 'public/js')
-    .js('resources/ts/entries/app.ts', 'public/js')
-    //.js('resources/ts/docs.js', 'public/js')
-    .sass('resources/scss/entries/app.scss', 'public/css');
-    //.sass('resources/sass/docs.scss', 'public/css');
+    .js("resources/ts/entries/app.ts", "public/js")
+    .js("resources/ts/entries/docs.ts", "public/js")
+    .sass("resources/scss/entries/app.scss", "public/css")
+    .sass("resources/scss/entries/docs.scss", "public/css");
 
 if (mix.inProduction()) {
     mix.version();

@@ -9,6 +9,7 @@
  */
 
 const path = require("path");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = {
     module: {
@@ -28,4 +29,7 @@ module.exports = {
             "@scss": path.resolve(__dirname, "./resources/scss"),
         },
     },
+    plugins: [
+        new BundleAnalyzerPlugin(),
+    ],
 };

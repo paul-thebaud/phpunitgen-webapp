@@ -7,6 +7,7 @@
 @import '~codemirror/theme/blackboard.css';
 
 .CodeMirror {
+  line-height: 1.25;
   height: auto !important;
   border-radius: 0.25rem;
   font-family: $font-family-monospace !important;
@@ -17,14 +18,10 @@
     color: var(--muted-color) !important;
   }
 
-  .CodeMirror-gutters {
-    padding: 0 !important;
-  }
-
-  .CodeMirror-gutters, div.CodeMirror-selected {
+  .CodeMirror-gutters, .CodeMirror-selected {
     border: none;
-    background-color: var(--secondary-bg-color) !important;
-    filter: brightness(var(--hover-brightness));
+    padding: 0 !important;
+    background: var(--secondary-bg-color-hover) !important;
   }
 
   .CodeMirror-gutter.CodeMirror-linenumbers {
