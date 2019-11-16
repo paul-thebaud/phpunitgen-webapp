@@ -1,22 +1,35 @@
 import { Route } from "vue-router";
 import { Position } from "vue-router/types/router";
-import HomeView from "@/views/HomeView.vue";
-import ToolView from "@/views/ToolView.vue";
-import ThemesView from "@/views/ThemesView.vue";
-import ConfigurationView from "@/views/ConfigurationView.vue";
-import LegalView from "@/views/LegalView.vue";
-import LostView from "@/views/LostView.vue";
 
 /**
  * The routes of application.
  */
 export const routes = [
-    { path: "/", name: "home", component: HomeView },
-    { path: "/tool", name: "tool", component: ToolView },
-    { path: "/themes", name: "themes", component: ThemesView },
-    { path: "/configuration", name: "configuration", component: ConfigurationView },
-    { path: "/legal", name: "legal", component: LegalView },
-    { path: "*", name: "lost", component: LostView },
+    {
+        path: "/",
+        name: "home",
+        component: () => import(/* webpackChunkName: "home-view" */"../views/HomeView.vue")
+    },
+    {
+        path: "/tool",
+        name: "tool",
+        component: () => import(/* webpackChunkName: "tool-view" */"../views/ToolView.vue")
+    },
+    {
+        path: "/themes",
+        name: "themes",
+        component: () => import(/* webpackChunkName: "themes-view" */"../views/ThemesView.vue")
+    },
+    {
+        path: "/configuration",
+        name: "configuration",
+        component: () => import(/* webpackChunkName: "configuration-view" */"../views/ConfigurationView.vue")
+    },
+    {
+        path: "/legal",
+        name: "legal",
+        component: () => import(/* webpackChunkName: "legal-view" */"../views/LegalView.vue")
+    },
 ];
 
 /**

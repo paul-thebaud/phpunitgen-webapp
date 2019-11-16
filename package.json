@@ -6,12 +6,21 @@
   "author": "Paul Thébaud <paul.thebaud29@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "dev-js": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-js": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot-js": "NODE_ENV=development webpack-dev-server --inline --hot --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod-js": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "analyse-js": "NODE_ENV=analyse node_modules/webpack/bin/webpack.js --progress --hide-modules --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "dev-css": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --env.mixfile=webpack.css.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-css": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --env.mixfile=webpack.css.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot-css": "NODE_ENV=development webpack-dev-server --inline --hot --env.mixfile=webpack.css.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod-css": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --env.mixfile=webpack.css.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "dev": "$npm_execpath run dev-css & $npm_execpath run dev-js",
+    "watch": "concurrently --kill-others \"$npm_execpath run watch-css\" \"$npm_execpath run watch-js\"",
+    "prod": "$npm_execpath run prod-css & $npm_execpath run prod-js"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.20",
     "@fortawesome/free-regular-svg-icons": "^5.10.0",
     "@fortawesome/free-solid-svg-icons": "^5.10.0",
@@ -20,10 +29,12 @@
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.28",
     "codemirror": "^5.49.2",
+    "concurrently": "^5.0.0",
     "docsify": "^4.9.4",
     "docsify-copy-code": "^2.1.0",
     "inversify": "^5.0.1",
     "laravel-mix": "^5.0.0",
+    "laravel-mix-merge-manifest": "^0.1.2",
     "lodash.debounce": "^4.0.8",
     "reflect-metadata": "^0.1.13",
     "resolve-url-loader": "3.1.0",
@@ -42,6 +53,7 @@
     "vue-scrollto": "^2.17.1",
     "vue-template-compiler": "^2.6.10",
     "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-chunk-rename-plugin": "^1.0.3",
     "whatwg-fetch": "^3.0.0"
   },
   "dependencies": {

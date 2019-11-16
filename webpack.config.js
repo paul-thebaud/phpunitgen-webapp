@@ -9,9 +9,34 @@
  */
 
 const path = require("path");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const ChunkRenamePlugin = require("webpack-chunk-rename-plugin");
+
+const plugins = [
+    new ChunkRenamePlugin({
+        initialChunksWithEntry: true,
+        "/js/vendor": "/js/vendor.js",
+    }),
+];
+if (process.env.NODE_ENV === "analyse") {
+    const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+
+    plugins.push(new BundleAnalyzerPlugin());
+}
+
+let chunkFilename;
+if (process.env.NODE_ENV === "production") {
+    chunkFilename = "js/chunks/[name].[chunkhash].js";
+} else {
+    chunkFilename = "js/chunks/[name].js";
+}
+
 
 module.exports = {
+    output: {
+        publicPath: "/",
+        filename: "[name].js",
+        chunkFilename: chunkFilename,
+    },
     module: {
         rules: [
             {
@@ -26,10 +51,7 @@ module.exports = {
         extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"],
         alias: {
             "@": path.resolve(__dirname, "./resources/ts"),
-            "@scss": path.resolve(__dirname, "./resources/scss"),
         },
     },
-    plugins: [
-        new BundleAnalyzerPlugin(),
-    ],
+    plugins,
 };

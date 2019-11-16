@@ -10,21 +10,9 @@
  */
 
 const mix = require("laravel-mix");
-const webpackConfig = require("./webpack.config");
+require("laravel-mix-merge-manifest");
 
-mix.webpackConfig(webpackConfig)
-    .options({
-        processCssUrls: false,
-    })
-    .extract([
-        "vue",
-        "vue-i18n",
-        "inversify",
-        "reflect-metadata",
-        "vue-property-decorator",
-    ])
-    .js("resources/ts/entries/app.ts", "public/js")
-    .js("resources/ts/entries/docs.ts", "public/js")
+mix.options({ processCssUrls: false })
     .sass("resources/scss/entries/app.scss", "public/css")
     .sass("resources/scss/entries/docs.scss", "public/css");
 
@@ -33,3 +21,5 @@ if (mix.inProduction()) {
 } else {
     mix.sourceMaps();
 }
+
+mix.mergeManifest();
