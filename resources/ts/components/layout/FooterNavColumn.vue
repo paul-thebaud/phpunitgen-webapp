@@ -8,6 +8,7 @@
                 :key="link.href">
                 <BButton :href="link.href"
                          variant="link"
+                         class="p-0 border-0"
                          target="_blank"
                          rel="noopener">
                     {{ link.title }}

@@ -18,6 +18,7 @@
 \.scannerwork/
 
 # Build.
-/public/js/
 /public/css/
+/public/fonts/
+/public/js/
 /public/mix-manifest.json

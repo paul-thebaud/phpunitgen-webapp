@@ -1,8 +1,6 @@
 @import "../components/tool/codemirror";
 
 .editor-tabs {
-  font-weight: bold;
-  padding-bottom: 1rem;
   border: none;
 
   &__tab {
@@ -11,7 +9,6 @@
     color: var(--base-color);
     transition: 300ms;
     border-bottom: 3px solid transparent;
-    padding-bottom: 0.75rem;
 
     &.active {
       color: var(--primary-bg-color);

@@ -26,17 +26,17 @@
                 </p>
             </BCol>
             <BCol :class="forceTabDisplay ? '' : 'd-xl-none'"
-                  class="editor-tabs d-flex"
+                  class="editor-tabs font-weight-bold pb-3 d-flex"
                   cols="12">
                 <div @click="displayedTab = 'editor'"
                      :class="displayedTab === 'editor' ? 'active' : ''"
-                     class="editor-tabs__tab text-center">
+                     class="editor-tabs__tab pb-2 text-center">
                     <FontAwesomeIcon icon="terminal"></FontAwesomeIcon>
                     {{ $t("views.tool.editorTab") }}
                 </div>
                 <div @click="displayedTab = 'generated'"
                      :class="displayedTab === 'generated' ? 'active' : ''"
-                     class="editor-tabs__tab text-center">
+                     class="editor-tabs__tab pb-2 text-center">
                     <FontAwesomeIcon icon="play"></FontAwesomeIcon>
                     {{ $t("views.tool.generatedTab") }}
                 </div>

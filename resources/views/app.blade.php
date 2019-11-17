@@ -11,8 +11,6 @@
 
 @push('style')
     <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
 @endpush
 
 @push('scripts')
