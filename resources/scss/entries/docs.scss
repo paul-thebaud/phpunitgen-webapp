@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
 @import "~docsify/themes/vue";
-@import "../themes/index";
-@import "../components/docs/docs-nav";
 
 body {
   --theme-color: var(--primary-bg-color);

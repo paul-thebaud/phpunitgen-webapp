@@ -13,6 +13,7 @@ const mix = require("laravel-mix");
 require("laravel-mix-merge-manifest");
 
 mix
+    .sass("resources/scss/entries/vendor.scss", "public/css")
     .sass("resources/scss/entries/app.scss", "public/css")
     .sass("resources/scss/entries/docs.scss", "public/css");
 
