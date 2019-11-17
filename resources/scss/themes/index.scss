@@ -13,8 +13,3 @@ body.theme-switching * {
   transition-property: background, box-shadow, border !important;
   transition-duration: 0.5s !important;
 }
-
-body, .bg-base {
-  background-color: var(--base-bg-color);
-  color: var(--base-color);
-}

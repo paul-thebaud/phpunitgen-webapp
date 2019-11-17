@@ -10,7 +10,10 @@
     <meta name="description"
           content="PhpUnitGen is a simple, powerful and modular tool to generate your PHPUnit tests skeletons. It is free and open-source.">
 
-    <link rel="stylesheet" type="text/css" href="{{ mix('css/vendor.css') }}">
+    <link rel="preload" href="{{ mix('css/vendor.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ mix('css/vendor.css') }}">
+    </noscript>
     @stack('style')
 </head>
 

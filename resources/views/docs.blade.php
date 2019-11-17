@@ -11,7 +11,10 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" href="{{ mix('css/docs.css') }}">
+    <link rel="preload" href="{{ mix('css/docs.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ mix('css/docs.css') }}">
+    </noscript>
 @endpush
 
 @push('scripts')

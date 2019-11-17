@@ -9,3 +9,8 @@
 @import "../views/configuration";
 @import "../views/home";
 @import "../views/tool";
+
+body {
+  background-color: var(--base-bg-color);
+  color: var(--base-color);
+}
