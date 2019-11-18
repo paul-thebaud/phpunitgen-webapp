@@ -19,9 +19,9 @@ une application Web et une API sans risquer d'exécuter un code PHP malicieux su
 L'analyseur statique de code que PhpUnitGen utilise est disponible ici :
 [Roave/BetterReflection](https://github.com/Roave/BetterReflection).
 
-!> PhpUnitGen n'analyse pas votre documentation, c'est pourquoi la génération de tests
-sera bien plus *réaliste* avec un code utilisant le typage stricte des paramètres et
-retours de méthode.
+> PhpUnitGen va essayer d'analyser vos déclarations de types de paramètres et de retour de
+methode en premier. Cependant, si vous n'utilisez pas le typage de PHP, l'outil essayera
+d'analyser la documentation phpDoc de votre code pour trouver les types de paramètres et de retour.
 
 ## Etape 2 : génération du modèle du test
 

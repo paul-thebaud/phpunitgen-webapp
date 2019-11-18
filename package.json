@@ -10,7 +10,7 @@
     "watch-js": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
     "hot-js": "NODE_ENV=development webpack-dev-server --inline --hot --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod-js": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "analyse-js": "NODE_ENV=analyse node_modules/webpack/bin/webpack.js --progress --hide-modules --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "analyze-js": "NODE_ENV=production ANALYZE=true node_modules/webpack/bin/webpack.js --progress --hide-modules --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
     "dev-css": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --env.mixfile=webpack.css.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch-css": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --env.mixfile=webpack.css.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
     "hot-css": "NODE_ENV=development webpack-dev-server --inline --hot --env.mixfile=webpack.css.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",

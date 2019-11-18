@@ -17,7 +17,7 @@ const plugins = [
         "/js/vendor": "/js/vendor.js",
     }),
 ];
-if (process.env.NODE_ENV === "analyse") {
+if (process.env.ANALYZE === "true") {
     const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
     plugins.push(new BundleAnalyzerPlugin());
