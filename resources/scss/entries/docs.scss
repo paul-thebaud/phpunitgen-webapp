@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 @import "~docsify/themes/vue";
+@import "../components/docs/docs-nav";
 
 body {
   --theme-color: var(--primary-bg-color);
@@ -8,40 +9,6 @@ body {
   &, .sidebar, .sidebar ul li a, .anchor span, .markdown-section strong {
     background-color: var(--base-bg-color);
     color: var(--base-color);
-  }
-
-  .markdown-section code {
-    background-color: var(--secondary-bg-color);
-    color: var(--muted-color);
-  }
-
-  .markdown-section p.tip code {
-    background-color: var(--base-bg-color);
-    color: var(--muted-color);
-  }
-
-  .markdown-section p.tip {
-    border-radius: 0.25rem;
-    background-color: var(--secondary-bg-color);
-    color: var(--secondary-color);
-
-    & em {
-      color: var(--secondary-color);
-    }
-  }
-
-  .markdown-section pre > code {
-    background-color: var(--secondary-bg-color);
-    color: var(--base-color);
-  }
-
-  .markdown-section > pre {
-    border-radius: 0.25rem;
-    background-color: var(--secondary-bg-color);
-
-    .docsify-copy-code-button {
-      border-bottom-left-radius: 0.25rem;
-    }
   }
 
   .sidebar {
@@ -77,6 +44,46 @@ body {
 
   .sidebar-toggle {
     background-color: transparent !important;
+  }
+
+  .markdown-section {
+    code {
+      background-color: var(--secondary-bg-color);
+      color: var(--muted-color);
+    }
+
+    p.tip code {
+      background-color: var(--base-bg-color);
+      color: var(--muted-color);
+    }
+
+    p.tip, blockquote {
+      border-radius: 0.25rem;
+      background-color: var(--secondary-bg-color);
+      color: var(--secondary-color) !important;
+
+      & em {
+        color: var(--secondary-color);
+      }
+    }
+
+    pre > code {
+      background-color: var(--secondary-bg-color);
+      color: var(--base-color);
+
+      .token.punctuation {
+        color: var(--muted-color);
+      }
+    }
+
+    > pre {
+      border-radius: 0.25rem;
+      background-color: var(--secondary-bg-color);
+
+      .docsify-copy-code-button {
+        border-bottom-left-radius: 0.25rem;
+      }
+    }
   }
 }
 
