@@ -7,7 +7,11 @@
 @section('content')
     <noscript>This application needs Javascript to run.</noscript>
     <div id="docs-nav"></div>
-    <div id="docs"></div>
+    <div id="docs">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            Documentation is loading...
+        </div>
+    </div>
 @endsection
 
 @push('style')
