@@ -3,7 +3,7 @@
         <HeaderNav @theme-change="handleThemeChange"
                    :themes="unlockedThemes"
                    :current-theme="currentTheme"/>
-        <div class="wrapper">
+        <div class="wrapper flex-grow-1">
             <RouterView @theme-unlock="handleThemeUnlock"
                         @theme-change="handleThemeChange"
                         :current-theme="currentTheme"/>

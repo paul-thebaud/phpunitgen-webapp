@@ -1,5 +1,9 @@
 import { Route } from "vue-router";
 import { Position } from "vue-router/types/router";
+import AsyncLoadingComponent from "@/components/async/AsyncLoadingComponent.vue";
+import AsyncErrorComponent from "@/components/async/AsyncErrorComponent.vue";
+import { Component, CreateElement, RenderContext, VNode } from "vue";
+import { AsyncComponentFactory, AsyncComponentPromise } from "vue/types/options";
 
 /**
  * The routes of application.
@@ -8,27 +12,27 @@ export const routes = [
     {
         path: "/",
         name: "home",
-        component: () => import(/* webpackChunkName: "home-view" */"../views/HomeView.vue")
+        component: lazyLoadView(import(/* webpackChunkName: "home-view" */"../views/HomeView.vue") as any as AsyncComponentPromise),
     },
     {
         path: "/tool",
         name: "tool",
-        component: () => import(/* webpackChunkName: "tool-view" */"../views/ToolView.vue")
+        component: lazyLoadView(import(/* webpackChunkName: "tool-view" */"../views/ToolView.vue") as any as AsyncComponentPromise),
     },
     {
         path: "/themes",
         name: "themes",
-        component: () => import(/* webpackChunkName: "themes-view" */"../views/ThemesView.vue")
+        component: lazyLoadView(import(/* webpackChunkName: "themes-view" */"../views/ThemesView.vue") as any as AsyncComponentPromise),
     },
     {
         path: "/configuration",
         name: "configuration",
-        component: () => import(/* webpackChunkName: "configuration-view" */"../views/ConfigurationView.vue")
+        component: lazyLoadView(import(/* webpackChunkName: "configuration-view" */"../views/ConfigurationView.vue") as any as AsyncComponentPromise),
     },
     {
         path: "/legal",
         name: "legal",
-        component: () => import(/* webpackChunkName: "legal-view" */"../views/LegalView.vue")
+        component: lazyLoadView(import(/* webpackChunkName: "legal-view" */"../views/LegalView.vue") as any as AsyncComponentPromise),
     },
 ];
 
@@ -47,4 +51,30 @@ export function scrollBehavior(to: Route, from: Route, savedPosition: Position |
     }
 
     return { x: 0, y: 0 };
+}
+
+/**
+ * Lazy load a view with loading and error components.
+ *
+ * @param {Promise<typeof import("*.vue")>} AsyncView
+ *
+ * @returns {() => Promise<Component>}
+ *
+ * @see https://github.com/vuejs/vuejs.org/issues/1534
+ */
+function lazyLoadView(AsyncView: AsyncComponentPromise): () => Promise<Component> {
+    const AsyncHandler: AsyncComponentFactory<any, any, any, any> = () => ({
+        component: AsyncView,
+        loading: AsyncLoadingComponent,
+        delay: 200,
+        error: AsyncErrorComponent,
+        timeout: 5000,
+    });
+
+    return () => Promise.resolve({
+        functional: true,
+        render(createElement: CreateElement, { data, children }: RenderContext): VNode {
+            return createElement(AsyncHandler, data, children);
+        },
+    });
 }

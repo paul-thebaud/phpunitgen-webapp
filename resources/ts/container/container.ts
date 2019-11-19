@@ -1,4 +1,4 @@
-import VueRouter from "vue-router";
+import VueRouter, { RouterOptions } from "vue-router";
 import { routes, scrollBehavior } from "@/router";
 import { ApiClientI } from "@/container/contracts/apiClientI";
 import { ApiClient } from "@/container/implementations/apiClient";
@@ -12,7 +12,7 @@ import { MockGeneratorResource } from "@/container/implementations/mockGenerator
 import { container } from "@/container/docContainer";
 
 container.bind<VueRouter>(TYPES.VueRouter)
-    .toConstantValue(new VueRouter({
+    .toConstantValue(new VueRouter(<RouterOptions>{
         mode: "history",
         scrollBehavior,
         routes,

@@ -1,5 +1,6 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
+import { faBomb } from "@fortawesome/free-solid-svg-icons/faBomb";
 import { faBook } from "@fortawesome/free-solid-svg-icons/faBook";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons/faCheckCircle";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons/faCircleNotch";
@@ -19,6 +20,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 
 library.add(
     faBars,
+    faBomb,
     faBook,
     faCheckCircle,
     faCircleNotch,
