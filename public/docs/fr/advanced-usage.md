@@ -1,13 +1,18 @@
-# Application Web
+# Utilisation avancée
 
-**Exigences pour installer l'outil**
+TODO
 
-Si vous utilisez l'outil en ligne de commande ou le cœur, vous devez satisfaire
-les exigences suivantes :
+## Définir une implémentation à utiliser
 
-- PHP `7.2` et supérieur.
-- Laravel `5.7` et supérieur si vous souhaitez utilisez
-[l'intégration à Laravel](/fr/command-line.md#laravel).
+TODO
+
+## Générateur de tests personnalisé
+
+TODO
+
+## Générateur de mocks personnalisé
+
+TODO
 
 ```php
 <?php

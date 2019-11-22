@@ -1,4 +1,4 @@
-# PhpUnitGen
+# PhpUnitGen {docsify-ignore-all}
 
 ## A propos
 
@@ -17,9 +17,8 @@ Voici les informations que vous pourrez trouver dans documentation :
 
 - [Description du fonctionnement de l'outil](/fr/how-does-it-works.md)
 - [Configuration de l'outil](/fr/configuration.md)
-- [Comment utiliser l'application en ligne ?](/fr/webapp.md)
+- [Comment utiliser l'application en ligne ou l'API ?](/fr/webapp.md)
 - [Comment utiliser l'outil en ligne de commande ?](/fr/command-line.md)
-- [Comment utiliser l'API ?](/fr/api.md)
 - [Utilisation avancée](/fr/advanced-usage.md)
 
 ## Vous voulez supporter le projet ?

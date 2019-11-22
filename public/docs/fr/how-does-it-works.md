@@ -1,12 +1,12 @@
-# Comment ça fonctionne ?
+# Comment ça fonctionne ? {docsify-ignore-all}
 
 Le fonctionnement de PhpUnitGen peut être découpé en trois étapes, depuis
 l'instant où vous fournissez votre configuration et votre code jusqu'à
 la récupération de votre test généré.
 
-## Démarrage
+## Initialisation
 
-La phase de démarrage de l'outil inclut la récupération de la configuration
+La phase d'initialisation de l'outil inclut la récupération de la configuration
 et l'instantiation du conteneur de dépendances en fonction de cette dernière.
 
 ## Etape 1 : analyse du code source
