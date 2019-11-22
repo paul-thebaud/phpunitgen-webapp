@@ -3,7 +3,6 @@ window.$docsify = {
     name: "PhpUnitGen",
     loadSidebar: "_sidebar.md",
     basePath: "/docs",
-    //notFoundPage: "_404.md",
     auto2top: true,
     search: {
         hideOtherSidebarContent: true,
