@@ -24,14 +24,14 @@ export class TestGeneratorResource implements TestGeneratorResourceI {
     /**
      * @inheritDoc
      */
-    public async find(id: string): Promise<TestGenerator> {
-        return this.apiClient.get(`/api/test-generators/${id}`);
+    public find(id: string): Promise<TestGenerator> {
+        return this.apiClient.get(`/api/test-generators/${id}`) as Promise<TestGenerator>;
     }
 
     /**
      * @inheritDoc
      */
-    public async all(): Promise<TestGenerator[]> {
-        return this.apiClient.get("/api/test-generators");
+    public all(): Promise<TestGenerator[]> {
+        return this.apiClient.get("/api/test-generators") as Promise<TestGenerator[]>;
     }
 }

@@ -43,14 +43,14 @@ export class ApiClient implements ApiClientI {
     /**
      * @inheritDoc
      */
-    public async get(endpoint: string): Promise<any> {
+    public async get(endpoint: string): Promise<object> {
         return this.json("get", endpoint);
     }
 
     /**
      * @inheritDoc
      */
-    public async post(endpoint: string, data: any): Promise<any> {
+    public async post(endpoint: string, data: object): Promise<object> {
         return this.json("post", endpoint, data);
     }
 
@@ -59,11 +59,11 @@ export class ApiClient implements ApiClientI {
      *
      * @param {string} method
      * @param {string} endpoint
-     * @param {any} data
+     * @param {object} data
      *
-     * @returns {Promise<any>}
+     * @returns {Promise<object>}
      */
-    protected async json(method: string, endpoint: string, data?: any): Promise<any> {
+    protected async json(method: string, endpoint: string, data?: object): Promise<object> {
         const request: RequestInit = this.buildRequest(method, data);
 
         const response = await this.window.fetch(endpoint, request);
@@ -84,11 +84,11 @@ export class ApiClient implements ApiClientI {
      * Create a request for the given method and data.
      *
      * @param {string} method
-     * @param {any} data
+     * @param {object} data
      *
      * @returns {RequestInit}
      */
-    protected buildRequest(method: string, data?: any): RequestInit {
+    protected buildRequest(method: string, data?: object): RequestInit {
         const request: RequestInit = {
             method,
             headers: this.buildHeaders(),

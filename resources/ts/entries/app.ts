@@ -1,7 +1,7 @@
 import "whatwg-fetch";
 import "@/entries/bootstrap";
 import "@/bootstrap-vue";
-import Vue from "vue";
+import Vue, { VNode } from "vue";
 import VueI18n from "vue-i18n";
 import VueRouter from "vue-router";
 import VueClipboard from "vue-clipboard2";
@@ -26,8 +26,5 @@ new Vue({
     el: "#app",
     router: container.get<VueRouter>(TYPES.VueRouter),
     i18n: container.get<VueI18n>(TYPES.VueI18n),
-    template: "<App/>",
-    components: {
-        App,
-    },
+    render: (h): VNode => h(App),
 });

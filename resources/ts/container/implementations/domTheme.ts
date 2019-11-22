@@ -3,16 +3,17 @@ import { StoreI } from "@/container/contracts/storeI";
 import { ThemeI } from "@/container/contracts/themeI";
 import { TYPES } from "@/container/types";
 import { inject, injectable } from "inversify";
+import { Dictionary } from "@/utils/types";
 
 /**
  * The default theme.
  */
-const baseTheme: string = "light";
+const baseTheme = "light";
 
 /**
  * The list of themes map by key.
  */
-const themes: { [key: string]: Theme } = {
+const themes = {
     light: new Theme("light", "💡", "default", 0),
     dark: new Theme("dark", "🕶️", "darcula", 0),
     night: new Theme("night", "🌙", "erlang-dark", 2),
@@ -22,7 +23,7 @@ const themes: { [key: string]: Theme } = {
     rainbow: new Theme("rainbow", "🌈", "default", 20),
     unicorn: new Theme("unicorn", "🦄", "darcula", 25),
     original: new Theme("original", "📟", "default", 30),
-};
+} as Dictionary<Theme>;
 
 /**
  * Class DomTheme.
@@ -64,7 +65,7 @@ export class DomTheme implements ThemeI {
         this.store = store;
 
         const themeKey = this.store.getTheme();
-        if (themes.hasOwnProperty(themeKey)) {
+        if (themeKey in themes) {
             this.theme = themes[themeKey];
             if (this.theme.getKey() !== baseTheme) {
                 this.updateDom(themes[baseTheme], this.theme);
@@ -91,7 +92,7 @@ export class DomTheme implements ThemeI {
      * @param {Theme} theme
      */
     public set currentTheme(theme: Theme) {
-        if (this.theme === theme || ! themes.hasOwnProperty(theme.getKey())) {
+        if (this.theme === theme || ! (theme.getKey() in themes)) {
             return;
         }
 

@@ -2,19 +2,19 @@
  * The type for the tool configuration.
  */
 export type ToolType = {
-    automaticGeneration: boolean,
-    testGenerator: string,
-    mockGenerator: string,
-    baseNamespace: string,
-    baseTestNamespace: string,
-    testCase: string,
-    excludedMethods: string[],
-    mergedPhpDoc: string[],
-    phpDoc: string[],
+    automaticGeneration: boolean;
+    testGenerator: string;
+    mockGenerator: string;
+    baseNamespace: string;
+    baseTestNamespace: string;
+    testCase: string;
+    excludedMethods: string[];
+    mergedPhpDoc: string[];
+    phpDoc: string[];
     options: {
-        context: string | null,
-        "laravel.user": string | null,
-    },
+        context: string | null;
+        "laravel.user": string | null;
+    };
 }
 
 /**

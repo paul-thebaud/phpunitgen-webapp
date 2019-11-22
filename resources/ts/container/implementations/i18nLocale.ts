@@ -3,11 +3,12 @@ import { StoreI } from "@/container/contracts/storeI";
 import { TYPES } from "@/container/types";
 import { inject, injectable } from "inversify";
 import VueI18n from "vue-i18n";
+import { Dictionary } from "@/utils/types";
 
 /**
  * The available locales.
  */
-export const locales: { [p: string]: string } = {
+export const locales: Dictionary<string> = {
     en: "English",
     fr: "Français",
 };

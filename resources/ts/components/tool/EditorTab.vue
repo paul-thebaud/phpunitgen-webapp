@@ -1,56 +1,72 @@
 <template>
-    <div>
-        <div class="my-3 d-flex">
-            <input @change="handleFileChanged"
-                   ref="file"
-                   type="file"
-                   accept=".php"
-                   class="d-none"/>
-            <BButton :to="{ name: 'configuration' }"
-                     :disabled="loading"
-                     variant="primary">
-                <FontAwesomeIcon icon="cog"></FontAwesomeIcon>
-                {{ $t("components.tool.editorTab.configure") }}
-            </BButton>
-            <BButton @click="handleFileBrowser"
-                     :disabled="loading"
-                     variant="secondary"
-                     class="ml-2">
-                <FontAwesomeIcon icon="file-import"></FontAwesomeIcon>
-                {{ $t("components.tool.editorTab.import") }}
-            </BButton>
-            <BButton @click="handleGenerate"
-                     :disabled="code === '' || code === null || loading"
-                     variant="primary"
-                     class="ml-auto">
-                <FontAwesomeIcon icon="play-circle"></FontAwesomeIcon>
-                {{ $t("components.tool.editorTab.generate") }}
-            </BButton>
-        </div>
-        <div v-if="exceptionMessage !== null && ! loading">
-            <div class="d-flex mb-3">
-                <BAlert :show="true"
-                        variant="danger"
-                        class="flex-grow-1 mr-2 mb-0">
-                    {{ exceptionMessage }}
-                </BAlert>
-                <BButton v-if="exception !== null"
-                         @click="toggleShowExceptionEditor"
-                         variant="danger"
-                         class="align-self-center">
-                    {{ showExceptionButtonLabel }}
-                </BButton>
-            </div>
-            <CodeEditor v-if="showExceptionEditor"
-                        :code="JSON.stringify(exception, null, 2)"
-                        :read-only="true"
-                        mode="application/json"/>
-        </div>
-        <CodeEditor v-if="! showExceptionEditor"
-                    @input="handleEditorChange"
-                    :code="code"
-                    :read-only="loading"/>
+  <div>
+    <div class="my-3 d-flex">
+      <input
+        ref="file"
+        type="file"
+        accept=".php"
+        class="d-none"
+        @change="handleFileChanged"
+      >
+      <BButton
+        :to="{ name: 'configuration' }"
+        :disabled="loading"
+        variant="primary"
+      >
+        <FontAwesomeIcon icon="cog" />
+        {{ $t("components.tool.editorTab.configure") }}
+      </BButton>
+      <BButton
+        :disabled="loading"
+        variant="secondary"
+        class="ml-2"
+        @click="handleFileBrowser"
+      >
+        <FontAwesomeIcon icon="file-import" />
+        {{ $t("components.tool.editorTab.import") }}
+      </BButton>
+      <BButton
+        :disabled="code === '' || code === null || loading"
+        variant="primary"
+        class="ml-auto"
+        @click="handleGenerate"
+      >
+        <FontAwesomeIcon icon="play-circle" />
+        {{ $t("components.tool.editorTab.generate") }}
+      </BButton>
     </div>
+    <div v-if="exceptionMessage !== null && ! loading">
+      <div class="d-flex mb-3">
+        <BAlert
+          :show="true"
+          variant="danger"
+          class="flex-grow-1 mr-2 mb-0"
+        >
+          {{ exceptionMessage }}
+        </BAlert>
+        <BButton
+          v-if="exception !== null"
+          variant="danger"
+          class="align-self-center"
+          @click="toggleShowExceptionEditor"
+        >
+          {{ showExceptionButtonLabel }}
+        </BButton>
+      </div>
+      <CodeEditor
+        v-if="showExceptionEditor"
+        :code="JSON.stringify(exception, null, 2)"
+        :read-only="true"
+        mode="application/json"
+      />
+    </div>
+    <CodeEditor
+      v-if="! showExceptionEditor"
+      :code="code"
+      :read-only="loading"
+      @input="handleEditorChange"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -70,7 +86,7 @@
     })
     export default class EditorTab extends Vue {
         public $refs!: {
-            file: HTMLInputElement,
+            file: HTMLInputElement;
         };
 
         @Inject(TYPES.Store)
@@ -138,22 +154,26 @@
             this.$refs.file.click();
         }
 
-        public handleFileChanged(event: any): void {
-            const file = event.target.files[0];
+        public handleFileChanged(event: Event): void {
+            if (! event.target) {
+                return;
+            }
+
+            const file = this.$refs.file.files ? this.$refs.file.files[0] : undefined;
 
             if (! file) {
                 return;
             }
 
             const fileReader = new FileReader();
-            fileReader.onload = () => {
-                this.code = <string>fileReader.result;
+            fileReader.onload = (): void => {
+                this.code = fileReader.result as string;
             };
             fileReader.readAsText(file);
         }
 
-        public toggleShowExceptionEditor(): void {
+        protected toggleShowExceptionEditor(): void {
             this.showException = ! this.showException;
         }
-    };
+    }
 </script>

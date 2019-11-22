@@ -1,21 +1,23 @@
 <template>
-    <footer class="p-5">
-        <BContainer>
-            <BRow class="mb-2">
-                <BCol>
-                    <h4>
-                        <strong>PhpUnitGen</strong>
-                    </h4>
-                </BCol>
-            </BRow>
-            <BRow>
-                <FooterNavColumn v-for="(linksList, key) in links"
-                                 :key="key"
-                                 :name="key"
-                                 :links="linksList"/>
-            </BRow>
-        </BContainer>
-    </footer>
+  <footer class="p-5">
+    <BContainer>
+      <BRow class="mb-2">
+        <BCol>
+          <h4>
+            <strong>PhpUnitGen</strong>
+          </h4>
+        </BCol>
+      </BRow>
+      <BRow>
+        <FooterNavColumn
+          v-for="(linksList, key) in links"
+          :key="key"
+          :name="key"
+          :links="linksList"
+        />
+      </BRow>
+    </BContainer>
+  </footer>
 </template>
 
 <script lang="ts">
@@ -36,7 +38,7 @@
         }
 
         @Watch("$i18n.locale")
-        protected onLocaleChange() {
+        protected onLocaleChange(): void {
             this.createLinks();
         }
 
@@ -74,5 +76,5 @@
                 ],
             };
         }
-    };
+    }
 </script>

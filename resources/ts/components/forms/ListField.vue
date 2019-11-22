@@ -1,43 +1,55 @@
 <template>
-    <div :id="id"
-         class="list-field">
-        <label>
-            {{ label }}
-        </label>
+  <div
+    :id="id"
+    class="list-field"
+  >
+    <label>
+      {{ label }}
+    </label>
 
-        <BInputGroup class="mb-2">
-            <BInput v-model="input"
-                    @keyup.enter="handleAdd"
-                    :placeholder="placeholder"
-                    type="text"
-                    autocomplete="new-password"/>
-            <BInputGroupAppend>
-                <BButton @click="handleAdd"
-                         variant="primary">
-                    <FontAwesomeIcon icon="plus"></FontAwesomeIcon>
-                </BButton>
-            </BInputGroupAppend>
-        </BInputGroup>
+    <BInputGroup class="mb-2">
+      <BInput
+        v-model="input"
+        :placeholder="placeholder"
+        type="text"
+        autocomplete="new-password"
+        @keyup.enter="handleAdd"
+      />
+      <BInputGroupAppend>
+        <BButton
+          variant="primary"
+          @click="handleAdd"
+        >
+          <FontAwesomeIcon icon="plus" />
+        </BButton>
+      </BInputGroupAppend>
+    </BInputGroup>
 
-        <BInputGroup v-for="(value, key) in values"
-                     :key="`${id}-${key}`"
-                     class="mt-1">
-            <BInput v-model="values[key]"
-                    @input="handleChange"
-                    type="text"
-                    autocomplete="new-password"/>
-            <BInputGroupAppend>
-                <BButton @click="handleRemove(key)"
-                         variant="secondary">
-                    <FontAwesomeIcon icon="times"></FontAwesomeIcon>
-                </BButton>
-            </BInputGroupAppend>
-        </BInputGroup>
+    <BInputGroup
+      v-for="(value, key) in values"
+      :key="`${id}-${key}`"
+      class="mt-1"
+    >
+      <BInput
+        v-model="values[key]"
+        type="text"
+        autocomplete="new-password"
+        @input="handleChange"
+      />
+      <BInputGroupAppend>
+        <BButton
+          variant="secondary"
+          @click="handleRemove(key)"
+        >
+          <FontAwesomeIcon icon="times" />
+        </BButton>
+      </BInputGroupAppend>
+    </BInputGroup>
 
-        <BFormText>
-            {{ help }}
-        </BFormText>
-    </div>
+    <BFormText>
+      {{ help }}
+    </BFormText>
+  </div>
 </template>
 
 <script lang="ts">
@@ -65,25 +77,25 @@
 
         protected values = this.value;
 
-        public handleAdd() {
+        protected handleAdd(): void {
             this.values.push(this.input);
             this.input = "";
 
             this.handleChange();
         }
 
-        public handleRemove(key: number) {
+        protected handleRemove(key: number): void {
             this.values.splice(key, 1);
 
             this.handleChange();
         }
 
-        protected handleChange() {
+        protected handleChange(): void {
             const uniqueValues = new Set(this.values.filter((value) => value !== ""));
 
             this.values = Array.from(uniqueValues.values());
 
             this.$emit("input", this.values);
         }
-    };
+    }
 </script>

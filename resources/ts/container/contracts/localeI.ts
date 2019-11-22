@@ -1,3 +1,5 @@
+import { Dictionary } from "@/utils/types";
+
 /**
  * Interface LocaleI.
  *
@@ -16,7 +18,7 @@ export interface LocaleI {
     /**
      * Retrieve the available locales with their associated human readable name.
      *
-     * @returns {{[p: string]: string}}
+     * @returns {Dictionary<string>}
      */
-    getLocales(): { [key: string]: string };
+    getLocales(): Dictionary<string>;
 }

@@ -1,61 +1,79 @@
 <template>
-    <BContainer class="my-5">
-        <BRow>
-            <BCol cols="12"
-                  class="d-flex align-items-center">
-                <RouterLink :to="{ name: 'themes' }">
-                    <RadialProgress start-color="var(--gradient-start-color)"
-                                           stop-color="var(--gradient-stop-color)"
-                                           inner-stroke-color="var(--secondary-bg-color)"
-                                           :diameter="100"
-                                           :completed-steps="generationsCount"
-                                           :total-steps="totalSteps">
-                        <span>
-                            {{ progressEmoji }}
-                        </span>
-                        <strong>
-                            {{ progressCounter }}
-                        </strong>
-                    </RadialProgress>
-                </RouterLink>
-                <p class="ml-2 mb-0">
-                    {{ nextUnlockedTheme ? $t("views.tool.unlockThemes") : $t("views.tool.allThemesUnlocked") }}
-                    <RouterLink :to="{ name: 'themes' }">
-                        {{ $t("views.tool.themeListLink") }}
-                    </RouterLink>
-                </p>
-            </BCol>
-            <BCol :class="forceTabDisplay ? '' : 'd-xl-none'"
-                  class="editor-tabs font-weight-bold pb-3 d-flex"
-                  cols="12">
-                <div @click="displayedTab = 'editor'"
-                     :class="displayedTab === 'editor' ? 'active' : ''"
-                     class="editor-tabs__tab pb-2 text-center">
-                    <FontAwesomeIcon icon="terminal"></FontAwesomeIcon>
-                    {{ $t("views.tool.editorTab") }}
-                </div>
-                <div @click="displayedTab = 'generated'"
-                     :class="displayedTab === 'generated' ? 'active' : ''"
-                     class="editor-tabs__tab pb-2 text-center">
-                    <FontAwesomeIcon icon="play"></FontAwesomeIcon>
-                    {{ $t("views.tool.generatedTab") }}
-                </div>
-            </BCol>
-            <BCol :xl="forceTabDisplay ? 12 : 6"
-                  cols="12">
-                <EditorTab @generate="handleGenerate"
-                           :loading="loading"
-                           :exception-message="exceptionMessage"
-                           :exception="exception"
-                           :class="displayedTab === 'editor' ? 'd-block' : (forceTabDisplay ? 'd-none' : 'd-none d-xl-block' )"/>
-            </BCol>
-            <BCol :xl="forceTabDisplay ? 12 : 6"
-                  cols="12">
-                <GeneratedTab :test="test"
-                              :class="displayedTab === 'generated' ? 'd-block' : (forceTabDisplay ? 'd-none' : 'd-none d-xl-block' )"/>
-            </BCol>
-        </BRow>
-    </BContainer>
+  <BContainer class="my-5">
+    <BRow>
+      <BCol
+        cols="12"
+        class="d-flex align-items-center"
+      >
+        <RouterLink :to="{ name: 'themes' }">
+          <RadialProgress
+            start-color="var(--gradient-start-color)"
+            stop-color="var(--gradient-stop-color)"
+            inner-stroke-color="var(--secondary-bg-color)"
+            :diameter="100"
+            :completed-steps="generationsCount"
+            :total-steps="totalSteps"
+          >
+            <span>
+              {{ progressEmoji }}
+            </span>
+            <strong>
+              {{ progressCounter }}
+            </strong>
+          </RadialProgress>
+        </RouterLink>
+        <p class="ml-2 mb-0">
+          {{ nextUnlockedTheme ? $t("views.tool.unlockThemes") : $t("views.tool.allThemesUnlocked") }}
+          <RouterLink :to="{ name: 'themes' }">
+            {{ $t("views.tool.themeListLink") }}
+          </RouterLink>
+        </p>
+      </BCol>
+      <BCol
+        :class="forceTabDisplay ? '' : 'd-xl-none'"
+        class="editor-tabs font-weight-bold pb-3 d-flex"
+        cols="12"
+      >
+        <div
+          :class="displayedTab === 'editor' ? 'active' : ''"
+          class="editor-tabs__tab pb-2 text-center"
+          @click="displayedTab = 'editor'"
+        >
+          <FontAwesomeIcon icon="terminal" />
+          {{ $t("views.tool.editorTab") }}
+        </div>
+        <div
+          :class="displayedTab === 'generated' ? 'active' : ''"
+          class="editor-tabs__tab pb-2 text-center"
+          @click="displayedTab = 'generated'"
+        >
+          <FontAwesomeIcon icon="play" />
+          {{ $t("views.tool.generatedTab") }}
+        </div>
+      </BCol>
+      <BCol
+        :xl="forceTabDisplay ? 12 : 6"
+        cols="12"
+      >
+        <EditorTab
+          :loading="loading"
+          :exception-message="exceptionMessage"
+          :exception="exception"
+          :class="displayedTab === 'editor' ? 'd-block' : (forceTabDisplay ? 'd-none' : 'd-none d-xl-block' )"
+          @generate="handleGenerate"
+        />
+      </BCol>
+      <BCol
+        :xl="forceTabDisplay ? 12 : 6"
+        cols="12"
+      >
+        <GeneratedTab
+          :test="test"
+          :class="displayedTab === 'generated' ? 'd-block' : (forceTabDisplay ? 'd-none' : 'd-none d-xl-block' )"
+        />
+      </BCol>
+    </BRow>
+  </BContainer>
 </template>
 
 <script lang="ts">
@@ -92,7 +110,7 @@
 
         protected displayedTab = "editor";
 
-        protected loading: boolean = false;
+        protected loading = false;
 
         protected exceptionMessage: TranslateResult | null = null;
 
@@ -148,5 +166,5 @@
 
             this.loading = false;
         }
-    };
+    }
 </script>

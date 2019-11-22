@@ -15,12 +15,24 @@
 @endsection
 
 @push('style')
-    <link rel="preload" href="{{ mix('css/docs.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link
+            rel="preload"
+            href="{{ mix('css/docs.css') }}"
+            as="style"
+            onload="this.onload=null;this.rel='stylesheet'"
+    >
     <noscript>
-        <link rel="stylesheet" href="{{ mix('css/docs.css') }}">
+        <link
+                rel="stylesheet"
+                href="{{ mix('css/docs.css') }}"
+        >
     </noscript>
 @endpush
 
 @push('scripts')
-    <script type="text/javascript" src="{{ mix('js/docs.js') }}" defer></script>
+    <script
+            type="text/javascript"
+            src="{{ mix('js/docs.js') }}"
+            defer
+    ></script>
 @endpush

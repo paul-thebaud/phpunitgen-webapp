@@ -24,7 +24,7 @@ export class MockGeneratorResource implements MockGeneratorResourceI {
     /**
      * @inheritDoc
      */
-    public async all(): Promise<MockGenerator[]> {
-        return this.apiClient.get("/api/mock-generators");
+    public all(): Promise<MockGenerator[]> {
+        return this.apiClient.get("/api/mock-generators") as Promise<MockGenerator[]>;
     }
 }

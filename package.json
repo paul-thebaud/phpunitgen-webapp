@@ -17,7 +17,8 @@
     "prod-css": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --env.mixfile=webpack.css.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
     "dev": "$npm_execpath run dev-css & $npm_execpath run dev-js",
     "watch": "concurrently --kill-others \"$npm_execpath run watch-css\" \"$npm_execpath run watch-js\"",
-    "prod": "$npm_execpath run prod-css & $npm_execpath run prod-js"
+    "prod": "$npm_execpath run prod-css & $npm_execpath run prod-js",
+    "lint": "node_modules/eslint/bin/eslint.js --ext .js,.vue,.ts resources/ts"
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
@@ -26,6 +27,9 @@
     "@fortawesome/free-solid-svg-icons": "^5.10.0",
     "@fortawesome/vue-fontawesome": "^0.1.6",
     "@types/lodash.debounce": "^4.0.6",
+    "@typescript-eslint/eslint-plugin": "^2.7.0",
+    "@typescript-eslint/parser": "^2.7.0",
+    "@vue/eslint-config-typescript": "^5.0.0",
     "autoprefixer": "^9.7.2",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.28",
@@ -33,6 +37,8 @@
     "concurrently": "^5.0.0",
     "docsify": "^4.9.4",
     "docsify-copy-code": "^2.1.0",
+    "eslint": "^6.6.0",
+    "eslint-plugin-vue": "^6.0.1",
     "inversify": "^5.0.1",
     "laravel-mix": "^5.0.0",
     "laravel-mix-merge-manifest": "^0.1.2",

@@ -1,8 +1,10 @@
 <template>
-    <codemirror v-if="show"
-                :value="code"
-                :options="codeMirrorOptions"
-                @input="handleInput"></codemirror>
+  <codemirror
+    v-if="show"
+    :value="code"
+    :options="codeMirrorOptions"
+    @input="handleInput"
+  />
 </template>
 
 <script lang="ts">
@@ -46,10 +48,10 @@
             readOnly: this.readOnly,
         };
 
-        protected handleInput(code: string) {
+        protected handleInput(code: string): void {
             this.$emit("input", code);
         }
-    };
+    }
 </script>
 
 <style scoped>

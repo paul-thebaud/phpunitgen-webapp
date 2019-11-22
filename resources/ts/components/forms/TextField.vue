@@ -1,17 +1,19 @@
 <template>
-    <div :id="id">
-        <label>
-            {{ label }}
-        </label>
-        <BInput @input="handleInput"
-                :value="value"
-                :placeholder="placeholder"
-                type="text"
-                autocomplete="new-password"/>
-        <BFormText>
-            {{ help }}
-        </BFormText>
-    </div>
+  <div :id="id">
+    <label>
+      {{ label }}
+    </label>
+    <BInput
+      :value="value"
+      :placeholder="placeholder"
+      type="text"
+      autocomplete="new-password"
+      @input="handleInput"
+    />
+    <BFormText>
+      {{ help }}
+    </BFormText>
+  </div>
 </template>
 
 <script lang="ts">
@@ -35,8 +37,8 @@
         @Prop(String)
         protected value!: string;
 
-        protected handleInput(value: string) {
+        protected handleInput(value: string): void {
             this.$emit("input", value);
         }
-    };
+    }
 </script>

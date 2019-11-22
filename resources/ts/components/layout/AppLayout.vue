@@ -1,15 +1,19 @@
 <template>
-    <div id="app">
-        <HeaderNav @theme-change="handleThemeChange"
-                   :themes="unlockedThemes"
-                   :current-theme="currentTheme"/>
-        <div class="wrapper flex-grow-1">
-            <RouterView @theme-unlock="handleThemeUnlock"
-                        @theme-change="handleThemeChange"
-                        :current-theme="currentTheme"/>
-        </div>
-        <FooterNav/>
+  <div id="app">
+    <HeaderNav
+      :themes="unlockedThemes"
+      :current-theme="currentTheme"
+      @theme-change="handleThemeChange"
+    />
+    <div class="wrapper flex-grow-1">
+      <RouterView
+        :current-theme="currentTheme"
+        @theme-unlock="handleThemeUnlock"
+        @theme-change="handleThemeChange"
+      />
     </div>
+    <FooterNav />
+  </div>
 </template>
 
 <script lang="ts">
@@ -35,7 +39,7 @@
 
         protected unlockedThemes = this.theme.getUnlockedThemes();
 
-        protected handleThemeChange(newTheme: Theme) {
+        protected handleThemeChange(newTheme: Theme): void {
             if (! this.theme.isUnlocked(newTheme)) {
                 return;
             }
@@ -51,7 +55,7 @@
             });
 
             this.$bvToast.toast(
-                <string>toastDescription,
+                toastDescription as string,
                 {
                     title: toastTitle,
                     autoHideDelay: 5000,
@@ -60,5 +64,5 @@
 
             this.unlockedThemes = this.theme.getUnlockedThemes();
         }
-    };
+    }
 </script>

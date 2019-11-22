@@ -2,9 +2,9 @@
  * The result of a test resource creation.
  */
 export type Test = {
-    name: string,
-    code: string
-    executionTime: number,
+    name: string;
+    code: string;
+    executionTime: number;
 };
 
 /**

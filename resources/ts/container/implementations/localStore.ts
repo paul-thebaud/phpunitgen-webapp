@@ -40,7 +40,7 @@ export class LocalStore implements StoreI {
     /**
      * The key of content in storage.
      */
-    protected localeStorageKey: string = "phpunitgen_store";
+    protected localeStorageKey = "phpunitgen_store";
 
     /**
      * The synced content of storage.

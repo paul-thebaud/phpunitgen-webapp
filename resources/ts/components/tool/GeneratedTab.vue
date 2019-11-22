@@ -1,33 +1,44 @@
 <template>
-    <div>
-        <div class="my-3 d-flex justify-content-end">
-            <div class="mr-auto d-flex">
-                <p v-if="hasCode" class="my-auto">
-                    {{ $t("components.tool.generatedTab.executionTime", { executionTime: formattedExecutionTime }) }}
-                </p>
-            </div>
-            <BButton variant="secondary"
-                     class="mr-2"
-                     :disabled="! hasCode"
-                     @click="handleCopy">
-                <FontAwesomeIcon icon="copy"></FontAwesomeIcon>
-                {{ copyButtonLabel }}
-            </BButton>
-            <BButton variant="secondary"
-                     :disabled="! hasCode"
-                     @click="handleDownload">
-                <FontAwesomeIcon icon="download"></FontAwesomeIcon>
-                {{ $t("components.tool.generatedTab.download") }}
-            </BButton>
-        </div>
-        <BAlert :show="! hasCode"
-                variant="warning">
-            {{ $t("components.tool.generatedTab.missingCode") }}
-        </BAlert>
-        <CodeEditor :show="hasCode"
-                    :code="test ? test.code : ''"
-                    :read-only="true"/>
+  <div>
+    <div class="my-3 d-flex justify-content-end">
+      <div class="mr-auto d-flex">
+        <p
+          v-if="hasCode"
+          class="my-auto"
+        >
+          {{ $t("components.tool.generatedTab.executionTime", { executionTime: formattedExecutionTime }) }}
+        </p>
+      </div>
+      <BButton
+        variant="secondary"
+        class="mr-2"
+        :disabled="! hasCode"
+        @click="handleCopy"
+      >
+        <FontAwesomeIcon icon="copy" />
+        {{ copyButtonLabel }}
+      </BButton>
+      <BButton
+        variant="secondary"
+        :disabled="! hasCode"
+        @click="handleDownload"
+      >
+        <FontAwesomeIcon icon="download" />
+        {{ $t("components.tool.generatedTab.download") }}
+      </BButton>
     </div>
+    <BAlert
+      :show="! hasCode"
+      variant="warning"
+    >
+      {{ $t("components.tool.generatedTab.missingCode") }}
+    </BAlert>
+    <CodeEditor
+      :show="hasCode"
+      :code="test ? test.code : ''"
+      :read-only="true"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -52,7 +63,7 @@
             this.copyButtonLabel = this.$t("components.tool.generatedTab.copy");
         }
 
-        public get hasCode() {
+        public get hasCode(): boolean {
             return this.test !== null;
         }
 
@@ -79,5 +90,5 @@
             anchorElement.click();
             document.body.removeChild(anchorElement);
         }
-    };
+    }
 </script>

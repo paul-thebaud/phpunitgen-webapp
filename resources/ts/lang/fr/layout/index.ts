@@ -6,4 +6,4 @@ export default {
     app,
     header,
     footer,
-}
+};

@@ -2,14 +2,14 @@
  * The test generator resource.
  */
 export type TestGenerator = {
-    id: string,
-    name: string,
-    description: string,
-    example: string,
+    id: string;
+    name: string;
+    description: string;
+    example: string;
     author: {
-        name: string,
-        website: string,
-    },
+        name: string;
+        website: string;
+    };
 };
 
 /**

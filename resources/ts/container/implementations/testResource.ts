@@ -33,10 +33,10 @@ export class TestResource implements TestResourceI {
     /**
      * @inheritDoc
      */
-    public async create(code: string): Promise<Test> {
+    public create(code: string): Promise<Test> {
         return this.apiClient.post("/api/tests", {
             code,
             config: this.store.getTool(),
-        });
+        }) as Promise<Test>;
     }
 }

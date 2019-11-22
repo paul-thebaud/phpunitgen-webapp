@@ -12,11 +12,11 @@ import { MockGeneratorResource } from "@/container/implementations/mockGenerator
 import { container } from "@/container/docContainer";
 
 container.bind<VueRouter>(TYPES.VueRouter)
-    .toConstantValue(new VueRouter(<RouterOptions>{
+    .toConstantValue(new VueRouter({
         mode: "history",
         scrollBehavior,
         routes,
-    }));
+    } as RouterOptions));
 
 container.bind<ApiClientI>(TYPES.ApiClient)
     .to(ApiClient)

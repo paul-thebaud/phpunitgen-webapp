@@ -1,195 +1,261 @@
 <template>
-    <BContainer class="configuration my-5">
-        <h1>{{ $t("views.configuration.title") }}</h1>
-        <p>{{ $t("views.configuration.description") }}</p>
-        <BRow class="mt-5">
-            <BCol class="d-none d-lg-block"
-                  lg="3">
-                <div class="my-3 sticky-top"
-                     style="top: 80px">
-                    <span :class="saving ? 'text-warning' : 'text-success'">
-                        <FontAwesomeIcon :icon="saving ? 'circle-notch' : 'check-circle'"
-                                         :class="saving ? 'fa-spin' : ''"
-                                         class="mr-1"></FontAwesomeIcon>
-                        {{ saving ? $t("views.configuration.state.saving") : $t("views.configuration.state.saved") }}
-                    </span>
-                    <strong class="d-block mt-3 mb-2">
-                        {{ $t(`views.configuration.quickLinks`) }}
-                    </strong>
-                    <a v-for="quickLink in quickLinks"
-                       v-scroll-to="{ el: `#${quickLinkId(quickLink)}`, offset: -80 }"
-                       :key="quickLink"
-                       class="configuration-quick-link d-block ml-2 pb-2"
-                       href="#">
-                        {{ $t(`views.configuration.${quickLink}.label`) }}
-                    </a>
-                </div>
-            </BCol>
-            <BCol lg="9">
-                <BRow>
-                    <BCol sm="6"
-                          class="my-3">
-                        <BFormCheckbox v-model="forceEditorTabs"
-                                       id="force-editor-tabs"
-                                       switch>
-                            {{ $t("views.configuration.forceEditorTabs.label") }}
-                        </BFormCheckbox>
-                        <BFormText>
-                            {{ $t("views.configuration.forceEditorTabs.help") }}
-                        </BFormText>
-                    </BCol>
+  <BContainer class="configuration my-5">
+    <h1>{{ $t("views.configuration.title") }}</h1>
+    <p>{{ $t("views.configuration.description") }}</p>
+    <BRow class="mt-5">
+      <BCol
+        class="d-none d-lg-block"
+        lg="3"
+      >
+        <div
+          class="my-3 sticky-top"
+          style="top: 80px"
+        >
+          <span :class="saving ? 'text-warning' : 'text-success'">
+            <FontAwesomeIcon
+              :icon="saving ? 'circle-notch' : 'check-circle'"
+              :class="saving ? 'fa-spin' : ''"
+              class="mr-1"
+            />
+            {{ saving ? $t("views.configuration.state.saving") : $t("views.configuration.state.saved") }}
+          </span>
+          <strong class="d-block mt-3 mb-2">
+            {{ $t(`views.configuration.quickLinks`) }}
+          </strong>
+          <a
+            v-for="quickLink in quickLinks"
+            :key="quickLink"
+            v-scroll-to="{ el: `#${quickLinkId(quickLink)}`, offset: -80 }"
+            class="configuration-quick-link d-block ml-2 pb-2"
+            href="#"
+          >
+            {{ $t(`views.configuration.${quickLink}.label`) }}
+          </a>
+        </div>
+      </BCol>
+      <BCol lg="9">
+        <BRow>
+          <BCol
+            sm="6"
+            class="my-3"
+          >
+            <BFormCheckbox
+              id="force-editor-tabs"
+              v-model="forceEditorTabs"
+              switch
+            >
+              {{ $t("views.configuration.forceEditorTabs.label") }}
+            </BFormCheckbox>
+            <BFormText>
+              {{ $t("views.configuration.forceEditorTabs.help") }}
+            </BFormText>
+          </BCol>
 
-                    <BCol sm="6"
-                          class="my-3">
-                        <BFormCheckbox v-model="tool.automaticGeneration"
-                                       id="automatic-generation"
-                                       switch>
-                            {{ $t("views.configuration.automaticGeneration.label") }}
-                        </BFormCheckbox>
-                        <BFormText>
-                            {{ $t("views.configuration.automaticGeneration.help") }}
-                        </BFormText>
-                    </BCol>
+          <BCol
+            sm="6"
+            class="my-3"
+          >
+            <BFormCheckbox
+              id="automatic-generation"
+              v-model="tool.automaticGeneration"
+              switch
+            >
+              {{ $t("views.configuration.automaticGeneration.label") }}
+            </BFormCheckbox>
+            <BFormText>
+              {{ $t("views.configuration.automaticGeneration.help") }}
+            </BFormText>
+          </BCol>
 
-                    <BCol cols="12"
-                          class="my-3">
-                        <CardSelectField v-model="tool.testGenerator"
-                                         :values="testGenerators"
-                                         :search-resolver="(generator) => `${generator.name}${generator.description}`"
-                                         :label="$t('views.configuration.testGenerator.label')"
-                                         :help="$t('views.configuration.testGenerator.help')"
-                                         id="test-generator">
-                            <template v-slot:value="{ value: testGenerator }">
-                                <strong>
-                                    {{ testGenerator.name }}
-                                </strong>
-                                <small>
-                                    {{ $t("views.configuration.testGenerator.createdBy") }}
-                                    <a :href="testGenerator.author.website"
-                                       target="_blank"
-                                       rel="noopener">
-                                        {{ testGenerator.author.name }}
-                                    </a>
-                                </small>
+          <BCol
+            cols="12"
+            class="my-3"
+          >
+            <CardSelectField
+              id="test-generator"
+              v-model="tool.testGenerator"
+              :values="testGenerators"
+              :search-resolver="(generator) => `${generator.name}${generator.description}`"
+              :label="$t('views.configuration.testGenerator.label')"
+              :help="$t('views.configuration.testGenerator.help')"
+            >
+              <template v-slot:value="{ value: testGenerator }">
+                <strong>
+                  {{ testGenerator.name }}
+                </strong>
+                <small>
+                  {{ $t("views.configuration.testGenerator.createdBy") }}
+                  <a
+                    :href="testGenerator.author.website"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    {{ testGenerator.author.name }}
+                  </a>
+                </small>
 
-                                <BTooltip placement="bottom" :target="`test-generator-${testGenerator.id}`">
-                                    {{ testGenerator.description }}
-                                </BTooltip>
-                            </template>
-                        </CardSelectField>
-                    </BCol>
+                <BTooltip
+                  placement="bottom"
+                  :target="`test-generator-${testGenerator.id}`"
+                >
+                  {{ testGenerator.description }}
+                </BTooltip>
+              </template>
+            </CardSelectField>
+          </BCol>
 
-                    <BCol cols="12"
-                          class="my-3">
-                        <CardSelectField v-model="tool.mockGenerator"
-                                         :values="mockGenerators"
-                                         :label="$t('views.configuration.mockGenerator.label')"
-                                         :help="$t('views.configuration.mockGenerator.help')"
-                                         :display-all="true"
-                                         id="mock-generator">
-                            <template v-slot:value="{ value: mockGenerator }">
-                                <strong>
-                                    {{ mockGenerator.name }}
-                                </strong>
-                                <small>
-                                    {{ $t("views.configuration.mockGenerator.createdBy") }}
-                                    <a :href="mockGenerator.author.website"
-                                       target="_blank"
-                                       rel="noopener">
-                                        {{ mockGenerator.author.name }}
-                                    </a>
-                                </small>
+          <BCol
+            cols="12"
+            class="my-3"
+          >
+            <CardSelectField
+              id="mock-generator"
+              v-model="tool.mockGenerator"
+              :values="mockGenerators"
+              :label="$t('views.configuration.mockGenerator.label')"
+              :help="$t('views.configuration.mockGenerator.help')"
+              :display-all="true"
+            >
+              <template v-slot:value="{ value: mockGenerator }">
+                <strong>
+                  {{ mockGenerator.name }}
+                </strong>
+                <small>
+                  {{ $t("views.configuration.mockGenerator.createdBy") }}
+                  <a
+                    :href="mockGenerator.author.website"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    {{ mockGenerator.author.name }}
+                  </a>
+                </small>
 
-                                <BTooltip placement="bottom" :target="`mock-generator-${mockGenerator.id}`">
-                                    {{ mockGenerator.description }}
-                                </BTooltip>
-                            </template>
-                        </CardSelectField>
-                    </BCol>
+                <BTooltip
+                  placement="bottom"
+                  :target="`mock-generator-${mockGenerator.id}`"
+                >
+                  {{ mockGenerator.description }}
+                </BTooltip>
+              </template>
+            </CardSelectField>
+          </BCol>
 
-                    <BCol md="6"
-                          class="my-3">
-                        <TextField v-model="tool.baseNamespace"
-                                   :label="$t('views.configuration.baseNamespace.label')"
-                                   :placeholder="$t('views.configuration.baseNamespace.placeholder')"
-                                   :help="$t('views.configuration.baseNamespace.help')"
-                                   id="base-namespace"/>
-                    </BCol>
+          <BCol
+            md="6"
+            class="my-3"
+          >
+            <TextField
+              id="base-namespace"
+              v-model="tool.baseNamespace"
+              :label="$t('views.configuration.baseNamespace.label')"
+              :placeholder="$t('views.configuration.baseNamespace.placeholder')"
+              :help="$t('views.configuration.baseNamespace.help')"
+            />
+          </BCol>
 
-                    <BCol md="6"
-                          class="my-3">
-                        <TextField v-model="tool.baseTestNamespace"
-                                   :label="$t('views.configuration.baseTestNamespace.label')"
-                                   :placeholder="$t('views.configuration.baseTestNamespace.placeholder')"
-                                   :help="$t('views.configuration.baseTestNamespace.help')"
-                                   id="base-test-namespace"/>
-                    </BCol>
+          <BCol
+            md="6"
+            class="my-3"
+          >
+            <TextField
+              id="base-test-namespace"
+              v-model="tool.baseTestNamespace"
+              :label="$t('views.configuration.baseTestNamespace.label')"
+              :placeholder="$t('views.configuration.baseTestNamespace.placeholder')"
+              :help="$t('views.configuration.baseTestNamespace.help')"
+            />
+          </BCol>
 
-                    <BCol md="6"
-                          class="my-3">
-                        <TextField v-model="tool.testCase"
-                                   :label="$t('views.configuration.testCase.label')"
-                                   :placeholder="$t('views.configuration.testCase.placeholder')"
-                                   :help="$t('views.configuration.testCase.help')"
-                                   id="test-case"/>
-                    </BCol>
+          <BCol
+            md="6"
+            class="my-3"
+          >
+            <TextField
+              id="test-case"
+              v-model="tool.testCase"
+              :label="$t('views.configuration.testCase.label')"
+              :placeholder="$t('views.configuration.testCase.placeholder')"
+              :help="$t('views.configuration.testCase.help')"
+            />
+          </BCol>
 
-                    <BCol cols="12"
-                          class="my-3">
-                        <ListField v-model="tool.excludedMethods"
-                                   :label="$t('views.configuration.excludedMethods.label')"
-                                   :placeholder="$t('views.configuration.excludedMethods.placeholder')"
-                                   :help="$t('views.configuration.excludedMethods.help')"
-                                   id="excluded-methods"/>
-                    </BCol>
+          <BCol
+            cols="12"
+            class="my-3"
+          >
+            <ListField
+              id="excluded-methods"
+              v-model="tool.excludedMethods"
+              :label="$t('views.configuration.excludedMethods.label')"
+              :placeholder="$t('views.configuration.excludedMethods.placeholder')"
+              :help="$t('views.configuration.excludedMethods.help')"
+            />
+          </BCol>
 
-                    <BCol cols="12"
-                          class="my-3">
-                        <ListField v-model="tool.mergedPhpDoc"
-                                   :label="$t('views.configuration.mergedPhpDoc.label')"
-                                   :placeholder="$t('views.configuration.mergedPhpDoc.placeholder')"
-                                   :help="$t('views.configuration.mergedPhpDoc.help')"
-                                   id="merged-php-doc"/>
-                    </BCol>
+          <BCol
+            cols="12"
+            class="my-3"
+          >
+            <ListField
+              id="merged-php-doc"
+              v-model="tool.mergedPhpDoc"
+              :label="$t('views.configuration.mergedPhpDoc.label')"
+              :placeholder="$t('views.configuration.mergedPhpDoc.placeholder')"
+              :help="$t('views.configuration.mergedPhpDoc.help')"
+            />
+          </BCol>
 
-                    <BCol cols="12"
-                          class="my-3">
-                        <ListField v-model="tool.phpDoc"
-                                   :label="$t('views.configuration.phpDoc.label')"
-                                   :placeholder="$t('views.configuration.phpDoc.placeholder')"
-                                   :help="$t('views.configuration.phpDoc.help')"
-                                   id="php-doc"/>
-                    </BCol>
+          <BCol
+            cols="12"
+            class="my-3"
+          >
+            <ListField
+              id="php-doc"
+              v-model="tool.phpDoc"
+              :label="$t('views.configuration.phpDoc.label')"
+              :placeholder="$t('views.configuration.phpDoc.placeholder')"
+              :help="$t('views.configuration.phpDoc.help')"
+            />
+          </BCol>
 
-                    <BCol cols="12"
-                          class="my-3">
-                        <CardSelectField v-model="tool.options.context"
-                                         :values="contexts"
-                                         :label="$t('views.configuration.optionsContext.label')"
-                                         :help="$t('views.configuration.optionsContext.help')"
-                                         :display-all="true"
-                                         id="options-context">
-                            <template v-slot:value="{ value: context }">
-                                <strong>
-                                    {{ context }}
-                                </strong>
-                            </template>
-                        </CardSelectField>
-                    </BCol>
+          <BCol
+            cols="12"
+            class="my-3"
+          >
+            <CardSelectField
+              id="options-context"
+              v-model="tool.options.context"
+              :values="contexts"
+              :label="$t('views.configuration.optionsContext.label')"
+              :help="$t('views.configuration.optionsContext.help')"
+              :display-all="true"
+            >
+              <template v-slot:value="{ value: context }">
+                <strong>
+                  {{ context }}
+                </strong>
+              </template>
+            </CardSelectField>
+          </BCol>
 
-                    <BCol v-if="tool.options.context === 'laravel'"
-                          md="6"
-                          class="my-3">
-                        <TextField v-model="tool.options['laravel.user']"
-                                   :label="$t('views.configuration.optionsLaravelUser.label')"
-                                   :placeholder="$t('views.configuration.optionsLaravelUser.placeholder')"
-                                   :help="$t('views.configuration.optionsLaravelUser.help')"
-                                   id="options-laravel-user"/>
-                    </BCol>
-                </BRow>
-            </BCol>
+          <BCol
+            v-if="tool.options.context === 'laravel'"
+            md="6"
+            class="my-3"
+          >
+            <TextField
+              id="options-laravel-user"
+              v-model="tool.options['laravel.user']"
+              :label="$t('views.configuration.optionsLaravelUser.label')"
+              :placeholder="$t('views.configuration.optionsLaravelUser.placeholder')"
+              :help="$t('views.configuration.optionsLaravelUser.help')"
+            />
+          </BCol>
         </BRow>
-    </BContainer>
+      </BCol>
+    </BRow>
+  </BContainer>
 </template>
 
 <script lang="ts">
@@ -204,6 +270,7 @@
     import TextField from "@/components/forms/TextField.vue";
     import ListField from "@/components/forms/ListField.vue";
     import { TranslateResult } from "vue-i18n";
+    import { Dictionary } from "@/utils/types";
 
     @Component({
         components: {
@@ -226,11 +293,11 @@
 
         protected tool = this.store.getTool();
 
-        protected testGenerators: { [key: string]: TestGenerator } = {};
+        protected testGenerators: Dictionary<TestGenerator> = {};
 
-        protected mockGenerators: { [key: string]: MockGenerator } = {};
+        protected mockGenerators: Dictionary<MockGenerator> = {};
 
-        protected contexts: { [key: string]: TranslateResult } = {};
+        protected contexts: Dictionary<TranslateResult> = {};
 
         protected saving = false;
 
@@ -291,7 +358,7 @@
             };
         }
 
-        protected quickLinkId(name: string) {
+        protected quickLinkId(name: string): string {
             return name.replace(/([a-z])([A-Z])/g, "$1-$2")
                 .replace(/\s+/g, "-")
                 .toLowerCase();
@@ -303,8 +370,8 @@
             this.debouncedSave();
         }
 
-        protected mapArrayToObjectById<T extends { id: string }>(items: T[]): { [key: string]: T } {
-            const keyedItems: { [key: string]: T } = {};
+        protected mapArrayToObjectById<T extends { id: string }>(items: T[]): Dictionary<T> {
+            const keyedItems = {} as Dictionary<T>;
 
             items.forEach(item => {
                 keyedItems[item.id] = item;
@@ -312,5 +379,5 @@
 
             return keyedItems;
         }
-    };
+    }
 </script>

@@ -1,40 +1,48 @@
 <template>
-    <nav class="app-nav no-badge">
+  <nav class="app-nav no-badge">
+    <ul>
+      <li>
+        {{ $t("layout.header.language") }}
         <ul>
-            <li>
-                {{ $t("layout.header.language") }}
-                <ul>
-                    <li v-for="(translation, targetLocale) in locales"
-                        @click.prevent="handleLocaleChange(targetLocale)"
-                        :key="`lang-${targetLocale}`">
-                        <a href="#"
-                           :class="currentLocale === targetLocale ? 'active' : ''">
-                            {{ translation }}
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                {{ $t("layout.header.theme") }}
-                <ul>
-                    <li v-for="targetTheme in themes"
-                        @click.prevent="handleThemeChange(targetTheme)"
-                        :key="`theme-${targetTheme.getKey()}`">
-                        <a href="#"
-                           :class="currentTheme === targetTheme ? 'active' : ''">
-                            {{ targetTheme.getEmoji() }}
-                            {{ $t(`common.themes.${targetTheme.getKey()}`) }}
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="/">
-                    <b>{{ $t("layout.header.backToApp") }}</b>
-                </a>
-            </li>
+          <li
+            v-for="(translation, targetLocale) in locales"
+            :key="`lang-${targetLocale}`"
+            @click.prevent="handleLocaleChange(targetLocale)"
+          >
+            <a
+              href="#"
+              :class="currentLocale === targetLocale ? 'active' : ''"
+            >
+              {{ translation }}
+            </a>
+          </li>
         </ul>
-    </nav>
+      </li>
+      <li>
+        {{ $t("layout.header.theme") }}
+        <ul>
+          <li
+            v-for="targetTheme in themes"
+            :key="`theme-${targetTheme.getKey()}`"
+            @click.prevent="handleThemeChange(targetTheme)"
+          >
+            <a
+              href="#"
+              :class="currentTheme === targetTheme ? 'active' : ''"
+            >
+              {{ targetTheme.getEmoji() }}
+              {{ $t(`common.themes.${targetTheme.getKey()}`) }}
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="/">
+          <b>{{ $t("layout.header.backToApp") }}</b>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script lang="ts">

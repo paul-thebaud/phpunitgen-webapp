@@ -9,19 +9,21 @@
  */
 export interface ApiClientI {
     /**
+     * Send a GET request.
      *
      * @param {string} endpoint
      *
-     * @returns {Promise<any>}
+     * @returns {Promise<object>}
      */
-    get(endpoint: string): Promise<any>;
+    get(endpoint: string): Promise<object>;
 
     /**
+     * Send a post request.
      *
      * @param {string} endpoint
-     * @param {any} data
+     * @param {object} data
      *
-     * @returns {Promise<any>}
+     * @returns {Promise<object>}
      */
-    post(endpoint: string, data: any): Promise<any>;
+    post(endpoint: string, data: object): Promise<object>;
 }

@@ -12,4 +12,4 @@ export default {
     lost,
     themes,
     tool,
-}
+};

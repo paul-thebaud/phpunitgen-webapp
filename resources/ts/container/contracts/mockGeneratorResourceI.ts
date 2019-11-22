@@ -2,14 +2,14 @@
  * The mock generator resource.
  */
 export type MockGenerator = {
-    id: string,
-    name: string,
-    description: string,
-    website: string,
+    id: string;
+    name: string;
+    description: string;
+    website: string;
     author: {
-        name: string,
-        website: string,
-    },
+        name: string;
+        website: string;
+    };
 };
 
 /**

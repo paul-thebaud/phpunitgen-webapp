@@ -6,33 +6,69 @@ import { Component, CreateElement, RenderContext, VNode } from "vue";
 import { AsyncComponentFactory, AsyncComponentPromise } from "vue/types/options";
 
 /**
+ * Lazy load a view with loading and error components.
+ *
+ * @param {Promise<typeof import("*.vue")>} AsyncView
+ *
+ * @returns {() => Promise<Component>}
+ *
+ * @see https://github.com/vuejs/vuejs.org/issues/1534
+ */
+function lazyLoadView(AsyncView: AsyncComponentPromise): () => Promise<Component> {
+    const AsyncHandler: AsyncComponentFactory<unknown, unknown, unknown, unknown> = () => ({
+        component: AsyncView,
+        loading: AsyncLoadingComponent,
+        delay: 200,
+        error: AsyncErrorComponent,
+        timeout: 5000,
+    });
+
+    return (): Promise<Component> => Promise.resolve({
+        functional: true,
+        render(createElement: CreateElement, { data, children }: RenderContext): VNode {
+            return createElement(AsyncHandler, data, children);
+        },
+    });
+}
+
+/**
  * The routes of application.
  */
 export const routes = [
     {
         path: "/",
         name: "home",
-        component: lazyLoadView(import(/* webpackChunkName: "home-view" */"../views/HomeView.vue") as any as AsyncComponentPromise),
+        component: lazyLoadView(
+            import(/* webpackChunkName: "home-view" */"../views/HomeView.vue") as unknown as AsyncComponentPromise
+        ),
     },
     {
         path: "/tool",
         name: "tool",
-        component: lazyLoadView(import(/* webpackChunkName: "tool-view" */"../views/ToolView.vue") as any as AsyncComponentPromise),
+        component: lazyLoadView(
+            import(/* webpackChunkName: "tool-view" */"../views/ToolView.vue") as unknown as AsyncComponentPromise
+        ),
     },
     {
         path: "/themes",
         name: "themes",
-        component: lazyLoadView(import(/* webpackChunkName: "themes-view" */"../views/ThemesView.vue") as any as AsyncComponentPromise),
+        component: lazyLoadView(
+            import(/* webpackChunkName: "themes-view" */"../views/ThemesView.vue") as unknown as AsyncComponentPromise
+        ),
     },
     {
         path: "/configuration",
         name: "configuration",
-        component: lazyLoadView(import(/* webpackChunkName: "configuration-view" */"../views/ConfigurationView.vue") as any as AsyncComponentPromise),
+        component: lazyLoadView(
+            import(/* webpackChunkName: "configuration-view" */"../views/ConfigurationView.vue") as unknown as AsyncComponentPromise
+        ),
     },
     {
         path: "/legal",
         name: "legal",
-        component: lazyLoadView(import(/* webpackChunkName: "legal-view" */"../views/LegalView.vue") as any as AsyncComponentPromise),
+        component: lazyLoadView(
+            import(/* webpackChunkName: "legal-view" */"../views/LegalView.vue") as unknown as AsyncComponentPromise
+        ),
     },
 ];
 
@@ -51,30 +87,4 @@ export function scrollBehavior(to: Route, from: Route, savedPosition: Position |
     }
 
     return { x: 0, y: 0 };
-}
-
-/**
- * Lazy load a view with loading and error components.
- *
- * @param {Promise<typeof import("*.vue")>} AsyncView
- *
- * @returns {() => Promise<Component>}
- *
- * @see https://github.com/vuejs/vuejs.org/issues/1534
- */
-function lazyLoadView(AsyncView: AsyncComponentPromise): () => Promise<Component> {
-    const AsyncHandler: AsyncComponentFactory<any, any, any, any> = () => ({
-        component: AsyncView,
-        loading: AsyncLoadingComponent,
-        delay: 200,
-        error: AsyncErrorComponent,
-        timeout: 5000,
-    });
-
-    return () => Promise.resolve({
-        functional: true,
-        render(createElement: CreateElement, { data, children }: RenderContext): VNode {
-            return createElement(AsyncHandler, data, children);
-        },
-    });
 }
