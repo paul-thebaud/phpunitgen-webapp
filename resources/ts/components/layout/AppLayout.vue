@@ -20,7 +20,6 @@
     import { ThemeI } from "@/container/contracts/themeI";
     import { Theme } from "@/container/concerns/theme";
     import { Component, Inject } from "vue-property-decorator";
-    import { StoreI } from "@/container/contracts/storeI";
 
     @Component({
         components: {
@@ -32,22 +31,16 @@
         @Inject(TYPES.Theme)
         protected theme!: ThemeI;
 
-        @Inject(TYPES.Store)
-        protected store!: StoreI;
-
-        protected currentTheme: Theme = this.theme.getTheme();
+        protected currentTheme: Theme = this.theme.currentTheme;
 
         protected unlockedThemes = this.theme.getUnlockedThemes();
-
-        protected generationsCount = this.store.getGenerationsCount();
 
         protected handleThemeChange(newTheme: Theme) {
             if (! this.theme.isUnlocked(newTheme)) {
                 return;
             }
 
-            this.currentTheme = newTheme;
-            this.theme.changeTheme(this.currentTheme);
+            this.theme.currentTheme = this.currentTheme = newTheme;
         }
 
         protected handleThemeUnlock(newTheme: Theme): void {

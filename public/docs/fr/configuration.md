@@ -14,15 +14,89 @@ Si vous pensez qu'une option de configuration est manquante, n'hésitez pas à n
 
 ## Paramètres de la configuration
 
-Voici une liste des paramètres de configuration de PhpUnitGen.
+Voici une liste des paramètres de configuration de PhpUnitGen. Peu importe la version de l'outil
+que utilisez, vous trouverez chacunes de ces clés de configuration.
 
-!> Si vous utilisez l'API, n'oubliez pas que les clés des paramètres doivent être
-écrites au format `snake_case` au lieu de `camelCase`.
+Si un clé de configuration n'est pas précisée, la valeur par défaut sera utilisée.
+[Voir la configuration par défault](https://github.com/paul-thebaud/phpunitgen-core/blob/master/config/phpunitgen.php).
 
 #### Génération automatique
 
 * **Clé du paramètre** : `automaticGeneration`
-* **Type** : `boolean`
-* **Optionel** : `Non`
+* **Type** : `booléen`
 * **Description** : Définit si le générateur doit tenter de générer des propriétés et des tests
 avancés ou juste des méthodes vides à remplir.
+
+#### Implémentations à utiliser
+
+* **Clé du paramètre** : `implementations`
+* **Type** : `tableau (les clés étant les interfaces et les valeurs les implémentations à utiliser)`
+* **Description** : Définit les implémentations à utiliser pour toutes les étapes de PhpUnitGen.
+
+!> Sur la version web, il est uniquement possible de choisir l'implémentation du générateur de tests
+ou du générateur de mocks.
+
+#### Namespace de base
+
+* **Clé du paramètre** : `baseNamespace`
+* **Type** : `chaîne de caractères`
+* **Description** : Définit le namespace de base de votre code source. Il sera remplacé par le
+namespace de test.
+
+#### Namespace de base des tests
+
+* **Clé du paramètre** : `baseTestNamespace`
+* **Type** : `chaîne de caractères`
+* **Description** : Définit le namespace de base de vos tests. Il remplace votre namespace de base.
+
+#### Classe "TestCase" à étendre
+
+* **Clé du paramètre** : `testCase`
+* **Type** : `chaîne de caractères`
+* **Description** : Définit le nom absolu de la classe "TestCase" à étendre dans le test.
+
+#### Méthodes à exclure de la génération
+
+* **Clé du paramètre** : `excludedMethods`
+* **Type** : `tableau de chaînes de caractères`
+* **Description** : Définit les méthodes pour lesquelles aucun squelette de tests ne doit être généré. Peut être au
+format d'une expression régulière ("__.*" par exemple pour exclure les méthodes magiques).
+
+#### Annotation PHPDoc à conserver
+
+* **Clé du paramètre** : `mergedPhpDoc`
+* **Type** : `tableau de chaînes de caractères`
+* **Description** : Définit les annotations PHPDoc qui doivent être récupérées dans la classe à tester et réinjectées
+dans la classe de test ("license" par exemple).
+
+#### Annotation PHPDoc à ajouter
+
+* **Clé du paramètre** : `phpDoc`
+* **Type** : `tableau de chaînes de caractères`
+* **Description** : Définit les annotations PHPDoc qui doivent être ajoutées dans la classe de test
+(par exemple "@author John Doe").
+
+#### Options
+
+* **Clé du paramètre** : `options`
+* **Type** : `tableau (les clés étant des chaînes de caractères, les valeurs de n'importe quel type)`
+* **Description** : Définit les options à utiliser, qui sont propres à certains/plusieurs
+générateur de tests.
+
+> Chaque option est directement disponible sur l'application web
+> en tant que paramètre de configuration individuel, pour une personnalisation plus aisée.
+
+##### Liste des options disponibles
+
+* **Clé de l'option** : `context`
+* **Type** : `chaîne de caractères ou null`
+* **Description** : Définit le contexte de votre projet. Utilisée par le générateur délégué
+pour choisir le générateur le plus adapté à votre type projet.
+Pour l'instant, deux valeurs sont possible : `"laravel"`, et `null` (pour tous les autres projets).
+
+
+* **Clé de l'option** : `laravel.user`
+* **Type** : `chaîne de caractères`
+* **Description** : Définit la classe du modèle Eloquent User pour un projet dont le contexte
+est `laravel`. Utilisée par plusieurs générateurs propres à Laravel afin d'importer correctement
+la classe User quand celle-ci est nécessaire dans les tests (par exemple pour tester une Policy).

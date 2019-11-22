@@ -37,7 +37,7 @@
 
         protected codeMirrorOptions = {
             viewportMargin: Infinity,
-            theme: this.theme.getTheme().getCodeMirror(),
+            theme: this.theme.currentTheme.getCodeMirror(),
             mode: this.mode,
             indentUnit: 4,
             tabSize: 4,

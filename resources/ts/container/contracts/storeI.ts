@@ -104,6 +104,22 @@ export interface StoreI {
     setForceEditorTabs(forceEditorTabs: boolean): StoreI;
 
     /**
+     * Retrieve the last editor content if exists.
+     *
+     * @returns {string | undefined}
+     */
+    getLastEditorContent(): string | undefined;
+
+    /**
+     * Set the last editor content (remove it if undefined).
+     *
+     * @param {string | undefined} content
+     *
+     * @returns {StoreI}
+     */
+    setLastEditorContent(content: string | undefined): StoreI;
+
+    /**
      * Fetch the store content.
      *
      * @returns {Store}

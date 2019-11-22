@@ -9,23 +9,14 @@
  */
 export interface LocaleI {
     /**
+     * The current locale.
+     */
+    currentLocale: string;
+
+    /**
      * Retrieve the available locales with their associated human readable name.
      *
      * @returns {{[p: string]: string}}
      */
     getLocales(): { [key: string]: string };
-
-    /**
-     * Get the current locale.
-     *
-     * @returns {string}
-     */
-    getLocale(): string;
-
-    /**
-     * Change the current locale, and save it in storage.
-     *
-     * @param {string} locale
-     */
-    changeLocale(locale: string): void;
 }

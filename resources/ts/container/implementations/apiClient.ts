@@ -109,7 +109,7 @@ export class ApiClient implements ApiClientI {
     protected buildHeaders(): HeadersInit {
         return {
             "Accept": "application/json",
-            "Accept-Language": this.locale.getLocale(),
+            "Accept-Language": this.locale.currentLocale,
             "Content-Type": "application/json",
         };
     }

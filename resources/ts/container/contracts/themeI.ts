@@ -11,6 +11,11 @@ import { Theme } from "@/container/concerns/theme";
  */
 export interface ThemeI {
     /**
+     * The current theme.
+     */
+    currentTheme: Theme;
+
+    /**
      * Get the themes list.
      *
      * @returns {Theme[]}
@@ -30,20 +35,6 @@ export interface ThemeI {
      * @returns {Theme | null}
      */
     getNextUnlockedTheme(): Theme | null;
-
-    /**
-     * Get the current theme.
-     *
-     * @returns {Theme}
-     */
-    getTheme(): Theme;
-
-    /**
-     * Change the current theme, and save it in storage.
-     *
-     * @param {Theme} theme
-     */
-    changeTheme(theme: Theme): void;
 
     /**
      * Check if the given theme is unlocked.

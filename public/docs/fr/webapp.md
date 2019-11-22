@@ -1,10 +1,8 @@
 # Application Web
 
-**Exigences pour installer l'outil**
+L'application est la manière la plus simple d'utiliser PhpUnitGen. Elle vous permet donc
+d'essayer l'outil, pour savoir s'il répond à vos besoins.
 
-Si vous utilisez l'outil en ligne de commande ou le cœur, vous devez satisfaire
-les exigences suivantes :
-
-- PHP `7.2` et supérieur.
-- Laravel `5.7` et supérieur si vous souhaitez utilisez
-[l'intégration à Laravel](/fr/command-line.md#laravel).
+La configuration et personnalisation y sont assez poussées, mais pas autant que pour
+la ligne de commande ou le coeur de l'outil. En effet, vous ne pouvez surcharger
+que le générateur de tests ou de mocks, et il vous est impossible d'ajouter les votres.

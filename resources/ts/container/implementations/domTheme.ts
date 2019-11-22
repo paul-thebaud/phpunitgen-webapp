@@ -77,9 +77,20 @@ export class DomTheme implements ThemeI {
     }
 
     /**
-     * @inheritDoc
+     * Get the current theme.
+     *
+     * @returns {Theme}
      */
-    public changeTheme(theme: Theme): void {
+    public get currentTheme(): Theme {
+        return this.theme;
+    }
+
+    /**
+     * Change the current theme.
+     *
+     * @param {Theme} theme
+     */
+    public set currentTheme(theme: Theme) {
         if (this.theme === theme || ! themes.hasOwnProperty(theme.getKey())) {
             return;
         }
@@ -87,13 +98,6 @@ export class DomTheme implements ThemeI {
         this.updateDom(this.theme, theme);
         this.theme = theme;
         this.store.setTheme(theme.getKey()).save();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public getTheme(): Theme {
-        return this.theme;
     }
 
     /**

@@ -18,5 +18,6 @@
         * [Tests](/fr/api.md#tests)
 * **Utilisation avancée**
     * [Introduction](/fr/advanced-usage.md)
+    * [Définir une implémentation à utiliser](/fr/advanced-usage.md#define-implementation)
     * [Générateur de tests personnalisé](/fr/advanced-usage.md#custom-test-generator)
     * [Générateur de mocks personnalisé](/fr/advanced-usage.md#custom-mock-generator)

@@ -27,7 +27,7 @@ Voici les informations que vous pourrez trouver dans documentation :
 Si vous avez des idées d'améliorations, nous acceptons volontiers les pull-requests et les issues sur GitHub.
 
 Nous n'avons pas de page de donation ou de sponsoring, donc si vous appréciez le projet, vous pouvez
-mettre des étoiles sur les 3 répertoires GitHub : 
+mettre des étoiles ou contribuer aux 3 répertoires GitHub : 
 
 - [phpunitgen-core](https://github.com/paul-thebaud/phpunitgen-core)
 - [phpunitgen-console](https://github.com/paul-thebaud/phpunitgen-console)

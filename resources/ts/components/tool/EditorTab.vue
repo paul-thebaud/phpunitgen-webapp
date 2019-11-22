@@ -54,6 +54,7 @@
 </template>
 
 <script lang="ts">
+    import debounce from "lodash.debounce";
     import Vue from "vue";
     import { Component, Inject, Prop } from "vue-property-decorator";
     import CodeEditor from "@/components/tool/CodeEditor.vue";
@@ -91,7 +92,18 @@
 
         protected showException = false;
 
+        protected debouncedSave = debounce(function (this: EditorTab) {
+            this.store.setLastEditorContent(this.code).save();
+        }, 250);
+
         public async created(): Promise<void> {
+            const lastEditorContent = this.store.getLastEditorContent();
+            if (lastEditorContent !== undefined) {
+                this.code = lastEditorContent;
+
+                return;
+            }
+
             const testGenerator = await this.testGeneratorResource.find(
                 this.store.getTool().testGenerator
             );
@@ -118,6 +130,8 @@
 
         public handleEditorChange(code: string): void {
             this.code = code;
+
+            this.debouncedSave();
         }
 
         public handleFileBrowser(): void {

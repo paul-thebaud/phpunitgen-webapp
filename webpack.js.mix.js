@@ -17,6 +17,9 @@ mix.webpackConfig(webpackConfig)
     .babelConfig({
         plugins: ["@babel/plugin-syntax-dynamic-import"],
     })
+    .options({
+        postCss: [require('autoprefixer')],
+    })
     .extract([
         "vue",
         "vue-i18n",

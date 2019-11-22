@@ -28,7 +28,7 @@ new Vue({
 });
 
 const locale = container.get<LocaleI>(TYPES.Locale);
-if (! window.location.hash.match(`/^#\/${locale.getLocale()}\//`)) {
+if (! window.location.hash.match(`/^#\/${locale.currentLocale}\//`)) {
 
-    window.location.hash = window.location.hash.replace(/^(#(\/([a-z]{2}\/?)?)?)?/, `#${locale.getLocale()}/`);
+    window.location.hash = window.location.hash.replace(/^(#(\/([a-z]{2}\/?)?)?)?/, `#${locale.currentLocale}/`);
 }

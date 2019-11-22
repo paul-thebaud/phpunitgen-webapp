@@ -54,22 +54,26 @@ export class I18nLocale implements LocaleI {
     }
 
     /**
-     * @inheritDoc
+     * Get the current locale.
+     *
+     * @returns {string}
      */
-    public changeLocale(locale: string): void {
+    public get currentLocale(): string {
+        return this.locale;
+    }
+
+    /**
+     * Define the current locale.
+     *
+     * @param {string} locale
+     */
+    public set currentLocale(locale: string) {
         if (locale === this.locale) {
             return;
         }
 
         this.locale = this.vueI18n.locale = locale;
         this.store.setLocale(locale).save();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public getLocale(): string {
-        return this.locale;
     }
 
     /**

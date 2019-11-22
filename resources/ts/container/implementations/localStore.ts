@@ -8,11 +8,12 @@ import { inject, injectable } from "inversify";
  * The type for the local storage content.
  */
 type LocalStoreContent = {
-    generationsCount: number,
-    forceEditorTabs: boolean,
-    theme: string,
-    locale: string,
-    tool: ToolType,
+    generationsCount: number;
+    forceEditorTabs: boolean;
+    lastEditorContent?: string | undefined;
+    theme: string;
+    locale: string;
+    tool: ToolType;
 };
 
 /**
@@ -144,6 +145,22 @@ export class LocalStore implements StoreI {
      */
     public setForceEditorTabs(forceEditorTabs: boolean): StoreI {
         this.content.forceEditorTabs = forceEditorTabs;
+
+        return this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public getLastEditorContent(): string | undefined {
+        return this.content.lastEditorContent;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public setLastEditorContent(content: string | undefined): StoreI {
+        this.content.lastEditorContent = content;
 
         return this;
     }

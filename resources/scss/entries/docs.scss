@@ -1,10 +1,13 @@
 @charset "UTF-8";
 
 @import "~docsify/themes/vue";
+@import "../bootstrap/variables";
 @import "../components/docs/docs-nav";
 
 body {
   --theme-color: var(--primary-bg-color);
+
+  font-family: $font-family-sans-serif;
 
   &, .sidebar, .sidebar ul li a, .anchor span, .markdown-section strong {
     background-color: var(--base-bg-color);
@@ -48,6 +51,7 @@ body {
 
   .markdown-section {
     code {
+      font-family: $font-family-monospace;
       background-color: var(--secondary-bg-color);
       color: var(--muted-color);
     }
@@ -65,6 +69,12 @@ body {
       & em {
         color: var(--secondary-color);
       }
+    }
+
+    blockquote > p {
+      font-weight: normal;
+      padding-top: 12px;
+      padding-bottom: 12px;
     }
 
     pre > code {

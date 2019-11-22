@@ -1,8 +1,13 @@
 # Comment ça fonctionne ?
 
 Le fonctionnement de PhpUnitGen peut être découpé en trois étapes, depuis
-l'instant où vous fournissez votre code et votre configurer jusqu'à
+l'instant où vous fournissez votre configuration et votre code jusqu'à
 la récupération de votre test généré.
+
+## Démarrage
+
+La phase de démarrage de l'outil inclut la récupération de la configuration
+et l'instantiation du conteneur de dépendances en fonction de cette dernière.
 
 ## Etape 1 : analyse du code source
 
@@ -20,8 +25,8 @@ L'analyseur statique de code que PhpUnitGen utilise est disponible ici :
 [Roave/BetterReflection](https://github.com/Roave/BetterReflection).
 
 > PhpUnitGen va essayer d'analyser vos déclarations de types de paramètres et de retour de
-methode en premier. Cependant, si vous n'utilisez pas le typage de PHP, l'outil essayera
-d'analyser la documentation phpDoc de votre code pour trouver les types de paramètres et de retour.
+> methode en premier. Cependant, si vous n'utilisez pas le typage de PHP, l'outil essayera
+> d'analyser la documentation phpDoc de votre code pour trouver les types de paramètres et de retour.
 
 ## Etape 2 : génération du modèle du test
 
@@ -37,3 +42,11 @@ Il existe de nombreux générateurs, permettant de créer des tests pour des cla
 
 Enfin, une fois le modèle de données de votre test récupéré, PhpUnitGen va
 rendre ce modèle au format chaîne de caractères : c'est le code source de votre test.
+
+## Plus de détails ...
+
+Chacune de ces étapes utilisent des implémentations d'interfaces, ce qui permert à l'outil de gagner
+en modularité et en maintenabilité.
+
+Si vous estimez qu'une des implémentations n'est pas faite pour vous, vous pouvez tout à fait utiliser
+la votre. [En savoir plus](/fr/advanced-usage.md).

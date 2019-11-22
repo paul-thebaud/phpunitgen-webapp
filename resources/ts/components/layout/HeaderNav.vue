@@ -79,14 +79,14 @@
 
         protected locales = this.locale.getLocales();
 
-        protected currentLocale = this.locale.getLocale();
+        protected currentLocale = this.locale.currentLocale;
 
         protected handleThemeChange(newTheme: Theme): void {
             this.$emit("theme-change", newTheme);
         }
 
         protected handleLocaleChange(newLocale: string): void {
-            this.locale.changeLocale(this.currentLocale = newLocale);
+            this.locale.currentLocale = this.currentLocale = newLocale;
         }
     };
 </script>

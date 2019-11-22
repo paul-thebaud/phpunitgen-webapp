@@ -42,7 +42,7 @@ export default {
     "excludedMethods": {
         "label": "Méthodes à exclure de la génération",
         "placeholder": "__construct",
-        "help": "Définit les méthodes pour lesquelles aucun squelette de tests ne doit être généré. Peut être au format d'une expression régulière (\"__.*\" par exemple).",
+        "help": "Définit les méthodes pour lesquelles aucun squelette de tests ne doit être généré. Peut être au format d'une expression régulière (\"__.*\" par exemple pour exclure les méthodes magiques).",
     },
     "mergedPhpDoc": {
         "label": "Annotation PHPDoc à conserver",

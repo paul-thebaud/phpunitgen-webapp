@@ -57,18 +57,18 @@
 
         protected locales = this.locale.getLocales();
 
-        protected currentTheme = this.theme.getTheme();
+        protected currentTheme = this.theme.currentTheme;
 
-        protected currentLocale = this.locale.getLocale();
+        protected currentLocale = this.locale.currentLocale;
 
         protected handleThemeChange(newTheme: Theme): void {
-            this.theme.changeTheme(this.currentTheme = newTheme);
+            this.theme.currentTheme = this.currentTheme = newTheme;
         }
 
         protected handleLocaleChange(newLocale: string): void {
             const previousLocale = this.currentLocale;
 
-            this.locale.changeLocale(this.currentLocale = newLocale);
+            this.locale.currentLocale = this.currentLocale = newLocale;
 
             if (newLocale !== previousLocale) {
                 window.location.hash = window.location.hash.replace(/^#\/[a-z]{2}/, `#${newLocale}`);
