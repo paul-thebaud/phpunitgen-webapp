@@ -46,6 +46,7 @@
         <BCard
           :id="`${id}-${targetKey}`"
           :class="computeClasses(targetKey, selectedKey)"
+          class="h-100"
           body-class="d-flex flex-column align-items-center justify-content-center text-center rounded p-2 h-100"
           @click="handleChange(targetKey)"
         >
@@ -123,7 +124,7 @@
 
         protected selectedKey = this.value;
 
-        protected displayedCount = this.displayAll ? Object.keys(this.values).length : 3;
+        protected displayedCount = 3;
 
         protected get filteredValues(): Dictionary<object> {
             if (this.searchResolver === undefined || this.search === "") {
@@ -149,7 +150,7 @@
             const displayedValues = {} as Dictionary<object>;
 
             Object.keys(filteredValues)
-                .slice(0, this.displayedCount)
+                .slice(0, this.displayAll ? this.valuesCount : this.displayedCount)
                 .forEach(key => {
                     displayedValues[key] = filteredValues[key];
                 });
@@ -158,11 +159,16 @@
         }
 
         protected get hasMoreToDisplay(): boolean {
-            return Object.keys(this.filteredValues).length > this.displayedCount;
+            return ! this.displayAll
+                && Object.keys(this.filteredValues).length > this.displayedCount;
+        }
+
+        protected get valuesCount(): number {
+            return Object.keys(this.values).length;
         }
 
         protected handleDisplayMore(): void {
-            this.displayedCount = Object.keys(this.values).length;
+            this.displayedCount = this.valuesCount;
         }
 
         protected handleChange(key: string): void {

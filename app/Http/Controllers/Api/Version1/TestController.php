@@ -12,6 +12,8 @@ use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use PhpUnitGen\Core\Contracts\Generators\MockGenerator;
 use PhpUnitGen\Core\CoreApplication;
+use PhpUnitGen\Core\Generators\Mocks\MockeryMockGenerator;
+use PhpUnitGen\Core\Generators\Tests\DelegateTestGenerator;
 use PhpUnitGen\Core\Parsers\Sources\StringSource;
 use PhpUnitGen\WebApp\Http\Resources\MockGeneratorResource;
 use PhpUnitGen\WebApp\Http\Resources\TestGeneratorResource;
@@ -84,20 +86,20 @@ class TestController extends BaseController
         TestGeneratorResource $testGeneratorResource
     ): array {
         return $this->validate($request, [
-            'config'                     => 'required|array',
-            'config.automaticGeneration' => 'nullable|boolean',
-            'config.mockGenerator'       => 'required|in:'.$mockGeneratorResource->all()->pluck('id')->implode(','),
-            'config.testGenerator'       => 'required|in:'.$testGeneratorResource->all()->pluck('id')->implode(','),
-            'config.baseNamespace'       => 'nullable|string|max:255',
-            'config.baseTestNamespace'   => 'nullable|string|max:255',
-            'config.testCase'            => 'nullable|string|max:255',
-            'config.excludedMethods'     => 'nullable|array',
-            'config.excludedMethods.*'   => 'nullable|string|max:255',
-            'config.mergedPhpDoc'        => 'nullable|array',
-            'config.mergedPhpDoc.*'      => 'nullable|string|max:255',
-            'config.phpDoc'              => 'nullable|array',
-            'config.phpDoc.*'            => 'nullable|string|max:255',
-            'config.options'             => 'nullable|array',
+            'config'                     => 'array',
+            'config.automaticGeneration' => 'boolean',
+            'config.mockGenerator'       => 'in:'.$mockGeneratorResource->all()->pluck('id')->implode(','),
+            'config.testGenerator'       => 'in:'.$testGeneratorResource->all()->pluck('id')->implode(','),
+            'config.baseNamespace'       => 'string|max:255',
+            'config.baseTestNamespace'   => 'string|max:255',
+            'config.testCase'            => 'string|max:255',
+            'config.excludedMethods'     => 'array',
+            'config.excludedMethods.*'   => 'string|max:255',
+            'config.mergedPhpDoc'        => 'array',
+            'config.mergedPhpDoc.*'      => 'string|max:255',
+            'config.phpDoc'              => 'array',
+            'config.phpDoc.*'            => 'string|max:255',
+            'config.options'             => 'array',
             'code'                       => 'required|string|max:10000',
         ]);
     }
@@ -116,10 +118,14 @@ class TestController extends BaseController
         MockGeneratorResource $mockGeneratorResource,
         TestGeneratorResource $testGeneratorResource
     ): array {
-        $config = new Collection(Arr::get($validatedData, 'config'));
+        $config = new Collection(Arr::get($validatedData, 'config', []));
 
-        $mockGenerator = $mockGeneratorResource->find($config->pull('mockGenerator'))['class'];
-        $testGenerator = $testGeneratorResource->find($config->pull('testGenerator'))['class'];
+        $mockGenerator = $config->has('mockGenerator')
+            ? $mockGeneratorResource->find($config->pull('mockGenerator'))['class']
+            : MockeryMockGenerator::class;
+        $testGenerator = $config->has('testGenerator')
+            ? $testGeneratorResource->find($config->pull('testGenerator'))['class']
+            : DelegateTestGenerator::class;
 
         $implementations = call_user_func([$testGenerator, 'implementations']);
         $implementations[MockGenerator::class] = $mockGenerator;

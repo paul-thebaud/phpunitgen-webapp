@@ -34,7 +34,7 @@ export class TestResource implements TestResourceI {
      * @inheritDoc
      */
     public create(code: string): Promise<Test> {
-        return this.apiClient.post("/api/tests", {
+        return this.apiClient.post("tests", {
             code,
             config: this.store.getTool(),
         }) as Promise<Test>;

@@ -66,7 +66,7 @@ export class ApiClient implements ApiClientI {
     protected async json(method: string, endpoint: string, data?: object): Promise<object> {
         const request: RequestInit = this.buildRequest(method, data);
 
-        const response = await this.window.fetch(endpoint, request);
+        const response = await this.window.fetch(`/api/v1/${endpoint}`, request);
         const json = await response.json();
 
         if (response.status === 422) {

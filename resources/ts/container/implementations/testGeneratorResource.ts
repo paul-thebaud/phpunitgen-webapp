@@ -25,13 +25,13 @@ export class TestGeneratorResource implements TestGeneratorResourceI {
      * @inheritDoc
      */
     public find(id: string): Promise<TestGenerator> {
-        return this.apiClient.get(`/api/test-generators/${id}`) as Promise<TestGenerator>;
+        return this.apiClient.get(`test-generators/${id}`) as Promise<TestGenerator>;
     }
 
     /**
      * @inheritDoc
      */
     public all(): Promise<TestGenerator[]> {
-        return this.apiClient.get("/api/test-generators") as Promise<TestGenerator[]>;
+        return this.apiClient.get("test-generators") as Promise<TestGenerator[]>;
     }
 }

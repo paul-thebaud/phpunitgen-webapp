@@ -34,8 +34,7 @@ Ensuite, vous pouvez appeler l'outil depuis la racine de votre projet :
 **Installation globale**
 
 Ce mode d'installation vous permet d'utiliser globalement PhpUnitGen.
-Pour cela, vous devrez au préalable avoir [ajouter les dépendances composer globales à
-votre path](https://example.com).
+Pour cela, vous devrez au préalable avoir les éxécutables de composer dans votre `PATH`.
 
 ```bash
 $ composer global require --dev phpunitgen/console

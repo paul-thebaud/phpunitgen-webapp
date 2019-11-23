@@ -6,6 +6,7 @@ import "docsify/lib/plugins/search";
 import "docsify-copy-code";
 import "prismjs/components/prism-bash";
 import "prismjs/components/prism-php";
+import "prismjs/components/prism-json";
 import Vue, { VNode } from "vue";
 import VueI18n from "vue-i18n";
 import { container } from "@/container/docContainer";
