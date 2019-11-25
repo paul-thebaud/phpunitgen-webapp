@@ -206,9 +206,9 @@ export class LocalStore implements StoreI {
                 automaticGeneration: true,
                 testGenerator: "delegate",
                 mockGenerator: "mockery",
-                baseNamespace: "",
+                baseNamespace: "App",
                 baseTestNamespace: "Tests",
-                testCase: "PHPUnit\\Framework\\TestCase",
+                testCase: "Tests\\TestCase",
                 excludedMethods: [
                     "__construct",
                     "__destruct",

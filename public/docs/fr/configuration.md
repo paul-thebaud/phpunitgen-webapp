@@ -7,6 +7,9 @@ Elle vous permet de personnaliser la génération de vos tests, via différents 
 
 Si vous pensez qu'une option de configuration est manquante, n'hésitez pas à nous la proposer.
 
+> La configuration par défaut de PhpUnitGen correspond à un projet Laravel suivant
+> les conventions du framework. Bien sûr, vous pouvez configurer selon vos besoins.
+
 !> L'outil en ligne de commande dispose de quelques options supplémentaires dûes
 à son fonctionnement, vous pouvez les voir [ici](/fr/command-line.md#configuration).
 
@@ -66,7 +69,7 @@ et PhpUnitGen se chargera de remplir les autres avec des valeurs par défaut. Se
 
 * **Clé du paramètre** : `baseNamespace`
 * **Type** : `chaîne de caractères`
-* **Valeur par défaut**: `""`
+* **Valeur par défaut**: `"App"`
 * **Description** : Définit le namespace de base de votre code source. Il sera remplacé par le
 namespace de test.
 
@@ -81,7 +84,7 @@ namespace de test.
 
 * **Clé du paramètre** : `testCase`
 * **Type** : `chaîne de caractères`
-* **Valeur par défaut**: `"PHPUnit\\Framework\\TestCase"`
+* **Valeur par défaut**: `"Tests\\TestCase"`
 * **Description** : Définit le nom absolu de la classe "TestCase" à étendre dans le test.
 
 ### Méthodes à exclure de la génération

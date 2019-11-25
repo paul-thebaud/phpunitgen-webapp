@@ -36,7 +36,7 @@ export default {
     },
     "testCase": {
         "label": "Classe \"TestCase\" à étendre",
-        "placeholder": "PHPUnit\\Framework\\TestCase",
+        "placeholder": "Tests\\TestCase",
         "help": "Définit le nom absolu de la classe \"TestCase\" à étendre dans le test.",
     },
     "excludedMethods": {
