@@ -21,12 +21,10 @@
             as="style"
             onload="this.onload=null;this.rel='stylesheet'"
     >
-    <noscript>
-        <link
-                rel="stylesheet"
-                href="{{ mix('css/docs.css') }}"
-        >
-    </noscript>
+    <link
+            rel="stylesheet"
+            href="{{ mix('css/docs.css') }}"
+    >
 @endpush
 
 @push('scripts')

@@ -37,13 +37,13 @@ Ce mode d'installation vous permet d'utiliser globalement PhpUnitGen.
 Pour cela, vous devrez au préalable avoir les éxécutables de composer dans votre `PATH`.
 
 ```bash
-$ composer global require --dev phpunitgen/console
+composer global require --dev phpunitgen/console
 ```
 
 Ensuite, vous pouvez appeler l'outil depuis n'importe quel répertoire :
 
 ```bash
-$ phpunitgen path/to/File.php
+phpunitgen path/to/File.php
 ```
 
 ## Configuration
@@ -117,6 +117,11 @@ seront générés) DOIVENT correspondre.
 Peu importe le mode d'utilisation de la ligne de commande (globale, projet ou Laravel), PhpUnitGen
 vous proposera les mêmes arguments et options.
 
+Lorsqu'il s'exécute, il vous donne des informations sur le nombre de fichiers traités, en warning
+ou en erreur, ainsi que la durée d'exécution ou l'utilisation mémoire.
+Vous pouvez augmenter la verbosité (en utilisant les options `-v`, `-vv` ou `-vvv`) pour afficher
+plus de détails sur les erreurs ou les warnings.
+
 Vous pouvez appeler PhpUnitGen sur un fichier ou un dossier. Si vous utilisez PhpUnitGen
 sur un dossier, l'outil analysera et générera un fichier pour chaque fichier du dossier,
 de manière récursive. Vous pouvez également préciser ou un fichier dans lequel
@@ -129,8 +134,8 @@ phpunitgen app/my/File.php
 # Génére les tests des fichiers de app/my dans tests/my.
 phpunitgen app/my
 
-# Génére les tests du fichier File.php dans custom/target/File.php.
-phpunitgen app/my/File.php custom/target
+# Génére les tests du fichier File.php dans custom/Target.php.
+phpunitgen app/my/File.php custom/Target.php
 
 # Génére les tests des fichiers de app/my dans custom/target.
 phpunitgen app/my custom/target

@@ -17,6 +17,7 @@ import { faRocket } from "@fortawesome/free-solid-svg-icons/faRocket";
 import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
 import { faTerminal } from "@fortawesome/free-solid-svg-icons/faTerminal";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
+import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
 
 library.add(
     faBars,
@@ -37,4 +38,5 @@ library.add(
     faSearch,
     faTerminal,
     faTimes,
+    faTrash,
 );

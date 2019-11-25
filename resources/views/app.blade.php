@@ -20,12 +20,10 @@
             as="style"
             onload="this.onload=null;this.rel='stylesheet'"
     >
-    <noscript>
-        <link
-                rel="stylesheet"
-                href="{{ mix('css/app.css') }}"
-        >
-    </noscript>
+    <link
+            rel="stylesheet"
+            href="{{ mix('css/app.css') }}"
+    >
 @endpush
 
 @push('scripts')

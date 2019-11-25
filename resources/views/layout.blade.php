@@ -28,12 +28,10 @@
             as="style"
             onload="this.onload=null;this.rel='stylesheet'"
     >
-    <noscript>
-        <link
-                rel="stylesheet"
-                href="{{ mix('css/vendor.css') }}"
-        >
-    </noscript>
+    <link
+            rel="stylesheet"
+            href="{{ mix('css/vendor.css') }}"
+    >
     @stack('style')
 </head>
 

@@ -33,12 +33,34 @@ avancés ou juste des méthodes vides à remplir.
 * **Valeur par défaut**: générateur de test délégué et générateur de mock pour Mockery.
 * **Description** : Définit les implémentations à utiliser pour toutes les étapes de PhpUnitGen.
 
+Voici un exemple de valeur dans une configuration au format `PHP` :
+
+```php
+use PhpUnitGen\Core\Contracts\Parsers\CodeParser as CodeParserContract;
+use PhpUnitGen\Core\Generators\Tests\DelegateTestGenerator;
+
+return [
+    // Utilisation des implémentations d'un générateur.
+    // "implementations()" retourne toutes les implementations
+    // nécessaires au bon fonctionnement du générateur.
+    'implementations' => DelegateTestGenerator::implementations(),
+    // Utilisation des implémentations d'un générateur,
+    // avec surcharge de certaines implémenations.
+    'implementations' => array_merge([
+        CodeParserContract::class => MyCodeParserImpl::class,
+    ], DelegateTestGenerator::implementations()),
+];
+```
+
 > Si vous souhaitez en apprendre plus sur les différents générateurs de tests/mocks disponibles, vous pouvez
 > aller sur la [page de configuration](https://phpunitgen.io/configuration) de l'application
 > web, sur laquelle chacun des générateurs est décrits par une tooltip.
 
 !> Sur la version web, il est uniquement possible de choisir l'implémentation du générateur de tests
 ou du générateur de mocks.
+
+!> Sachez que lorsque vous configurez les implémentations, vous pouvez ne fournir que certaines implémenations,
+et PhpUnitGen se chargera de remplir les autres avec des valeurs par défaut. Seul le générateur de test est obligatoire.
 
 ### Namespace de base
 

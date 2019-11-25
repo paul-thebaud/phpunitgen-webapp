@@ -26,6 +26,19 @@
         {{ $t("components.tool.editorTab.import") }}
       </BButton>
       <BButton
+        id="clear-editor-button"
+        :disabled="loading"
+        variant="secondary"
+        class="ml-2"
+        @click="handleClearEditor"
+      >
+        <FontAwesomeIcon icon="trash" />
+        {{ $t("components.tool.editorTab.clear") }}
+      </BButton>
+      <BTooltip target="clear-editor-button">
+        {{ $t("components.tool.editorTab.clearDescription") }}
+      </BTooltip>
+      <BButton
         :disabled="code === '' || code === null || loading"
         variant="primary"
         class="ml-auto"
@@ -120,11 +133,7 @@
                 return;
             }
 
-            const testGenerator = await this.testGeneratorResource.find(
-                this.store.getTool().testGenerator
-            );
-
-            this.code = testGenerator.example;
+            await this.handleClearEditor();
         }
 
         public get showExceptionEditor(): boolean {
@@ -138,6 +147,14 @@
             }
 
             return this.$t("components.tool.editorTab.showException");
+        }
+
+        public async handleClearEditor(): Promise<void> {
+            const testGenerator = await this.testGeneratorResource.find(
+                this.store.getTool().testGenerator
+            );
+
+            this.code = testGenerator.example;
         }
 
         public handleGenerate(): void {
