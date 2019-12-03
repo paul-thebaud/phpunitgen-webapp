@@ -58,6 +58,4 @@ class Handler extends ExceptionHandler
 
         return new JsonResponse($payload, $rendered->getStatusCode());
     }
-
-
 }
