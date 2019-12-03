@@ -1,0 +1,41 @@
+language: php
+
+dist: trusty
+
+git:
+  depth: false
+
+addons:
+  sonarcloud:
+    organization: "paul-thebaud-github"
+    token:
+      secure: "$SONAR_TOKEN"
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.2
+    - php: 7.3
+    - php: 7.3
+      env: sonar=true
+    - php: nightly
+    - php: 7.4snapshot
+  allow_failures:
+    - php: nightly
+
+before_script:
+  - phpenv config-rm xdebug.ini || echo "xdebug not available"
+  - composer self-update
+  - composer global require hirak/prestissimo
+  - composer update --no-interaction --no-suggest --no-progress
+  - yarn install
+  - yarn prod
+
+script:
+  - phpdbg -qrr ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
+  - ./node_modules/.bin/eslint --ext .js,.vue,.ts resources/ts
+  - if [ "$sonar" == "true" ]; then sonar-scanner; fi
