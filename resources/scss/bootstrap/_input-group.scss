@@ -1,0 +1,12 @@
+@import "~bootstrap/scss/input-group";
+
+.input-group .btn {
+  @extend .shadow-none;
+}
+
+.input-group .input-group-text {
+  border: none;
+  color: var(--secondary-color);
+  background-color: var(--secondary-bg-color);
+  filter: brightness(var(--hover-brightness));
+}

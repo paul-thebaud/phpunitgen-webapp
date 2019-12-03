@@ -1,0 +1,51 @@
+.home-container {
+  background: linear-gradient(90deg, var(--gradient-bg-color));
+  color: var(--gradient-color);
+}
+
+.home-container {
+  .btn:not(.rounded-pill):not(.btn-primary) {
+    background-color: var(--base-bg-color) !important;
+    color: var(--base-color) !important;
+  }
+}
+
+.home-wrapper {
+  padding-top: 150px;
+  padding-bottom: 10px;
+
+  .home-title {
+    font-size: 3rem;
+  }
+
+  .home-description {
+    font-size: 1.5rem;
+  }
+
+  .home-actions {
+    margin-top: 40px;
+  }
+}
+
+.home-features {
+  background-color: var(--base-bg-color);
+  color: var(--base-color);
+
+  img {
+    width: 100%;
+    max-width: 500px;
+    max-height: 250px;
+  }
+}
+
+.home-ready {
+  background-color: var(--secondary-bg-color);
+  color: var(--secondary-color);
+}
+
+svg.home-waves > g > g {
+  transition-timing-function: ease;
+  transition-property: fill !important;
+  transition-duration: 0.5s !important;
+  fill: var(--base-bg-color);
+}

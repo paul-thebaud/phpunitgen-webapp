@@ -1,0 +1,29 @@
+.theme-desert {
+  --base-bg-color: #655013;
+  --base-color: #ffffff;
+
+  --gradient-start-color: #a78d40;
+  --gradient-stop-color: #826a23;
+  --gradient-bg-color: var(--gradient-start-color) 0%, var(--gradient-stop-color) 100%;
+  --gradient-color: #ffffff;
+
+  --primary-bg-color: #a78d40;
+  --primary-color: #ffffff;
+
+  --secondary-bg-color: #6d5c2a;
+  --secondary-bg-color-hover: #{lighten(#6d5c2a, 5%)};
+  --secondary-color: var(--base-color);
+
+  --success-bg-color: #28a745;
+  --success-color: var(--base-color);
+
+  --warning-bg-color: #ffc107;
+  --warning-color: var(--base-bg-color);
+
+  --danger-bg-color: #c82333;
+  --danger-color: var(--base-color);
+
+  --muted-color: #aeb3b8;
+
+  --hover-brightness: 115%;
+}

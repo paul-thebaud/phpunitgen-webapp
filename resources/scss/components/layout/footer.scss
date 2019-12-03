@@ -1,0 +1,19 @@
+footer {
+  background: linear-gradient(180deg, var(--base-bg-color) 0%, var(--secondary-bg-color) 50%);
+  color: var(--secondary-color);
+  margin-top: auto;
+  width: 100%;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  a, .btn-link {
+    color: inherit;
+
+    &:hover {
+      color: inherit;
+    }
+  }
+}

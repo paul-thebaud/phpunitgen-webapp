@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+@import "~docsify/themes/vue";
+@import "../bootstrap/variables";
+@import "../components/docs/docs-nav";
+
+body {
+  --theme-color: var(--primary-bg-color);
+
+  font-family: $font-family-sans-serif;
+
+  &, .sidebar, .sidebar ul li a, .anchor span, .markdown-section strong {
+    background-color: var(--base-bg-color);
+    color: var(--base-color);
+  }
+
+  .sidebar {
+    border-right-color: var(--secondary-bg-color) !important;
+
+    .search {
+      margin-bottom: 0;
+
+      &, .matching-post {
+        border-bottom-color: var(--secondary-bg-color) !important;
+      }
+
+      .clear-button > svg > path {
+        stroke: var(--base-bg-color);
+      }
+
+      .input-wrap > input {
+        border-radius: 0.25rem;
+        background-color: var(--secondary-bg-color);
+        color: var(--base-color);
+
+        &::placeholder {
+          color: var(--base-color);
+        }
+      }
+    }
+
+    .app-name {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  }
+
+  .sidebar-toggle {
+    background-color: transparent !important;
+  }
+
+  .markdown-section {
+    code {
+      font-family: $font-family-monospace;
+      background-color: var(--secondary-bg-color);
+      color: var(--muted-color);
+    }
+
+    p.tip code {
+      background-color: var(--base-bg-color);
+      color: var(--muted-color);
+    }
+
+    p.tip, blockquote {
+      border-radius: 0.25rem;
+      background-color: var(--secondary-bg-color);
+      color: var(--secondary-color) !important;
+
+      & em {
+        color: var(--secondary-color);
+      }
+    }
+
+    blockquote > p {
+      font-weight: normal;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    pre > code {
+      background-color: var(--secondary-bg-color);
+      color: var(--base-color);
+
+      .token.punctuation {
+        color: var(--muted-color);
+      }
+    }
+
+    > pre {
+      border-radius: 0.25rem;
+      background-color: var(--secondary-bg-color);
+
+      .docsify-copy-code-button {
+        border-bottom-left-radius: 0.25rem;
+      }
+    }
+  }
+}
+

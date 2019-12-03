@@ -1,0 +1,24 @@
+.card-select {
+  .card {
+    transition: 300ms;
+    cursor: pointer;
+    border: 1px solid var(--secondary-bg-color);
+
+    &.active {
+      border: 1px solid var(--primary-bg-color);
+    }
+
+    &.disabled {
+      background-color: grey;
+      border: grey;
+      color: white;
+      cursor: not-allowed;
+      filter: grayscale(100%);
+    }
+
+    &:hover:not(.disabled) {
+      border: 1px solid var(--primary-bg-color);
+      transform: scale(1.05);
+    }
+  }
+}

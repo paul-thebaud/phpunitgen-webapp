@@ -1,0 +1,30 @@
+@import '../../bootstrap/variables';
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/tomorrow-night-eighties.css';
+@import '~codemirror/theme/darcula.css';
+@import '~codemirror/theme/pastel-on-dark.css';
+@import '~codemirror/theme/erlang-dark.css';
+@import '~codemirror/theme/blackboard.css';
+
+.CodeMirror {
+  line-height: 1.25;
+  height: auto !important;
+  border-radius: 0.25rem;
+  font-family: $font-family-monospace !important;
+  color: var(--secondary-color) !important;
+  background-color: var(--secondary-bg-color) !important;
+
+  .CodeMirror-linenumber {
+    color: var(--muted-color) !important;
+  }
+
+  .CodeMirror-gutters, .CodeMirror-selected {
+    border: none;
+    padding: 0 !important;
+    background: var(--secondary-bg-color-hover) !important;
+  }
+
+  .CodeMirror-gutter.CodeMirror-linenumbers {
+    background: none;
+  }
+}

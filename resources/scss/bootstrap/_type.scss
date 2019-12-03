@@ -1,0 +1,12 @@
+@import "variables";
+@import "~bootstrap/scss/type";
+
+.text-muted, input::placeholder {
+  color: var(--muted-color) !important;
+}
+
+@each $variant in $variants {
+  .text-#{$variant} {
+    color: var(--#{$variant}-bg-color) !important;
+  }
+}

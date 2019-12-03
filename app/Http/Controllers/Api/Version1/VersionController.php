@@ -26,8 +26,8 @@ class VersionController extends BaseController
     public function __invoke(): JsonResponse
     {
         return new JsonResponse([
-            'core_version' => $this->getCoreVersion(),
-            'api_version'  => $this->getApiVersion(),
+            'coreVersion' => $this->getCoreVersion(),
+            'apiVersion'  => $this->getApiVersion(),
         ], JsonResponse::HTTP_OK);
     }
 

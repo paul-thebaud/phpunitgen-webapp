@@ -1,0 +1,17 @@
+.configuration {
+  .configuration-quick-link {
+    color: var(--base-color);
+
+    &:hover, &:active, &:focus {
+      color: var(--base-color);
+    }
+  }
+
+  label.custom-control-label {
+    font-size: 110%;
+  }
+
+  label:not(.custom-control-label) {
+    font-size: 120%;
+  }
+}

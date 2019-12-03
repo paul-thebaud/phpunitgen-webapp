@@ -1,0 +1,18 @@
+@import "variables";
+@import "~bootstrap/scss/buttons";
+
+.btn:not(.btn-link) {
+  border: none;
+  @extend .shadow-sm;
+}
+
+@each $variant in $variants {
+  .btn.btn-#{$variant} {
+    background-color: var(--#{$variant}-bg-color) !important;
+    color: var(--#{$variant}-color) !important;
+
+    &:not(.disabled):hover, &:not(.disabled):focus {
+      filter: brightness(var(--hover-brightness));
+    }
+  }
+}

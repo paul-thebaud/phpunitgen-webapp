@@ -1,4 +1,4 @@
-# PhpUnitGen
+# PhpUnitGen {docsify-ignore-all}
 
 ## A propos
 
@@ -17,9 +17,8 @@ Voici les informations que vous pourrez trouver dans documentation :
 
 - [Description du fonctionnement de l'outil](/fr/how-does-it-works.md)
 - [Configuration de l'outil](/fr/configuration.md)
-- [Comment utiliser l'application en ligne ?](/fr/webapp.md)
+- [Comment utiliser l'application en ligne ou l'API ?](/fr/webapp.md)
 - [Comment utiliser l'outil en ligne de commande ?](/fr/command-line.md)
-- [Comment utiliser l'API ?](/fr/api.md)
 - [Utilisation avancée](/fr/advanced-usage.md)
 
 ## Vous voulez supporter le projet ?
@@ -27,7 +26,7 @@ Voici les informations que vous pourrez trouver dans documentation :
 Si vous avez des idées d'améliorations, nous acceptons volontiers les pull-requests et les issues sur GitHub.
 
 Nous n'avons pas de page de donation ou de sponsoring, donc si vous appréciez le projet, vous pouvez
-mettre des étoiles sur les 3 répertoires GitHub : 
+mettre des étoiles ou contribuer aux 3 répertoires GitHub : 
 
 - [phpunitgen-core](https://github.com/paul-thebaud/phpunitgen-core)
 - [phpunitgen-console](https://github.com/paul-thebaud/phpunitgen-console)

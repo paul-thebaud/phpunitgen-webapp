@@ -1,0 +1,22 @@
+@import "../components/tool/codemirror";
+
+.editor-tabs {
+  border: none;
+
+  &__tab {
+    flex-basis: 100%;
+    cursor: pointer;
+    color: var(--base-color);
+    transition: 300ms;
+    border-bottom: 3px solid transparent;
+
+    &.active {
+      color: var(--primary-bg-color);
+      border-bottom: 3px solid var(--primary-bg-color);
+    }
+
+    &:not(.active):hover {
+      color: var(--muted-color);
+    }
+  }
+}
