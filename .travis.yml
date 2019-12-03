@@ -15,17 +15,8 @@ cache:
   directories:
     - $HOME/.composer/cache
 
-matrix:
-  fast_finish: true
-  include:
-    - php: 7.2
-    - php: 7.3
-    - php: 7.3
-      env: sonar=true
-    - php: nightly
-    - php: 7.4snapshot
-  allow_failures:
-    - php: nightly
+php:
+  - 7.3
 
 before_script:
   - phpenv config-rm xdebug.ini || echo "xdebug not available"
@@ -38,4 +29,4 @@ before_script:
 script:
   - phpdbg -qrr ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
   - ./node_modules/.bin/eslint --ext .js,.vue,.ts resources/ts
-  - if [ "$sonar" == "true" ]; then sonar-scanner; fi
+  - sonar-scanner
