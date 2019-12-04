@@ -171,13 +171,6 @@ class TestController extends BaseController
             'exception' => get_class($exception),
             'file'      => str_replace(base_path(), '', $exception->getFile()),
             'line'      => $exception->getLine(),
-            /*
-            'trace'     => (new Collection($exception->getTrace()))
-                ->map(function ($trace) {
-                    return Arr::except($trace, ['args']);
-                })
-                ->all(),
-            */
         ];
     }
 }
