@@ -3,11 +3,11 @@
 return [
     'delegate' => [
         'name'        => 'Délégué',
-        'description' => "Utilise la classe et le contexte fourni dans la configuration pour choisir un générateur de tests adapté.",
+        'description' => 'Utilise la classe et le contexte fourni dans la configuration pour choisir un générateur de tests adapté.',
     ],
     'basic'    => [
         'name'        => 'Basique',
-        'description' => "Génère un squelette basique pour une classe PHP. Peut instancier la classe et gérer les méthodes getter/setter.",
+        'description' => 'Génère un squelette basique pour une classe PHP. Peut instancier la classe et gérer les méthodes getter/setter.',
     ],
     'laravel'  => [
         'channel' => [
@@ -16,7 +16,7 @@ return [
         ],
         'command' => [
             'name'        => 'Commande Laravel',
-            'description' => "Génère un squelette adapté à une commande du framework Laravel. Génère un test particulier pour la méthode \"handle\", en se servant du nom de la commande.",
+            'description' => 'Génère un squelette adapté à une commande du framework Laravel. Génère un test particulier pour la méthode "handle", en se servant du nom de la commande.',
         ],
         'policy' => [
             'name'        => 'Policy Laravel',

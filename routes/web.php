@@ -19,7 +19,7 @@ use PhpUnitGen\WebApp\Http\Controllers\DocsController;
 |
 */
 
-/** @var Router $router */
+/* @var Router $router */
 
 $router->group(['prefix' => 'api/v1'], function (Router $router) {
     $router->get('/', VersionController::class);
