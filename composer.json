@@ -34,7 +34,7 @@
   },
   "autoload": {
     "files": [
-      "app/helpers/functions.php"
+      "app/Helpers/functions.php"
     ],
     "psr-4": {
       "PhpUnitGen\\WebApp\\": "app/"
