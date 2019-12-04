@@ -23,7 +23,7 @@ matrix:
         - phpenv config-rm xdebug.ini || echo "xdebug not available"
         - composer self-update
         - composer global require hirak/prestissimo
-        - composer update --no-interaction --no-suggest --no-progress
+        - composer install --no-interaction --no-suggest --no-progress
       script:
         - phpdbg -qrr ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
         - sonar-scanner

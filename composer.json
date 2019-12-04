@@ -32,12 +32,6 @@
     "phpunit/phpunit": "^8.0",
     "mockery/mockery": "^1.0"
   },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/paul-thebaud/phpunitgen-core"
-    }
-  ],
   "autoload": {
     "files": [
       "app/helpers/functions.php"
