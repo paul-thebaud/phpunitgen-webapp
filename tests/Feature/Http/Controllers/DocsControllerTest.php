@@ -14,8 +14,6 @@ class DocsControllerTest extends TestCase
     public function testDocsViewIsDisplayed(): void
     {
         $response = $this->get('/docs')->response;
-        dump($response->content());
-        dump($response->exception);
 
         $this->assertSame(200, $response->status());
         $this->assertSame(view('docs')->render(), $response->content());

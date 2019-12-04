@@ -15,22 +15,21 @@ cache:
   directories:
     - $HOME/.composer/cache
 
-matrix:
-  include:
-    - language: php
-      php: 7.3
-      before_script:
-        - phpenv config-rm xdebug.ini || echo "xdebug not available"
-        - composer self-update
-        - composer global require hirak/prestissimo
-        - composer install --no-interaction --no-suggest --no-progress
-      script:
-        - phpdbg -qrr ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
-        - sonar-scanner
-    - language: node_js
-      node_js: 13.2
-      before_script:
-        - yarn install
-        - yarn prod
-      script:
-        - ./node_modules/.bin/eslint --ext .js,.vue,.ts resources/ts
+php:
+  - 7.3
+
+before_install:
+  - nvm install 13.2
+
+before_script:
+  - phpenv config-rm xdebug.ini || echo "xdebug not available"
+  - composer self-update
+  - composer global require hirak/prestissimo
+  - composer install --no-interaction --no-suggest --no-progress
+  - yarn install --non-interactive
+
+script:
+  - yarn lint
+  - yarn prod-no-progress
+  - phpdbg -qrr ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
+  - sonar-scanner
