@@ -23,7 +23,7 @@
     "prod-no-progress": "$npm_execpath run prod-css-no-progress & $npm_execpath run prod-js-no-progress",
     "lint": "node_modules/eslint/bin/eslint.js --ext .js,.vue,.ts resources/ts"
   },
-  "devDependencies": {
+  "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.20",
     "@fortawesome/free-regular-svg-icons": "^5.10.0",
@@ -65,8 +65,5 @@
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-chunk-rename-plugin": "^1.0.3",
     "whatwg-fetch": "^3.0.0"
-  },
-  "dependencies": {
-    "prismjs": "^1.17.1"
   }
 }
