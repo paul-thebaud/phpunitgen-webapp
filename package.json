@@ -21,6 +21,7 @@
     "watch": "concurrently --kill-others \"$npm_execpath run watch-css\" \"$npm_execpath run watch-js\"",
     "prod": "$npm_execpath run prod-css & $npm_execpath run prod-js",
     "prod-no-progress": "$npm_execpath run prod-css-no-progress & $npm_execpath run prod-js-no-progress",
+    "build": "$npm_execpath run prod-no-progress",
     "lint": "node_modules/eslint/bin/eslint.js --ext .js,.vue,.ts resources/ts"
   },
   "dependencies": {
