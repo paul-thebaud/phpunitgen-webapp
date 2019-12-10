@@ -18,16 +18,29 @@ use PhpUnitGen\WebApp\Http\Resources\MockGeneratorResource;
 class MockGeneratorController extends BaseController
 {
     /**
-     * Retrieve the list of available mock generators.
+     * @var MockGeneratorResource
+     */
+    protected MockGeneratorResource $mockGeneratorResource;
+
+    /**
+     * MockGeneratorController constructor.
      *
      * @param MockGeneratorResource $mockGeneratorResource
+     */
+    public function __construct(MockGeneratorResource $mockGeneratorResource)
+    {
+        $this->mockGeneratorResource = $mockGeneratorResource;
+    }
+
+    /**
+     * Retrieve the list of available mock generators.
      *
      * @return JsonResponse
      */
-    public function index(MockGeneratorResource $mockGeneratorResource): JsonResponse
+    public function index(): JsonResponse
     {
         return new JsonResponse(
-            $mockGeneratorResource->all(),
+            $this->mockGeneratorResource->all(),
             JsonResponse::HTTP_OK
         );
     }
@@ -35,15 +48,14 @@ class MockGeneratorController extends BaseController
     /**
      * Retrieve one mock generator from its ID.
      *
-     * @param MockGeneratorResource $mockGeneratorResource
-     * @param string                $id
+     * @param string $id
      *
      * @return JsonResponse
      */
-    public function show(MockGeneratorResource $mockGeneratorResource, string $id): JsonResponse
+    public function show(string $id): JsonResponse
     {
         return new JsonResponse(
-            $mockGeneratorResource->find($id),
+            $this->mockGeneratorResource->find($id),
             JsonResponse::HTTP_OK
         );
     }

@@ -17,12 +17,12 @@ abstract class AbstractResource
     /**
      * @var Collection|null The already retrieved resource collection.
      */
-    protected $collection;
+    protected ?Collection $collection = null;
 
     /**
      * @var Translator The translator used when some items attributes need it.
      */
-    protected $translator;
+    protected Translator $translator;
 
     /**
      * AbstractResource constructor.

@@ -18,16 +18,29 @@ use PhpUnitGen\WebApp\Http\Resources\TestGeneratorResource;
 class TestGeneratorController extends BaseController
 {
     /**
-     * Retrieve the list of available test generators.
+     * @var TestGeneratorResource
+     */
+    protected TestGeneratorResource $testGeneratorResource;
+
+    /**
+     * TestGeneratorController constructor.
      *
      * @param TestGeneratorResource $testGeneratorResource
+     */
+    public function __construct(TestGeneratorResource $testGeneratorResource)
+    {
+        $this->testGeneratorResource = $testGeneratorResource;
+    }
+
+    /**
+     * Retrieve the list of available test generators.
      *
      * @return JsonResponse
      */
-    public function index(TestGeneratorResource $testGeneratorResource): JsonResponse
+    public function index(): JsonResponse
     {
         return new JsonResponse(
-            $testGeneratorResource->all(),
+            $this->testGeneratorResource->all(),
             JsonResponse::HTTP_OK
         );
     }
@@ -35,15 +48,14 @@ class TestGeneratorController extends BaseController
     /**
      * Retrieve one test generator from its ID.
      *
-     * @param TestGeneratorResource $testGeneratorResource
-     * @param string                $id
+     * @param string $id
      *
      * @return JsonResponse
      */
-    public function show(TestGeneratorResource $testGeneratorResource, string $id): JsonResponse
+    public function show(string $id): JsonResponse
     {
         return new JsonResponse(
-            $testGeneratorResource->find($id),
+            $this->testGeneratorResource->find($id),
             JsonResponse::HTTP_OK
         );
     }

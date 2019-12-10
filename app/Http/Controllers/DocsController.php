@@ -21,7 +21,7 @@ class DocsController extends BaseController
     /**
      * @var ViewFactory
      */
-    protected $viewFactory;
+    protected ViewFactory $viewFactory;
 
     /**
      * DocsController constructor.

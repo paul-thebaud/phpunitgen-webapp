@@ -26,7 +26,7 @@ class DefineLanguage
     /**
      * @var Translator The translator we will update locale on.
      */
-    protected $translator;
+    protected Translator $translator;
 
     /**
      * DefineLanguage constructor.

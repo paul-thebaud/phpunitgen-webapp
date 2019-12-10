@@ -27,7 +27,7 @@ class ThrottleRequests
     /**
      * @var RateLimiter The rate limiter instance.
      */
-    protected $limiter;
+    protected RateLimiter $limiter;
 
     /**
      * Create a new request throttler.

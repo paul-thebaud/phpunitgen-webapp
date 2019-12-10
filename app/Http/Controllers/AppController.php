@@ -22,7 +22,7 @@ class AppController extends BaseController
     /**
      * @var ViewFactory
      */
-    protected $viewFactory;
+    protected ViewFactory $viewFactory;
 
     /**
      * HomeController constructor.
