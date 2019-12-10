@@ -47,6 +47,7 @@
     "laravel-mix": "^5.0.0",
     "laravel-mix-merge-manifest": "^0.1.2",
     "lodash.debounce": "^4.0.8",
+    "marked": "^0.7.0",
     "reflect-metadata": "^0.1.13",
     "resolve-url-loader": "3.1.0",
     "sass": "^1.22.7",
