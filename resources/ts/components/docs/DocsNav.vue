@@ -1,48 +1,51 @@
 <template>
-  <nav class="app-nav no-badge">
-    <ul>
-      <li>
-        {{ $t("layout.header.language") }}
-        <ul>
-          <li
-            v-for="(translation, targetLocale) in locales"
-            :key="`lang-${targetLocale}`"
-            @click.prevent="handleLocaleChange(targetLocale)"
-          >
-            <a
-              href="#"
-              :class="currentLocale === targetLocale ? 'active' : ''"
+  <div>
+    <nav class="app-nav no-badge">
+      <ul>
+        <li>
+          {{ $t("layout.header.language") }}
+          <ul>
+            <li
+              v-for="(translation, targetLocale) in locales"
+              :key="`lang-${targetLocale}`"
+              @click.prevent="handleLocaleChange(targetLocale)"
             >
-              {{ translation }}
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        {{ $t("layout.header.theme") }}
-        <ul>
-          <li
-            v-for="targetTheme in themes"
-            :key="`theme-${targetTheme.getKey()}`"
-            @click.prevent="handleThemeChange(targetTheme)"
-          >
-            <a
-              href="#"
-              :class="currentTheme === targetTheme ? 'active' : ''"
+              <a
+                href="#"
+                :class="currentLocale === targetLocale ? 'active' : ''"
+              >
+                {{ translation }}
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          {{ $t("layout.header.theme") }}
+          <ul>
+            <li
+              v-for="targetTheme in themes"
+              :key="`theme-${targetTheme.getKey()}`"
+              @click.prevent="handleThemeChange(targetTheme)"
             >
-              {{ targetTheme.getEmoji() }}
-              {{ $t(`common.themes.${targetTheme.getKey()}`) }}
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="/">
-          <b>{{ $t("layout.header.backToApp") }}</b>
-        </a>
-      </li>
-    </ul>
-  </nav>
+              <a
+                href="#"
+                :class="currentTheme === targetTheme ? 'active' : ''"
+              >
+                {{ targetTheme.getEmoji() }}
+                {{ $t(`common.themes.${targetTheme.getKey()}`) }}
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="/">
+            <b>{{ $t("layout.header.backToApp") }}</b>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <CookiesInfo @google-analytics-accepted="handleGoogleAnalyticsAccepted" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -52,8 +55,11 @@
     import { ThemeI } from "@/container/contracts/themeI";
     import { LocaleI } from "@/container/contracts/localeI";
     import { Theme } from "@/container/concerns/theme";
+    import CookiesInfo from "@/components/common/CookiesInfo.vue";
 
-    @Component
+    @Component({
+        components: { CookiesInfo },
+    })
     export default class DocsNav extends Vue {
         @Inject(TYPES.Theme)
         protected theme!: ThemeI;
@@ -81,6 +87,11 @@
             if (newLocale !== previousLocale) {
                 window.location.hash = window.location.hash.replace(/^#\/[a-z]{2}/, `#${newLocale}`);
             }
+        }
+
+        protected handleGoogleAnalyticsAccepted(): void {
+            // Reload the page to trigger the analytics activation.
+            window.location.reload();
         }
     }
 </script>

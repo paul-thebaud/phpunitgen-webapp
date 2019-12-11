@@ -39,6 +39,8 @@
 
 @yield('content')
 
+<div id="cookies-info"></div>
+
 <script
         type="text/javascript"
         src="{{ mix('js/manifest.js') }}"

@@ -10,6 +10,8 @@ import { SerializerI } from "@/container/contracts/serializerI";
 import { JsonSerializer } from "@/container/implementations/jsonSerializer";
 import { StoreI } from "@/container/contracts/storeI";
 import { LocalStore } from "@/container/implementations/localStore";
+import { GoogleAnalyticsI } from "@/container/contracts/googleAnalyticsI";
+import { GoogleAnalytics } from "@/container/implementations/googleAnalytics";
 
 const container: Container = new Container();
 
@@ -21,6 +23,9 @@ container.bind<VueI18n>(TYPES.VueI18n)
         messages: { en, fr },
     }));
 
+container.bind<GoogleAnalyticsI>(TYPES.GoogleAnalytics)
+    .to(GoogleAnalytics)
+    .inSingletonScope();
 container.bind<SerializerI>(TYPES.Serializer)
     .to(JsonSerializer)
     .inSingletonScope();

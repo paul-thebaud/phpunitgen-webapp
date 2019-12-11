@@ -1,0 +1,51 @@
+@import "../../bootstrap/variables";
+
+.cookies-info-wrapper {
+  font-family: $font-family-sans-serif !important;
+  line-height: 1.5 !important;
+  font-size: 1rem !important;
+  box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.15);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  color: var(--secondary-color);
+  background-color: var(--secondary-bg-color);
+  padding: 20px 40px;
+
+  > p {
+    margin-top: 0;
+  }
+
+  > .buttons {
+    display: block;
+    min-width: 240px;
+    text-align: right;
+
+    > button {
+      font-family: $font-family-sans-serif !important;
+      line-height: 1.5 !important;
+      font-size: 1rem !important;
+      border: none;
+      border-radius: 0.25rem;
+      padding: 0.5rem 1.5rem;
+
+      &:hover, &:focus {
+        filter: brightness(var(--hover-brightness));
+      }
+
+      &.btn-accept {
+        background-color: var(--primary-bg-color);
+        color: var(--primary-color);
+      }
+
+      &.btn-refuse {
+        margin-left: 5px;
+        background-color: var(--base-bg-color);
+        color: var(--base-color);
+      }
+    }
+  }
+}
+

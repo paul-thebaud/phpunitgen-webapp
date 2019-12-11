@@ -1,4 +1,9 @@
-window.$docsify = {
+import { container } from "@/container/docContainer";
+import { TYPES } from "@/container/types";
+
+const googleAnalytics = container.get(TYPES.GoogleAnalytics);
+
+const docsify = {
     el: "#docs",
     name: "PhpUnitGen",
     loadSidebar: "_sidebar.md",
@@ -18,3 +23,9 @@ window.$docsify = {
         },
     },
 };
+
+if (googleAnalytics.isConfigured() && googleAnalytics.isAccepted()) {
+    docsify.ga = googleAnalytics.getApplicationId();
+}
+
+window.$docsify = docsify;
