@@ -12,7 +12,7 @@ return [
     'laravel'  => [
         'basic'      => [
             'name'        => 'Laravel class',
-            'description' => "Generates a skeleton adapted to a class in a Laravel project.",
+            'description' => 'Generates a skeleton adapted to a class in a Laravel project.',
         ],
         'channel'    => [
             'name'        => 'Laravel Channel',

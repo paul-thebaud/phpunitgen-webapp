@@ -16,7 +16,7 @@ return [
         ],
         'channel'    => [
             'name'        => 'Canal Laravel',
-            'description' => "Génère un squelette adapté à un canal de diffusion du framework Laravel. Génère deux tests pour la méthode \"join\" (un pour l'authorisation, l'autre pour le rejet).",
+            'description' => 'Génère un squelette adapté à un canal de diffusion du framework Laravel. Génère deux tests pour la méthode "join" (un pour l\'authorisation, l\'autre pour le rejet).',
         ],
         'command'    => [
             'name'        => 'Commande Laravel',
@@ -40,11 +40,11 @@ return [
         ],
         'resource'   => [
             'name'        => 'Ressource Laravel',
-            'description' => "Génère un squelette adapté à une ressource du framework Laravel. Génère un test particulier pour la méthode \"toArray\".",
+            'description' => 'Génère un squelette adapté à une ressource du framework Laravel. Génère un test particulier pour la méthode "toArray".',
         ],
         'rule'       => [
             'name'        => 'Règle Laravel',
-            'description' => "Génère un squelette adapté à une règle du framework Laravel. Génère deux tests pour la méthode \"passes\" (un pour la validation, l'autre pour le rejet).",
+            'description' => 'Génère un squelette adapté à une règle du framework Laravel. Génère deux tests pour la méthode "passes" (un pour la validation, l\'autre pour le rejet).',
         ],
     ],
 ];
