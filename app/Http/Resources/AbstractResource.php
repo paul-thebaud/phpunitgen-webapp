@@ -67,9 +67,7 @@ abstract class AbstractResource
             $data = require resource_path("data/{$this->resourcePath()}.php");
 
             $this->collection = (new Collection($data))
-                ->map(function ($item) {
-                    return $this->map($item);
-                });
+                ->map(fn($item) => $this->map($item));
         }
 
         return $this->collection;
