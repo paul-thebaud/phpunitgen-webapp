@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Http\Resources;
+
+use App\Post;
+use Illuminate\Http\Request;
+
+/**
+ * Class PostResource.
+ *
+ * This class is an example to try PhpUnitGen. Enjoy!
+ *
+ * @author  John Doe <john.doe@example.com>
+ * @version 1.0.0
+ */
+class PostResource
+{
+    public function toArray(Request $request): array
+    {
+        return [
+            'name'         => $this->name,
+            'content'      => $this->content,
+            'published_at' => optional($this->published_at)->toAtomString(),
+        ];
+    }
+}

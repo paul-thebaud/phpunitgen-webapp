@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Listeners;
+
+use App\Events\NewPost;
+use App\Post;
+use App\Services\PostService;
+
+/**
+ * Class NewPostListener.
+ *
+ * This class is an example to try PhpUnitGen. Enjoy!
+ *
+ * @author  John Doe <john.doe@example.com>
+ * @version 1.0.0
+ */
+class NewPostListener
+{
+    protected $postService;
+
+    public function __construct(PostService $postService)
+    {
+        $this->postService = $postService;
+    }
+
+    public function handle(NewPost $event): void
+    {
+        $this->postService->handleNewPost($event->post);
+    }
+}

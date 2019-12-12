@@ -65,7 +65,7 @@ return [
             'name'    => 'Paul Thébaud',
             'website' => 'https://github.com/paul-thebaud',
         ],
-        'example' => 'laravel/PrunePostsCommand.stub',
+        'example' => 'laravel/PostController.stub',
     ],
     [
         'id'      => 'laravel.job',
@@ -74,7 +74,7 @@ return [
             'name'    => 'Paul Thébaud',
             'website' => 'https://github.com/paul-thebaud',
         ],
-        'example' => 'laravel/PrunePostsCommand.stub',
+        'example' => 'laravel/PublishPostJob.stub',
     ],
     [
         'id'      => 'laravel.listener',
@@ -83,7 +83,7 @@ return [
             'name'    => 'Paul Thébaud',
             'website' => 'https://github.com/paul-thebaud',
         ],
-        'example' => 'laravel/PrunePostsCommand.stub',
+        'example' => 'laravel/NewPostListener.stub',
     ],
     [
         'id'      => 'laravel.policy',
@@ -101,7 +101,7 @@ return [
             'name'    => 'Paul Thébaud',
             'website' => 'https://github.com/paul-thebaud',
         ],
-        'example' => 'laravel/PostPolicy.stub',
+        'example' => 'laravel/PostResource.stub',
     ],
     [
         'id'      => 'laravel.rule',
@@ -110,6 +110,6 @@ return [
             'name'    => 'Paul Thébaud',
             'website' => 'https://github.com/paul-thebaud',
         ],
-        'example' => 'laravel/PostPolicy.stub',
+        'example' => 'laravel/PostContentRule.stub',
     ],
 ];

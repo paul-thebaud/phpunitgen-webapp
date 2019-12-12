@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Post;
+use Illuminate\Http\Request;
+
+/**
+ * Class PostController.
+ *
+ * This class is an example to try PhpUnitGen. Enjoy!
+ *
+ * @author  John Doe <john.doe@example.com>
+ * @version 1.0.0
+ */
+class PostController
+{
+    public function index()
+    {
+        return view('posts.index', ['posts' => Post::all()]);
+    }
+
+    public function create()
+    {
+        return view('posts.create');
+    }
+
+    public function store(Request $request)
+    {
+        // Validate and store.
+        $post = new Post();
+
+        return view('posts.create', compact('post'));
+    }
+}

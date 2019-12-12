@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Jobs;
+
+use App\Post;
+use App\Services\PostService;
+
+/**
+ * Class PublishPostJob.
+ *
+ * This class is an example to try PhpUnitGen. Enjoy!
+ *
+ * @author  John Doe <john.doe@example.com>
+ * @version 1.0.0
+ */
+class PublishPostJob
+{
+    protected $post;
+
+    public function __construct(Post $post)
+    {
+        $this->post = $post;
+    }
+
+    public function handle(PostService $postService): void
+    {
+        $postService->publish($this->post);
+    }
+}

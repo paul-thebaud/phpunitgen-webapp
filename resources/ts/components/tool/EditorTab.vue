@@ -89,7 +89,7 @@
     import CodeEditor from "@/components/tool/CodeEditor.vue";
     import { StoreI } from "@/container/contracts/storeI";
     import { TYPES } from "@/container/types";
-    import { TestGeneratorResourceI } from "@/container/contracts/testGeneratorResourceI";
+    import { TestGenerator, TestGeneratorResourceI } from "@/container/contracts/testGeneratorResourceI";
     import { TranslateResult } from "vue-i18n";
 
     @Component({
@@ -117,11 +117,18 @@
         @Prop(Object)
         protected exception!: object;
 
+        protected testGenerator: TestGenerator | undefined;
+
         protected code = "";
 
         protected showException = false;
 
         protected debouncedSave = debounce(function (this: EditorTab) {
+            // Do not save if the content is the same as example.
+            if (this.testGenerator && this.code === this.testGenerator.example) {
+                return;
+            }
+
             this.store.setLastEditorContent(this.code).save();
         }, 250);
 
@@ -150,11 +157,12 @@
         }
 
         public async handleClearEditor(): Promise<void> {
-            const testGenerator = await this.testGeneratorResource.find(
+            this.testGenerator = await this.testGeneratorResource.find(
                 this.store.getTool().testGenerator
             );
 
-            this.code = testGenerator.example;
+            this.store.setLastEditorContent(undefined);
+            this.code = this.testGenerator.example;
         }
 
         public handleGenerate(): void {

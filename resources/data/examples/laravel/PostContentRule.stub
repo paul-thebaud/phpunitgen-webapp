@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Rules;
+
+use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Str;
+
+/**
+ * Class PostContentRule.
+ *
+ * This class is an example to try PhpUnitGen. Enjoy!
+ *
+ * @author  John Doe <john.doe@example.com>
+ * @version 1.0.0
+ */
+class PostContentRule implements Rule
+{
+    public function passes($attribute, $value)
+    {
+        return Str::length($value) >= 250;
+    }
+
+    public function message()
+    {
+        return 'Post content length must be greater than 250 characters.';
+    }
+}

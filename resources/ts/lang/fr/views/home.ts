@@ -32,7 +32,7 @@ export default {
         },
         "modularity": {
             "title": "De la modularité",
-            "description": "Depuis la toute première version, <code>phpunit-generator</code>, nous avons pris soin de rendre l'outil le plus modulaire possible, afin que chacun puisse générer des tests à son image.<br><br>Actuellement, PhpUnitGen dispose de X générateurs de tests différents, n'hésitez pas à nous en proposer de nouveaux !",
+            "description": "Depuis la toute première version, <code>phpunit-generator</code>, nous avons pris soin de rendre l'outil le plus modulaire possible, afin que chacun puisse générer des tests à son image.<br><br>Actuellement, PhpUnitGen dispose de 11 générateurs de tests différents, n'hésitez pas à nous en proposer de nouveaux !",
         },
     },
     "ready": {

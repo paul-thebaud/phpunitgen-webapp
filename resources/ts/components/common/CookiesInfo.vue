@@ -49,7 +49,7 @@
         }
 
         protected handleAcceptCookies(): void {
-            this.googleAnalytics.refuse();
+            this.googleAnalytics.accept();
             this.cookiesAccepted = true;
 
             this.$emit("google-analytics-accepted");
@@ -58,7 +58,7 @@
         }
 
         protected handleRefuseCookies(): void {
-            this.googleAnalytics.accept();
+            this.googleAnalytics.refuse();
             this.cookiesAccepted = false;
         }
 
