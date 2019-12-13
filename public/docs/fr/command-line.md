@@ -166,7 +166,18 @@ phpunitgen -O
 ## Intégration à Laravel
 
 PhpUnitGen s'intègre automatiquement à tous les projets Laravel `5.7` et plus lorsqu'il est installé
-en dépendence du projet.
+en dépendance du projet.
+
+Si jamais vous avez désactivé la découverte des paquets via Laravel, il vous suffit d'ajouter le
+`provider` de PhpUnitGen à votre fichier de configuration de l'application :
+
+```php
+// config/app.php
+'providers' => [
+    ...
+    PhpUnitGen\Console\Container\ConsoleServiceProvider::class,
+],
+```
 
 Vous pouvez alors l'appeler via Artisan :
 
@@ -182,4 +193,11 @@ php artisan make:policy UserPolicy
 
 # Cette commande crée d'abord un fichier app/Policies/UserPolicy
 # PhpUnitGen détecte l'appel, et génère un fichier tests/Unit/Policies/UserPolicyTest
+```
+
+Il est aussi possible de générer le fichier de configuration par défaut à la racine du projet,
+en utilisant la commande suivante :
+
+```
+php artisan vendor:publish --tag=phpunitgen-config
 ```
