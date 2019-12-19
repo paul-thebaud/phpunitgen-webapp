@@ -66,7 +66,7 @@ class TestController extends BaseController
             'name'          => $testName,
             'code'          => $testCode,
             'executionTime' => microtime(true) - $executionTime,
-        ], JsonResponse::HTTP_CREATED);
+        ]);
     }
 
     /**
