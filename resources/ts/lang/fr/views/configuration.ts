@@ -26,12 +26,12 @@ export default {
     },
     "baseNamespace": {
         "label": "Namespace de base",
-        "placeholder": "PhpUnitGen\\App",
+        "placeholder": "App",
         "help": "Définit le namespace de base de votre code source. Il sera remplacé par le namespace de test.",
     },
     "baseTestNamespace": {
         "label": "Namespace de base des tests",
-        "placeholder": "PhpUnitGen\\Tests",
+        "placeholder": "Tests",
         "help": "Définit le namespace de base de vos tests. Il remplace votre namespace de base.",
     },
     "testCase": {

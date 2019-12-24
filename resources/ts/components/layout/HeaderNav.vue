@@ -30,7 +30,7 @@
       >
         <BNavbarNav class="ml-auto">
           <BNavItem
-            href="/docs#/"
+            :href="locale.localizedDocs()"
             class="mr-lg-2"
           >
             {{ $t("layout.header.documentation") }}

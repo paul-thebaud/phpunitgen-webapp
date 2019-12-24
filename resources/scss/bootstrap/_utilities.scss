@@ -1,0 +1,7 @@
+@import "~bootstrap/scss/utilities";
+
+@include media-breakpoint-up(md) {
+  .w-md-auto {
+    width: auto !important;
+  }
+}

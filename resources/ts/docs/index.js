@@ -10,6 +10,9 @@ const docsify = {
     subMaxLevel: 3,
     basePath: "/docs",
     auto2top: true,
+    noCompileLinks: [
+        "/tool",
+    ],
     search: {
         hideOtherSidebarContent: true,
         noData: {

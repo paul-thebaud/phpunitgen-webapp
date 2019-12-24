@@ -56,15 +56,15 @@ body {
       color: var(--muted-color);
     }
 
-    p.tip code {
-      background-color: var(--base-bg-color);
-      color: var(--muted-color);
-    }
-
     p.tip, blockquote {
       border-radius: 0.25rem;
       background-color: var(--secondary-bg-color);
       color: var(--secondary-color) !important;
+
+      code {
+        background-color: var(--base-bg-color);
+        color: var(--muted-color);
+      }
 
       & em {
         color: var(--secondary-color);

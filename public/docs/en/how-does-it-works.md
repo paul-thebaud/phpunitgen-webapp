@@ -1,39 +1,52 @@
-# Comment ça fonctionne ?
+# How does it work? {docsify-ignore-all}
 
-Le fonctionnement de PhpUnitGen peut être découpé en trois étapes, depuis
-l'instant où vous fournissez votre code et votre configurer jusqu'à
-la récupération de votre test généré.
+PhpUnitGen's operation is divided into three steps, from
+the moment you provide your configuration and code up to
+the recovery of your generated test.
 
-## Etape 1 : analyse du code source
+## Initialization
 
-La première étape pour PhpUnitGen est d'analyser le code source que vous lui
-fournissez. Pour cela, il crée des objets de [Reflection](https://www.php.net/manual/fr/book.reflection.php)
-qui décrivent la classe, les propriétés et les méthodes déclarées.
+The initialization phase of the tool includes the recovery of the configuration
+and the instantiation of the dependency container according to the latter.
 
-Il est important de comprendre que ces objets sont créés à partir d'un analyseur statique
-de code, et non en important (via `include` ou `require`) votre code.
+## Step 1: Analysis of the source code
 
-Ainsi, votre code n'est jamais exécuté. C'est grâce à cela que nous pouvons fournir
-une application Web et une API sans risquer d'exécuter un code PHP malicieux sur notre serveur.
+The first step is to analyze the source code you have given it
+provide. To do this, it creates [Reflection](https://www.php.net/manual/fr/book.reflection.php) objects
+which describe the class, properties and methods declared.
 
-L'analyseur statique de code que PhpUnitGen utilise est disponible ici :
+It is important to understand that these objects are created from a static analyzer
+code, and not by importing (via `include` or `require`) your code.
+
+Thus, your code is never executed. It is thanks to this that we can provide
+a web application and API without running malicious PHP code on our server.
+
+The static code analyzer that PhpUnitGen uses is available here:
 [Roave/BetterReflection](https://github.com/Roave/BetterReflection).
 
-!> PhpUnitGen n'analyse pas votre documentation, c'est pourquoi la génération de tests
-sera bien plus *réaliste* avec un code utilisant le typage stricte des paramètres et
-retours de méthode.
+> PhpUnitGen will try to analyze your parameter type and return declarations of
+> method first. However, if you do not use PHP typing, the tool will try
+> analyze the phpDoc  of your code to find the types of parameters and return.
 
-## Etape 2 : génération du modèle du test
+## Step 2: Generation of the test model
 
-Une fois le modèle de données de votre code source récupéré, il est temps de générer votre
+Once the data model of your source code has been recovered, it is time to generate your
 test !
 
-PhpUnitGen va utiliser votre configuration pour choisir le générateur de test à utiliser
-ainsi que d'autres paramètres utiles tels que votre namespace de base ou de test.
-Le générateur a pour tâche de générer le modèle de données du test (nom de la classe, contenu, etc).
-Il existe de nombreux générateurs, permettant de créer des tests pour des classes PHP variées.
+PhpUnitGen will use your configuration to choose the test generator to use
+as well as other useful parameters such as your base or test namespace.
+The generator is responsible for generating the test data model (class name, content, etc.).
+There are many generators, allowing you to create tests for various PHP classes.
 
-## Etape 3 : rendu du modèle de test
+## Step 3: Rendering the test model
 
-Enfin, une fois le modèle de données de votre test récupéré, PhpUnitGen va
-rendre ce modèle au format chaîne de caractères : c'est le code source de votre test.
+Finally, once the data model of your test is generated, PhpUnitGen will
+return this template in string format: this is the source code of your test.
+
+## More details...
+
+Each of these steps uses interface implementations, which allows the tool to gain
+in modularity and maintainability.
+
+If you feel that one of the implementations is not for you, you can use
+yours. [Learn more](/en/advanced-usage.md).

@@ -5,6 +5,26 @@ sur votre projet. Elle peut être installé sur votre projet en tant que dépend
 de développement, ou globalement. Enfin, elle peut être configurée à volonté, y compris
 en utilisant des générateurs de tests personnalisés.
 
+## Démarrage rapide
+
+Installation rapide de l'outil dans un projet :
+
+```bash
+composer require --dev phpunitgen/console
+```
+
+Copie de la configuration par défaut :
+
+```bash
+cp ./vendor/phpunitgen/console/config/phpunitgen.php ./phpunitgen.php
+```
+
+Lancement de l'outil :
+
+```bash
+./vendor/bin/phpunitgen src/MyClass.php
+```
+
 ## Installation
 
 **Exigences pour installer l'outil**
@@ -83,7 +103,7 @@ mais voici les paramètres propres à la ligne de commande.
 #### Ré-écriture des fichiers
 
 * **Clé du paramètre** : `overwriteFiles`
-* **Type** : `booléen`
+* **Type** : `boolean`
 * **Valeur par défaut**: `false`
 * **Description** : Indique à PhpUnitGen que s'il doit remplacer les fichiers existants par
 les nouveaux tests générés ou pas.
@@ -91,7 +111,7 @@ les nouveaux tests générés ou pas.
 #### Fichiers exclus
 
 * **Clé du paramètre** : `excludedFiles`
-* **Type** : `tableau de chaînes de caractères`
+* **Type** : `string[]`
 * **Valeur par défaut**: `[ ]`
 * **Description** : Indique les expressions régulières auxquelles les fichiers (pour lesquels des tests
 seront générés) ne DOIVENT pas correspondre.
@@ -99,7 +119,7 @@ seront générés) ne DOIVENT pas correspondre.
 #### Fichiers inclus
 
 * **Clé du paramètre** : `includedFiles`
-* **Type** : `tableau de chaînes de caractères`
+* **Type** : `string[]`
 * **Valeur par défaut**: `[ "\.php$" ]`
 * **Description** : Indique les expressions régulières auxquelles les fichiers (pour lesquels des tests
 seront générés) DOIVENT correspondre.
@@ -107,7 +127,7 @@ seront générés) DOIVENT correspondre.
 #### Génération à l'appel de `php artisan make:...`
 
 * **Clé du paramètre** : `generateOnMake`
-* **Type** : `booléen`
+* **Type** : `boolean`
 * **Valeur par défaut**: `true`
 * **Description** : Indique à PhpUnitGen s'il doit s'éxécuter à chaque appel de la commande
 `php artisan make:...`. Ce paramètre est propre à l'intégration à Laravel.
@@ -175,7 +195,8 @@ Si jamais vous avez désactivé la découverte des paquets via Laravel, il vous 
 // config/app.php
 'providers' => [
     ...
-    PhpUnitGen\Console\Container\ConsoleServiceProvider::class,
+    \PhpUnitGen\Console\Container\ConsoleServiceProvider::class,
+    ...
 ],
 ```
 

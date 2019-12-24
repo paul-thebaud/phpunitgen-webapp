@@ -1,6 +1,6 @@
 # Utilisation avancée
 
-!> La documentation de cette page arrive bientôt !
+> La documentation de cette page arrive bientôt !
 
 ## Définir une implémentation à utiliser
 

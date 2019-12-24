@@ -13,12 +13,14 @@ L'outil est décomposé en trois répertoires GitHub.
 
 ## Contenu de la documentation
 
-Voici les informations que vous pourrez trouver dans documentation :
+Voici les informations que vous pourrez trouver dans cette documentation :
 
 - [Description du fonctionnement de l'outil](/fr/how-does-it-works.md)
 - [Configuration de l'outil](/fr/configuration.md)
 - [Comment utiliser l'application en ligne ou l'API ?](/fr/webapp.md)
+    - [Démarrage rapide avec l'application web](/fr/webapp.md#démarrage-rapide)
 - [Comment utiliser l'outil en ligne de commande ?](/fr/command-line.md)
+    - [Démarrage rapide avec la ligne de commande](/fr/command-line.md#démarrage-rapide)
 - [Utilisation avancée](/fr/advanced-usage.md)
 
 ## Vous voulez supporter le projet ?

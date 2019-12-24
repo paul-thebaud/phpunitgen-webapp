@@ -22,7 +22,7 @@ export default {
             "button": "Utilisez en ligne",
         },
         "api": {
-            "title": "Application Web",
+            "title": "API",
             "description": "Vous voulez utiliser l'outil depuis votre application sans installer la paquet ? Aucun problème, il y a une API ouverte et totalement documentée.",
             "button": "Lire la documentation",
         },

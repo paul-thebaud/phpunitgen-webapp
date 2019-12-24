@@ -21,4 +21,13 @@ export interface LocaleI {
      * @returns {Dictionary<string>}
      */
     getLocales(): Dictionary<string>;
+
+    /**
+     * Generate a localized route on docs.
+     *
+     * @param {string} route
+     *
+     * @returns {string}
+     */
+    localizedDocs(route?: string): string;
 }

@@ -1,6 +1,6 @@
 # Comment ça fonctionne ? {docsify-ignore-all}
 
-Le fonctionnement de PhpUnitGen peut être découpé en trois étapes, depuis
+Le fonctionnement de PhpUnitGen est découpé en trois étapes, depuis
 l'instant où vous fournissez votre configuration et votre code jusqu'à
 la récupération de votre test généré.
 
@@ -11,7 +11,7 @@ et l'instantiation du conteneur de dépendances en fonction de cette dernière.
 
 ## Etape 1 : analyse du code source
 
-La première étape pour PhpUnitGen est d'analyser le code source que vous lui
+La première étape est d'analyser le code source que vous lui
 fournissez. Pour cela, il crée des objets de [Reflection](https://www.php.net/manual/fr/book.reflection.php)
 qui décrivent la classe, les propriétés et les méthodes déclarées.
 

@@ -2,12 +2,18 @@
 
 ## Application Web
 
-L'application est la manière la plus simple d'utiliser PhpUnitGen. Elle vous permet donc
+L'interface web est la manière la plus simple d'utiliser PhpUnitGen. Elle vous permet donc
 d'essayer l'outil, pour savoir s'il répond à vos besoins.
 
 La configuration et personnalisation y sont assez poussées, mais pas autant que pour
 la ligne de commande ou le coeur de l'outil. En effet, vous ne pouvez surcharger
 que le générateur de tests ou de mocks, et il vous est impossible d'ajouter les votres.
+
+## Démarrage rapide
+
+Pour démarrer avec l'interface web, il vous suffit d'aller sur la page [https://phpunitgen.io/tool](/tool)
+et de coller/saisir votre code dans l'onglet "Editeur".
+Vous pouvez ensuite cliquer sur le bouton "Générer" pour générer vos tests.
 
 ## API
 
@@ -26,10 +32,10 @@ dans un format correct.
 
 ### Version
 
-L'API de PhpUnitGen est versionné, au cas où des changements créant des incompatibilités seraient
+L'API de PhpUnitGen est versionnée, au cas où des changements créant des incompatibilités seraient
 à effectuer.
 
-Le point d'entrée principale de l'API, `https://phpunitgen.io/api/v1`, vous retourne la version
+Le point d'entrée principal de l'API, [`https://phpunitgen.io/api/v1`](https://phpunitgen.io/api/v1), vous retourne la version
 du coeur de PhpUnitGen. Voici un exemple de retour d'un appel `GET` sur cette URL :
 
 ```json
@@ -237,7 +243,7 @@ Voici un exemple de contenu d'une requête :
 **Retour**
 
 Retourne un objet "test" si la requête a été correctement traitée avec un code
-`HTTP 201`.
+`HTTP 200`.
 
 Retourne un objet d'erreur avec un code `HTTP 422` si les paramètres fournis
 sont invalides (par exemple un booléen à la place d'un tableau).

@@ -1,3 +1,3 @@
 export default {
-    "title": "Chargement du composant...",
+    "title": "Chargement du composant ...",
 };

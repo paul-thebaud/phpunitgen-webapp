@@ -24,7 +24,7 @@ Si un clé de configuration n'est pas précisée, la valeur par défaut sera uti
 ### Génération automatique
 
 * **Clé du paramètre** : `automaticGeneration`
-* **Type** : `booléen`
+* **Type** : `boolean`
 * **Valeur par défaut**: `true`
 * **Description** : Définit si le générateur doit tenter de générer des propriétés et des tests
 avancés ou juste des méthodes vides à remplir.
@@ -32,32 +32,49 @@ avancés ou juste des méthodes vides à remplir.
 ### Implémentations à utiliser
 
 * **Clé du paramètre** : `implementations`
-* **Type** : `tableau (les clés étant les interfaces et les valeurs les implémentations à utiliser)`
+* **Type** : `string[]` (with `string` keys)
 * **Valeur par défaut**: générateur de test délégué et générateur de mock pour Mockery.
 * **Description** : Définit les implémentations à utiliser pour toutes les étapes de PhpUnitGen.
 
-Voici un exemple de valeur dans une configuration au format `PHP` :
+Si vous souhaitez utiliser la configuration par défaut, il vous suffit d'utiliser la valeur suivante :
 
 ```php
-use PhpUnitGen\Core\Contracts\Parsers\CodeParser as CodeParserContract;
 use PhpUnitGen\Core\Generators\Tests\DelegateTestGenerator;
 
 return [
-    // Utilisation des implémentations d'un générateur.
-    // "implementations()" retourne toutes les implementations
-    // nécessaires au bon fonctionnement du générateur.
     'implementations' => DelegateTestGenerator::implementations(),
-    // Utilisation des implémentations d'un générateur,
-    // avec surcharge de certaines implémenations.
-    'implementations' => array_merge([
-        CodeParserContract::class => MyCodeParserImpl::class,
-    ], DelegateTestGenerator::implementations()),
+];
+```
+
+Chaque générateur de tests dispose d'une méthode statique `implementations()` qui retourne un tableau des implémentations à utiliser.
+
+Vous pouvez donc utiliser cette méthode pour n'importe quel générateur que vous souhaitez utiliser :
+
+```php
+use PhpUnitGen\Core\Generators\Tests\Laravel\Command\CommandTestGenerator;
+
+return [
+    'implementations' => CommandTestGenerator::implementations(),
+];
+```
+
+Vous pouvez également choisir de surcharger certaines implémentations, en utilisant `array_merge` :
+
+```php
+use PhpUnitGen\Core\Contracts\Generators\MockGenerator;
+use PhpUnitGen\Core\Generators\Tests\Laravel\Command\CommandTestGenerator;
+use PhpUnitGen\Core\Generators\Mocks\PhpUnitMockGenerator;
+
+return [
+    'implementations' => array_merge(CommandTestGenerator::implementations(), [
+        MockGenerator::class => PhpUnitMockGenerator::class,
+    ]),
 ];
 ```
 
 > Si vous souhaitez en apprendre plus sur les différents générateurs de tests/mocks disponibles, vous pouvez
 > aller sur la [page de configuration](https://phpunitgen.io/configuration) de l'application
-> web, sur laquelle chacun des générateurs est décrits par une tooltip.
+> web, sur laquelle chacun des générateurs est décrit par une tooltip.
 
 !> Sur la version web, il est uniquement possible de choisir l'implémentation du générateur de tests
 ou du générateur de mocks.
@@ -68,7 +85,7 @@ et PhpUnitGen se chargera de remplir les autres avec des valeurs par défaut. Se
 ### Namespace de base
 
 * **Clé du paramètre** : `baseNamespace`
-* **Type** : `chaîne de caractères`
+* **Type** : `string`
 * **Valeur par défaut**: `"App"`
 * **Description** : Définit le namespace de base de votre code source. Il sera remplacé par le
 namespace de test.
@@ -76,21 +93,21 @@ namespace de test.
 ### Namespace de base des tests
 
 * **Clé du paramètre** : `baseTestNamespace`
-* **Type** : `chaîne de caractères`
+* **Type** : `string`
 * **Valeur par défaut**: `"Tests"`
 * **Description** : Définit le namespace de base de vos tests. Il remplace votre namespace de base.
 
 ### Classe "TestCase" à étendre
 
 * **Clé du paramètre** : `testCase`
-* **Type** : `chaîne de caractères`
+* **Type** : `string`
 * **Valeur par défaut**: `"Tests\\TestCase"`
 * **Description** : Définit le nom absolu de la classe "TestCase" à étendre dans le test.
 
 ### Méthodes à exclure de la génération
 
 * **Clé du paramètre** : `excludedMethods`
-* **Type** : `tableau de chaînes de caractères`
+* **Type** : `string[]`
 * **Valeur par défaut**: `[ "__construct", "__destruct" ]`
 * **Description** : Définit les méthodes pour lesquelles aucun squelette de tests ne doit être généré. Peut être au
 format d'une expression régulière ("__.*" par exemple pour exclure les méthodes magiques).
@@ -98,7 +115,7 @@ format d'une expression régulière ("__.*" par exemple pour exclure les méthod
 ### Annotation PHPDoc à conserver
 
 * **Clé du paramètre** : `mergedPhpDoc`
-* **Type** : `tableau de chaînes de caractères`
+* **Type** : `string[]`
 * **Valeur par défaut**: `[ "author", "copyright", "license", "version" ]`
 * **Description** : Définit les annotations PHPDoc qui doivent être récupérées dans la classe à tester et réinjectées
 dans la classe de test ("license" par exemple).
@@ -106,7 +123,7 @@ dans la classe de test ("license" par exemple).
 ### Annotation PHPDoc à ajouter
 
 * **Clé du paramètre** : `phpDoc`
-* **Type** : `tableau de chaînes de caractères`
+* **Type** : `string[]`
 * **Valeur par défaut**: `[ ]`
 * **Description** : Définit les annotations PHPDoc qui doivent être ajoutées dans la classe de test
 (par exemple "@author John Doe").
@@ -114,7 +131,7 @@ dans la classe de test ("license" par exemple).
 ### Options
 
 * **Clé du paramètre** : `options`
-* **Type** : `tableau (les clés étant des chaînes de caractères, les valeurs de n'importe quel type)`
+* **Type** : `mixed[]` (with `string` keys)
 * **Description** : Définit les options à utiliser, qui sont propres à certains/plusieurs
 générateur de tests.
 
@@ -124,7 +141,7 @@ générateur de tests.
 #### Liste des options disponibles
 
 * **Clé de l'option** : `context`
-* **Type** : `chaîne de caractères ou null`
+* **Type** : `string|null`
 * **Valeur par défaut**: `"laravel"`
 * **Description** : Définit le contexte de votre projet. Utilisée par le générateur délégué
 pour choisir le générateur le plus adapté à votre type projet.
@@ -132,7 +149,7 @@ Pour l'instant, deux valeurs sont possible : `"laravel"`, et `null` (pour tous l
 
 
 * **Clé de l'option** : `laravel.user`
-* **Type** : `chaîne de caractères`
+* **Type** : `string`
 * **Valeur par défaut**: `"App\\User"`
 * **Description** : Définit la classe du modèle Eloquent User pour un projet dont le contexte
 est `laravel`. Utilisée par plusieurs générateurs propres à Laravel afin d'importer correctement

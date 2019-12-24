@@ -23,7 +23,9 @@
 <script lang="ts">
     import Vue from "vue";
     import FooterNavColumn from "@/components/layout/FooterNavColumn.vue";
-    import { Component, Watch } from "vue-property-decorator";
+    import { Component, Inject, Watch } from "vue-property-decorator";
+    import { LocaleI } from "@/container/contracts/localeI";
+    import { TYPES } from "@/container/types";
 
     @Component({
         components: {
@@ -31,6 +33,9 @@
         }
     })
     export default class FooterNav extends Vue {
+        @Inject(TYPES.Locale)
+        protected locale!: LocaleI;
+
         protected links = {};
 
         protected mounted(): void {
@@ -61,7 +66,7 @@
                 links: [
                     {
                         title: this.$t("layout.footer.links.links.documentation"),
-                        href: "/docs",
+                        href: this.locale.localizedDocs(),
                     },
                     {
                         title: this.$t("layout.footer.links.links.support"),

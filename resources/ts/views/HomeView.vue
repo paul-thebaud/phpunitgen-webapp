@@ -12,11 +12,8 @@
           {{ $t("views.home.welcome.open-source") }}
         </div>
 
-        <BRow class="home-actions">
-          <BCol
-            class="px-1 text-md-right"
-            md
-          >
+        <BRow class="home-actions justify-content-center">
+          <div class="px-1 text-md-right d-block w-100 w-md-auto">
             <BButton
               :to="{ name: 'tool' }"
               class="px-4 py-3 rounded-pill"
@@ -28,15 +25,12 @@
               />
               {{ $t("views.home.actions.online") }}
             </BButton>
-          </BCol>
-          <BCol
-            class="px-1 text-md-left mt-2 mt-md-0"
-            md
-          >
+          </div>
+          <div class="px-1 text-md-left mt-2 mt-md-0 d-block w-md-100">
             <BButton
               class="px-4 py-3 rounded-pill"
               size="lg"
-              href="/docs#/"
+              :href="locale.localizedDocs()"
             >
               <FontAwesomeIcon
                 class="mr-2"
@@ -44,7 +38,7 @@
               />
               {{ $t("views.home.actions.documentation") }}
             </BButton>
-          </BCol>
+          </div>
         </BRow>
       </BContainer>
     </div>
@@ -61,7 +55,7 @@
 
         <BRow class="pt-3 pb-5">
           <HomeCard
-            href="/docs"
+            :href="locale.localizedDocs('command-line')"
             feature="console"
           />
           <HomeCard
@@ -69,7 +63,7 @@
             feature="webapp"
           />
           <HomeCard
-            href="/docs"
+            :href="locale.localizedDocs('webapp')"
             feature="api"
           />
         </BRow>
@@ -81,8 +75,8 @@
           >
             <img
               :alt="$t('views.home.features.documentation.title')"
-              src="https://fakeimg.pl/500x250/"
-              class="rounded"
+              src="/img/features/docs.png"
+              class="rounded shadow"
             >
           </BCol>
           <BCol
@@ -104,8 +98,8 @@
           >
             <img
               :alt="$t('views.home.features.modularity.title')"
-              src="https://fakeimg.pl/500x250/"
-              class="rounded"
+              src="/img/features/modularity.png"
+              class="rounded shadow"
             >
           </BCol>
           <BCol
@@ -142,7 +136,7 @@
                   {{ $t("views.home.actions.try_online") }}
                 </BButton>
                 <BButton
-                  href="/docs#/"
+                  :href="locale.localizedDocs()"
                   variant="secondary"
                   class="mt-2 mt-lg-0 ml-lg-1 py-2 px-4"
                 >
@@ -161,14 +155,18 @@
     import Vue from "vue";
     import HomeWaves from "@/components/home/HomeWaves.vue";
     import HomeCard from "@/components/home/HomeCard.vue";
-    import { Component } from "vue-property-decorator";
+    import { Component, Inject } from "vue-property-decorator";
+    import { LocaleI } from "@/container/contracts/localeI";
+    import { TYPES } from "@/container/types";
 
     @Component({
         components: {
             HomeCard,
             HomeWaves,
-        }
+        },
     })
     export default class HomeView extends Vue {
+        @Inject(TYPES.Locale)
+        protected locale!: LocaleI;
     }
 </script>

@@ -1,41 +1,41 @@
-# PhpUnitGen
+# PhpUnitGen {docsify-ignore-all}
 
-## A propos
+## About
 
-PhpUnitGen est un outil sur le Web et en ligne de commande pour générer les
-squelettes des tests unitaires de vos projets PHP.
+PhpUnitGen is an online and command line tool to generate your unit tests' skeletons on your projects.
 
-L'outil est décomposé en trois répertoires GitHub.
+The tool is divided into three GitHub repositories.
 
-- [phpunitgen-core](https://github.com/paul-thebaud/phpunitgen-core), qui contient le cœur du fonctionnement de l'outil.
-- [phpunitgen-console](https://github.com/paul-thebaud/phpunitgen-console), qui contient l'outil en ligne de commande.
-- [phpunitgen-webapp](https://github.com/paul-thebaud/phpunitgen-webapp), qui contient l'application Web et l'API.
+- [phpunitgen-core](https://github.com/paul-thebaud/phpunitgen-core), which contains the core of the tool's features.
+- [phpunitgen-console](https://github.com/paul-thebaud/phpunitgen-console), which contains the command line interface.
+- [phpunitgen-webapp](https://github.com/paul-thebaud/phpunitgen-webapp), which contains the web application and the API.
 
-## Contenu de la documentation
+## Content of the documentation
 
-Voici les informations que vous pourrez trouver dans documentation :
+Here is the information you can find in this documentation:
 
-- [Description du fonctionnement de l'outil](/fr/how-does-it-works.md)
-- [Configuration de l'outil](/fr/configuration.md)
-- [Comment utiliser l'application en ligne ?](/fr/webapp.md)
-- [Comment utiliser l'outil en ligne de commande ?](/fr/command-line.md)
-- [Comment utiliser l'API ?](/fr/api.md)
-- [Utilisation avancée](/fr/advanced-usage.md)
+- [Description of the tool's operation](/en/how-does-it-works.md)
+- [Configuration of the tool](/en/configuration.md)
+- [How to use the online application or API?](/en/webapp.md)
+    - [Getting started with the web application](/fr/webapp.md#getting-started)
+- [How to use the command line interface?](/en/command-line.md)
+    - [Getting started with the command line](/fr/command-line.md#getting-started)
+- [Advanced usage](/en/advanced-usage.md)
 
-## Vous voulez supporter le projet ?
+## Do you want to support the project?
 
-Si vous avez des idées d'améliorations, nous acceptons volontiers les pull-requests et les issues sur GitHub.
+If you have any ideas for improvements, we are happy to accept pull-requests and issues on GitHub.
 
-Nous n'avons pas de page de donation ou de sponsoring, donc si vous appréciez le projet, vous pouvez
-mettre des étoiles sur les 3 répertoires GitHub : 
+We do not have a donation or sponsorship page, so if you like the project, you can
+put stars or contribute to the 3 GitHub repositories:
 
 - [phpunitgen-core](https://github.com/paul-thebaud/phpunitgen-core)
 - [phpunitgen-console](https://github.com/paul-thebaud/phpunitgen-console)
 - [phpunitgen-webapp](https://github.com/paul-thebaud/phpunitgen-webapp)
 
-Merci !
+Thank you!
 
-## Crédits
+## Credits
 
 - [Paul Thébaud](https://github/paul-thebaud)
 - [Killian Hascoët](https://github.com/KillianH)
@@ -43,6 +43,6 @@ Merci !
 
 ## License
 
-PhpUnitGen est un outil open source sous
-[license MIT](https://opensource.org/licenses/MIT).
+PhpUnitGen is an open source tool under
+[MIT license](https://opensource.org/licenses/MIT).
 

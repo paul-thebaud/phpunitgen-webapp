@@ -83,4 +83,11 @@ export class I18nLocale implements LocaleI {
     public getLocales(): { [p: string]: string } {
         return locales;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public localizedDocs(route = ''): string {
+        return `/docs#/${this.currentLocale}/${route}`;
+    }
 }
