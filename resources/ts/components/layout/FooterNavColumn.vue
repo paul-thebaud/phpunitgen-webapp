@@ -14,7 +14,7 @@
         <BButton
           :href="link.href"
           variant="link"
-          class="p-0 border-0"
+          class="p-0 border-0 text-left"
           target="_blank"
           rel="noopener"
         >

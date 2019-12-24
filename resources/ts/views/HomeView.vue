@@ -70,7 +70,7 @@
 
         <BRow class="pt-5 pb-5">
           <BCol
-            class="text-center text-lg-right"
+            class="home-features-img-wrapper text-center text-lg-right"
             lg="6"
           >
             <img
@@ -92,7 +92,7 @@
 
         <BRow class="pt-5 pb-5">
           <BCol
-            class="text-center text-lg-left"
+            class="home-features-img-wrapper text-center text-lg-left"
             order-lg="2"
             lg="6"
           >

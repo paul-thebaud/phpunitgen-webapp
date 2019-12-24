@@ -1,5 +1,5 @@
 <template>
-  <footer class="p-5">
+  <footer class="py-5">
     <BContainer>
       <BRow class="mb-2">
         <BCol>

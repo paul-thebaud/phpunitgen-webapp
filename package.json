@@ -31,6 +31,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.10.0",
     "@fortawesome/vue-fontawesome": "^0.1.6",
     "@types/lodash.debounce": "^4.0.6",
+    "@types/vue-clickaway": "^2.2.0",
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
     "@vue/eslint-config-typescript": "^5.0.0",
@@ -57,8 +58,10 @@
     "typescript": "^3.0.0",
     "vue": "^2.6.10",
     "vue-class-component": "^7.1.0",
+    "vue-clickaway": "^2.2.2",
     "vue-clipboard2": "^0.3.1",
     "vue-codemirror": "^4.0.6",
+    "vue-gtag": "^1.1.0",
     "vue-i18n": "^8.14.0",
     "vue-property-decorator": "^8.3.0",
     "vue-radial-progress": "^0.2.10",
@@ -68,8 +71,5 @@
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-chunk-rename-plugin": "^1.0.3",
     "whatwg-fetch": "^3.0.0"
-  },
-  "devDependencies": {
-    "vue-gtag": "^1.1.0"
   }
 }

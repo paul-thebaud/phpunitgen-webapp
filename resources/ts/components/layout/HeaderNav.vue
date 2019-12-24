@@ -1,12 +1,16 @@
 <template>
   <BNavbar
+    v-on-click-away="handleClickAway"
     toggleable="lg"
     fixed="top"
     class="shadow"
     type=""
   >
     <BContainer>
-      <BNavbarBrand :to="{ name: 'home' }">
+      <BNavbarBrand
+        v-b-toggle.nav-collapse
+        :to="{ name: 'home' }"
+      >
         <strong>PhpUnitGen</strong>
       </BNavbarBrand>
 
@@ -26,6 +30,7 @@
 
       <BCollapse
         id="nav-collapse"
+        ref="navCollapse"
         is-nav
       >
         <BNavbarNav class="ml-auto">
@@ -68,6 +73,7 @@
           </BNavItemDropdown>
 
           <BButton
+            v-b-toggle.nav-collapse
             :to="{ name: 'tool' }"
             class="mt-2 mt-lg-0 rounded-pill px-4 py-2"
           >
@@ -82,13 +88,20 @@
 <script lang="ts">
     import Vue from "vue";
     import { Component, Inject, Prop } from "vue-property-decorator";
+    import { directive as onClickAway } from "vue-clickaway";
     import { TYPES } from "@/container/types";
     import { ThemeI } from "@/container/contracts/themeI";
     import { LocaleI } from "@/container/contracts/localeI";
     import { Theme } from "@/container/concerns/theme";
 
+    Vue.directive("on-click-away", onClickAway);
+
     @Component
     export default class HeaderNav extends Vue {
+        public $refs!: {
+            navCollapse: HTMLElement;
+        };
+
         @Inject(TYPES.Theme)
         protected theme!: ThemeI;
 
@@ -111,6 +124,12 @@
 
         protected handleLocaleChange(newLocale: string): void {
             this.locale.currentLocale = this.currentLocale = newLocale;
+        }
+
+        protected handleClickAway(): void {
+            if (this.$refs.navCollapse.offsetParent !== null) {
+                this.$root.$emit("bv::toggle::collapse", "nav-collapse");
+            }
         }
     }
 </script>

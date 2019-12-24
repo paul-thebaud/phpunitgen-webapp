@@ -31,10 +31,13 @@
   background-color: var(--base-bg-color);
   color: var(--base-color);
 
-  img {
-    width: 100%;
+  .home-features-img-wrapper {
     max-width: 500px;
     max-height: 250px;
+
+    img {
+      max-width: 100%;
+    }
   }
 }
 
