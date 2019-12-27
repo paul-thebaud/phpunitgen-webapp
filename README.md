@@ -37,6 +37,42 @@ Informal discussion regarding bugs, new features, and implementation of
 existing features takes place in the
 [Github issue page of Core repository](https://github.com/paul-thebaud/phpunitgen-core/issues).
 
+## Installing the application locally
+
+Clone this repository and into the project directory:
+
+```bash
+git clone https://github.com/paul-thebaud/phpunitgen-webapp.git
+
+cd phpunitgen-webapp
+```
+
+Copy the environment file:
+
+```bash
+cp .env.example .env
+```
+
+Install backend and frontend dependencies using:
+
+```bash
+composer install
+
+yarn install
+```
+
+Build the frontend files:
+
+```bash
+yarn prod
+```
+
+Run the local PHP server, and go to [http://localhost:8000](http://localhost:8000):
+
+```bash
+php -S localhost:8000 -t public
+```
+
 ## Credits
 
 - [Paul Thébaud](https://github/paul-thebaud)
