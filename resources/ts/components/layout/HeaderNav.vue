@@ -99,7 +99,7 @@
     @Component
     export default class HeaderNav extends Vue {
         public $refs!: {
-            navCollapse: HTMLElement;
+            navCollapse: Vue;
         };
 
         @Inject(TYPES.Theme)
@@ -127,7 +127,8 @@
         }
 
         protected handleClickAway(): void {
-            if (this.$refs.navCollapse.offsetParent !== null) {
+            const display = window.getComputedStyle(this.$refs.navCollapse.$el).display;
+            if (display === 'block') {
                 this.$root.$emit("bv::toggle::collapse", "nav-collapse");
             }
         }
