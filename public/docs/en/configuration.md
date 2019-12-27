@@ -1,42 +1,42 @@
 # Configuration
 
-La configuration de PhpUnitGen est la même sur l'application Web ou la ligne
-de commande, car elle est intégrée au cœur de l'outil.
+The configuration of PhpUnitGen is the same on the web application or the command
+line, because it is integrated into the heart of the tool.
 
-Elle vous permet de personnaliser la génération de vos tests, via différents paramètres.
+It allows you to customize the generation of your tests, via different parameters.
 
-Si vous pensez qu'une option de configuration est manquante, n'hésitez pas à nous la proposer.
+If you think a configuration option is missing, please feel free to suggest it to us.
 
-> La configuration par défaut de PhpUnitGen correspond à un projet Laravel suivant
-> les conventions du framework. Bien sûr, vous pouvez configurer selon vos besoins.
+> The default configuration of PhpUnitGen corresponds to the following Laravel project
+> framework conventions. Of course, you can configure according to your needs.
 
-!> L'outil en ligne de commande dispose de quelques options supplémentaires dûes
-à son fonctionnement, vous pouvez les voir [ici](/fr/command-line.md#configuration).
+!> The command line tool has some additional options due to
+to its operation, you can see them [here](/en/command-line.md#configuration).
 
-## Paramètres de la configuration
+## Configuration parameters
 
-Voici une liste des paramètres de configuration de PhpUnitGen. Peu importe la version de l'outil
-que utilisez, vous trouverez chacunes de ces clés de configuration.
+Here is a list of PhpUnitGen configuration parameters. Regardless of the interface
+you use, you will find each of these configuration keys.
 
-Si un clé de configuration n'est pas précisée, la valeur par défaut sera utilisée.
-[Voir la configuration par défault](https://github.com/paul-thebaud/phpunitgen-core/blob/master/config/phpunitgen.php).
+If a configuration key is not specified, the default value will be used.
+[See the default configuration](https://github.com/paul-thebaud/phpunitgen-core/blob/master/config/phpunitgen.php).
 
-### Génération automatique
+### Automatic generation
 
-* **Clé du paramètre** : `automaticGeneration`
+* **Parameter Key** : `automaticGeneration`
 * **Type** : `boolean`
-* **Valeur par défaut**: `true`
-* **Description** : Définit si le générateur doit tenter de générer des propriétés et des tests
-avancés ou juste des méthodes vides à remplir.
+* **Default value**: `true`
+* **Description** : Defines whether the generator should attempt to generate advanced properties and tests
+or just empty methods to fill in.
 
-### Implémentations à utiliser
+### Implementations to use
 
-* **Clé du paramètre** : `implementations`
+* **Parameter Key** : `implementations`
 * **Type** : `string[]` (with `string` keys)
-* **Valeur par défaut**: générateur de test délégué et générateur de mock pour Mockery.
-* **Description** : Définit les implémentations à utiliser pour toutes les étapes de PhpUnitGen.
+* **Default value**: delegated test generator and mock generator for Mockery.
+* **Description** : Defines the implementations to be used for all PhpUnitGen steps.
 
-Si vous souhaitez utiliser la configuration par défaut, il vous suffit d'utiliser la valeur suivante :
+If you want to use the default configuration, just use the following value:
 
 ```php
 use PhpUnitGen\Core\Generators\Tests\DelegateTestGenerator;
@@ -46,9 +46,9 @@ return [
 ];
 ```
 
-Chaque générateur de tests dispose d'une méthode statique `implementations()` qui retourne un tableau des implémentations à utiliser.
+Each test generator has a static `implementations()` method that returns an array of implementations to use.
 
-Vous pouvez donc utiliser cette méthode pour n'importe quel générateur que vous souhaitez utiliser :
+So you can use this method for any generator you want to use:
 
 ```php
 use PhpUnitGen\Core\Generators\Tests\Laravel\Command\CommandTestGenerator;
@@ -58,7 +58,7 @@ return [
 ];
 ```
 
-Vous pouvez également choisir de surcharger certaines implémentations, en utilisant `array_merge` :
+You can also choose to override certain implementations, using `array_merge`:
 
 ```php
 use PhpUnitGen\Core\Contracts\Generators\MockGenerator;
@@ -72,85 +72,85 @@ return [
 ];
 ```
 
-> Si vous souhaitez en apprendre plus sur les différents générateurs de tests/mocks disponibles, vous pouvez
-> aller sur la [page de configuration](https://phpunitgen.io/configuration) de l'application
-> web, sur laquelle chacun des générateurs est décrit par une tooltip.
+> If you want to learn more about the different tests/mocks generators available, you can
+> go to the [configuration page](https://phpunitgen.io/configuration) of the web
+> application, on which each of the generators is described by a tooltip.
 
-!> Sur la version web, il est uniquement possible de choisir l'implémentation du générateur de tests
-ou du générateur de mocks.
+!> On the web version, it is only possible to choose the implementation of the test generator
+or the mock generator.
 
-!> Sachez que lorsque vous configurez les implémentations, vous pouvez ne fournir que certaines implémenations,
-et PhpUnitGen se chargera de remplir les autres avec des valeurs par défaut. Seul le générateur de test est obligatoire.
+!> Be aware that when you configure implementations, you may only provide certain implementations,
+and PhpUnitGen will fill the others with default values. Only the test generator is required.
 
-### Namespace de base
+### Base namespace
 
-* **Clé du paramètre** : `baseNamespace`
+* **Parameter Key** : `baseNamespace`
 * **Type** : `string`
-* **Valeur par défaut**: `"App"`
-* **Description** : Définit le namespace de base de votre code source. Il sera remplacé par le
-namespace de test.
+* **Default value**: `"App"`
+* **Description** : Defines the base namespace of your source code. It will be replaced by the
+test base namespace.
 
-### Namespace de base des tests
+### Test base namespace
 
-* **Clé du paramètre** : `baseTestNamespace`
+* **Parameter Key** : `baseTestNamespace`
 * **Type** : `string`
-* **Valeur par défaut**: `"Tests"`
-* **Description** : Définit le namespace de base de vos tests. Il remplace votre namespace de base.
+* **Default value**: `"Tests"`
+* **Description** : Defines the base namespace for your tests. It replaces your base namespace.
 
-### Classe "TestCase" à étendre
+### "TestCase" class to extends
 
-* **Clé du paramètre** : `testCase`
+* **Parameter Key** : `testCase`
 * **Type** : `string`
-* **Valeur par défaut**: `"Tests\\TestCase"`
-* **Description** : Définit le nom absolu de la classe "TestCase" à étendre dans le test.
+* **Default value**: `"Tests\\TestCase"`
+* **Description** : Defines the absolute name of the "TestCase" class to be extended in the test.
 
-### Méthodes à exclure de la génération
+### Methods to be excluded from generation
 
-* **Clé du paramètre** : `excludedMethods`
+* **Parameter Key** : `excludedMethods`
 * **Type** : `string[]`
-* **Valeur par défaut**: `[ "__construct", "__destruct" ]`
-* **Description** : Définit les méthodes pour lesquelles aucun squelette de tests ne doit être généré. Peut être au
-format d'une expression régulière ("__.*" par exemple pour exclure les méthodes magiques).
+* **Default value**: `[ "__construct", "__destruct" ]`
+* **Description** : Defines the methods for which no test skeletons should be generated. Can be
+formatted as a regular expression ("__.*" for example to exclude magic methods).
 
-### Annotation PHPDoc à conserver
+### PHPDoc annotations to keep
 
-* **Clé du paramètre** : `mergedPhpDoc`
+* **Parameter Key** : `mergedPhpDoc`
 * **Type** : `string[]`
-* **Valeur par défaut**: `[ "author", "copyright", "license", "version" ]`
-* **Description** : Définit les annotations PHPDoc qui doivent être récupérées dans la classe à tester et réinjectées
-dans la classe de test ("license" par exemple).
+* **Default value**: `[ "author", "copyright", "license", "version" ]`
+* **Description** : Defines the PHPDoc annotations that must be retrieved from the class to be tested and reinjected.
+in the test class ("license" for example).
 
 ### Annotation PHPDoc à ajouter
 
-* **Clé du paramètre** : `phpDoc`
+* **Parameter Key** : `phpDoc`
 * **Type** : `string[]`
-* **Valeur par défaut**: `[ ]`
-* **Description** : Définit les annotations PHPDoc qui doivent être ajoutées dans la classe de test
-(par exemple "@author John Doe").
+* **Default value**: `[ ]`
+* **Description** : Defines the PHPDoc annotations that should be added to the test class.
+(e.g. "@author John Doe").
 
 ### Options
 
-* **Clé du paramètre** : `options`
+* **Parameter Key** : `options`
 * **Type** : `mixed[]` (with `string` keys)
-* **Description** : Définit les options à utiliser, qui sont propres à certains/plusieurs
-générateur de tests.
+* **Description** : Defines the options to be used, which are specific to one/many
+tests generator(s).
 
-> Chaque option est directement disponible sur l'application web
-> en tant que paramètre de configuration individuel, pour une personnalisation plus aisée.
+> Each option is directly available on the web application.
+> as an individual configuration parameter, for easier customization.
 
-#### Liste des options disponibles
+#### List of available options
 
-* **Clé de l'option** : `context`
+* **Option key** : `context`
 * **Type** : `string|null`
-* **Valeur par défaut**: `"laravel"`
-* **Description** : Définit le contexte de votre projet. Utilisée par le générateur délégué
-pour choisir le générateur le plus adapté à votre type projet.
-Pour l'instant, deux valeurs sont possible : `"laravel"`, et `null` (pour tous les autres projets).
+* **Default value**: `"laravel"`
+* **Description** : Defines the context of your project. Used by the delegated generator
+to choose the most suitable generator for your type of project.
+For the moment, two values are possible: `"laravel"`, and `null` (for all other projects).
 
 
-* **Clé de l'option** : `laravel.user`
+* **Option key** : `laravel.user`
 * **Type** : `string`
-* **Valeur par défaut**: `"App\\User"`
-* **Description** : Définit la classe du modèle Eloquent User pour un projet dont le contexte
-est `laravel`. Utilisée par plusieurs générateurs propres à Laravel afin d'importer correctement
-la classe User quand celle-ci est nécessaire dans les tests (par exemple pour tester une Policy).
+* **Default value**: `"App\\User"`
+* **Description** : Defines the class of the Eloquent User model for a project within the "Laravel"
+context. Used by several Laravel's generators in order to correctly import
+the User class when it is needed in tests (for example to test a Policy).

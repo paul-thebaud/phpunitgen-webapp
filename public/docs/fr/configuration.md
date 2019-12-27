@@ -19,7 +19,7 @@ Voici une liste des paramètres de configuration de PhpUnitGen. Peu importe la v
 que utilisez, vous trouverez chacunes de ces clés de configuration.
 
 Si un clé de configuration n'est pas précisée, la valeur par défaut sera utilisée.
-[Voir la configuration par défault](https://github.com/paul-thebaud/phpunitgen-core/blob/master/config/phpunitgen.php).
+[Voir la configuration par défaut](https://github.com/paul-thebaud/phpunitgen-core/blob/master/config/phpunitgen.php).
 
 ### Génération automatique
 
@@ -112,7 +112,7 @@ namespace de test.
 * **Description** : Définit les méthodes pour lesquelles aucun squelette de tests ne doit être généré. Peut être au
 format d'une expression régulière ("__.*" par exemple pour exclure les méthodes magiques).
 
-### Annotation PHPDoc à conserver
+### Annotations PHPDoc à conserver
 
 * **Clé du paramètre** : `mergedPhpDoc`
 * **Type** : `string[]`
@@ -120,7 +120,7 @@ format d'une expression régulière ("__.*" par exemple pour exclure les méthod
 * **Description** : Définit les annotations PHPDoc qui doivent être récupérées dans la classe à tester et réinjectées
 dans la classe de test ("license" par exemple).
 
-### Annotation PHPDoc à ajouter
+### Annotations PHPDoc à ajouter
 
 * **Clé du paramètre** : `phpDoc`
 * **Type** : `string[]`
@@ -132,8 +132,8 @@ dans la classe de test ("license" par exemple).
 
 * **Clé du paramètre** : `options`
 * **Type** : `mixed[]` (with `string` keys)
-* **Description** : Définit les options à utiliser, qui sont propres à certains/plusieurs
-générateur de tests.
+* **Description** : Définit les options à utiliser, qui sont propres à un/plusieurs
+générateur(s) de tests.
 
 > Chaque option est directement disponible sur l'application web
 > en tant que paramètre de configuration individuel, pour une personnalisation plus aisée.

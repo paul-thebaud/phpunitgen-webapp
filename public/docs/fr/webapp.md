@@ -92,7 +92,7 @@ définir comment un test doit être généré pour un certain code.
 
 * **`id`** : un identifiant de générateur de tests correct. 
 
-**Retour**
+**Réponse**
 
 Retourne un objet "générateur de test" si l'identifiant est correcte avec un code
 `HTTP 200`. Sinon, renvoie un code `HTTP 404`.
@@ -103,7 +103,7 @@ Retourne un objet "générateur de test" si l'identifiant est correcte avec un c
  GET    https://phpunitgen.io/api/v1/test-generators
 ```
 
-**Retour**
+**Réponse**
 
 Retourne un tableau d'objets "générateur de test".
 
@@ -130,7 +130,7 @@ pour `Mockery`, il sera `Mockery::mock(LogService::class)`.
 * **website** `[string]` : le site web de la librairie de "mocking" à laquelle ce générateur est dédiée.
 * **author** `[object]`
     * **name** `[string]` : le nom ou pseudonyme du créateur de ce générateur.
-    * **website** `[string]` : le site we du créateur de ce générateur.
+    * **website** `[string]` : le site web/GitHub du créateur de ce générateur.
 
 ```json
 {
@@ -156,7 +156,7 @@ pour `Mockery`, il sera `Mockery::mock(LogService::class)`.
 
 * **`id`** : un identifiant de générateur de mocks correct. 
 
-**Retour**
+**Réponse**
 
 Retourne un objet "générateur de mock" si l'identifiant est correcte avec un code
 `HTTP 200`. Sinon, renvoie un code `HTTP 404`.
@@ -167,7 +167,7 @@ Retourne un objet "générateur de mock" si l'identifiant est correcte avec un c
  GET    https://phpunitgen.io/api/v1/mock-generators
 ```
 
-**Retour**
+**Réponse**
 
 Retourne un tableau d'objets "générateur de mock".
 
@@ -207,7 +207,7 @@ Ces arguments doivent être fournis sous forme d'un contenu de requête au forma
 
 * **code** `[string]` : le code PHP pour lequel générer un test.
 * **config** `[object]` : la configuration a utilisé pour générer le test. Voir la [page
-sur la configuration](/fr/configuration.md) pour plus de détail sur chaque paramètre.
+sur la configuration](/fr/configuration.md) pour plus de détail sur chaque paramètre de cet objet.
 
 Voici un exemple de contenu d'une requête :
 
@@ -240,7 +240,7 @@ Voici un exemple de contenu d'une requête :
 }
 ```
 
-**Retour**
+**Réponse**
 
 Retourne un objet "test" si la requête a été correctement traitée avec un code
 `HTTP 200`.

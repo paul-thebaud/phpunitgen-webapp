@@ -54,7 +54,7 @@ Ensuite, vous pouvez appeler l'outil depuis la racine de votre projet :
 **Installation globale**
 
 Ce mode d'installation vous permet d'utiliser globalement PhpUnitGen.
-Pour cela, vous devrez au préalable avoir les éxécutables de composer dans votre `PATH`.
+Pour cela, vous devrez au préalable avoir les éxécutables de Composer dans votre `PATH`.
 
 ```bash
 composer global require --dev phpunitgen/console
@@ -130,7 +130,7 @@ seront générés) DOIVENT correspondre.
 * **Type** : `boolean`
 * **Valeur par défaut**: `true`
 * **Description** : Indique à PhpUnitGen s'il doit s'éxécuter à chaque appel de la commande
-`php artisan make:...`. Ce paramètre est propre à l'intégration à Laravel.
+`php artisan make:...`. Ce paramètre est propre à [l'intégration à Laravel](/fr/command-line.md#intégration-à-laravel).
 
 ## Utilisation
 

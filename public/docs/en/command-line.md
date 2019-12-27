@@ -1,25 +1,24 @@
-# Ligne de commande
+# Command line interface
 
-La ligne de commande vous permet de générer des tests pour un ou plusieurs fichiers
-sur votre projet. Elle peut être installé sur votre projet en tant que dépendance
-de développement, ou globalement. Enfin, elle peut être configurée à volonté, y compris
-en utilisant des générateurs de tests personnalisés.
+The command line interface (CLI) allows you to generate tests for one or more files
+on your project. It can be installed on your project as a development dependency or globally.
+Finally, it can be fully configured, including using custom tests/mocks generators.
 
-## Démarrage rapide
+## Getting started
 
-Installation rapide de l'outil dans un projet :
+Quick installation of the tool in a project:
 
 ```bash
 composer require --dev phpunitgen/console
 ```
 
-Copie de la configuration par défaut :
+Copying the default configuration:
 
 ```bash
 cp ./vendor/phpunitgen/console/config/phpunitgen.php ./phpunitgen.php
 ```
 
-Lancement de l'outil :
+Launching the tool:
 
 ```bash
 ./vendor/bin/phpunitgen src/MyClass.php
@@ -27,40 +26,40 @@ Lancement de l'outil :
 
 ## Installation
 
-**Exigences pour installer l'outil**
+**Requirements**
 
-Si vous utilisez l'outil en ligne de commande ou le cœur, vous devez satisfaire
-les exigences suivantes :
+If you use the command line tool or the core, you must satisfy
+the following requirements:
 
-- PHP `7.2` et supérieur.
-- Laravel `5.7` et supérieur si vous souhaitez utilisez
-[l'intégration à Laravel](/fr/command-line.md#intégration-à-laravel).
+- PHP `7.2` and up.
+- Laravel `5.7` and up if you want to use
+[the integration with Laravel](/en/command-line.md#integration-with-laravel).
 
-**Installation sur un projet**
+**Installation inside a project**
 
-Ce mode d'installation est recommandé, car il vous permet d'utiliser
-l'intégration à Laravel.
+This installation mode is recommended, as it allows you to use
+integration with Laravel.
 
 ```bash
 composer require --dev phpunitgen/console
 ```
 
-Ensuite, vous pouvez appeler l'outil depuis la racine de votre projet :
+Then you can call the tool from the root of your project:
 
 ```bash
 ./vendor/bin/phpunitgen path/to/File.php
 ```
 
-**Installation globale**
+**Global installation**
 
-Ce mode d'installation vous permet d'utiliser globalement PhpUnitGen.
-Pour cela, vous devrez au préalable avoir les éxécutables de composer dans votre `PATH`.
+This installation mode allows you to use PhpUnitGen globally.
+To do this, you will need to have the Composer executables in your `PATH`.
 
 ```bash
 composer global require --dev phpunitgen/console
 ```
 
-Ensuite, vous pouvez appeler l'outil depuis n'importe quel répertoire :
+Then you can call the tool from any directory:
 
 ```bash
 phpunitgen path/to/File.php
@@ -68,17 +67,17 @@ phpunitgen path/to/File.php
 
 ## Configuration
 
-### Fichier de configuration
+### Configuration file
 
-Vous pouvez déclarer un fichier de configuration pour PhpUnitGen, mais ce n'est pas obligatoire.
+You can declare a configuration file for PhpUnitGen, but it is not required.
 
-Afin de faciliter l'utilisation, PhpUnitGen accepte différents formats/noms de fichier de
+For ease of use, PhpUnitGen accepts different formats/filenames of
 configuration.
 
-Le fichier de configuration peut être au format `PHP`, `YAML` ou `JSON`.
+The configuration file can be in `PHP`, `YAML` or `JSON`.
 
-Si vous ne préciser pas l'option `--config`, PhpUnitGen analysera le dossier courant pour
-trouver votre fichier de configuration. Il essaiera les noms suivants, dans cet ordre précis :
+If you do not specify the `--config` option, PhpUnitGen will scan the current directory to
+find your configuration file. It will try the following names, in that order:
 
 - `phpunitgen.php`
 - `phpunitgen.php.dist`
@@ -87,55 +86,55 @@ trouver votre fichier de configuration. Il essaiera les noms suivants, dans cet 
 - `phpunitgen.json`
 - `phpunitgen.json.dist`
 
-Si aucun de ces fichiers n'existe, PhpUnitGen utilisera la configuration par défaut.
+If none of these files exist, PhpUnitGen will use the default configuration.
 
-Si vous fournissez l'option `--config` avec un chemin correct, PhpUnitGen détectera
-la manière dont il doit importer cette configuration en analysant l'extension du fichier.
+If you provide the `--config` option with a correct path, PhpUnitGen will detect
+how it should import this configuration by parsing the file extension.
 
-Vous pouvez trouver des fichiers de [configuration d'exemples
-ici](https://github.com/paul-thebaud/phpunitgen-console/tree/master/config).
+You can find [example configuration files
+here](https://github.com/paul-thebaud/phpunitgen-console/tree/master/config).
 
-### Paramètres de la configuration
+### Configuration parameters
 
-Vous pouvez voir tous les paramètres de configuration sur la [page dédiée](/fr/configuration.md),
-mais voici les paramètres propres à la ligne de commande.
+You can see all the configuration parameters on the [dedicated page](/en/configuration.md),
+but here are the CLI parameters.
 
-#### Ré-écriture des fichiers
+#### Files overwriting
 
-* **Clé du paramètre** : `overwriteFiles`
+* **Parameter key** : `overwriteFiles`
 * **Type** : `boolean`
-* **Valeur par défaut**: `false`
-* **Description** : Indique à PhpUnitGen que s'il doit remplacer les fichiers existants par
-les nouveaux tests générés ou pas.
+* **Default value**: `false`
+* **Description** : Defines if PhpUnitGen should replace existing files with
+new generated tests or not.
 
-#### Fichiers exclus
+#### Excluded files
 
-* **Clé du paramètre** : `excludedFiles`
+* **Parameter key** : `excludedFiles`
 * **Type** : `string[]`
-* **Valeur par défaut**: `[ ]`
-* **Description** : Indique les expressions régulières auxquelles les fichiers (pour lesquels des tests
-seront générés) ne DOIVENT pas correspondre.
+* **Default value**: `[ ]`
+* **Description** : Specifies the regular expressions to which the files (for which tests
+will be generated) MUST not match.
 
 #### Fichiers inclus
 
-* **Clé du paramètre** : `includedFiles`
+* **Parameter key** : `includedFiles`
 * **Type** : `string[]`
-* **Valeur par défaut**: `[ "\.php$" ]`
-* **Description** : Indique les expressions régulières auxquelles les fichiers (pour lesquels des tests
-seront générés) DOIVENT correspondre.
+* **Default value**: `[ "\.php$" ]`
+* **Description** : Specifies the regular expressions to which the files (for which tests
+will be generated) MUST match.
 
-#### Génération à l'appel de `php artisan make:...`
+#### Generation on a `php artisan make:...` call.
 
-* **Clé du paramètre** : `generateOnMake`
+* **Parameter key** : `generateOnMake`
 * **Type** : `boolean`
-* **Valeur par défaut**: `true`
-* **Description** : Indique à PhpUnitGen s'il doit s'éxécuter à chaque appel de la commande
-`php artisan make:...`. Ce paramètre est propre à l'intégration à Laravel.
+* **Default value**: `true`
+* **Description** : Defines if PhpUnitGen should execute on each `php artisan make:...`
+calls. This parameter is proper to [the integration with Laravel](/en/command-line.md#integration-with-laravel).
 
 ## Utilisation
 
-Peu importe le mode d'utilisation de la ligne de commande (globale, projet ou Laravel), PhpUnitGen
-vous proposera les mêmes arguments et options.
+Regardless of the command line usage mode (global, project or Laravel), PhpUnitGen
+will offer you the same arguments and options.
 
 Lorsqu'il s'exécute, il vous donne des informations sur le nombre de fichiers traités, en warning
 ou en erreur, ainsi que la durée d'exécution ou l'utilisation mémoire.
@@ -183,7 +182,7 @@ phpunitgen -O
 > Sachez que l'option `--overwrite` la valeur de ce paramètre dans le fichier de configuration.
 > Cela vous permet d'exceptionnelement choisir d'écraser un/plusieurs fichier(s).
 
-## Intégration à Laravel
+## Integration with Laravel
 
 PhpUnitGen s'intègre automatiquement à tous les projets Laravel `5.7` et plus lorsqu'il est installé
 en dépendance du projet.

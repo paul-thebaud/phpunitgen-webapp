@@ -1,42 +1,41 @@
-# Application Web & API
+# Web application & API
 
-## Application Web
+## Web application
 
-L'interface web est la manière la plus simple d'utiliser PhpUnitGen. Elle vous permet donc
-d'essayer l'outil, pour savoir s'il répond à vos besoins.
+The web interface is the easiest way to use PhpUnitGen. It allows you to
+to try the tool, to see if it meets your needs.
 
-La configuration et personnalisation y sont assez poussées, mais pas autant que pour
-la ligne de commande ou le coeur de l'outil. En effet, vous ne pouvez surcharger
-que le générateur de tests ou de mocks, et il vous est impossible d'ajouter les votres.
+The configuration and customization are quite advanced, but not as much as for
+the command line or the core of the tool. Indeed, you cannot override
+as the test generator or mocks, and you can't add your own.
 
-## Démarrage rapide
+## Getting started
 
-Pour démarrer avec l'interface web, il vous suffit d'aller sur la page [https://phpunitgen.io/tool](/tool)
-et de coller/saisir votre code dans l'onglet "Editeur".
-Vous pouvez ensuite cliquer sur le bouton "Générer" pour générer vos tests.
+To get started with the web interface, just go to the [https://phpunitgen.io/tool](/tool) page.
+and paste/enter your code in the "Editor" tab (or left editor, if you are on a wide screen).
+You can then click on the "Generate" button to generate your tests.
 
 ## API
 
-L'API est actuellement utilisée par l'application web pour récupérer la liste des générateurs de
-tests/mocks disponibles, et générer les tests.
+The API is currently used by the web application to retrieve the list of generators of
+available tests/mocks, and generate the tests.
 
-Vous pouvez utiliser cette API librement et gratuitement.
+You can use this API freely and for free.
 
-> Sachez que l'entête HTTP `Accept-Language` vous permet de définir la langue dans laquelle
-> les noms et les descriptions des générateurs seront fournies. Pour l'instant, l'anglais
-> et le français sont supportés, avec l'anglais comme langage par défaut.
+> Be aware that the HTTP header `Accept-Language` allows you to set the language in which
+> generator names and descriptions will be provided. For the time being, English
+> and French are supported, with English as the default language.
 
-!> L'API échange des données JSON. Vous devez donc fournir les headers HTTP
-`Accept: application/json` et `Content-Type: application/json` pour obtenir des réponses
-dans un format correct.
+!> The API exchanges JSON data. You must therefore provide the HTTP headers
+`Accept: application/json` and `Content-Type: application/json` to get answers
+in the correct format.
 
 ### Version
 
-L'API de PhpUnitGen est versionnée, au cas où des changements créant des incompatibilités seraient
-à effectuer.
+The PhpUnitGen API is versioned, in case any breaking changes that create incompatibilities are made.
 
-Le point d'entrée principal de l'API, [`https://phpunitgen.io/api/v1`](https://phpunitgen.io/api/v1), vous retourne la version
-du coeur de PhpUnitGen. Voici un exemple de retour d'un appel `GET` sur cette URL :
+The main entry point to the API, [`https://phpunitgen.io/api/v1`](https://phpunitgen.io/api/v1), returns you the
+of the PhpUnitGen core's version. Here is an example of a return `GET' call on this URL:
 
 ```json
 {
@@ -45,36 +44,36 @@ du coeur de PhpUnitGen. Voici un exemple de retour d'un appel `GET` sur cette UR
 }
 ```
 
-### Générateurs de tests
+### Tests generators
 
-Les générateurs de tests sont les outils qui, au sein de PhpUnitGen, vont permettre de
-définir comment un test doit être généré pour un certain code.
+The tests generators are the tools within PhpUnitGen that will allow you to
+define how a test should be generated for a certain code.
 
-#### Point d'entrée
+#### Entry point
 
 ```
  GET    https://phpunitgen.io/api/v1/test-generators
  GET    https://phpunitgen.io/api/v1/test-generators/:id
 ```
 
-#### L'objet générateur de tests
+#### The tests generator object
 
-* **id** `[string]` : un identifieur unique pour ce générateur.
-* **name** `[string]` : le nom du générateur, traduit dans la langue du header `Accept-Language`.
-* **description** `[string]` : la description du générateur, traduit dans la langue du header `Accept-Language`.
-* **class** `[string]` : la classe correspondant à ce générateur sur le coeur de PhpUnitGen.
-* **example** `[string]` : un exemple de classe PHP sur lequel ce générateur fonctionne bien.
+* **id** `[string]`: a unique identifier for this generator.
+* **name** `[string]`: the name of the generator, translated into the language of the header `Accept-Language`.
+* **description** `[string]`: the description of the generator, translated into the language of the header `Accept-Language`.
+* **class** `[string]`: the class corresponding to this generator on the PhpUnitGen core.
+* **example** `[string]`: an example of a PHP class on which this generator works well.
 * **author** `[object]`
-    * **name** `[string]` : le nom ou pseudonyme du créateur de ce générateur.
-    * **website** `[string]` : le site we du créateur de ce générateur.
+    * **name** `[string]`: the name or pseudonym of the creator of this generator.
+    * **website** `[string]`: the website/GitHub of the creator of this generator.
 
 ```json
 {
   "id": "delegate",
-  "name": "Délégué",
-  "description": "Ce générateur est dédié à [...]",
+  "name": "Delegate",
+  "description": "This generator is dedicated to [...]",
   "class": "PhpUnitGen\\Core\\Generators\\Tests\\DelegateTestGenerator",
-  "example": "<?php /* Un code d'exemple pour ce type de générateur de test */",
+  "example": "<?php /* An example code for this type of test generator */",
   "author": {
     "name": "Paul Thébaud",
     "website": "https://github.com/paul-thebaud"
@@ -82,7 +81,7 @@ définir comment un test doit être généré pour un certain code.
 }
 ```
 
-#### Récupération d'un générateur de tests
+#### Retrieving a tests generator
 
 ```
  GET    https://phpunitgen.io/api/v1/test-generators/:id
@@ -90,53 +89,53 @@ définir comment un test doit être généré pour un certain code.
 
 **Arguments**
 
-* **`id`** : un identifiant de générateur de tests correct. 
+* **`id`**: a correct tests generator identifier.
 
-**Retour**
+**Response**
 
-Retourne un objet "générateur de test" si l'identifiant est correcte avec un code
-`HTTP 200`. Sinon, renvoie un code `HTTP 404`.
+Returns a "tests generator" object if the identifier is correct with a
+`HTTP 200` status code. Otherwise, return a `HTTP 404` status code.
 
-#### Récupération de la liste des générateurs de tests
+#### Retrieving the list of all tests generators
 
 ```
  GET    https://phpunitgen.io/api/v1/test-generators
 ```
 
-**Retour**
+**Response**
 
-Retourne un tableau d'objets "générateur de test".
+Returns an array of "tests generator" objects with a `HTTP 200` status code.
 
-### Générateurs de mocks
+### Mocks generators
 
-Les générateurs de mocks sont les outils qui, au sein de PhpUnitGen, vont permettre de
-définir comment le code d'un mock doit être généré. Si par exemple un mock pour un `LogService`
-doit être fait, le générateur pour `PHPUnit` sera `$this->getMock(LogService::class)`, alors que
-pour `Mockery`, il sera `Mockery::mock(LogService::class)`.
+The mock generators are the tools that, within PhpUnitGen, will allow you to
+define how the code of a mock should be generated. For example, if a mock for a `LogService` mock
+must be created, the code for `PHPUnit` will be `$this->getMock(LogService::class)`, whereas
+for `Mockery`, it will be `Mockery::mock(LogService::class)`.
 
-#### Point d'entrée
+#### Entry point
 
 ```
  GET    https://phpunitgen.io/api/v1/mock-generators
  GET    https://phpunitgen.io/api/v1/mock-generators/:id
 ```
 
-#### L'objet générateur de mocks
+#### The mocks generators object
 
-* **id** `[string]` : un identifieur unique pour ce générateur.
-* **name** `[string]` : le nom du générateur, traduit dans la langue du header `Accept-Language`.
-* **description** `[string]` : la description du générateur, traduit dans la langue du header `Accept-Language`.
-* **class** `[string]` : la classe correspondant à ce générateur sur le coeur de PhpUnitGen.
-* **website** `[string]` : le site web de la librairie de "mocking" à laquelle ce générateur est dédiée.
+* **id** `[string]`: a unique identifier for this generator.
+* **name** `[string]`: the name of the generator, translated into the language of the header `Accept-Language`.
+* **description** `[string]`: the description of the generator, translated into the language of the header `Accept-Language`.
+* **class** `[string]`: the class corresponding to this generator on the PhpUnitGen core.
+* **website** `[string]`: the website of the "mocking" library to which this generator is dedicated.
 * **author** `[object]`
-    * **name** `[string]` : le nom ou pseudonyme du créateur de ce générateur.
-    * **website** `[string]` : le site we du créateur de ce générateur.
+    * **name** `[string]`: the name or pseudonym of the creator of this generator.
+    * **website** `[string]`: the website/GitHub of the creator of this generator.
 
 ```json
 {
   "id": "mockery",
   "name": "Mockery",
-  "description": "Ce générateur est dédié à [...]",
+  "description": "This generator is dedicated to [...]",
   "class": "PhpUnitGen\\Core\\Generators\\Mocks\\MockeryMockGenerator",
   "website": "http://docs.mockery.io/",
   "author": {
@@ -146,7 +145,7 @@ pour `Mockery`, il sera `Mockery::mock(LogService::class)`.
 }
 ```
 
-#### Récupération d'un générateur de mocks
+#### Retrieving a mocks generator
 
 ```
  GET    https://phpunitgen.io/api/v1/mock-generators/:id
@@ -154,38 +153,38 @@ pour `Mockery`, il sera `Mockery::mock(LogService::class)`.
 
 **Arguments**
 
-* **`id`** : un identifiant de générateur de mocks correct. 
+* **`id`**: a correct mocks generator identifier.
 
-**Retour**
+**Response**
 
-Retourne un objet "générateur de mock" si l'identifiant est correcte avec un code
-`HTTP 200`. Sinon, renvoie un code `HTTP 404`.
+Returns a "mocks generator" object if the identifier is correct with a
+`HTTP 200` status code. Otherwise, return a `HTTP 404` status code.
 
-#### Récupération de la liste des générateurs de mocks
+#### Retrieving the list of all mocks generators
 
 ```
  GET    https://phpunitgen.io/api/v1/mock-generators
 ```
 
-**Retour**
+**Response**
 
-Retourne un tableau d'objets "générateur de mock".
+Returns an array of "mocks generator" objects with a `HTTP 200` status code.
 
 ### Tests
 
-Les tests sont les objets que PhpUnitGen a pour objectif de générer.
+Tests are the objects that PhpUnitGen aims to generate.
 
-#### Point d'entrée
+#### Entry point
 
 ```
 POST    https://phpunitgen.io/api/v1/tests
 ```
 
-#### L'objet test
+#### The test object
 
-* **name** `[string]` : le nom de la classe généré.
-* **code** `[string]` : le code PHP complet de la classe généré.
-* **executionTime** `[float]` : le temps qu'il a fallu à PhpUnitGen pour générer ce test, en secondes.
+* **name** `[string]`: the name of the generated class.
+* **code** `[string]`: the complete PHP code of the generated class.
+* **executionTime** `[float]`: the time it took PhpUnitGen to generate this test, in seconds.
 
 ```json
 {
@@ -195,7 +194,7 @@ POST    https://phpunitgen.io/api/v1/tests
 }
 ```
 
-#### Création d'un test
+#### Creating a test
 
 ```
 POST    https://phpunitgen.io/api/v1/tests
@@ -203,17 +202,17 @@ POST    https://phpunitgen.io/api/v1/tests
 
 **Arguments**
 
-Ces arguments doivent être fournis sous forme d'un contenu de requête au format `application/json`.
+These arguments must be provided as request payload in `application/json` format.
 
-* **code** `[string]` : le code PHP pour lequel générer un test.
-* **config** `[object]` : la configuration a utilisé pour générer le test. Voir la [page
-sur la configuration](/fr/configuration.md) pour plus de détail sur chaque paramètre.
+* **code** `[string]`: the PHP code for which to generate a test.
+* **config** `[object]`: the configuration used to generate the test. See the [configuration
+page](/en/configuration.md) for more details on each parameter of this object.
 
-Voici un exemple de contenu d'une requête :
+Here is an example of the payload of a request:
 
 ```json
 {
- "code": "<?php [...Le code PHP pour lequel générer un test...]",
+ "code": "<?php [...The PHP code for which to generate a test...]",
  "config": {
    "automaticGeneration": true,
    "testGenerator": "delegate",
@@ -240,17 +239,17 @@ Voici un exemple de contenu d'une requête :
 }
 ```
 
-**Retour**
+**Response**
 
-Retourne un objet "test" si la requête a été correctement traitée avec un code
-`HTTP 200`.
+Returns a "test" object if the request has been correctly processed with a
+`HTTP 200` status code.
 
-Retourne un objet d'erreur avec un code `HTTP 422` si les paramètres fournis
-sont invalides (par exemple un booléen à la place d'un tableau).
+Returns an error object with a `HTTP 422` status code if the provided parameters
+are invalid (e.g. a boolean instead of an array).
 
-Retourne un objet d'erreur avec un code `HTTP 400` une erreur s'est produite
-pendant la génération. Cela peut être dû à une erreur dans votre code PHP, mais
-également à un erreur de PhpUnitGen lui-même.
+Returns an error object with a `HTTP 400` status code if an error occurred
+during the generation. This may be due to an error in your PHP code, but
+also to an error in PhpUnitGen itself.
 
-N'hésitez pas à soumettre une [issue GitHub
-](https://github.com/paul-thebaud/phpunitgen-core/issues) si vous avez une quelconque question.
+Feel free to submit a [GitHub issue
+](https://github.com/paul-thebaud/phpunitgen-core/issues) if you have any questions.
