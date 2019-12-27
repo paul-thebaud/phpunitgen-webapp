@@ -8,7 +8,7 @@ const docsify = {
     name: "PhpUnitGen",
     loadSidebar: "_sidebar.md",
     subMaxLevel: 3,
-    basePath: "/docs",
+    basePath: "/docs-content",
     auto2top: true,
     noCompileLinks: [
         "/tool",
