@@ -1,6 +1,6 @@
 # Advanced usage
 
-> La documentation de cette page arrive bientôt !
+> The documentation for this page is coming soon!
 
 ## Defining an implementation to use
 

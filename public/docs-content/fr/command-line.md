@@ -180,7 +180,7 @@ phpunitgen --overwrite
 phpunitgen -O
 ```
 
-> Sachez que l'option `--overwrite` la valeur de ce paramètre dans le fichier de configuration.
+> Sachez que l'option `--overwrite` ignore la valeur de ce paramètre dans le fichier de configuration.
 > Cela vous permet d'exceptionnelement choisir d'écraser un/plusieurs fichier(s).
 
 ## Intégration à Laravel
@@ -215,6 +215,9 @@ php artisan make:policy UserPolicy
 # Cette commande crée d'abord un fichier app/Policies/UserPolicy
 # PhpUnitGen détecte l'appel, et génère un fichier tests/Unit/Policies/UserPolicyTest
 ```
+
+Vous pouvez désactiver cette exécution automatique de PhpUnitGen dans le fichier de configuration,
+en utilisant le paramètre `generateOnMake`.
 
 Il est aussi possible de générer le fichier de configuration par défaut à la racine du projet,
 en utilisant la commande suivante :

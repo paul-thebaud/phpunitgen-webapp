@@ -131,64 +131,64 @@ will be generated) MUST match.
 * **Description** : Defines if PhpUnitGen should execute on each `php artisan make:...`
 calls. This parameter is proper to [the integration with Laravel](/en/command-line.md#integration-with-laravel).
 
-## Utilisation
+## Usage
 
 Regardless of the command line usage mode (global, project or Laravel), PhpUnitGen
 will offer you the same arguments and options.
 
-Lorsqu'il s'exécute, il vous donne des informations sur le nombre de fichiers traités, en warning
-ou en erreur, ainsi que la durée d'exécution ou l'utilisation mémoire.
-Vous pouvez augmenter la verbosité (en utilisant les options `-v`, `-vv` ou `-vvv`) pour afficher
-plus de détails sur les erreurs ou les warnings.
+When it runs, it gives you information on the number of files processed, warned
+or errored, as well as runtime or memory usage.
+You can increase verbosity (using the `-v`, `-vv` or `-vvv` options) to display
+more details on errors and warnings.
 
-Vous pouvez appeler PhpUnitGen sur un fichier ou un dossier. Si vous utilisez PhpUnitGen
-sur un dossier, l'outil analysera et générera un fichier pour chaque fichier du dossier,
-de manière récursive. Vous pouvez également préciser ou un fichier dans lequel
-les tests seront générés. Voici quelques exemples :
+You can call PhpUnitGen on a file or a folder. If you use PhpUnitGen
+on a folder, the tool will analyze and generate a file for each file in the folder,
+recursively. You can also specify a file or a folder in which
+the tests will be generated. Here are a few examples:
 
 ```bash
-# Génére les tests du fichier File.php dans tests/my/File.php.
+# Generates the tests of the File.php file in tests/my/File.php.
 phpunitgen app/my/File.php
 
-# Génére les tests des fichiers de app/my dans tests/my.
+# Generates tests of app/my files in tests/my.
 phpunitgen app/my
 
-# Génére les tests du fichier File.php dans custom/Target.php.
+# Generates the tests of the File.php file in custom/Target.php.
 phpunitgen app/my/File.php custom/Target.php
 
-# Génére les tests des fichiers de app/my dans custom/target.
+# Generates tests of app/my files in custom/target.
 phpunitgen app/my custom/target
 ```
 
-!> Notez que si vous fournissez un dossier comme source à PhpUnitGen, la cible fournit doit
-être omise ou correspondre à un dossier.
+!> Note that if you provide a folder as a source to PhpUnitGen, the target provided must be
+be omitted or match a file.
 
-Vous pouvez également fournir un chemin vers le fichier de configuration à utiliser :
+You can also provide a path to the configuration file to use :
 
 ```bash
 phpunitgen --config path/to/config.php
-# ou
+# or
 phpunitgen -C path/to/config.php
 ```
 
-Enfin, vous pouvez indiquer à PhpUnitGen d'écraser les fichiers existants par les nouveaux tests :
+Finally, you can tell PhpUnitGen to overwrite existing files with the new ones :
 
 ```bash
 phpunitgen --overwrite
-# ou
+# or
 phpunitgen -O
 ```
 
-> Sachez que l'option `--overwrite` la valeur de ce paramètre dans le fichier de configuration.
-> Cela vous permet d'exceptionnelement choisir d'écraser un/plusieurs fichier(s).
+> Note that the `--overwrite` option will ignore the value of this parameter in the configuration file.
+> This allows you to exceptionally choose to overwrite one or more files.
 
 ## Integration with Laravel
 
-PhpUnitGen s'intègre automatiquement à tous les projets Laravel `5.7` et plus lorsqu'il est installé
-en dépendance du projet.
+PhpUnitGen integrates automatically to all Laravel `5.7` and more projects when installed
+as a composer dependency on the project.
 
-Si jamais vous avez désactivé la découverte des paquets via Laravel, il vous suffit d'ajouter le
-`provider` de PhpUnitGen à votre fichier de configuration de l'application :
+If you ever disabled package discovery via Laravel, just add the PhpUnitGen `provider' to your
+`app.php` config file:
 
 ```php
 // config/app.php
@@ -199,24 +199,27 @@ Si jamais vous avez désactivé la découverte des paquets via Laravel, il vous 
 ],
 ```
 
-Vous pouvez alors l'appeler via Artisan :
+You can then call him via Artisan:
 
 ```bash
 php artisan phpunitgen app/User.php
 ```
 
-Par ailleurs, PhpUnitGen va automatiquement écouter l'appel de la commande `php artisan make`, de
-façon à générer un test unitaire pour chaque nouveau fichier généré. Voici un exemple :
+In addition, PhpUnitGen will automatically listen to the `php artisan make` command call,
+in order to generate a unit test for each new file generated. Here is an example:
 
 ```
 php artisan make:policy UserPolicy
 
-# Cette commande crée d'abord un fichier app/Policies/UserPolicy
-# PhpUnitGen détecte l'appel, et génère un fichier tests/Unit/Policies/UserPolicyTest
+# This command first creates a file app/Policies/UserPolicy
+# PhpUnitGen detects the call, and generates a tests/Unit/Policies/UserPolicyTest file.
 ```
 
-Il est aussi possible de générer le fichier de configuration par défaut à la racine du projet,
-en utilisant la commande suivante :
+You can disable this automatic execution of PhpUnitGen in the configuration file, using the
+`generateOnMake` parameter.
+
+It is also possible to generate the default configuration file at the root of the project,
+using the following command:
 
 ```
 php artisan vendor:publish --tag=phpunitgen-config
