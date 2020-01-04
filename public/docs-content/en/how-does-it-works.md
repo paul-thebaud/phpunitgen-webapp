@@ -12,7 +12,7 @@ and the instantiation of the dependency container according to the latter.
 ## Step 1: Analysis of the source code
 
 The first step is to analyze the source code you have given it
-provide. To do this, it creates [Reflection](https://www.php.net/manual/fr/book.reflection.php) objects
+provide. To do this, it creates [Reflection](https://www.php.net/manual/en/book.reflection.php) objects
 which describe the class, properties and methods declared.
 
 It is important to understand that these objects are created from a static analyzer

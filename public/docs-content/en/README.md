@@ -17,9 +17,9 @@ Here is the information you can find in this documentation:
 - [Description of the tool's operation](/en/how-does-it-works.md)
 - [Configuration of the tool](/en/configuration.md)
 - [How to use the online application or API?](/en/webapp.md)
-    - [Getting started with the web application](/fr/webapp.md#getting-started)
+    - [Getting started with the web application](/en/webapp.md#getting-started)
 - [How to use the command line interface?](/en/command-line.md)
-    - [Getting started with the command line](/fr/command-line.md#getting-started)
+    - [Getting started with the command line](/en/command-line.md#getting-started)
 - [Advanced usage](/en/advanced-usage.md)
 
 ## Do you want to support the project?
