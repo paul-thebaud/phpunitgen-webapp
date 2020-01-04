@@ -1,6 +1,6 @@
 <template>
   <BNavbar
-    v-on-click-away="handleClickAway"
+    v-on-click-away="handleCloseNavIfNeeded"
     toggleable="lg"
     fixed="top"
     class="shadow"
@@ -8,8 +8,8 @@
   >
     <BContainer>
       <BNavbarBrand
-        v-b-toggle.nav-collapse
         :to="{ name: 'home' }"
+        @click="handleCloseNavIfNeeded"
       >
         <strong>PhpUnitGen</strong>
       </BNavbarBrand>
@@ -73,9 +73,9 @@
           </BNavItemDropdown>
 
           <BButton
-            v-b-toggle.nav-collapse
             :to="{ name: 'tool' }"
             class="mt-2 mt-lg-0 rounded-pill px-4 py-2"
+            @click="handleCloseNavIfNeeded"
           >
             {{ $t("layout.header.useOnline") }}
           </BButton>
@@ -126,9 +126,8 @@
             this.locale.currentLocale = this.currentLocale = newLocale;
         }
 
-        protected handleClickAway(): void {
-            const display = window.getComputedStyle(this.$refs.navCollapse.$el).display;
-            if (display === 'block') {
+        protected handleCloseNavIfNeeded(): void {
+            if (window.getComputedStyle(this.$refs.navCollapse.$el).display === "block") {
                 this.$root.$emit("bv::toggle::collapse", "nav-collapse");
             }
         }
