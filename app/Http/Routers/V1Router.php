@@ -23,7 +23,8 @@ class V1Router
         $router->get('/', VersionController::class);
         $router->get('/test-generators', TestGeneratorController::class.'@index');
         $router->get('/test-generators/{id}', TestGeneratorController::class.'@show');
-        $router->get('/mock-generators', MockGeneratorController::class);
+        $router->get('/mock-generators', MockGeneratorController::class.'@index');
+        $router->get('/mock-generators/{id}', MockGeneratorController::class.'@show');
         $router->post('/tests', TestController::class);
     }
 }
