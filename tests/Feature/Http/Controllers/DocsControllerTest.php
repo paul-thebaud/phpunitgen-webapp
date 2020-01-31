@@ -6,8 +6,6 @@ use Tests\PhpUnitGen\WebApp\TestCase;
 
 /**
  * Class DocsControllerTest.
- *
- * @covers \PhpUnitGen\WebApp\Http\Controllers\DocsController
  */
 class DocsControllerTest extends TestCase
 {
