@@ -29,7 +29,7 @@
         id="clear-editor-button"
         :disabled="loading"
         variant="secondary"
-        class="ml-2"
+        class="mx-2"
         @click="handleClearEditor"
       >
         <FontAwesomeIcon icon="trash" />

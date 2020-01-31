@@ -31,7 +31,7 @@
       </BCol>
       <BCol
         :class="forceTabDisplay ? '' : 'd-xl-none'"
-        class="editor-tabs font-weight-bold pb-3 d-flex"
+        class="editor-tabs font-weight-bold pb-3 d-flex mt-3"
         cols="12"
       >
         <div
