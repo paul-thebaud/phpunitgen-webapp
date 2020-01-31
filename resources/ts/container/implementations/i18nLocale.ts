@@ -25,6 +25,11 @@ export const locales: Dictionary<string> = {
 @injectable()
 export class I18nLocale implements LocaleI {
     /**
+     * The window object to use for lang definition.
+     */
+    protected window: Window;
+
+    /**
      * The Vue I18n instance.
      */
     protected vueI18n: VueI18n;
@@ -42,16 +47,21 @@ export class I18nLocale implements LocaleI {
     /**
      * I18nLocale constructor.
      *
+     * @param {Window} window
      * @param {VueI18n} vueI18n
      * @param {StoreI} store
      */
     public constructor(
+        @inject(TYPES.Window) window: Window,
         @inject(TYPES.VueI18n) vueI18n: VueI18n,
         @inject(TYPES.Store) store: StoreI,
     ) {
+        this.window = window;
         this.vueI18n = vueI18n;
         this.store = store;
         this.locale = this.vueI18n.locale = this.store.getLocale();
+
+        this.updateHtmlLang();
     }
 
     /**
@@ -75,6 +85,8 @@ export class I18nLocale implements LocaleI {
 
         this.locale = this.vueI18n.locale = locale;
         this.store.setLocale(locale).save();
+
+        this.updateHtmlLang();
     }
 
     /**
@@ -87,7 +99,17 @@ export class I18nLocale implements LocaleI {
     /**
      * @inheritDoc
      */
-    public localizedDocs(route = ''): string {
+    public localizedDocs(route = ""): string {
         return `/docs#/${this.currentLocale}/${route}`;
+    }
+
+    /**
+     * Update the HTML element lang attribute with the current locale.
+     */
+    protected updateHtmlLang(): void {
+        const htmlElement = this.window.document.querySelector("html");
+        if (htmlElement) {
+            htmlElement.setAttribute("lang", this.locale);
+        }
     }
 }
