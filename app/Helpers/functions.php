@@ -5,6 +5,9 @@ declare(strict_types=1);
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 
+// Ignore this file, because it is Laravel Framework helper functions.
+// @codeCoverageIgnoreStart
+
 if (! function_exists('public_path')) {
     /**
      * Get the path to the public folder.
@@ -87,3 +90,5 @@ if (! function_exists('mix')) {
         return new HtmlString(app('config')->get('app.mix_url').$manifestDirectory.$manifest[$path]);
     }
 }
+
+// @codeCoverageIgnoreEnd

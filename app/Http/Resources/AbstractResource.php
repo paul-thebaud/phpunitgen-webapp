@@ -80,10 +80,7 @@ abstract class AbstractResource
      *
      * @return array
      */
-    protected function map(array $item): array
-    {
-        return $item;
-    }
+    abstract protected function map(array $item): array;
 
     /**
      * Retrieves the path to the resource in the "resources/data" directory.

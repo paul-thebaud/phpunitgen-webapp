@@ -13,7 +13,7 @@ use PhpUnitGen\WebApp\Http\Resources\TestGeneratorResource;
  * @author  Killian Hascoët <killianh@live.fr>
  * @license MIT
  */
-class TestGeneratorController extends ResourcesController
+class TestGeneratorController extends ResourceController
 {
     /**
      * TestGeneratorController constructor.

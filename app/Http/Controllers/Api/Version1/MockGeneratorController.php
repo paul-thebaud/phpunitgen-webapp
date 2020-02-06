@@ -13,7 +13,7 @@ use PhpUnitGen\WebApp\Http\Resources\MockGeneratorResource;
  * @author  Killian Hascoët <killianh@live.fr>
  * @license MIT
  */
-class MockGeneratorController extends ResourcesController
+class MockGeneratorController extends ResourceController
 {
     /**
      * MockGeneratorController constructor.

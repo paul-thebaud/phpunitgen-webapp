@@ -7,15 +7,16 @@ namespace PhpUnitGen\WebApp\Http\Controllers\Api\Version1;
 use Illuminate\Http\JsonResponse;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use PhpUnitGen\WebApp\Http\Resources\AbstractResource;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Class ResourcesController.
+ * Class ResourceController.
  *
  * @author  Paul Thébaud <paul.thebaud29@gmail.com>
  * @author  Killian Hascoët <killianh@live.fr>
  * @license MIT
  */
-class ResourcesController extends BaseController
+class ResourceController extends BaseController
 {
     /**
      * @var AbstractResource
@@ -44,13 +45,11 @@ class ResourcesController extends BaseController
      */
     public function show(string $id): JsonResponse
     {
-        $resource = $this->resource->find($id);
-        if (! $resource) {
-            return new JsonResponse([
-                'message' => 'Resource not found',
-            ], JsonResponse::HTTP_NOT_FOUND);
+        $record = $this->resource->find($id);
+        if (! $record) {
+            throw new NotFoundHttpException();
         }
 
-        return new JsonResponse($resource, JsonResponse::HTTP_OK);
+        return new JsonResponse($record, JsonResponse::HTTP_OK);
     }
 }

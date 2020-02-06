@@ -10,6 +10,14 @@ use Tests\PhpUnitGen\WebApp\TestCase;
  */
 class TestGeneratorControllerTest extends TestCase
 {
+    public function testAll(): void
+    {
+        $response = $this->json('get', '/api/v1/test-generators')->response;
+
+        $this->assertSame(200, $response->status());
+        $this->assertCount(11, json_decode($response->content(), true));
+    }
+
     public function testShowWithInvalidId(): void
     {
         $response = $this->json('get', '/api/v1/test-generators/invalid')->response;
