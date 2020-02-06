@@ -49,9 +49,9 @@ abstract class AbstractResource
      *
      * @param string $id
      *
-     * @return array
+     * @return array|null
      */
-    public function find(string $id): array
+    public function find(string $id): ?array
     {
         return $this->getCollection()->where('id', $id)->first();
     }
