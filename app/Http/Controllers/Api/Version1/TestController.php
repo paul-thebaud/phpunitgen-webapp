@@ -150,9 +150,7 @@ class TestController extends BaseController
 
         $reflectionClass = $phpUnitGen->getCodeParser()->parse(new StringSource($code));
         $testClass = $phpUnitGen->getTestGenerator()->generate($reflectionClass);
-        $renderer = $phpUnitGen->getRenderer();
-        $renderer->visitTestClass($testClass);
-        $rendered = $renderer->getRendered();
+        $rendered = $phpUnitGen->getRenderer()->visitTestClass($testClass)->getRendered();
 
         return [$testClass->getShortName(), $rendered->toString()];
     }

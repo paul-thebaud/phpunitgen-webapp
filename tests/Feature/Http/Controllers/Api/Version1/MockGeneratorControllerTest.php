@@ -5,7 +5,7 @@ namespace Tests\PhpUnitGen\WebApp\Feature\Http\Controllers;
 use Tests\PhpUnitGen\WebApp\TestCase;
 
 /**
- * Class MockControllerTest.
+ * Class MockGeneratorControllerTest.
  */
 class MockGeneratorControllerTest extends TestCase
 {
