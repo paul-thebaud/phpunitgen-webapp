@@ -36,7 +36,7 @@
             FooterNav,
         },
     })
-    export default class Layout extends Vue {
+    export default class AppLayout extends Vue {
         @Inject(TYPES.Theme)
         protected theme!: ThemeI;
 
