@@ -107,6 +107,14 @@ but here are the CLI parameters.
 * **Description** : Defines if PhpUnitGen should replace existing files with
 new generated tests or not.
 
+#### Files backup
+
+* **Parameter key** : `backupFiles`
+* **Type** : `boolean`
+* **Default value**: `true`
+* **Description** : Defines if PhpUnitGen should save existing file which will
+be overwritten (available if overwriting is enabled).
+
 #### Excluded files
 
 * **Parameter key** : `excludedFiles`

@@ -105,8 +105,16 @@ mais voici les paramètres propres à la ligne de commande.
 * **Clé du paramètre** : `overwriteFiles`
 * **Type** : `boolean`
 * **Valeur par défaut**: `false`
-* **Description** : Indique à PhpUnitGen que s'il doit remplacer les fichiers existants par
+* **Description** : Indique à PhpUnitGen s'il doit remplacer les fichiers existants par
 les nouveaux tests générés ou pas.
+
+#### Backup des fichiers
+
+* **Clé du paramètre** : `backupFiles`
+* **Type** : `boolean`
+* **Valeur par défaut**: `true`
+* **Description** : Indique à PhpUnitGen s'il doit sauvegarder les fichiers existants qui vont
+être écrasé (disponible si la ré-écriture est active).
 
 #### Fichiers exclus
 
