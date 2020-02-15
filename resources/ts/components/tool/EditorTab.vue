@@ -91,15 +91,20 @@
     import { TYPES } from "@/container/types";
     import { TestGenerator, TestGeneratorResourceI } from "@/container/contracts/testGeneratorResourceI";
     import { TranslateResult } from "vue-i18n";
+    import { GoogleAnalyticsI } from "@/container/contracts/googleAnalyticsI";
 
     @Component({
         components: {
             CodeEditor,
-        }
+        },
     })
     export default class EditorTab extends Vue {
         public $refs!: {
             file: HTMLInputElement;
+        };
+
+        protected $gtag!: {
+            event: (event: string, options: object) => void;
         };
 
         @Inject(TYPES.Store)
@@ -107,6 +112,9 @@
 
         @Inject(TYPES.TestGeneratorResource)
         protected testGeneratorResource!: TestGeneratorResourceI;
+
+        @Inject(TYPES.GoogleAnalytics)
+        protected googleAnalytics!: GoogleAnalyticsI;
 
         @Prop(Boolean)
         protected loading!: boolean;
@@ -158,7 +166,7 @@
 
         public async handleClearEditor(): Promise<void> {
             this.testGenerator = await this.testGeneratorResource.find(
-                this.store.getTool().testGenerator
+                this.store.getTool().testGenerator,
             );
 
             this.store.setLastEditorContent(undefined);
@@ -167,6 +175,13 @@
 
         public handleGenerate(): void {
             this.$emit("generate", this.code);
+
+            if (this.googleAnalytics.isConfigured() && this.googleAnalytics.isAccepted()) {
+                this.$gtag.event("generate", {
+                    "event_category": "engagement",
+                    "event_label": "Code generation request",
+                });
+            }
         }
 
         public handleEditorChange(code: string): void {
