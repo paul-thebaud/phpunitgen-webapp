@@ -1,32 +1,42 @@
 <template>
   <div>
-    <div class="my-3 d-flex justify-content-end">
-      <div class="mr-auto d-flex">
+    <BRow class="my-3">
+      <BCol
+        sm="12"
+        md="6"
+        class="d-flex"
+      >
         <p
           v-if="hasCode"
           class="my-auto"
         >
           {{ $t("components.tool.generatedTab.executionTime", { executionTime: formattedExecutionTime }) }}
         </p>
-      </div>
-      <BButton
-        variant="secondary"
-        class="mr-2"
-        :disabled="! hasCode"
-        @click="handleCopy"
+      </BCol>
+      <BCol
+        sm="12"
+        md="6"
+        class="mt-2 mt-md-0 text-right"
       >
-        <FontAwesomeIcon icon="copy" />
-        {{ copyButtonLabel }}
-      </BButton>
-      <BButton
-        variant="secondary"
-        :disabled="! hasCode"
-        @click="handleDownload"
-      >
-        <FontAwesomeIcon icon="download" />
-        {{ $t("components.tool.generatedTab.download") }}
-      </BButton>
-    </div>
+        <BButton
+          variant="secondary"
+          class="mr-2"
+          :disabled="! hasCode"
+          @click="handleCopy"
+        >
+          <FontAwesomeIcon icon="copy" />
+          {{ copyButtonLabel }}
+        </BButton>
+        <BButton
+          variant="secondary"
+          :disabled="! hasCode"
+          @click="handleDownload"
+        >
+          <FontAwesomeIcon icon="download" />
+          {{ $t("components.tool.generatedTab.download") }}
+        </BButton>
+      </BCol>
+    </BRow>
     <BAlert
       :show="! hasCode"
       variant="warning"
@@ -51,7 +61,7 @@
     @Component({
         components: {
             CodeEditor,
-        }
+        },
     })
     export default class GeneratedTab extends Vue {
         @Prop(Object)

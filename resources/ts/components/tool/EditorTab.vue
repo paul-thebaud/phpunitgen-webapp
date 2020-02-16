@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="my-3 d-flex">
+    <div class="my-3 d-flex flex-wrap flex-md-nowrap">
       <input
         ref="file"
         type="file"

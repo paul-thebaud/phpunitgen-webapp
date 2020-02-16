@@ -35,3 +35,18 @@ nav.app-nav.no-badge {
     }
   }
 }
+
+@media (max-width: 576px) {
+  nav.app-nav.no-badge {
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+
+    ul {
+      padding-left: 0 !important;
+    }
+  }
+
+  section.content {
+    margin-top: 50px;
+  }
+}
