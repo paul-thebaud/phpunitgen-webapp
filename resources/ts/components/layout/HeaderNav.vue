@@ -70,6 +70,9 @@
               {{ targetTheme.getEmoji() }}
               {{ $t(`common.themes.${targetTheme.getKey()}`) }}
             </BDropdownItem>
+            <BDropdownItem :to="{ name: 'themes' }">
+              {{ $t(`layout.header.viewAll`) }}
+            </BDropdownItem>
           </BNavItemDropdown>
 
           <BButton
