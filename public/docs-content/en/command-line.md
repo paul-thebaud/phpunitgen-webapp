@@ -173,9 +173,6 @@ phpunitgen app/my custom/target
 > some files, `101` if one or more warnings occurred on
 > some files, `0` if no warning/error occurred.
 
-!> Note that if you provide a folder as a source to PhpUnitGen, the target provided must be
-be omitted or match a file.
-
 You can also provide a path to the configuration file to use :
 
 ```bash

@@ -174,9 +174,6 @@ phpunitgen app/my custom/target
 > certains fichiers, `101` si un/plusieurs avertissements se sont produits sur
 > certains fichiers, `0` si aucun avertissement/erreur ne s'est produit.
 
-!> Notez que si vous fournissez un dossier comme source à PhpUnitGen, la cible fournit doit
-être omise ou correspondre à un dossier.
-
 Vous pouvez également fournir un chemin vers le fichier de configuration à utiliser :
 
 ```bash
