@@ -5,6 +5,7 @@ import "docsify/lib/plugins/external-script";
 import "docsify/lib/plugins/ga";
 import "docsify/lib/plugins/search";
 import "docsify-copy-code";
+import "docsify-pagination";
 import "prismjs/components/prism-bash";
 import "prismjs/components/prism-php";
 import "prismjs/components/prism-json";

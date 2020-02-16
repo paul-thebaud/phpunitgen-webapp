@@ -1940,10 +1940,30 @@ commondir@^1.0.1:
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
   integrity sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=
 
+component-closest@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/component-closest/-/component-closest-1.0.1.tgz#1ed0464132fc88a3510a2dabec079695789fb1b5"
+  integrity sha1-HtBGQTL8iKNRCi2r7AeWlXifsbU=
+  dependencies:
+    component-matches-selector "~0.1.6"
+
 component-emitter@^1.2.1:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
   integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
+
+component-matches-selector@^0.1.6, component-matches-selector@~0.1.6:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/component-matches-selector/-/component-matches-selector-0.1.7.tgz#3098309e43f42b06a13d638c9648998ceab23b69"
+  integrity sha512-Yb2+pVBvrqkQVpPaDBF0DYXRreBveXJNrpJs9FnFu8PF6/5IIcz5oDZqiH9nB5hbD2/TmFVN5ZCxBzqu7yFFYQ==
+  dependencies:
+    component-query "*"
+    global-object "^1.0.0"
+
+component-query@*, component-query@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/component-query/-/component-query-0.0.3.tgz#07f49dab7071fa9606725df53e607f468acdaacf"
+  integrity sha1-B/Sdq3Bx+pYGcl31PmB/RorNqs8=
 
 compose-function@3.0.3:
   version "3.0.3"
@@ -2570,6 +2590,15 @@ docsify-copy-code@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/docsify-copy-code/-/docsify-copy-code-2.1.0.tgz#cc72562751565b53808b9f67720b170d28ecdb99"
   integrity sha512-8vVJf/y4Wgd2C/GdNwctvZXczVQhWHNjihusrUcC0YP9V96KLCOERho+QAhyYR5/iRoQaLhoMaJEeuIQHNVLVw==
+
+docsify-pagination@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/docsify-pagination/-/docsify-pagination-2.5.0.tgz#d4dc32bc78ccffa2d74ae26c599faa390ec29233"
+  integrity sha512-qi8tHQ/oukBStFA7mY6G1r0fkBUrl8cVQ+cPESp1A1KZka+pOx2HvrUsK517TnTvHM9/8iUmgI43yYUjZX/gjg==
+  dependencies:
+    component-closest "^1.0.1"
+    component-matches-selector "^0.1.6"
+    component-query "0.0.3"
 
 docsify@^4.9.4:
   version "4.10.2"
@@ -3458,6 +3487,11 @@ global-modules@^1.0.0:
     global-prefix "^1.0.1"
     is-windows "^1.0.1"
     resolve-dir "^1.0.0"
+
+global-object@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/global-object/-/global-object-1.0.0.tgz#2a1b45e901d55e4773154f12f0cec1ef9aba5f9f"
+  integrity sha1-KhtF6QHVXkdzFU8S8M7B75q6X58=
 
 global-prefix@^1.0.1:
   version "1.0.2"

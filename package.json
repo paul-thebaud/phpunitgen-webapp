@@ -43,6 +43,7 @@
     "cross-env": "^6.0.3",
     "docsify": "^4.9.4",
     "docsify-copy-code": "^2.1.0",
+    "docsify-pagination": "^2.5.0",
     "eslint": "^6.6.0",
     "eslint-plugin-vue": "^6.0.1",
     "inversify": "^5.0.1",

@@ -25,6 +25,10 @@ const docsify = {
             "/en/": "Search...",
         },
     },
+    pagination: {
+        previousText: "Previous",
+        nextText: "Next",
+    },
 };
 
 if (googleAnalytics.isConfigured() && googleAnalytics.isAccepted()) {
