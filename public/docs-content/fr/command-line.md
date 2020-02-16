@@ -152,18 +152,18 @@ plus de détails sur les erreurs ou les warnings.
 
 Vous pouvez appeler PhpUnitGen sur un fichier ou un dossier. Si vous utilisez PhpUnitGen
 sur un dossier, l'outil analysera et générera un fichier pour chaque fichier du dossier,
-de manière récursive. Vous pouvez également préciser ou un fichier dans lequel
+de manière récursive. Vous pouvez également préciser le dossier dans lequel
 les tests seront générés. Voici quelques exemples :
 
 ```bash
-# Génére les tests du fichier File.php dans tests/my/File.php.
+# Génére les tests du fichier File.php dans tests/my/FileTest.php.
 phpunitgen app/my/File.php
 
 # Génére les tests des fichiers de app/my dans tests/my.
 phpunitgen app/my
 
-# Génére les tests du fichier File.php dans custom/Target.php.
-phpunitgen app/my/File.php custom/Target.php
+# Génére les tests du fichier File.php dans custom/target/FileTest.php
+phpunitgen app/my/File.php custom/target
 
 # Génére les tests des fichiers de app/my dans custom/target.
 phpunitgen app/my custom/target

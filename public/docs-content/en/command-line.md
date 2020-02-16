@@ -155,14 +155,14 @@ recursively. You can also specify a file or a folder in which
 the tests will be generated. Here are a few examples:
 
 ```bash
-# Generates the tests of the File.php file in tests/my/File.php.
+# Generates the tests of the File.php file in tests/my/FileTest.php.
 phpunitgen app/my/File.php
 
 # Generates tests of app/my files in tests/my.
 phpunitgen app/my
 
-# Generates the tests of the File.php file in custom/Target.php.
-phpunitgen app/my/File.php custom/Target.php
+# Generates the tests of the File.php file in custom/target/FileTest.php.
+phpunitgen app/my/File.php custom/target
 
 # Generates tests of app/my files in custom/target.
 phpunitgen app/my custom/target
