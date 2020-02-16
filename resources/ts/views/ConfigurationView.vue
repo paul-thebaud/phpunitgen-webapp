@@ -78,6 +78,7 @@
               :search-resolver="(generator) => `${generator.name}${generator.description}`"
               :label="$t('views.configuration.testGenerator.label')"
               :help="$t('views.configuration.testGenerator.help')"
+              :loading="generatorsLoading"
             >
               <template v-slot:value="{ value: testGenerator }">
                 <strong>
@@ -115,6 +116,7 @@
               :label="$t('views.configuration.mockGenerator.label')"
               :help="$t('views.configuration.mockGenerator.help')"
               :display-all="true"
+              :loading="generatorsLoading"
             >
               <template v-slot:value="{ value: mockGenerator }">
                 <strong>
@@ -293,6 +295,8 @@
 
         protected tool = this.store.getTool();
 
+        protected generatorsLoading = true;
+
         protected testGenerators: Dictionary<TestGenerator> = {};
 
         protected mockGenerators: Dictionary<MockGenerator> = {};
@@ -350,12 +354,16 @@
         }
 
         protected async loadGenerators(): Promise<void> {
+            this.generatorsLoading = true;
+
             this.testGenerators = this.mapArrayToObjectById(await this.testGeneratorResource.all());
             this.mockGenerators = this.mapArrayToObjectById(await this.mockGeneratorResource.all());
             this.contexts = {
                 laravel: this.$t("views.configuration.optionsContext.values.laravel"),
                 null: this.$t("views.configuration.optionsContext.values.null"),
             };
+
+            this.generatorsLoading = false;
         }
 
         protected quickLinkId(name: string): string {

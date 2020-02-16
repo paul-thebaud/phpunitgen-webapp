@@ -35,7 +35,7 @@
       </BCol>
     </BRow>
 
-    <BRow v-if="Object.keys(displayedValues).length > 0">
+    <BRow v-if="! loading && Object.keys(displayedValues).length > 0">
       <BCol
         v-for="(value, targetKey) in displayedValues"
         :key="targetKey"
@@ -75,10 +75,22 @@
       </BCol>
     </BRow>
 
-    <BRow v-else>
+    <BRow v-else-if="! loading">
       <BCol class="my-2">
         <strong>
           {{ $t("components.forms.cardSelect.noResult") }}
+        </strong>
+      </BCol>
+    </BRow>
+
+    <BRow v-else>
+      <BCol class="my-2">
+        <FontAwesomeIcon
+          icon="circle-notch"
+          class="fa-spin mr-1"
+        />
+        <strong>
+          {{ $t("components.forms.cardSelect.loading") }}
         </strong>
       </BCol>
     </BRow>
@@ -110,6 +122,9 @@
 
         @Prop(String)
         protected value!: string;
+
+        @Prop({ type: Boolean, default: false })
+        protected loading!: boolean;
 
         @Prop({ type: Boolean, default: false })
         protected displayAll!: boolean;
