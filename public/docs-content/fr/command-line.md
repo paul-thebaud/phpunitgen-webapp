@@ -169,6 +169,11 @@ phpunitgen app/my/File.php custom/Target.php
 phpunitgen app/my custom/target
 ```
 
+> La ligne de commande de PhpUnitGen retourne `1` si une erreur critique s'est produite
+> (configuration invalide par exemple), `100` si une/plusieurs erreurs se sont produites sur
+> certains fichiers, `101` si un/plusieurs avertissements se sont produits sur
+> certains fichiers, `0` si aucun avertissement/erreur ne s'est produit.
+
 !> Notez que si vous fournissez un dossier comme source à PhpUnitGen, la cible fournit doit
 être omise ou correspondre à un dossier.
 

@@ -168,6 +168,11 @@ phpunitgen app/my/File.php custom/Target.php
 phpunitgen app/my custom/target
 ```
 
+> The PhpUnitGen command line returns `1` if a critical error has occurred
+> (e.g., invalid configuration), `100` if one or more errors occurred on
+> some files, `101` if one or more warnings occurred on
+> some files, `0` if no warning/error occurred.
+
 !> Note that if you provide a folder as a source to PhpUnitGen, the target provided must be
 be omitted or match a file.
 
