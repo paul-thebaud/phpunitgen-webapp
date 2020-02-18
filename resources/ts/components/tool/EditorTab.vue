@@ -103,10 +103,6 @@
             file: HTMLInputElement;
         };
 
-        protected $gtag!: {
-            event: (event: string, options: object) => void;
-        };
-
         @Inject(TYPES.Store)
         protected store!: StoreI;
 

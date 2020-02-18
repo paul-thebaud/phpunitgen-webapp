@@ -43,10 +43,6 @@
         @Inject(TYPES.GoogleAnalytics)
         protected googleAnalytics!: GoogleAnalyticsI;
 
-        protected $gtag!: {
-            pageview: (options: object) => void;
-        };
-
         protected currentTheme: Theme = this.theme.currentTheme;
 
         protected unlockedThemes = this.theme.getUnlockedThemes();
