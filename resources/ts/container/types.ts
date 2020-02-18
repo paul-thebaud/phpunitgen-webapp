@@ -1,7 +1,6 @@
 export const TYPES = {
     Window: Symbol.for("Window"),
     VueI18n: Symbol.for("VueI18n"),
-    VueRouter: Symbol.for("VueRouter"),
     Serializer: Symbol.for("Serializer"),
     GoogleAnalytics: Symbol.for("GoogleAnalytics"),
     Store: Symbol.for("Store"),

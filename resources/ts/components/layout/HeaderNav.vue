@@ -64,7 +64,7 @@
             <BDropdownItem
               v-for="targetTheme in themes"
               :key="`theme-${targetTheme.getKey()}`"
-              :active="currentTheme.getKey() === targetTheme.getKey()"
+              :active="theme.getKey() === targetTheme.getKey()"
               @click="handleThemeChange(targetTheme)"
             >
               {{ targetTheme.getEmoji() }}
@@ -91,9 +91,9 @@
 <script lang="ts">
     import Vue from "vue";
     import { Component, Inject, Prop } from "vue-property-decorator";
+    import { Mutation, State } from "vuex-class";
     import { directive as onClickAway } from "vue-clickaway";
     import { TYPES } from "@/container/types";
-    import { ThemeI } from "@/container/contracts/themeI";
     import { LocaleI } from "@/container/contracts/localeI";
     import { Theme } from "@/container/concerns/theme";
 
@@ -105,24 +105,24 @@
             navCollapse: Vue;
         };
 
-        @Inject(TYPES.Theme)
-        protected theme!: ThemeI;
-
         @Inject(TYPES.Locale)
         protected locale!: LocaleI;
 
         @Prop(Array)
         protected readonly themes!: Theme[];
 
-        @Prop(Object)
-        protected currentTheme!: Theme;
+        @State
+        protected theme!: Theme;
+
+        @Mutation
+        protected changeTheme!: (theme: Theme) => void;
 
         protected locales = this.locale.getLocales();
 
         protected currentLocale = this.locale.currentLocale;
 
         protected handleThemeChange(newTheme: Theme): void {
-            this.$emit("theme-change", newTheme);
+            this.changeTheme(newTheme);
         }
 
         protected handleLocaleChange(newLocale: string): void {

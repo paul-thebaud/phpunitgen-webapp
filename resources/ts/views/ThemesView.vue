@@ -5,7 +5,7 @@
     <CardSelect
       id="themes-card-select"
       :values="themesMap"
-      :value="currentTheme.getKey()"
+      :value="theme.getKey()"
       :compute-classes="getThemeCardClass"
       :display-all="true"
       @input="handleThemeChange"
@@ -25,31 +25,35 @@
 
 <script lang="ts">
     import Vue from "vue";
-    import { Component, Inject, Prop } from "vue-property-decorator";
+    import { Component, Inject } from "vue-property-decorator";
+    import { TranslateResult } from "vue-i18n";
+    import { Mutation, State } from "vuex-class";
     import { TYPES } from "@/container/types";
     import { ThemeI } from "@/container/contracts/themeI";
     import { StoreI } from "@/container/contracts/storeI";
     import { Theme } from "@/container/concerns/theme";
     import CardSelect from "@/components/forms/CardSelectField.vue";
     import { Dictionary } from "@/utils/types";
-    import { TranslateResult } from "vue-i18n";
 
     @Component({
-        components: { CardSelect }
+        components: { CardSelect },
     })
     export default class ThemesView extends Vue {
         @Inject(TYPES.Store)
         protected store!: StoreI;
 
         @Inject(TYPES.Theme)
-        protected theme!: ThemeI;
+        protected themeService!: ThemeI;
 
-        @Prop(Object)
-        protected currentTheme!: Theme;
+        @State
+        protected theme!: Theme;
+
+        @Mutation
+        protected changeTheme!: (theme: Theme) => void;
 
         protected generationsCount = this.store.getGenerationsCount();
 
-        protected themes = this.theme.getThemes();
+        protected themes = this.themeService.getThemes();
 
         protected get themesMap(): Dictionary<Theme> {
             const themes = {} as Dictionary<Theme>;
@@ -66,7 +70,7 @@
 
             return theme.getGenerationsToUnlock() > this.generationsCount
                 ? "disabled"
-                : (theme === this.currentTheme ? "active" : "");
+                : (theme === this.theme ? "active" : "");
         }
 
         protected getThemeCardText(theme: Theme): TranslateResult {
@@ -76,7 +80,7 @@
         }
 
         protected handleThemeChange(newThemeKey: string): void {
-            this.$emit("theme-change", this.themesMap[newThemeKey]);
+            this.changeTheme(this.themesMap[newThemeKey]);
         }
     }
 </script>

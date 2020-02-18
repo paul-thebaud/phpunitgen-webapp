@@ -3,7 +3,6 @@ import "@/entries/bootstrap";
 import "@/bootstrap-vue";
 import Vue, { VNode } from "vue";
 import VueI18n from "vue-i18n";
-import VueRouter from "vue-router";
 import VueClipboard from "vue-clipboard2";
 import VueScrollTo from "vue-scrollto";
 import VueGtag from "vue-gtag";
@@ -14,16 +13,16 @@ import { container } from "@/container/container";
 import { TYPES } from "@/container/types";
 import App from "@/components/layout/App.vue";
 import { GoogleAnalyticsI } from "@/container/contracts/googleAnalyticsI";
+import router from "@/router";
+import store from "@/store";
 
 config.autoAddCss = false;
 VueClipboard.config.autoSetContainer = true;
 
-const router = container.get<VueRouter>(TYPES.VueRouter);
-const googleAnalytics = container.get<GoogleAnalyticsI>(TYPES.GoogleAnalytics);
-
-Vue.use(VueRouter);
 Vue.use(VueClipboard);
 Vue.use(VueScrollTo);
+
+const googleAnalytics = container.get<GoogleAnalyticsI>(TYPES.GoogleAnalytics);
 
 if (googleAnalytics.isConfigured()) {
     Vue.use(VueGtag, {
@@ -42,6 +41,7 @@ Vue.component("FontAwesomeIcon", FontAwesomeIcon);
 new Vue({
     el: "#app",
     router,
+    store,
     i18n: container.get<VueI18n>(TYPES.VueI18n),
     render: (h): VNode => h(App),
 });
