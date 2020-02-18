@@ -14,7 +14,9 @@ class AppModule extends VuexModule {
 
     @Mutation
     public changeTheme(newTheme: Theme): void {
-        this.theme = theme.currentTheme = newTheme;
+        if (theme.isUnlocked(newTheme)) {
+            this.theme = theme.currentTheme = newTheme;
+        }
     }
 }
 
