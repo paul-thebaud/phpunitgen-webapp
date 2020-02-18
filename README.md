@@ -77,6 +77,7 @@ php -S localhost:8000 -t public
 
 - [Paul Thébaud](https://github/paul-thebaud)
 - [Killian Hascoët](https://github.com/KillianH)
+- [Charles Corbel](https://dribbble.com/CorbelC)
 - [All Contributors](https://github.com/paul-thebaud/phpunitgen-core/graphs/contributors)
 
 ## License

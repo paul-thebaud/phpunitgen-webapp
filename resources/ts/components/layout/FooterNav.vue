@@ -59,6 +59,10 @@
                         href: "https://github.com/KillianH",
                     },
                     {
+                        title: "Charles Corbel",
+                        href: "https://dribbble.com/CorbelC",
+                    },
+                    {
                         title: this.$t("layout.footer.authors.links.contributors"),
                         href: "https://github.com/paul-thebaud/phpunitgen-core/graphs/contributors",
                     },
