@@ -1,5 +1,6 @@
 {
   "name": "phpunitgen/webapp",
+  "type": "project",
   "description": "The PhpUnitGen Web Application.",
   "license": "MIT",
   "keywords": [

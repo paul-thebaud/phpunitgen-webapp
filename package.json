@@ -1,7 +1,6 @@
 {
+  "private": true,
   "name": "phpunitgen-webapp",
-  "version": "1.0.0",
-  "main": "index.js",
   "repository": "https://github.com/paul-thebaud/phpunitgen-webapp.git",
   "author": "Paul Thébaud <paul.thebaud29@gmail.com>",
   "license": "MIT",
