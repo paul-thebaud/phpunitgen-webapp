@@ -27,7 +27,7 @@ export default {
         },
         "api": {
             "title": "API",
-            "description": "Vous voulez utiliser l'outil depuis votre application sans installer la paquet ? Aucun problème, il y a une API ouverte et totalement documentée.",
+            "description": "Vous voulez utiliser l'outil depuis votre application sans installer le paquet ? Aucun problème, il y a une API ouverte et totalement documentée.",
             "button": "Lire la documentation",
         },
         "documentation": {
