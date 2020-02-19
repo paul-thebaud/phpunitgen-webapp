@@ -62,7 +62,7 @@
             right
           >
             <BDropdownItem
-              v-for="targetTheme in themes"
+              v-for="targetTheme in unlockedThemes"
               :key="`theme-${targetTheme.getKey()}`"
               :active="theme.getKey() === targetTheme.getKey()"
               @click="handleThemeChange(targetTheme)"
@@ -90,8 +90,8 @@
 
 <script lang="ts">
     import Vue from "vue";
-    import { Component, Inject, Prop } from "vue-property-decorator";
-    import { Mutation, State } from "vuex-class";
+    import { Component, Inject } from "vue-property-decorator";
+    import { Action, State } from "vuex-class";
     import { directive as onClickAway } from "vue-clickaway";
     import { TYPES } from "@/container/types";
     import { LocaleI } from "@/container/contracts/localeI";
@@ -101,28 +101,28 @@
 
     @Component
     export default class HeaderNav extends Vue {
-        public $refs!: {
+        public readonly $refs!: {
             navCollapse: Vue;
         };
 
         @Inject(TYPES.Locale)
-        protected locale!: LocaleI;
-
-        @Prop(Array)
-        protected readonly themes!: Theme[];
+        protected readonly locale!: LocaleI;
 
         @State
-        protected theme!: Theme;
+        protected readonly unlockedThemes!: Theme[];
 
-        @Mutation
-        protected changeTheme!: (theme: Theme) => void;
+        @State
+        protected readonly theme!: Theme;
+
+        @Action
+        protected readonly requestThemeChange!: (theme: Theme) => Promise<void>;
 
         protected locales = this.locale.getLocales();
 
         protected currentLocale = this.locale.currentLocale;
 
-        protected handleThemeChange(newTheme: Theme): void {
-            this.changeTheme(newTheme);
+        protected async handleThemeChange(newTheme: Theme): Promise<void> {
+            await this.requestThemeChange(newTheme);
         }
 
         protected handleLocaleChange(newLocale: string): void {

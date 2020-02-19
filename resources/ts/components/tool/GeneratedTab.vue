@@ -65,7 +65,7 @@
     })
     export default class GeneratedTab extends Vue {
         @Prop(Object)
-        protected test!: Test;
+        protected readonly test!: Test;
 
         protected copyButtonLabel: TranslateResult = "";
 

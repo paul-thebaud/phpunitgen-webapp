@@ -36,12 +36,12 @@
     @Component
     export default class HomeCard extends Vue {
         @Prop(String)
-        protected feature!: string;
+        protected readonly feature!: string;
 
         @Prop(Object)
-        protected to?: Location;
+        protected readonly to?: Location;
 
         @Prop(String)
-        protected href?: string;
+        protected readonly href?: string;
     }
 </script>

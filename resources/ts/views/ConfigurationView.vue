@@ -283,13 +283,13 @@
     })
     export default class ConfigurationView extends Vue {
         @Inject(TYPES.Store)
-        protected store!: StoreI;
+        protected readonly store!: StoreI;
 
         @Inject(TYPES.MockGeneratorResource)
-        protected mockGeneratorResource!: MockGeneratorResourceI;
+        protected readonly mockGeneratorResource!: MockGeneratorResourceI;
 
         @Inject(TYPES.TestGeneratorResource)
-        protected testGeneratorResource!: TestGeneratorResourceI;
+        protected readonly testGeneratorResource!: TestGeneratorResourceI;
 
         protected forceEditorTabs = this.store.getForceEditorTabs();
 

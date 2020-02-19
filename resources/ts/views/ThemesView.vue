@@ -27,7 +27,7 @@
     import Vue from "vue";
     import { Component, Inject } from "vue-property-decorator";
     import { TranslateResult } from "vue-i18n";
-    import { Mutation, State } from "vuex-class";
+    import { Action, State } from "vuex-class";
     import { TYPES } from "@/container/types";
     import { ThemeI } from "@/container/contracts/themeI";
     import { StoreI } from "@/container/contracts/storeI";
@@ -40,16 +40,19 @@
     })
     export default class ThemesView extends Vue {
         @Inject(TYPES.Store)
-        protected store!: StoreI;
+        protected readonly store!: StoreI;
 
         @Inject(TYPES.Theme)
-        protected themeService!: ThemeI;
+        protected readonly themeService!: ThemeI;
 
         @State
-        protected theme!: Theme;
+        protected readonly unlockedThemes!: Theme[];
 
-        @Mutation
-        protected changeTheme!: (theme: Theme) => void;
+        @State
+        protected readonly theme!: Theme;
+
+        @Action
+        protected readonly requestThemeChange!: (theme: Theme) => Promise<void>;
 
         protected generationsCount = this.store.getGenerationsCount();
 
@@ -65,22 +68,29 @@
             return themes;
         }
 
-        protected getThemeCardClass(themeKey: string): string {
-            const theme = this.themesMap[themeKey];
+        protected themeFromKey(key: string): Theme {
+            return this.themesMap[key];
+        }
 
-            return theme.getGenerationsToUnlock() > this.generationsCount
-                ? "disabled"
-                : (theme === this.theme ? "active" : "");
+        protected getThemeCardClass(key: string): string {
+            const theme = this.themeFromKey(key);
+            if (this.unlockedThemes.indexOf(theme) === -1) {
+                return "disabled";
+            }
+
+            return this.theme === theme ? "active" : "";
         }
 
         protected getThemeCardText(theme: Theme): TranslateResult {
-            return theme.getGenerationsToUnlock() > this.generationsCount
-                ? `${this.generationsCount} / ${theme.getGenerationsToUnlock()}`
-                : this.$t("views.themes.unlocked");
+            if (this.unlockedThemes.indexOf(theme) === -1) {
+                return `${this.generationsCount} / ${theme.getGenerationsToUnlock()}`;
+            }
+
+            return this.$t("views.themes.unlocked");
         }
 
-        protected handleThemeChange(newThemeKey: string): void {
-            this.changeTheme(this.themesMap[newThemeKey]);
+        protected async handleThemeChange(newThemeKey: string): Promise<void> {
+            await this.requestThemeChange(this.themesMap[newThemeKey]);
         }
     }
 </script>

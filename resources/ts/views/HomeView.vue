@@ -195,6 +195,6 @@
     })
     export default class HomeView extends Vue {
         @Inject(TYPES.Locale)
-        protected locale!: LocaleI;
+        protected readonly locale!: LocaleI;
     }
 </script>

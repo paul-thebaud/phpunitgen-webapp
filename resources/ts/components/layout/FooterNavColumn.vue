@@ -32,9 +32,9 @@
     @Component
     export default class FooterNavColumn extends Vue {
         @Prop(String)
-        protected name!: string;
+        protected readonly name!: string;
 
         @Prop(Array)
-        protected links!: { title: string; href: string }[];
+        protected readonly links!: { title: string; href: string }[];
     }
 </script>

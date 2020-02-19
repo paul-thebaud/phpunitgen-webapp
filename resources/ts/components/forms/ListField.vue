@@ -59,19 +59,19 @@
     @Component
     export default class ListField extends Vue {
         @Prop(String)
-        protected id!: string;
+        protected readonly id!: string;
 
         @Prop(String)
-        protected label!: string;
+        protected readonly label!: string;
 
         @Prop(String)
-        protected placeholder!: string;
+        protected readonly placeholder!: string;
 
         @Prop(String)
-        protected help!: string;
+        protected readonly help!: string;
 
         @Prop(Array)
-        protected value!: string[];
+        protected readonly value!: string[];
 
         protected input = "";
 

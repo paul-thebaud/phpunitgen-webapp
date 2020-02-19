@@ -99,27 +99,27 @@
         },
     })
     export default class EditorTab extends Vue {
-        public $refs!: {
+        public readonly $refs!: {
             file: HTMLInputElement;
         };
 
         @Inject(TYPES.Store)
-        protected store!: StoreI;
+        protected readonly store!: StoreI;
 
         @Inject(TYPES.TestGeneratorResource)
-        protected testGeneratorResource!: TestGeneratorResourceI;
+        protected readonly testGeneratorResource!: TestGeneratorResourceI;
 
         @Inject(TYPES.GoogleAnalytics)
-        protected googleAnalytics!: GoogleAnalyticsI;
+        protected readonly googleAnalytics!: GoogleAnalyticsI;
 
         @Prop(Boolean)
-        protected loading!: boolean;
+        protected readonly loading!: boolean;
 
         @Prop(String)
-        protected exceptionMessage!: string;
+        protected readonly exceptionMessage!: string;
 
         @Prop(Object)
-        protected exception!: object;
+        protected readonly exception!: object;
 
         protected testGenerator: TestGenerator | undefined;
 

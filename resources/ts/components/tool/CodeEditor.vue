@@ -23,7 +23,7 @@
     })
     export default class CodeEditor extends Vue {
         @Inject(TYPES.Theme)
-        protected theme!: ThemeI;
+        protected readonly theme!: ThemeI;
 
         @Prop(String)
         protected readonly code!: string;

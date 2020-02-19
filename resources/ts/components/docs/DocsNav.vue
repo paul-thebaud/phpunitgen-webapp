@@ -62,10 +62,10 @@
     })
     export default class DocsNav extends Vue {
         @Inject(TYPES.Theme)
-        protected theme!: ThemeI;
+        protected readonly theme!: ThemeI;
 
         @Inject(TYPES.Locale)
-        protected locale!: LocaleI;
+        protected readonly locale!: LocaleI;
 
         protected themes = this.theme.getUnlockedThemes();
 

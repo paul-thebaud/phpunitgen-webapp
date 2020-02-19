@@ -34,7 +34,7 @@
     })
     export default class FooterNav extends Vue {
         @Inject(TYPES.Locale)
-        protected locale!: LocaleI;
+        protected readonly locale!: LocaleI;
 
         protected links = {};
 

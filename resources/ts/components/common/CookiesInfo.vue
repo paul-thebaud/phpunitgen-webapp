@@ -34,7 +34,7 @@
     @Component
     export default class CookiesInfo extends Vue {
         @Inject(TYPES.GoogleAnalytics)
-        protected googleAnalytics!: GoogleAnalyticsI;
+        protected readonly googleAnalytics!: GoogleAnalyticsI;
 
         protected analyticsActivated = false;
 

@@ -88,23 +88,28 @@
     import { TranslateResult } from "vue-i18n";
     import { StoreI } from "@/container/contracts/storeI";
     import { ThemeI } from "@/container/contracts/themeI";
+    import { Theme } from "@/container/concerns/theme";
+    import { Action } from "vuex-class";
 
     @Component({
         components: {
             RadialProgress,
             GeneratedTab,
             EditorTab,
-        }
+        },
     })
     export default class ToolView extends Vue {
         @Inject(TYPES.Store)
-        protected store!: StoreI;
+        protected readonly store!: StoreI;
 
         @Inject(TYPES.TestResource)
-        protected testResource!: TestResourceI;
+        protected readonly testResource!: TestResourceI;
 
         @Inject(TYPES.Theme)
-        protected theme!: ThemeI;
+        protected readonly theme!: ThemeI;
+
+        @Action
+        protected readonly requestThemeUnlock!: (newTheme: Theme) => Promise<boolean>;
 
         protected forceTabDisplay = this.store.getForceEditorTabs();
 
@@ -145,14 +150,17 @@
 
                 this.displayedTab = "generated";
 
-                const nextUnlockedTheme = this.theme.getNextUnlockedTheme();
-
                 this.generationsCount++;
                 this.store.incrementGenerationsCount().save();
 
-                if (nextUnlockedTheme && this.generationsCount === nextUnlockedTheme.getGenerationsToUnlock()) {
-                    this.$emit("theme-unlock", nextUnlockedTheme);
-                    this.nextUnlockedTheme = this.theme.getNextUnlockedTheme();
+                if (this.nextUnlockedTheme) {
+                    const accepted = await this.requestThemeUnlock(this.nextUnlockedTheme);
+
+                    if (accepted) {
+                        this.handleThemeUnlocked(this.nextUnlockedTheme);
+
+                        this.nextUnlockedTheme = this.theme.getNextUnlockedTheme();
+                    }
                 }
             } catch (error) {
                 if (error instanceof UnknownError) {
@@ -165,6 +173,22 @@
             }
 
             this.loading = false;
+        }
+
+        protected handleThemeUnlocked(newTheme: Theme): void {
+            const themeName = this.$i18n.t(`common.themes.${newTheme.getKey()}`);
+            const toastTitle = `${newTheme.getEmoji()} ${this.$i18n.t("layout.app.themeUnlockToast.title")}`;
+            const toastDescription = this.$i18n.t("layout.app.themeUnlockToast.description", {
+                theme: themeName,
+            });
+
+            this.$bvToast.toast(
+                toastDescription as string,
+                {
+                    title: toastTitle,
+                    autoHideDelay: 5000,
+                },
+            );
         }
     }
 </script>

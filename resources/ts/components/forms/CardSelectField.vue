@@ -109,31 +109,31 @@
     @Component
     export default class CardSelectField extends Vue {
         @Prop(String)
-        protected id!: string;
+        protected readonly id!: string;
 
         @Prop(String)
-        protected label!: string;
+        protected readonly label!: string;
 
         @Prop(String)
-        protected help!: string;
+        protected readonly help!: string;
 
         @Prop(Object)
-        protected values!: Dictionary<object>;
+        protected readonly values!: Dictionary<object>;
 
         @Prop(String)
-        protected value!: string;
+        protected readonly value!: string;
 
         @Prop({ type: Boolean, default: false })
-        protected loading!: boolean;
+        protected readonly loading!: boolean;
 
         @Prop({ type: Boolean, default: false })
-        protected displayAll!: boolean;
+        protected readonly displayAll!: boolean;
 
         @Prop(Function)
-        protected searchResolver!: (value: object) => string;
+        protected readonly searchResolver!: (value: object) => string;
 
         @Prop({ type: Function, default: (key: string, selectedKey: string) => selectedKey === key ? "active" : "" })
-        protected computeClasses!: (key: string, selectedKey: string) => string;
+        protected readonly computeClasses!: (key: string, selectedKey: string) => string;
 
         protected search = "";
 

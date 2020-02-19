@@ -23,19 +23,19 @@
     @Component
     export default class TextField extends Vue {
         @Prop(String)
-        protected id!: string;
+        protected readonly id!: string;
 
         @Prop(String)
-        protected label!: string;
+        protected readonly label!: string;
 
         @Prop(String)
-        protected placeholder!: string;
+        protected readonly placeholder!: string;
 
         @Prop(String)
-        protected help!: string;
+        protected readonly help!: string;
 
         @Prop(String)
-        protected value!: string;
+        protected readonly value!: string;
 
         protected handleInput(value: string): void {
             this.$emit("input", value);
