@@ -27,9 +27,6 @@ module.exports = {
             "rules": {
                 "vue/no-v-html": ["off"],
                 "@typescript-eslint/explicit-member-accessibility": ["error"],
-                "@typescript-eslint/no-unused-vars": ["warn", {
-                    "varsIgnorePattern": "Model",
-                }],
             },
         },
     ],
