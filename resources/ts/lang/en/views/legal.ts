@@ -13,6 +13,10 @@ The application is hosted by OVH.
 The application and all PhpUnitGen tools are maintained by Paul Thébaud.
 <br>
 <br>
+<h4>Personal data</h4>
+None of your data are saved on a remote server when using PhpUnitGen, there are stored in your browser.
+<br>
+<br>
 <h4>License and conditions of use</h4>
 <strong>MIT License</strong>
 <br>

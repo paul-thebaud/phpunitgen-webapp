@@ -13,6 +13,10 @@ L'application est hébergé par OVH.
 L'application et l'ensemble des outils de PhpUnitGen sont maintenus par Paul Thébaud.
 <br>
 <br>
+<h4>Données personnelles</h4>
+Vos données ne sont pas sauvegardées sur un serveur distant lorsque vous utilisez PhpUnitGen, elles sont stockées dans votre navigateur.
+<br>
+<br>
 <h4>License et conditions d'utilisation</h4>
 <strong>MIT License</strong>
 <br>
