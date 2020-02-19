@@ -31,13 +31,17 @@
   background-color: var(--base-bg-color);
   color: var(--base-color);
 
-  .home-features-img-wrapper {
+  .simplicity-video-wrapper, .simplicity-video-wrapper video {
+    max-width: 650px;
+    width: 100%;
+    height: auto;
+  }
+
+  .home-features-img-wrapper, .home-features-img-wrapper img {
     max-width: 500px;
     max-height: 250px;
-
-    img {
-      max-width: 100%;
-    }
+    width: 100%;
+    height: auto;
   }
 }
 

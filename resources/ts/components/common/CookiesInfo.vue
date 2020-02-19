@@ -27,7 +27,7 @@
 
 <script lang="ts">
     import Vue from "vue";
-    import { Component, Inject } from "vue-property-decorator";
+    import { Component, Inject, Watch } from "vue-property-decorator";
     import { TYPES } from "@/container/types";
     import { GoogleAnalyticsI } from "@/container/contracts/googleAnalyticsI";
 
@@ -60,6 +60,13 @@
         protected handleRefuseCookies(): void {
             this.googleAnalytics.refuse();
             this.cookiesAccepted = false;
+        }
+
+        @Watch("cookiesAccepted")
+        protected emitCookiesHiddenIfNeeded(cookiesAccepted: boolean | null): void {
+            if (cookiesAccepted !== null) {
+                this.$emit("cookies-hidden");
+            }
         }
 
         protected activateGoogleAnalyticsIfNeeded(): void {

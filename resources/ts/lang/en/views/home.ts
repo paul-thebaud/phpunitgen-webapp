@@ -11,6 +11,10 @@ export default {
     },
     "features": {
         "title": "Several platforms for all uses",
+        "simplicity": {
+            "title": "Simplicity",
+            "description": "Paste your code, click. That's all.",
+        },
         "console": {
             "title": "Command line interface",
             "description": "Use PhpUnitGen on the command line for your projects. Install it on a Laravel application to have an automatic test generation when you call the \"make\" command!",

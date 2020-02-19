@@ -12,8 +12,11 @@
         @theme-change="handleThemeChange"
       />
     </div>
-    <FooterNav />
-    <CookiesInfo @google-analytics-activated="handleGoogleAnalyticsActivated" />
+    <FooterNav :style="cookiesDisplayed ? 'margin-bottom: 120px;' : ''" />
+    <CookiesInfo
+      @google-analytics-activated="handleGoogleAnalyticsActivated"
+      @cookies-hidden="handleCookiesHidden"
+    />
   </div>
 </template>
 
@@ -46,6 +49,8 @@
         protected currentTheme: Theme = this.theme.currentTheme;
 
         protected unlockedThemes = this.theme.getUnlockedThemes();
+
+        protected cookiesDisplayed = true;
 
         protected handleThemeChange(newTheme: Theme): void {
             if (! this.theme.isUnlocked(newTheme)) {
@@ -83,6 +88,10 @@
                     });
                 });
             }
+        }
+
+        protected handleCookiesHidden(): void {
+            this.cookiesDisplayed = false;
         }
     }
 </script>

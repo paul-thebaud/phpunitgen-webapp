@@ -11,6 +11,10 @@ export default {
     },
     "features": {
         "title": "Plusieurs plateformes pour tous les usages",
+        "simplicity": {
+            "title": "Simplicité",
+            "description": "Collez votre code, cliquez. C'est tout.",
+        },
         "console": {
             "title": "Ligne de commande",
             "description": "Utilisez PhpUnitGen en ligne de commande pour vos projets. Installez-le sur une application Laravel pour avoir une génération de tests automatique quand vous appelez la commande \"make\" !",

@@ -49,6 +49,30 @@
 
     <div class="home-features">
       <BContainer>
+        <div class="pt-5 text-center">
+          <h3>
+            {{ $t("views.home.features.simplicity.title") }}
+          </h3>
+
+          <p>
+            {{ $t("views.home.features.simplicity.description") }}
+          </p>
+
+          <div class="simplicity-video-wrapper mx-auto pt-3">
+            <video
+              class="rounded shadow"
+              autoplay
+              muted
+              loop
+            >
+              <source
+                src="/video/simplicity.mp4"
+                type="video/mp4"
+              >
+            </video>
+          </div>
+        </div>
+
         <h2 class="pt-5 text-center">
           {{ $t("views.home.features.title") }}
         </h2>
@@ -70,14 +94,16 @@
 
         <BRow class="pt-5 pb-5">
           <BCol
-            class="home-features-img-wrapper text-center text-lg-right"
+            class="d-flex justify-content-center justify-content-lg-end"
             lg="6"
           >
-            <img
-              :alt="$t('views.home.features.documentation.title')"
-              src="/img/features/docs.png"
-              class="rounded shadow"
-            >
+            <div class="home-features-img-wrapper">
+              <img
+                :alt="$t('views.home.features.documentation.title')"
+                src="/img/features/docs.png"
+                class="rounded shadow"
+              >
+            </div>
           </BCol>
           <BCol
             class="d-flex flex-column justify-content-center text-center text-lg-left mt-3 mt-lg-0"
@@ -92,15 +118,17 @@
 
         <BRow class="pt-5 pb-5">
           <BCol
-            class="home-features-img-wrapper text-center text-lg-left"
+            class="d-flex justify-content-center justify-content-lg-start"
             order-lg="2"
             lg="6"
           >
-            <img
-              :alt="$t('views.home.features.modularity.title')"
-              src="/img/features/modularity.png"
-              class="rounded shadow"
-            >
+            <div class="home-features-img-wrapper">
+              <img
+                :alt="$t('views.home.features.modularity.title')"
+                src="/img/features/modularity.png"
+                class="rounded shadow"
+              >
+            </div>
           </BCol>
           <BCol
             class="d-flex flex-column justify-content-center text-center text-lg-right mt-3 mt-lg-0"
