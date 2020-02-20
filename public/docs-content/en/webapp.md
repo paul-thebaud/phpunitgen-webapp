@@ -9,6 +9,9 @@ The configuration and customization are quite advanced, but not as much as for
 the command line or the core of the tool. Indeed, you cannot override
 as the test generator or mocks, and you can't add your own.
 
+> Notice that when you evolve on the web interface, your code or your configuration are
+> never saved by the server.
+
 ## Getting started
 
 To get started with the web interface, just go to the [https://phpunitgen.io/tool](/tool) page.

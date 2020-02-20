@@ -9,6 +9,9 @@ La configuration et personnalisation y sont assez poussées, mais pas autant que
 la ligne de commande ou le coeur de l'outil. En effet, vous ne pouvez surcharger
 que le générateur de tests ou de mocks, et il vous est impossible d'ajouter les votres.
 
+> Sachez que lorsque vous évoluer sur l'interface web, votre code ou votre configuration ne sont
+> jamais sauvegardés par le serveur.
+
 ## Démarrage rapide
 
 Pour démarrer avec l'interface web, il vous suffit d'aller sur la page [https://phpunitgen.io/tool](/tool)
