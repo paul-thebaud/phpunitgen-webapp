@@ -19,10 +19,6 @@
     >
 
     <link
-            rel="manifest"
-            href="/manifest.json"
-    >
-    <link
             rel="preload"
             href="{{ mix('css/vendor.css') }}"
             as="style"
