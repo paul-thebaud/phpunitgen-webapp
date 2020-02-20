@@ -140,6 +140,12 @@
         }
 
         public async handleGenerate(code: string): Promise<void> {
+            if (code === "unicorn") {
+                await this.$router.push({ name: 'unicorn' });
+
+                return;
+            }
+
             this.loading = true;
 
             try {

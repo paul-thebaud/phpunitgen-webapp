@@ -87,6 +87,13 @@ const routes = [
             import(/* webpackChunkName: "legal-view" */"../views/LegalView.vue") as unknown as AsyncComponentPromise,
         ),
     },
+    {
+        path: "/unicorn",
+        name: "unicorn",
+        component: lazyLoadView(
+            import(/* webpackChunkName: "unicorn-view" */"../views/UnicornView.vue") as unknown as AsyncComponentPromise,
+        ),
+    },
 ];
 
 Vue.use(VueRouter);

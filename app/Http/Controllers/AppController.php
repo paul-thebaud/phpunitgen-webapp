@@ -46,7 +46,7 @@ class AppController extends BaseController
     public function __invoke(Request $request): View
     {
         // Only match frontend routes, to avoid Docsify thinking this is a MarkDown file.
-        if (! in_array($request->route('any'), ['', 'tool', 'themes', 'configuration', 'legal'])) {
+        if (! in_array($request->route('any'), ['', 'tool', 'themes', 'configuration', 'legal', 'unicorn'])) {
             throw new NotFoundHttpException();
         }
 
