@@ -8,7 +8,7 @@ Si vous l'utilisez, vous devriez songer à rapidement changer pour les nouvelles
 Vous pouvez installer la nouvelle version de l'outil facilement en suivant
 le guide de la [ligne de commande](/fr/command-line.md).
 
-## Différences majeurs
+## Différences majeures
 
 Même si l'objectif des deux versions de l'outil est le même, il y a de nombreuses différences :
 

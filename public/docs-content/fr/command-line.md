@@ -66,80 +66,6 @@ Ensuite, vous pouvez appeler l'outil depuis n'importe quel répertoire :
 phpunitgen path/to/File.php
 ```
 
-## Configuration
-
-### Fichier de configuration
-
-Vous pouvez déclarer un fichier de configuration pour PhpUnitGen, mais ce n'est pas obligatoire.
-
-Afin de faciliter l'utilisation, PhpUnitGen accepte différents formats/noms de fichier de
-configuration.
-
-Le fichier de configuration peut être au format `PHP`, `YAML` ou `JSON`.
-
-Si vous ne préciser pas l'option `--config`, PhpUnitGen analysera le dossier courant pour
-trouver votre fichier de configuration. Il essaiera les noms suivants, dans cet ordre précis :
-
-- `phpunitgen.php`
-- `phpunitgen.php.dist`
-- `phpunitgen.yml`
-- `phpunitgen.yml.dist`
-- `phpunitgen.json`
-- `phpunitgen.json.dist`
-
-Si aucun de ces fichiers n'existe, PhpUnitGen utilisera la configuration par défaut.
-
-Si vous fournissez l'option `--config` avec un chemin correct, PhpUnitGen détectera
-la manière dont il doit importer cette configuration en analysant l'extension du fichier.
-
-Vous pouvez trouver des fichiers de [configuration d'exemples
-ici](https://github.com/paul-thebaud/phpunitgen-console/tree/master/config).
-
-### Paramètres de la configuration
-
-Vous pouvez voir tous les paramètres de configuration sur la [page dédiée](/fr/configuration.md),
-mais voici les paramètres propres à la ligne de commande.
-
-#### Ré-écriture des fichiers
-
-* **Clé du paramètre** : `overwriteFiles`
-* **Type** : `boolean`
-* **Valeur par défaut**: `false`
-* **Description** : Indique à PhpUnitGen s'il doit remplacer les fichiers existants par
-les nouveaux tests générés ou pas.
-
-#### Backup des fichiers
-
-* **Clé du paramètre** : `backupFiles`
-* **Type** : `boolean`
-* **Valeur par défaut**: `true`
-* **Description** : Indique à PhpUnitGen s'il doit sauvegarder les fichiers existants qui vont
-être écrasé (disponible si la ré-écriture est active).
-
-#### Fichiers exclus
-
-* **Clé du paramètre** : `excludedFiles`
-* **Type** : `string[]`
-* **Valeur par défaut**: `[ ]`
-* **Description** : Indique les expressions régulières auxquelles les fichiers (pour lesquels des tests
-seront générés) ne DOIVENT pas correspondre.
-
-#### Fichiers inclus
-
-* **Clé du paramètre** : `includedFiles`
-* **Type** : `string[]`
-* **Valeur par défaut**: `[ "\.php$" ]`
-* **Description** : Indique les expressions régulières auxquelles les fichiers (pour lesquels des tests
-seront générés) DOIVENT correspondre.
-
-#### Génération à l'appel de `php artisan make:...`
-
-* **Clé du paramètre** : `generateOnMake`
-* **Type** : `boolean`
-* **Valeur par défaut**: `true`
-* **Description** : Indique à PhpUnitGen s'il doit s'éxécuter à chaque appel de la commande
-`php artisan make:...`. Ce paramètre est propre à [l'intégration à Laravel](/fr/command-line.md#intégration-à-laravel).
-
 ## Utilisation
 
 Peu importe le mode d'utilisation de la ligne de commande (globale, projet ou Laravel), PhpUnitGen
@@ -235,3 +161,77 @@ en utilisant la commande suivante :
 ```
 php artisan vendor:publish --tag=phpunitgen-config
 ```
+
+## Configuration
+
+### Fichier de configuration
+
+Vous pouvez déclarer un fichier de configuration pour PhpUnitGen, mais ce n'est pas obligatoire.
+
+Afin de faciliter l'utilisation, PhpUnitGen accepte différents formats/noms de fichier de
+configuration.
+
+Le fichier de configuration peut être au format `PHP`, `YAML` ou `JSON`.
+
+Si vous ne préciser pas l'option `--config`, PhpUnitGen analysera le dossier courant pour
+trouver votre fichier de configuration. Il essaiera les noms suivants, dans cet ordre précis :
+
+- `phpunitgen.php`
+- `phpunitgen.php.dist`
+- `phpunitgen.yml`
+- `phpunitgen.yml.dist`
+- `phpunitgen.json`
+- `phpunitgen.json.dist`
+
+Si aucun de ces fichiers n'existe, PhpUnitGen utilisera la configuration par défaut.
+
+Si vous fournissez l'option `--config` avec un chemin correct, PhpUnitGen détectera
+la manière dont il doit importer cette configuration en analysant l'extension du fichier.
+
+Vous pouvez trouver des fichiers de [configuration d'exemples
+ici](https://github.com/paul-thebaud/phpunitgen-console/tree/master/config).
+
+### Paramètres de la configuration
+
+Vous pouvez voir tous les paramètres de configuration sur la [page dédiée](/fr/configuration.md),
+mais voici les paramètres propres à la ligne de commande.
+
+#### Ré-écriture des fichiers
+
+* **Clé du paramètre** : `overwriteFiles`
+* **Type** : `boolean`
+* **Valeur par défaut**: `false`
+* **Description** : Indique à PhpUnitGen s'il doit remplacer les fichiers existants par
+les nouveaux tests générés ou pas.
+
+#### Backup des fichiers
+
+* **Clé du paramètre** : `backupFiles`
+* **Type** : `boolean`
+* **Valeur par défaut**: `true`
+* **Description** : Indique à PhpUnitGen s'il doit sauvegarder les fichiers existants qui vont
+être écrasé (disponible si la ré-écriture est active).
+
+#### Fichiers exclus
+
+* **Clé du paramètre** : `excludedFiles`
+* **Type** : `string[]`
+* **Valeur par défaut**: `[ ]`
+* **Description** : Indique les expressions régulières auxquelles les fichiers (pour lesquels des tests
+seront générés) ne DOIVENT pas correspondre.
+
+#### Fichiers inclus
+
+* **Clé du paramètre** : `includedFiles`
+* **Type** : `string[]`
+* **Valeur par défaut**: `[ "\.php$" ]`
+* **Description** : Indique les expressions régulières auxquelles les fichiers (pour lesquels des tests
+seront générés) DOIVENT correspondre.
+
+#### Génération à l'appel de `php artisan make:...`
+
+* **Clé du paramètre** : `generateOnMake`
+* **Type** : `boolean`
+* **Valeur par défaut**: `true`
+* **Description** : Indique à PhpUnitGen s'il doit s'éxécuter à chaque appel de la commande
+`php artisan make:...`. Ce paramètre est propre à [l'intégration à Laravel](/fr/command-line.md#intégration-à-laravel).
