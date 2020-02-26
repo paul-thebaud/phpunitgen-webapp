@@ -3,8 +3,20 @@
     <BRow>
       <BCol
         cols="12"
-        class="d-flex align-items-center"
+        class="d-flex align-items-center justify-content-end mb-4"
       >
+        <div class="text-right mr-3">
+          <h5>
+            {{ $t("views.tool.nextUnlock") }}
+          </h5>
+          <p class="mb-0">
+            {{ nextUnlockedTheme ? $t("views.tool.unlockThemes") : $t("views.tool.allThemesUnlocked") }}
+            <br>
+            <RouterLink :to="{ name: 'themes' }">
+              {{ $t("views.tool.themeListLink") }}
+            </RouterLink>
+          </p>
+        </div>
         <RouterLink :to="{ name: 'themes' }">
           <RadialProgress
             start-color="var(--gradient-start-color)"
@@ -22,12 +34,6 @@
             </strong>
           </RadialProgress>
         </RouterLink>
-        <p class="ml-2 mb-0">
-          {{ nextUnlockedTheme ? $t("views.tool.unlockThemes") : $t("views.tool.allThemesUnlocked") }}
-          <RouterLink :to="{ name: 'themes' }">
-            {{ $t("views.tool.themeListLink") }}
-          </RouterLink>
-        </p>
       </BCol>
       <BCol
         :class="forceTabDisplay ? '' : 'd-xl-none'"
