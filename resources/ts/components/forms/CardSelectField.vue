@@ -130,7 +130,7 @@
         protected readonly displayAll!: boolean;
 
         @Prop(Function)
-        protected readonly searchResolver!: (value: object) => string;
+        protected readonly searchResolver!: ((value: object) => string) | undefined;
 
         @Prop({ type: Function, default: (key: string, selectedKey: string) => selectedKey === key ? "active" : "" })
         protected readonly computeClasses!: (key: string, selectedKey: string) => string;
@@ -142,7 +142,8 @@
         protected displayedCount = 3;
 
         protected get filteredValues(): Dictionary<object> {
-            if (this.searchResolver === undefined || this.search === "") {
+            const resolver = this.searchResolver;
+            if (resolver === undefined || this.search === "") {
                 return this.values;
             }
 
@@ -151,7 +152,7 @@
 
             Object.keys(this.values).forEach(key => {
                 if (key.includes(normalizedSearch)
-                    || this.normalizeString(this.searchResolver(this.values[key])).includes(normalizedSearch)
+                    || this.normalizeString(resolver(this.values[key])).includes(normalizedSearch)
                 ) {
                     filteredValues[key] = this.values[key];
                 }
