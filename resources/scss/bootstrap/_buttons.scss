@@ -6,6 +6,10 @@
   @extend .shadow-sm;
 }
 
+.btn:disabled {
+  cursor: not-allowed;
+}
+
 @each $variant in $variants {
   .btn.btn-#{$variant} {
     background-color: var(--#{$variant}-bg-color) !important;
