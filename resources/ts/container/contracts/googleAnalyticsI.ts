@@ -45,4 +45,9 @@ export interface GoogleAnalyticsI {
      * Accept GoogleAnalytics.
      */
     refuse(): void;
+
+    /**
+     * Bootstrap and trigger "pageview" for Google Analytics.
+     */
+    activate(): void;
 }

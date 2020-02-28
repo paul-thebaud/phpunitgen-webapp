@@ -2,6 +2,7 @@ export default {
     "legal": {
         "title": "Legal",
         "links": {
+            "cookies": "Cookies",
             "terms": "Legal information & conditions",
         },
     },

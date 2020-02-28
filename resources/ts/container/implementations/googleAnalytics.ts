@@ -1,13 +1,17 @@
+import Vue from "vue";
 import { inject, injectable } from "inversify";
+import { bootstrap } from "vue-gtag";
 import { GoogleAnalyticsI } from "@/container/contracts/googleAnalyticsI";
 import { Dictionary } from "@/utils/types";
 import { TYPES } from "@/container/types";
+import router from "@/router";
+import Cookies from "js-cookie";
 
 // Declare process to avoid TS compilation errors.
 declare const process: { env: Dictionary<string | undefined> };
 
 // The storage key used to store accept status.
-const cookieStorageKey = 'phpunitgen_ga';
+const cookieStorageKey = "phpunitgen_ga";
 
 /**
  * Class GoogleAnalytics.
@@ -24,9 +28,9 @@ export class GoogleAnalytics implements GoogleAnalyticsI {
     protected analyticsAppId: string | undefined;
 
     /**
-     * The local storage instance.
+     * The window instance.
      */
-    protected localStorage: Storage;
+    protected window: Window;
 
     /**
      * GoogleAnalytics constructor.
@@ -37,7 +41,7 @@ export class GoogleAnalytics implements GoogleAnalyticsI {
         @inject(TYPES.Window) window: Window,
     ) {
         this.analyticsAppId = process.env.MIX_GOOGLE_ANALYTICS_ID;
-        this.localStorage = window.localStorage;
+        this.window = window;
     }
 
     /**
@@ -62,29 +66,60 @@ export class GoogleAnalytics implements GoogleAnalyticsI {
      * @inheritDoc
      */
     public isChecked(): boolean {
-        return this.getAcceptStatus() === '1'
-            || this.getAcceptStatus() === '0';
+        return this.getAcceptStatus() === "1"
+            || this.getAcceptStatus() === "0";
     }
 
     /**
      * @inheritDoc
      */
     public isAccepted(): boolean {
-        return this.getAcceptStatus() === '1';
+        return this.getAcceptStatus() === "1";
     }
 
     /**
      * @inheritDoc
      */
     public accept(): void {
-        this.setAcceptStatus('1');
+        const wasAccepted = this.isAccepted();
+
+        this.setAcceptStatus("1");
+
+        if (! wasAccepted) {
+            this.activate();
+        }
     }
 
     /**
      * @inheritDoc
      */
     public refuse(): void {
-        this.setAcceptStatus('0');
+        const wasAccepted = this.isAccepted();
+
+        this.setAcceptStatus("0");
+
+        if (wasAccepted) {
+            Object.keys(Cookies.get()).forEach(cookieName => {
+                Cookies.remove(cookieName, {
+                    path: "/",
+                    domain: `.${window.location.hostname}`,
+                });
+            });
+            window.location.reload();
+        }
+    }
+
+    /**
+     * Bootstrap and trigger "pageview" for Google Analytics.
+     */
+    public activate(): void {
+        bootstrap().then(() => {
+            (Vue as unknown as Vue).$gtag.pageview({
+                "page_title": router.currentRoute.name,
+                "page_path": router.currentRoute.path,
+                "page_location": window.location.href,
+            });
+        });
     }
 
     /**
@@ -93,7 +128,7 @@ export class GoogleAnalytics implements GoogleAnalyticsI {
      * @returns {string | null}
      */
     protected getAcceptStatus(): string | null {
-        return this.localStorage.getItem(cookieStorageKey);
+        return this.window.localStorage.getItem(cookieStorageKey);
     }
 
     /**
@@ -102,6 +137,6 @@ export class GoogleAnalytics implements GoogleAnalyticsI {
      * @param {string} value
      */
     protected setAcceptStatus(value: string): void {
-        return this.localStorage.setItem(cookieStorageKey, value);
+        return this.window.localStorage.setItem(cookieStorageKey, value);
     }
 }

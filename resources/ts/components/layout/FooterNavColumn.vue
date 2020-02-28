@@ -8,10 +8,19 @@
     </p>
     <ul>
       <li
-        v-for="link in links"
-        :key="link.href"
+        v-for="(link, index) in links"
+        :key="index"
       >
         <BButton
+          v-if="typeof link.href === 'object'"
+          :to="link.href"
+          variant="link"
+          class="p-0 border-0 text-left"
+        >
+          {{ link.title }}
+        </BButton>
+        <BButton
+          v-else
           :href="link.href"
           variant="link"
           class="p-0 border-0 text-left"

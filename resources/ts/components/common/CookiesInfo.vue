@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="cookiesAccepted === null"
-    class="cookies-info-wrapper"
-  >
+  <div class="cookies-info-wrapper">
     <p>
       {{ $t("common.cookies.description") }}
     </p>
@@ -27,54 +24,20 @@
 
 <script lang="ts">
     import Vue from "vue";
-    import { Component, Inject, Watch } from "vue-property-decorator";
-    import { TYPES } from "@/container/types";
-    import { GoogleAnalyticsI } from "@/container/contracts/googleAnalyticsI";
+    import { Component } from "vue-property-decorator";
+    import { Action } from "vuex-class";
 
     @Component
     export default class CookiesInfo extends Vue {
-        @Inject(TYPES.GoogleAnalytics)
-        protected readonly googleAnalytics!: GoogleAnalyticsI;
+        @Action
+        protected readonly requestAnalyticsChange!: (newActive: boolean) => Promise<void>;
 
-        protected analyticsActivated = false;
-
-        protected cookiesAccepted: boolean | null = null;
-
-        protected created(): void {
-            this.cookiesAccepted = this.googleAnalytics.isChecked()
-                ? this.googleAnalytics.isAccepted()
-                : null;
-
-            this.activateGoogleAnalyticsIfNeeded();
+        protected async handleAcceptCookies(): Promise<void> {
+            await this.requestAnalyticsChange(true);
         }
 
-        protected handleAcceptCookies(): void {
-            this.googleAnalytics.accept();
-            this.cookiesAccepted = true;
-
-            this.$emit("google-analytics-accepted");
-
-            this.activateGoogleAnalyticsIfNeeded();
-        }
-
-        protected handleRefuseCookies(): void {
-            this.googleAnalytics.refuse();
-            this.cookiesAccepted = false;
-        }
-
-        @Watch("cookiesAccepted")
-        protected emitCookiesHiddenIfNeeded(cookiesAccepted: boolean | null): void {
-            if (cookiesAccepted !== null) {
-                this.$emit("cookies-hidden");
-            }
-        }
-
-        protected activateGoogleAnalyticsIfNeeded(): void {
-            if (this.cookiesAccepted && ! this.analyticsActivated) {
-                this.$emit("google-analytics-activated");
-
-                this.analyticsActivated = true;
-            }
+        protected async handleRefuseCookies(): Promise<void> {
+            await this.requestAnalyticsChange(false);
         }
     }
 </script>

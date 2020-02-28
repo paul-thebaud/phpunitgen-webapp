@@ -81,6 +81,13 @@ const routes = [
         ),
     },
     {
+        path: "/cookies",
+        name: "cookies",
+        component: lazyLoadView(
+            import(/* webpackChunkName: "cookies-view" */"../views/CookiesView.vue") as unknown as AsyncComponentPromise,
+        ),
+    },
+    {
         path: "/legal",
         name: "legal",
         component: lazyLoadView(

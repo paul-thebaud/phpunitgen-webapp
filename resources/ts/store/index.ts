@@ -5,16 +5,22 @@ import { container } from "@/container/docContainer";
 import { TYPES } from "@/container/types";
 import { ThemeI } from "@/container/contracts/themeI";
 import { StoreI } from "@/container/contracts/storeI";
+import { GoogleAnalyticsI } from "@/container/contracts/googleAnalyticsI";
 import { Theme } from "@/container/concerns/theme";
 
 const theme = container.get<ThemeI>(TYPES.Theme);
 const store = container.get<StoreI>(TYPES.Store);
+const googleAnalytics = container.get<GoogleAnalyticsI>(TYPES.GoogleAnalytics);
 
 @Module
 class AppModule extends VuexModule {
     public theme = theme.currentTheme;
 
     public unlockedThemes = theme.getUnlockedThemes();
+
+    public analyticsActivated: boolean | null = googleAnalytics.isChecked()
+        ? googleAnalytics.isAccepted()
+        : null;
 
     @Mutation
     public changeTheme(newTheme: Theme): void {
@@ -24,6 +30,17 @@ class AppModule extends VuexModule {
     @Mutation
     public unlockTheme(newTheme: Theme): void {
         this.unlockedThemes.push(newTheme);
+    }
+
+    @Mutation
+    public changeAnalytics(active: boolean): void {
+        this.analyticsActivated = active;
+
+        if (this.analyticsActivated) {
+            googleAnalytics.accept();
+        } else {
+            googleAnalytics.refuse();
+        }
     }
 
     @Action
@@ -42,6 +59,22 @@ class AppModule extends VuexModule {
         }
 
         return false;
+    }
+
+    @Action
+    public async initAnalytics(): Promise<void> {
+        if (googleAnalytics.isConfigured() || this.analyticsActivated === true) {
+            googleAnalytics.activate();
+        }
+    }
+
+    @Action
+    public async requestAnalyticsChange(newActive: boolean): Promise<void> {
+        if (! googleAnalytics.isConfigured() || this.analyticsActivated === newActive) {
+            return;
+        }
+
+        this.context.commit("changeAnalytics", newActive);
     }
 }
 

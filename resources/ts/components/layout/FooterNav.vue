@@ -29,8 +29,8 @@
 
     @Component({
         components: {
-            FooterNavColumn
-        }
+            FooterNavColumn,
+        },
     })
     export default class FooterNav extends Vue {
         @Inject(TYPES.Locale)
@@ -78,6 +78,10 @@
                     },
                 ],
                 legal: [
+                    {
+                        title: this.$t("layout.footer.legal.links.cookies"),
+                        href: { name: "cookies" },
+                    },
                     {
                         title: this.$t("layout.footer.legal.links.terms"),
                         href: "/legal",

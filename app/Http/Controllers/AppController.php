@@ -20,6 +20,19 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class AppController extends BaseController
 {
     /**
+     * The available frontend routes mapped with "any" endpoint.
+     */
+    protected const AVAILABLE_ROUTES = [
+        '',
+        'tool',
+        'themes',
+        'configuration',
+        'legal',
+        'unicorn',
+        'cookies',
+    ];
+
+    /**
      * @var ViewFactory
      */
     protected ViewFactory $viewFactory;
@@ -46,7 +59,7 @@ class AppController extends BaseController
     public function __invoke(Request $request): View
     {
         // Only match frontend routes, to avoid Docsify thinking this is a MarkDown file.
-        if (! in_array($request->route('any'), ['', 'tool', 'themes', 'configuration', 'legal', 'unicorn'])) {
+        if (! in_array($request->route('any'), self::AVAILABLE_ROUTES)) {
             throw new NotFoundHttpException();
         }
 
