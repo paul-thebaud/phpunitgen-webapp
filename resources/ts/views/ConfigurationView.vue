@@ -96,8 +96,9 @@
                 </small>
 
                 <BTooltip
-                  placement="bottom"
                   :target="`test-generator-${testGenerator.id}`"
+                  triggers="hover"
+                  noninteractive
                 >
                   {{ testGenerator.description }}
                 </BTooltip>
@@ -134,8 +135,9 @@
                 </small>
 
                 <BTooltip
-                  placement="bottom"
                   :target="`mock-generator-${mockGenerator.id}`"
+                  triggers="hover"
+                  noninteractive
                 >
                   {{ mockGenerator.description }}
                 </BTooltip>

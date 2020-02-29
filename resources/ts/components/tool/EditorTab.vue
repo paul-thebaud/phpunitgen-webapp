@@ -26,7 +26,7 @@
         {{ $t("components.tool.editorTab.import") }}
       </BButton>
       <BButton
-        id="clear-editor-button"
+        v-b-tooltip.hover="{ title: $t('components.tool.editorTab.clearDescription'), interactive: false }"
         :disabled="loading"
         variant="secondary"
         class="mx-2"
@@ -35,9 +35,6 @@
         <FontAwesomeIcon icon="trash" />
         {{ $t("components.tool.editorTab.clear") }}
       </BButton>
-      <BTooltip target="clear-editor-button">
-        {{ $t("components.tool.editorTab.clearDescription") }}
-      </BTooltip>
       <BButton
         :disabled="code === '' || code === null || loading"
         variant="primary"
