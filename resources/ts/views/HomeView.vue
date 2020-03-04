@@ -155,7 +155,7 @@
               <p>
                 {{ $t("views.home.ready.description") }}
               </p>
-              <div>
+              <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
                 <BButton
                   :to="{ name: 'tool' }"
                   variant="primary"
