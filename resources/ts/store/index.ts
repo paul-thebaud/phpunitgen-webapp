@@ -70,7 +70,7 @@ class AppModule extends VuexModule {
 
     @Action
     public async requestAnalyticsChange(newActive: boolean): Promise<void> {
-        if (! googleAnalytics.isConfigured() || this.analyticsActivated === newActive) {
+        if (this.analyticsActivated === newActive) {
             return;
         }
 
