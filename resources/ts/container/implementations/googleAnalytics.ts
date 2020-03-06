@@ -113,7 +113,7 @@ export class GoogleAnalytics implements GoogleAnalyticsI {
      * Bootstrap and trigger "pageview" for Google Analytics.
      */
     public activate(): void {
-        if (this.isConfigured()) {
+        if (this.isConfigured() && this.window.location.pathname.indexOf("/docs") !== 0) {
             bootstrap().then(() => {
                 (Vue as unknown as Vue).$gtag.pageview({
                     "page_title": router.currentRoute.name,

@@ -23,13 +23,13 @@
           {{ $t("layout.header.theme") }}
           <ul>
             <li
-              v-for="targetTheme in themes"
+              v-for="targetTheme in unlockedThemes"
               :key="`theme-${targetTheme.getKey()}`"
               @click.prevent="handleThemeChange(targetTheme)"
             >
               <a
                 href="#"
-                :class="currentTheme === targetTheme ? 'active' : ''"
+                :class="theme === targetTheme ? 'active' : ''"
               >
                 {{ targetTheme.getEmoji() }}
                 {{ $t(`common.themes.${targetTheme.getKey()}`) }}
@@ -44,39 +44,50 @@
         </li>
       </ul>
     </nav>
-    <CookiesInfo @google-analytics-accepted="handleGoogleAnalyticsAccepted" />
+    <CookiesInfo v-if="cookiesShouldDisplay" />
   </div>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
     import { TYPES } from "@/container/types";
-    import { Component, Inject } from "vue-property-decorator";
-    import { ThemeI } from "@/container/contracts/themeI";
+    import { Component, Inject, Watch } from "vue-property-decorator";
     import { LocaleI } from "@/container/contracts/localeI";
     import { Theme } from "@/container/concerns/theme";
     import CookiesInfo from "@/components/common/CookiesInfo.vue";
+    import { Action, State } from "vuex-class";
 
     @Component({
-        components: { CookiesInfo },
+        components: {
+            CookiesInfo,
+        },
     })
     export default class DocsNav extends Vue {
-        @Inject(TYPES.Theme)
-        protected readonly theme!: ThemeI;
-
         @Inject(TYPES.Locale)
         protected readonly locale!: LocaleI;
 
-        protected themes = this.theme.getUnlockedThemes();
+        @State
+        protected readonly unlockedThemes!: Theme[];
+
+        @State
+        protected readonly theme!: Theme;
+
+        @State
+        protected readonly analyticsActivated!: boolean | null;
+
+        @Action
+        protected readonly requestThemeChange!: (theme: Theme) => Promise<void>;
 
         protected locales = this.locale.getLocales();
 
-        protected currentTheme = this.theme.currentTheme;
-
         protected currentLocale = this.locale.currentLocale;
 
-        protected handleThemeChange(newTheme: Theme): void {
-            this.theme.currentTheme = this.currentTheme = newTheme;
+        protected get cookiesShouldDisplay(): boolean {
+            return this.analyticsActivated === null;
+        }
+
+        protected async handleThemeChange(newTheme: Theme): Promise<void> {
+            await this.requestThemeChange(newTheme);
         }
 
         protected handleLocaleChange(newLocale: string): void {
@@ -89,9 +100,12 @@
             }
         }
 
-        protected handleGoogleAnalyticsAccepted(): void {
-            // Reload the page to trigger the analytics activation.
-            window.location.reload();
+        @Watch("analyticsActivated")
+        protected handleAnalyticsActivatedChange(newValue: boolean, previousValue: boolean): void {
+            if (newValue && newValue !== previousValue) {
+                // Reload the page to trigger the analytics activation.
+                window.location.reload();
+            }
         }
     }
 </script>
