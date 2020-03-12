@@ -3,6 +3,10 @@ declare module "*.vue" {
     export default Vue;
 }
 
+declare module "svg-vue" {
+    export default any;
+}
+
 declare module "vue-radial-progress" {
     export default any;
 }

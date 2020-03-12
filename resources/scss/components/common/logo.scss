@@ -1,3 +1,8 @@
-.app-name-link img, img.phpunitgen-logo {
+.phpunitgen-logo svg {
+  width: auto;
   height: 30px;
+
+  g {
+    fill: var(--base-color);
+  }
 }

@@ -1,9 +1,7 @@
 <template>
-  <img
-    src="/docs-content/img/logo-full.svg"
-    alt="PhpUnitGen"
-    class="phpunitgen-logo w-auto"
-  >
+  <div class="phpunitgen-logo">
+    <SvgVue icon="logo" />
+  </div>
 </template>
 
 <script lang="ts">

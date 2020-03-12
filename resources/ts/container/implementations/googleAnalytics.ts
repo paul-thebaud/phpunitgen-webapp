@@ -116,7 +116,7 @@ export class GoogleAnalytics implements GoogleAnalyticsI {
         if (this.isConfigured() && this.window.location.pathname.indexOf("/docs") !== 0) {
             bootstrap().then(() => {
                 (Vue as unknown as Vue).$gtag.pageview({
-                    "page_title": router.currentRoute.name,
+                    "page_title": router.currentRoute.name || undefined,
                     "page_path": router.currentRoute.path,
                     "page_location": window.location.href,
                 });

@@ -10,7 +10,8 @@
  */
 
 const mix = require("laravel-mix");
-require('laravel-mix-merge-manifest');
+require("laravel-mix-merge-manifest");
+require("laravel-mix-svg-vue");
 const webpackConfig = require("./webpack.config");
 
 mix.webpackConfig(webpackConfig)
@@ -18,7 +19,7 @@ mix.webpackConfig(webpackConfig)
         plugins: ["@babel/plugin-syntax-dynamic-import"],
     })
     .options({
-        postCss: [require('autoprefixer')],
+        postCss: [require("autoprefixer")],
     })
     .extract([
         "vue",
@@ -36,4 +37,4 @@ if (mix.inProduction()) {
     mix.sourceMaps();
 }
 
-mix.mergeManifest();
+mix.svgVue().mergeManifest();
