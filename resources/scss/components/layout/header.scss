@@ -1,5 +1,3 @@
-@import "~bootstrap/scss/navbar";
-
 nav.navbar {
   background: linear-gradient(90deg, var(--gradient-bg-color));
   color: var(--gradient-color);
@@ -12,5 +10,20 @@ nav.navbar {
   :not(.collapsed) > .when-closed {
     display: none;
   }
-}
 
+  &, .phpunitgen-logo {
+    transition: 350ms;
+  }
+
+  @media (min-width: 992px) {
+    &.extended {
+      font-size: 1.1rem;
+      padding-top: 15px;
+      padding-bottom: 15px;
+
+      .phpunitgen-logo {
+        height: 35px;
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@
     toggleable="lg"
     fixed="top"
     class="shadow"
+    :class="{ extended }"
     type=""
   >
     <BContainer>
@@ -90,7 +91,7 @@
 
 <script lang="ts">
     import Vue from "vue";
-    import { Component, Inject } from "vue-property-decorator";
+    import { Component, Inject, Watch } from "vue-property-decorator";
     import { Action, State } from "vuex-class";
     import { directive as onClickAway } from "vue-clickaway";
     import { TYPES } from "@/container/types";
@@ -102,8 +103,8 @@
 
     @Component({
         components: {
-            PhpUnitGenLogo
-        }
+            PhpUnitGenLogo,
+        },
     })
     export default class HeaderNav extends Vue {
         public readonly $refs!: {
@@ -126,6 +127,20 @@
 
         protected currentLocale = this.locale.currentLocale;
 
+        protected extended = true;
+
+        protected created(): void {
+            window.addEventListener("scroll", this.handleScrollOrRouteChange);
+
+            this.$nextTick(function () {
+                this.handleScrollOrRouteChange();
+            });
+        }
+
+        protected beforeDestroy(): void {
+            window.removeEventListener("scroll", this.handleScrollOrRouteChange);
+        }
+
         protected async handleThemeChange(newTheme: Theme): Promise<void> {
             await this.requestThemeChange(newTheme);
         }
@@ -138,6 +153,11 @@
             if (window.getComputedStyle(this.$refs.navCollapse.$el).display === "block") {
                 this.$root.$emit("bv::toggle::collapse", "nav-collapse");
             }
+        }
+
+        @Watch("$route")
+        protected handleScrollOrRouteChange(): void {
+            this.extended = this.$route.name === 'home' && window.pageYOffset < 50;
         }
     }
 </script>
