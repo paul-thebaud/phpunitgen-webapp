@@ -1,7 +1,5 @@
 # PhpUnitGen {docsify-ignore-all}
 
-## A propos
-
 PhpUnitGen est un outil sur le Web et en ligne de commande pour générer les
 squelettes des tests unitaires de vos projets PHP.
 

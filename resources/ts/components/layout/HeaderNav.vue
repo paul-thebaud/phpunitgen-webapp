@@ -11,7 +11,7 @@
         :to="{ name: 'home' }"
         @click="handleCloseNavIfNeeded"
       >
-        <strong>PhpUnitGen</strong>
+        <PhpUnitGenLogo />
       </BNavbarBrand>
 
       <BButton
@@ -96,10 +96,15 @@
     import { TYPES } from "@/container/types";
     import { LocaleI } from "@/container/contracts/localeI";
     import { Theme } from "@/container/concerns/theme";
+    import PhpUnitGenLogo from "@/components/common/PhpUnitGenLogo.vue";
 
     Vue.directive("on-click-away", onClickAway);
 
-    @Component
+    @Component({
+        components: {
+            PhpUnitGenLogo
+        }
+    })
     export default class HeaderNav extends Vue {
         public readonly $refs!: {
             navCollapse: Vue;

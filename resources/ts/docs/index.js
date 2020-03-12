@@ -6,12 +6,14 @@ const googleAnalytics = container.get(TYPES.GoogleAnalytics);
 const docsify = {
     el: "#docs",
     name: "PhpUnitGen",
+    logo: "/img/logo-full.svg",
     loadSidebar: "_sidebar.md",
     subMaxLevel: 3,
     basePath: "/docs-content",
     auto2top: true,
     noCompileLinks: [
         "/tool",
+        "/img/logo-full.svg",
     ],
     search: {
         hideOtherSidebarContent: true,

@@ -1,13 +1,7 @@
 <template>
   <footer class="py-5">
     <BContainer>
-      <BRow class="mb-2">
-        <BCol>
-          <h4>
-            <strong>PhpUnitGen</strong>
-          </h4>
-        </BCol>
-      </BRow>
+      <PhpUnitGenLogo class="mb-4" />
       <BRow>
         <FooterNavColumn
           v-for="(linksList, key) in links"
@@ -26,10 +20,12 @@
     import { Component, Inject, Watch } from "vue-property-decorator";
     import { LocaleI } from "@/container/contracts/localeI";
     import { TYPES } from "@/container/types";
+    import PhpUnitGenLogo from "@/components/common/PhpUnitGenLogo.vue";
 
     @Component({
         components: {
             FooterNavColumn,
+            PhpUnitGenLogo,
         },
     })
     export default class FooterNav extends Vue {
