@@ -4,4 +4,4 @@
 * [Web application & API](/en/webapp.md)
 * [Command line interface](/en/command-line.md)
 * [Advanced usage](/en/advanced-usage.md)
-* [Old version : `phpunit-generator`](/fr/old-version.md)
+* [Old version : `phpunit-generator`](/en/old-version.md)
