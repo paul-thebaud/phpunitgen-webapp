@@ -80,7 +80,7 @@
                     },
                     {
                         title: this.$t("layout.footer.legal.links.terms"),
-                        href: "/legal",
+                        href: { name: "legal" },
                     },
                 ],
             };
