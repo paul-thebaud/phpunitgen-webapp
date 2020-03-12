@@ -6,82 +6,84 @@
     :class="{ extended, shadow: ! extended }"
     type=""
   >
-    <BNavbarBrand
-      :to="{ name: 'home' }"
-      @click="handleCloseNavIfNeeded"
-    >
-      <PhpUnitGenLogo />
-    </BNavbarBrand>
+    <BContainer>
+      <BNavbarBrand
+        :to="{ name: 'home' }"
+        @click="handleCloseNavIfNeeded"
+      >
+        <PhpUnitGenLogo />
+      </BNavbarBrand>
 
-    <BButton
-      v-b-toggle.nav-collapse
-      class="d-lg-none rounded-full"
-    >
-      <FontAwesomeIcon
-        class="when-closed"
-        icon="bars"
-      />
-      <FontAwesomeIcon
-        class="when-opened"
-        icon="times"
-      />
-    </BButton>
-    <BCollapse
-      id="nav-collapse"
-      ref="navCollapse"
-      is-nav
-    >
-      <BNavbarNav class="ml-auto">
-        <BNavItem
-          :href="locale.localizedDocs()"
-          class="mr-lg-2"
-        >
-          {{ $t("layout.header.documentation") }}
-        </BNavItem>
-
-        <BNavItemDropdown
-          class="mr-lg-2"
-          :text="$t('layout.header.language')"
-          right
-        >
-          <BDropdownItem
-            v-for="(translation, targetLocale) in locales"
-            :key="`lang-${targetLocale}`"
-            :active="currentLocale === targetLocale"
-            @click="handleLocaleChange(targetLocale)"
+      <BButton
+        v-b-toggle.nav-collapse
+        class="d-lg-none rounded-full"
+      >
+        <FontAwesomeIcon
+          class="when-closed"
+          icon="bars"
+        />
+        <FontAwesomeIcon
+          class="when-opened"
+          icon="times"
+        />
+      </BButton>
+      <BCollapse
+        id="nav-collapse"
+        ref="navCollapse"
+        is-nav
+      >
+        <BNavbarNav class="ml-auto">
+          <BNavItem
+            :href="locale.localizedDocs()"
+            class="mr-lg-2"
           >
-            {{ translation }}
-          </BDropdownItem>
-        </BNavItemDropdown>
+            {{ $t("layout.header.documentation") }}
+          </BNavItem>
 
-        <BNavItemDropdown
-          class="mr-lg-2"
-          :text="$t('layout.header.theme')"
-          right
-        >
-          <BDropdownItem
-            v-for="targetTheme in unlockedThemes"
-            :key="`theme-${targetTheme.getKey()}`"
-            :active="theme.getKey() === targetTheme.getKey()"
-            @click="handleThemeChange(targetTheme)"
+          <BNavItemDropdown
+            class="mr-lg-2"
+            :text="$t('layout.header.language')"
+            right
           >
-            {{ targetTheme.getEmoji() }}
-            {{ $t(`common.themes.${targetTheme.getKey()}`) }}
-          </BDropdownItem>
-          <BDropdownItem :to="{ name: 'themes' }">
-            {{ $t(`layout.header.viewAll`) }}
-          </BDropdownItem>
-        </BNavItemDropdown>
+            <BDropdownItem
+              v-for="(translation, targetLocale) in locales"
+              :key="`lang-${targetLocale}`"
+              :active="currentLocale === targetLocale"
+              @click="handleLocaleChange(targetLocale)"
+            >
+              {{ translation }}
+            </BDropdownItem>
+          </BNavItemDropdown>
 
-        <BButton
-          :to="{ name: 'tool' }"
-          class="mt-2 mt-lg-0 rounded-pill px-4 py-2"
-          @click="handleCloseNavIfNeeded"
-        >
-          {{ $t("layout.header.useOnline") }}
-        </BButton>
-      </BNavbarNav>
-    </BCollapse>
+          <BNavItemDropdown
+            class="mr-lg-2"
+            :text="$t('layout.header.theme')"
+            right
+          >
+            <BDropdownItem
+              v-for="targetTheme in unlockedThemes"
+              :key="`theme-${targetTheme.getKey()}`"
+              :active="theme.getKey() === targetTheme.getKey()"
+              @click="handleThemeChange(targetTheme)"
+            >
+              {{ targetTheme.getEmoji() }}
+              {{ $t(`common.themes.${targetTheme.getKey()}`) }}
+            </BDropdownItem>
+            <BDropdownItem :to="{ name: 'themes' }">
+              {{ $t(`layout.header.viewAll`) }}
+            </BDropdownItem>
+          </BNavItemDropdown>
+
+          <BButton
+            :to="{ name: 'tool' }"
+            class="mt-2 mt-lg-0 rounded-pill px-4 py-2"
+            @click="handleCloseNavIfNeeded"
+          >
+            {{ $t("layout.header.useOnline") }}
+          </BButton>
+        </BNavbarNav>
+      </BCollapse>
+    </BContainer>
   </BNavbar>
 </template>
 
