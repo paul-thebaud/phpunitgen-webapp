@@ -12,18 +12,16 @@ nav.navbar {
   }
 
   &, .phpunitgen-logo {
-    transition: 350ms;
+    transition: 400ms ease-out;
   }
 
-  @media (min-width: 992px) {
-    &.extended {
-      font-size: 1.1rem;
-      padding-top: 15px;
-      padding-bottom: 15px;
+  &.extended {
+    font-size: 1.1rem;
+    padding-top: 15px;
+    padding-bottom: 15px;
 
-      .phpunitgen-logo {
-        height: 35px;
-      }
+    .phpunitgen-logo {
+      height: 35px;
     }
   }
 }

@@ -3,8 +3,7 @@
     v-on-click-away="handleCloseNavIfNeeded"
     toggleable="lg"
     fixed="top"
-    class="shadow"
-    :class="{ extended }"
+    :class="{ extended, shadow: ! extended }"
     type=""
   >
     <BContainer>
@@ -157,7 +156,7 @@
 
         @Watch("$route")
         protected handleScrollOrRouteChange(): void {
-            this.extended = this.$route.name === 'home' && window.pageYOffset < 50;
+            this.extended = this.$route.name === "home" && window.pageYOffset < 50;
         }
     }
 </script>
