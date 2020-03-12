@@ -6,9 +6,6 @@ import VueI18n from "vue-i18n";
 import VueClipboard from "vue-clipboard2";
 import VueScrollTo from "vue-scrollto";
 import VueGtag from "vue-gtag";
-import { config } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import "@/icons";
 import { container } from "@/container/container";
 import { TYPES } from "@/container/types";
 import App from "@/components/layout/App.vue";
@@ -16,7 +13,6 @@ import { GoogleAnalyticsI } from "@/container/contracts/googleAnalyticsI";
 import router from "@/router";
 import store from "@/store";
 
-config.autoAddCss = false;
 VueClipboard.config.autoSetContainer = true;
 
 Vue.use(VueClipboard);
@@ -35,8 +31,6 @@ if (googleAnalytics.isConfigured()) {
         bootstrap: false,
     }, router);
 }
-
-Vue.component("FontAwesomeIcon", FontAwesomeIcon);
 
 new Vue({
     el: "#app",

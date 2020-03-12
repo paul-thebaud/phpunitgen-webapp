@@ -5,3 +5,4 @@
 * [Outil en ligne de commande](/fr/command-line.md)
 * [Utilisation avancée](/fr/advanced-usage.md)
 * [Ancienne version : `phpunit-generator`](/fr/old-version.md)
+* [**Retour à l'application**](/)

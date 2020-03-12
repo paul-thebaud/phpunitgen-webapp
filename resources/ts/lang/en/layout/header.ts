@@ -4,5 +4,4 @@ export default {
     "theme": "Theme",
     "viewAll": "View all",
     "useOnline": "Use online",
-    "backToApp": "Back to the application",
 };

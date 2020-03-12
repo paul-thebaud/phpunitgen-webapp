@@ -37,10 +37,11 @@
             </li>
           </ul>
         </li>
-        <li>
-          <a href="/">
-            <b>{{ $t("layout.header.backToApp") }}</b>
-          </a>
+        <li
+          class="docs-nav-toggle"
+          @click="handleMenuOpen"
+        >
+          <FontAwesomeIcon icon="bars" />
         </li>
       </ul>
     </nav>
@@ -82,6 +83,8 @@
 
         protected currentLocale = this.locale.currentLocale;
 
+        protected menuShown = false;
+
         protected get cookiesShouldDisplay(): boolean {
             return this.analyticsActivated === null;
         }
@@ -97,6 +100,24 @@
 
             if (newLocale !== previousLocale) {
                 window.location.hash = window.location.hash.replace(/^#\/[a-z]{2}/, `#${newLocale}`);
+            }
+        }
+
+        protected handleMenuOpen(): void {
+            if (! this.menuShown) {
+                document.body.classList.add("custom-close");
+                this.menuShown = true;
+                setTimeout(() => {
+                    document.body.addEventListener("click", this.handleClickAwayMenu, false);
+                }, 100);
+            }
+        }
+
+        protected handleClickAwayMenu(): void {
+            if (this.menuShown) {
+                document.body.classList.remove("custom-close");
+                document.body.removeEventListener("click", this.handleClickAwayMenu, false);
+                this.menuShown = false;
             }
         }
 
