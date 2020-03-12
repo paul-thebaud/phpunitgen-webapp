@@ -1,4 +1,4 @@
-<h1 align="center">PhpUnitGen - Web application</h1>
+<p align="center"><img src="https://raw.githubusercontent.com/paul-thebaud/phpunitgen-webapp/master/resources/svg/logo.svg?sanitize=true" alt="PhpUnitGen" height="50"></p>
 
 <p align="center">
 <a href="https://travis-ci.org/paul-thebaud/phpunitgen-webapp" target="_blank"><img src="https://travis-ci.org/paul-thebaud/phpunitgen-webapp.svg?branch=master" alt="Build Status"></a>
