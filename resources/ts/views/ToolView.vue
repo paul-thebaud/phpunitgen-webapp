@@ -96,6 +96,7 @@
     import { ThemeI } from "@/container/contracts/themeI";
     import { Theme } from "@/container/concerns/theme";
     import { Action } from "vuex-class";
+    import { RateLimitError } from "@/errors/RateLimitError";
 
     @Component({
         components: {
@@ -147,7 +148,7 @@
 
         public async handleGenerate(code: string): Promise<void> {
             if (code === "unicorn") {
-                await this.$router.push({ name: 'unicorn' });
+                await this.$router.push({ name: "unicorn" });
 
                 return;
             }
@@ -175,7 +176,7 @@
                     }
                 }
             } catch (error) {
-                if (error instanceof UnknownError) {
+                if (error instanceof UnknownError || error instanceof RateLimitError) {
                     this.exception = error.getException();
                 } else {
                     this.exception = null;

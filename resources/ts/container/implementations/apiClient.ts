@@ -4,6 +4,7 @@ import { TYPES } from "@/container/types";
 import { LocaleI } from "@/container/contracts/localeI";
 import { ValidationError } from "@/errors/ValidationError";
 import { UnknownError } from "@/errors/UnknownError";
+import { RateLimitError } from "@/errors/RateLimitError";
 
 /**
  * Class ApiClient.
@@ -71,6 +72,10 @@ export class ApiClient implements ApiClientI {
 
         if (response.status === 422) {
             throw new ValidationError(json.message, json.errors);
+        }
+
+        if (response.status === 429) {
+            throw new RateLimitError(json.message, { message: json.message });
         }
 
         if (response.status < 200 || response.status >= 300) {
