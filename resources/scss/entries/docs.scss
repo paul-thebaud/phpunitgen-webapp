@@ -4,34 +4,6 @@
 @import "../bootstrap/variables";
 @import "../components/docs/docs-nav";
 
-body.custom-close .sidebar {
-  transform: translateX(-300px);
-}
-body.custom-close .sidebar-toggle {
-  width: auto;
-}
-body.custom-close .content {
-  left: 0;
-}
-@media screen and (max-width: 768px) {
-  body.custom-close .sidebar {
-    transform: translateX(300px);
-  }
-  body.custom-close .sidebar-toggle {
-    background-color: rgba(255, 255, 255, 0.8);
-    transition: 1s background-color;
-    width: 284px;
-    padding: 10px;
-  }
-  body.custom-close .content {
-    transform: translateX(300px);
-  }
-  body.custom-close .app-nav,
-  body.custom-close .github-corner {
-    display: none;
-  }
-}
-
 body {
   --theme-color: var(--primary-bg-color);
 
@@ -126,6 +98,38 @@ body {
         border-bottom-left-radius: 0.25rem;
       }
     }
+  }
+}
+
+// Custom close handling.
+body.custom-close .sidebar {
+  transform: translateX(-300px);
+}
+
+body.custom-close .sidebar-toggle {
+  width: auto;
+}
+
+body.custom-close .content {
+  left: 0;
+}
+
+@media screen and (max-width: 768px) {
+  body.custom-close .sidebar {
+    transform: translateX(300px);
+  }
+  body.custom-close .sidebar-toggle {
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: 1s background-color;
+    width: 284px;
+    padding: 10px;
+  }
+  body.custom-close .content {
+    transform: translateX(300px);
+  }
+  body.custom-close .app-nav,
+  body.custom-close .github-corner {
+    display: none;
   }
 }
 
