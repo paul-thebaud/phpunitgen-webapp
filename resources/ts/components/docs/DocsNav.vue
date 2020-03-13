@@ -4,7 +4,11 @@
       <ul>
         <li>
           <a href="/">
-            <FontAwesomeIcon icon="home" />
+            <FontAwesomeIcon
+              icon="home"
+              class="home-icon"
+            />
+            <PhpUnitGenLogo />
           </a>
         </li>
         <li>
@@ -62,9 +66,11 @@
     import { Theme } from "@/container/concerns/theme";
     import CookiesInfo from "@/components/common/CookiesInfo.vue";
     import { Action, State } from "vuex-class";
+    import PhpUnitGenLogo from "@/components/common/PhpUnitGenLogo.vue";
 
     @Component({
         components: {
+            PhpUnitGenLogo,
             CookiesInfo,
         },
     })
@@ -115,14 +121,22 @@
                 setTimeout(() => {
                     document.body.addEventListener("click", this.handleClickAwayMenu, false);
                 }, 100);
+            } else {
+                this.handleMenuClose();
             }
         }
 
-        protected handleClickAwayMenu(): void {
+        protected handleMenuClose(): void {
             if (this.menuShown) {
                 document.body.classList.remove("custom-close");
                 document.body.removeEventListener("click", this.handleClickAwayMenu, false);
                 this.menuShown = false;
+            }
+        }
+
+        protected handleClickAwayMenu(): void {
+            if (window.innerWidth < 768) {
+                this.handleMenuClose();
             }
         }
 

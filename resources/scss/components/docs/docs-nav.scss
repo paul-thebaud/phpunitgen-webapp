@@ -16,6 +16,10 @@ nav.app-nav.no-badge {
 
     > li:first-child {
       margin-right: auto;
+
+      .phpunitgen-logo {
+        display: none;
+      }
     }
 
     > li > ul {
@@ -59,5 +63,19 @@ section.content {
   body:not(.custom-close) nav.app-nav.no-badge {
     width: calc(100% - 300px);
     margin-left: 300px;
+  }
+
+  nav.app-nav.no-badge > ul > li:first-child {
+    .home-icon {
+      display: none;
+    }
+
+    .phpunitgen-logo {
+      display: inline;
+      height: 24px !important;
+      svg {
+        height: 24px !important;
+      }
+    }
   }
 }

@@ -1,7 +1,8 @@
 <template>
-  <div class="phpunitgen-logo">
-    <SvgVue icon="logo" />
-  </div>
+  <SvgVue
+    icon="logo"
+    class="phpunitgen-logo"
+  />
 </template>
 
 <script lang="ts">

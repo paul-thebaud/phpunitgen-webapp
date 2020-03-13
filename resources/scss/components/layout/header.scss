@@ -11,11 +11,11 @@ nav.navbar {
     display: none;
   }
 
-  &, .phpunitgen-logo svg {
+  &, svg.phpunitgen-logo {
     transition: 400ms ease-out;
   }
 
-  .phpunitgen-logo svg g {
+  svg.phpunitgen-logo g {
     fill: var(--gradient-color) !important;
   }
 
@@ -23,7 +23,7 @@ nav.navbar {
     padding-top: 15px;
     padding-bottom: 15px;
 
-    .phpunitgen-logo svg {
+    svg.phpunitgen-logo {
       height: 35px;
     }
   }
