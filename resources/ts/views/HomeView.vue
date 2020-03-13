@@ -58,19 +58,10 @@
             {{ $t("views.home.features.simplicity.description") }}
           </p>
 
-          <div class="simplicity-video-wrapper mx-auto pt-3">
-            <video
-              class="rounded shadow"
-              autoplay
-              muted
-              loop
-            >
-              <source
-                src="/video/simplicity.mp4"
-                type="video/mp4"
-              >
-            </video>
-          </div>
+          <BRow>
+            <HomeVideo src="/video/webapp.mp4" />
+            <HomeVideo src="/video/terminal.mp4" />
+          </BRow>
         </div>
 
         <h2 class="pt-5 text-center">
@@ -186,9 +177,11 @@
     import { Component, Inject } from "vue-property-decorator";
     import { LocaleI } from "@/container/contracts/localeI";
     import { TYPES } from "@/container/types";
+    import HomeVideo from "@/components/home/HomeVideo.vue";
 
     @Component({
         components: {
+            HomeVideo,
             HomeCard,
             HomeWaves,
         },
