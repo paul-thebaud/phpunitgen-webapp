@@ -85,13 +85,12 @@
                   {{ testGenerator.name }}
                 </strong>
                 <small>
-                  {{ $t("views.configuration.testGenerator.createdBy") }}
                   <a
-                    :href="testGenerator.author.website"
+                    :href="testGenerator.source"
                     target="_blank"
                     rel="noopener"
                   >
-                    {{ testGenerator.author.name }}
+                    {{ $t("views.configuration.testGenerator.sourceCode") }}
                   </a>
                 </small>
 
@@ -124,13 +123,12 @@
                   {{ mockGenerator.name }}
                 </strong>
                 <small>
-                  {{ $t("views.configuration.mockGenerator.createdBy") }}
                   <a
-                    :href="mockGenerator.author.website"
+                    :href="mockGenerator.source"
                     target="_blank"
                     rel="noopener"
                   >
-                    {{ mockGenerator.author.name }}
+                    {{ $t("views.configuration.mockGenerator.sourceCode") }}
                   </a>
                 </small>
 

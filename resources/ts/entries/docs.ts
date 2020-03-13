@@ -34,6 +34,7 @@ if (! window.location.hash.match(`/^#/${locale.currentLocale}//`)) {
     window.location.hash = window.location.hash.replace(/^(#(\/([a-z]{2}\/?)?)?)?/, `#${locale.currentLocale}/`);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 (window as any).$docsify.plugins.push(function (hook: { ready: Function }): void {
     hook.ready(function (): void {
         (new PhpUnitGenLogo).$mount(".app-name-link");

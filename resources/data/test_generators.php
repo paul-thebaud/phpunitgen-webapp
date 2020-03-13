@@ -16,100 +16,67 @@ return [
     [
         'id'      => 'delegate',
         'class'   => DelegateTestGenerator::class,
-        'author'  => [
-            'name'    => 'Paul Thébaud',
-            'website' => 'https://github.com/paul-thebaud',
-        ],
+        'source'  => 'https://github.com/paul-thebaud/phpunitgen-core/tree/master/src/Generators/Tests',
         'example' => 'Person.stub',
     ],
     [
         'id'      => 'basic',
         'class'   => BasicTestGenerator::class,
-        'author'  => [
-            'name'    => 'Paul Thébaud',
-            'website' => 'https://github.com/paul-thebaud',
-        ],
+        'source'  => 'https://github.com/paul-thebaud/phpunitgen-core/tree/master/src/Generators/Tests/Basic',
         'example' => 'Person.stub',
     ],
     [
         'id'      => 'laravel.basic',
         'class'   => LaravelTestGenerator::class,
-        'author'  => [
-            'name'    => 'Paul Thébaud',
-            'website' => 'https://github.com/paul-thebaud',
-        ],
+        'source'  => 'https://github.com/paul-thebaud/phpunitgen-core/tree/master/src/Generators/Tests/Laravel',
         'example' => 'Person.stub',
     ],
     [
         'id'      => 'laravel.channel',
         'class'   => ChannelTestGenerator::class,
-        'author'  => [
-            'name'    => 'Paul Thébaud',
-            'website' => 'https://github.com/paul-thebaud',
-        ],
+        'source'  => 'https://github.com/paul-thebaud/phpunitgen-core/tree/master/src/Generators/Tests/Laravel/Channel',
         'example' => 'laravel/NewPostChannel.stub',
     ],
     [
         'id'      => 'laravel.command',
         'class'   => CommandTestGenerator::class,
-        'author'  => [
-            'name'    => 'Paul Thébaud',
-            'website' => 'https://github.com/paul-thebaud',
-        ],
+        'source'  => 'https://github.com/paul-thebaud/phpunitgen-core/tree/master/src/Generators/Tests/Laravel/Command',
         'example' => 'laravel/PrunePostsCommand.stub',
     ],
     [
         'id'      => 'laravel.controller',
         'class'   => ControllerTestGenerator::class,
-        'author'  => [
-            'name'    => 'Paul Thébaud',
-            'website' => 'https://github.com/paul-thebaud',
-        ],
+        'source'  => 'https://github.com/paul-thebaud/phpunitgen-core/tree/master/src/Generators/Tests/Laravel/Controller',
         'example' => 'laravel/PostController.stub',
     ],
     [
         'id'      => 'laravel.job',
         'class'   => JobTestGenerator::class,
-        'author'  => [
-            'name'    => 'Paul Thébaud',
-            'website' => 'https://github.com/paul-thebaud',
-        ],
+        'source'  => 'https://github.com/paul-thebaud/phpunitgen-core/tree/master/src/Generators/Tests/Laravel/Job',
         'example' => 'laravel/PublishPostJob.stub',
     ],
     [
         'id'      => 'laravel.listener',
         'class'   => ListenerTestGenerator::class,
-        'author'  => [
-            'name'    => 'Paul Thébaud',
-            'website' => 'https://github.com/paul-thebaud',
-        ],
+        'source'  => 'https://github.com/paul-thebaud/phpunitgen-core/tree/master/src/Generators/Tests/Laravel/Listener',
         'example' => 'laravel/NewPostListener.stub',
     ],
     [
         'id'      => 'laravel.policy',
         'class'   => PolicyTestGenerator::class,
-        'author'  => [
-            'name'    => 'Paul Thébaud',
-            'website' => 'https://github.com/paul-thebaud',
-        ],
+        'source'  => 'https://github.com/paul-thebaud/phpunitgen-core/tree/master/src/Generators/Tests/Laravel/Policy',
         'example' => 'laravel/PostPolicy.stub',
     ],
     [
         'id'      => 'laravel.resource',
         'class'   => ResourceTestGenerator::class,
-        'author'  => [
-            'name'    => 'Paul Thébaud',
-            'website' => 'https://github.com/paul-thebaud',
-        ],
+        'source'  => 'https://github.com/paul-thebaud/phpunitgen-core/tree/master/src/Generators/Tests/Laravel/Resource',
         'example' => 'laravel/PostResource.stub',
     ],
     [
         'id'      => 'laravel.rule',
         'class'   => RuleTestGenerator::class,
-        'author'  => [
-            'name'    => 'Paul Thébaud',
-            'website' => 'https://github.com/paul-thebaud',
-        ],
+        'source'  => 'https://github.com/paul-thebaud/phpunitgen-core/tree/master/src/Generators/Tests/Laravel/Rule',
         'example' => 'laravel/PostContentRule.stub',
     ],
 ];

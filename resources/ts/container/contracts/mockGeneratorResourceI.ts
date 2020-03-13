@@ -6,10 +6,7 @@ export type MockGenerator = {
     name: string;
     description: string;
     website: string;
-    author: {
-        name: string;
-        website: string;
-    };
+    source: string;
 };
 
 /**

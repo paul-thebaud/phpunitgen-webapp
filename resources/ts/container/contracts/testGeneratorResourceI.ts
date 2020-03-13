@@ -6,10 +6,7 @@ export type TestGenerator = {
     name: string;
     description: string;
     example: string;
-    author: {
-        name: string;
-        website: string;
-    };
+    source: string;
 };
 
 /**

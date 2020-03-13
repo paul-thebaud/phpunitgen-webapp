@@ -17,12 +17,12 @@ export default {
     "testGenerator": {
         "label": "Test generator",
         "help": "Defines how the test is generated (properties, methods, etc.). If you can't find the generator that suits you, create a pull-request on the PhpUnitGen core to add it, or open an issue to ask us!",
-        "createdBy": "Créé par",
+        "sourceCode": "Source code",
     },
     "mockGenerator": {
         "label": "Library to use for mocks",
         "help": "Defines the library to use to mock objects. If the library you are using is not available, create a pull-request on the PhpUnitGen core to add it, or open an issue to ask us for it!",
-        "createdBy": "Créé par",
+        "sourceCode": "Source code",
     },
     "baseNamespace": {
         "label": "Base namespace",
@@ -60,7 +60,7 @@ export default {
         "values": {
             "laravel": "Laravel",
             "null": "Other",
-        }
+        },
     },
     "optionsLaravelUser": {
         "label": "User Class for Laravel projects",
