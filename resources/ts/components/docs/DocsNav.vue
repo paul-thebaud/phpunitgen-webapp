@@ -3,6 +3,11 @@
     <nav class="app-nav no-badge">
       <ul>
         <li>
+          <a href="/">
+            <FontAwesomeIcon icon="home" />
+          </a>
+        </li>
+        <li>
           {{ $t("layout.header.language") }}
           <ul>
             <li
