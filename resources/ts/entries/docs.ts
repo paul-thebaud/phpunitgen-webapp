@@ -16,7 +16,7 @@ import { TYPES } from "@/container/types";
 import { LocaleI } from "@/container/contracts/localeI";
 import store from "@/store";
 import DocsNav from "@/components/docs/DocsNav.vue";
-import PhpUnitGenLogo from "@/components/common/PhpUnitGenLogo.vue";
+import PhpUnitGenLogoLink from "@/components/common/PhpUnitGenLogoLink.vue";
 
 new Vue({
     el: "#docs-nav",
@@ -37,6 +37,6 @@ if (! window.location.hash.match(`/^#/${locale.currentLocale}//`)) {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 (window as any).$docsify.plugins.push(function (hook: { ready: Function }): void {
     hook.ready(function (): void {
-        (new PhpUnitGenLogo).$mount(".app-name-link");
+        (new PhpUnitGenLogoLink).$mount(".app-name-link");
     });
 });
