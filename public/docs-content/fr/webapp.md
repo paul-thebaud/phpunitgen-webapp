@@ -67,9 +67,7 @@ définir comment un test doit être généré pour un certain code.
 * **description** `[string]` : la description du générateur, traduit dans la langue du header `Accept-Language`.
 * **class** `[string]` : la classe correspondant à ce générateur sur le coeur de PhpUnitGen.
 * **example** `[string]` : un exemple de classe PHP sur lequel ce générateur fonctionne bien.
-* **author** `[object]`
-    * **name** `[string]` : le nom ou pseudonyme du créateur de ce générateur.
-    * **website** `[string]` : le site we du créateur de ce générateur.
+* **source** `[string]` : l'URL du dossier/fichier GitHub contenant le code source de ce générateur.
 
 ```json
 {
@@ -78,10 +76,7 @@ définir comment un test doit être généré pour un certain code.
   "description": "Ce générateur est dédié à [...]",
   "class": "PhpUnitGen\\Core\\Generators\\Tests\\DelegateTestGenerator",
   "example": "<?php /* Un code d'exemple pour ce type de générateur de test */",
-  "author": {
-    "name": "Paul Thébaud",
-    "website": "https://github.com/paul-thebaud"
-  }
+  "source": "https://github.com/paul-thebaud/phpunitgen-core/tree/master/src/Generators/Tests"
 }
 ```
 
@@ -131,9 +126,7 @@ pour `Mockery`, il sera `Mockery::mock(LogService::class)`.
 * **description** `[string]` : la description du générateur, traduit dans la langue du header `Accept-Language`.
 * **class** `[string]` : la classe correspondant à ce générateur sur le coeur de PhpUnitGen.
 * **website** `[string]` : le site web de la librairie de "mocking" à laquelle ce générateur est dédiée.
-* **author** `[object]`
-    * **name** `[string]` : le nom ou pseudonyme du créateur de ce générateur.
-    * **website** `[string]` : le site web/GitHub du créateur de ce générateur.
+* **source** `[string]` : l'URL du dossier/fichier GitHub contenant le code source de ce générateur.
 
 ```json
 {
@@ -142,10 +135,7 @@ pour `Mockery`, il sera `Mockery::mock(LogService::class)`.
   "description": "Ce générateur est dédié à [...]",
   "class": "PhpUnitGen\\Core\\Generators\\Mocks\\MockeryMockGenerator",
   "website": "http://docs.mockery.io/",
-  "author": {
-    "name": "Paul Thébaud",
-    "website": "https://github.com/paul-thebaud"
-  }
+  "source": "https://github.com/paul-thebaud/phpunitgen-core/blob/master/src/Generators/Mocks/MockeryMockGenerator.php"
 }
 ```
 
