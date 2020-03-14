@@ -33,7 +33,7 @@ Si vous utilisez l'outil en ligne de commande ou le cœur, vous devez satisfaire
 les exigences suivantes :
 
 - PHP `7.2` et supérieur.
-- Laravel `6` et supérieur si vous souhaitez utilisez
+- Laravel `6+` et supérieur si vous souhaitez utilisez
 [l'intégration à Laravel](/fr/command-line.md#intégration-à-laravel).
 
 **Installation sur un projet**
@@ -121,7 +121,7 @@ phpunitgen -O
 
 ## Intégration à Laravel
 
-PhpUnitGen s'intègre automatiquement à tous les projets Laravel `5.7` et plus lorsqu'il est installé
+PhpUnitGen s'intègre automatiquement à tous les projets Laravel `6` et plus lorsqu'il est installé
 en dépendance du projet.
 
 Si jamais vous avez désactivé la découverte des paquets via Laravel, il vous suffit d'ajouter le

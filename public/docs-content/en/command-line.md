@@ -32,7 +32,7 @@ If you use the command line tool or the core, you must satisfy
 the following requirements:
 
 - PHP `7.2` and up.
-- Laravel `6` and up if you want to use
+- Laravel `6+` and up if you want to use
 [the integration with Laravel](/en/command-line.md#integration-with-laravel).
 
 **Installation inside a project**
@@ -120,7 +120,7 @@ phpunitgen -O
 
 ## Integration with Laravel
 
-PhpUnitGen integrates automatically to all Laravel `5.7` and more projects when installed
+PhpUnitGen integrates automatically to all Laravel `6` and more projects when installed
 as a composer dependency on the project.
 
 If you ever disabled package discovery via Laravel, just add the PhpUnitGen `provider' to your
