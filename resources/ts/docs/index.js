@@ -10,7 +10,6 @@ const docsify = {
     subMaxLevel: 3,
     basePath: "/docs-content",
     auto2top: true,
-    externalLinkTarget: '_self',
     noCompileLinks: [
         "/",
         "/tool",
