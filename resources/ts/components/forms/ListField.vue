@@ -18,6 +18,7 @@
       <BInputGroupAppend>
         <BButton
           variant="primary"
+          :disabled="! input"
           @click="handleAdd"
         >
           <FontAwesomeIcon icon="plus" />
