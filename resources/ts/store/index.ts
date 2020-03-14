@@ -63,7 +63,7 @@ class AppModule extends VuexModule {
 
     @Action
     public async initAnalytics(): Promise<void> {
-        if (googleAnalytics.isConfigured() || this.analyticsActivated === true) {
+        if (googleAnalytics.isConfigured() && this.analyticsActivated === true) {
             googleAnalytics.activate();
         }
     }
