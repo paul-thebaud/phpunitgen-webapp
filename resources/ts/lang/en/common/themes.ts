@@ -4,6 +4,7 @@ export default {
     "unicorn": "Unicorn",
     "rainbow": "Rainbow",
     "night": "Night",
+    "black": "Black",
     "ocean": "Ocean",
     "forest": "Forest",
     "desert": "Desert",

@@ -1,29 +1,14 @@
+import { inject, injectable } from "inversify";
 import { Theme } from "@/container/concerns/theme";
 import { StoreI } from "@/container/contracts/storeI";
 import { ThemeI } from "@/container/contracts/themeI";
 import { TYPES } from "@/container/types";
-import { inject, injectable } from "inversify";
-import { Dictionary } from "@/utils/types";
+import { themes } from "@/container/concerns/themes";
 
 /**
  * The default theme.
  */
 const baseTheme = "light";
-
-/**
- * The list of themes map by key.
- */
-const themes = {
-    light: new Theme("light", "💡", "default", 0),
-    dark: new Theme("dark", "🕶️", "darcula", 0),
-    night: new Theme("night", "🌙", "erlang-dark", 2),
-    forest: new Theme("forest", "🌳", "blackboard", 5),
-    ocean: new Theme("ocean", "🌊", "tomorrow-night-eighties", 10),
-    desert: new Theme("desert", "🏜️", "pastel-on-dark", 15),
-    rainbow: new Theme("rainbow", "🌈", "default", 20),
-    unicorn: new Theme("unicorn", "🦄", "darcula", 25),
-    original: new Theme("original", "📟", "default", 30),
-} as Dictionary<Theme>;
 
 /**
  * Class DomTheme.
