@@ -44,7 +44,10 @@
     </div>
 
     <div class="position-relative">
-      <HomeWaves />
+      <SvgVue
+        icon="waves"
+        class="home-waves"
+      />
     </div>
 
     <div class="home-features">
@@ -172,7 +175,6 @@
 
 <script lang="ts">
     import Vue from "vue";
-    import HomeWaves from "@/components/home/HomeWaves.vue";
     import HomeCard from "@/components/home/HomeCard.vue";
     import { Component, Inject } from "vue-property-decorator";
     import { LocaleI } from "@/container/contracts/localeI";
@@ -183,7 +185,6 @@
         components: {
             HomeVideo,
             HomeCard,
-            HomeWaves,
         },
     })
     export default class HomeView extends Vue {
