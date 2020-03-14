@@ -1,6 +1,12 @@
 <template>
-  <BCol md>
-    <div class="video-wrapper mx-auto pt-3">
+  <BCol
+    class="mt-2"
+    md
+  >
+    <p class="mb-2">
+      {{ description }}
+    </p>
+    <div class="video-wrapper mx-auto">
       <video
         class="rounded shadow"
         autoplay
@@ -24,5 +30,8 @@
     export default class HomeVideo extends Vue {
         @Prop(String)
         protected readonly src!: string;
+
+        @Prop(String)
+        protected readonly description!: string;
     }
 </script>

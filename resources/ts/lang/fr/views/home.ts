@@ -13,7 +13,8 @@ export default {
         "title": "Plusieurs plateformes pour tous les usages",
         "simplicity": {
             "title": "Simplicité",
-            "description": "Collez votre code, cliquez. C'est tout.",
+            "descriptionWebApp": "Collez votre code, cliquez.",
+            "descriptionTerminal": "Installez, lancez.",
         },
         "console": {
             "title": "Ligne de commande",

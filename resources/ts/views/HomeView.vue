@@ -57,13 +57,15 @@
             {{ $t("views.home.features.simplicity.title") }}
           </h3>
 
-          <p>
-            {{ $t("views.home.features.simplicity.description") }}
-          </p>
-
-          <BRow>
-            <HomeVideo src="/video/webapp.mp4" />
-            <HomeVideo src="/video/terminal.mp4" />
+          <BRow class="mt-3">
+            <HomeVideo
+              src="/video/webapp.mp4"
+              :description="$t('views.home.features.simplicity.descriptionWebApp')"
+            />
+            <HomeVideo
+              src="/video/terminal.mp4"
+              :description="$t('views.home.features.simplicity.descriptionTerminal')"
+            />
           </BRow>
         </div>
 
