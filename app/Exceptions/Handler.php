@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace PhpUnitGen\WebApp\Exceptions;
 
-use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Throwable;
 
 /**
  * Class Handler.
@@ -34,7 +34,7 @@ class Handler extends ExceptionHandler
     /**
      * {@inheritdoc}
      */
-    public function render($request, Exception $exception)
+    public function render($request, Throwable $exception)
     {
         $rendered = parent::render($request, $exception);
 
