@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\PhpUnitGen\WebApp\Feature\Http\Controllers;
+namespace Tests\PhpUnitGen\WebApp\Feature\Http\Controllers\Api\Version1;
 
 use Tests\PhpUnitGen\WebApp\TestCase;
 
