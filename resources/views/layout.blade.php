@@ -13,6 +13,8 @@
 
     <title>@yield('title')</title>
 
+    @include('icons')
+
     <meta
             name="description"
             content="PhpUnitGen is a simple, powerful and modular tool to generate your PHPUnit tests skeletons. It is free and open-source."
