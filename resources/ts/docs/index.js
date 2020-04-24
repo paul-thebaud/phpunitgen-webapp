@@ -1,3 +1,4 @@
+import "docsify-edit-on-github";
 import { container } from "@/container/docContainer";
 import { TYPES } from "@/container/types";
 
@@ -30,6 +31,20 @@ const docsify = {
         previousText: "Previous",
         nextText: "Next",
     },
+    plugins: [
+        EditOnGithubPlugin.create(
+            "https://github.com/paul-thebaud/phpunitgen-webapp/blob/master/public/docs-content",
+            null,
+            function (file) {
+                console.log(file);
+                if (file.indexOf("/en") === 0) {
+                    return "Edit on GitHub";
+                } else {
+                    return "Editer sur GitHub";
+                }
+            },
+        ),
+    ],
 };
 
 if (googleAnalytics.isConfigured() && googleAnalytics.isAccepted()) {
