@@ -10,6 +10,7 @@
       <li
         v-for="(link, index) in links"
         :key="index"
+        class="mt-2"
       >
         <BButton
           v-if="typeof link.href === 'object'"
