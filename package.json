@@ -78,5 +78,9 @@
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-chunk-rename-plugin": "^1.0.3",
     "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "laravel-mix-workbox": "^0.1.2",
+    "workbox-webpack-plugin": "^5.1.3"
   }
 }

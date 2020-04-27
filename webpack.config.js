@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === "production") {
 
 module.exports = {
     output: {
-        publicPath: "/",
+        publicPath: "",
         filename: "[name].js",
         chunkFilename: chunkFilename,
     },

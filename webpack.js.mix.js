@@ -12,6 +12,7 @@
 const mix = require("laravel-mix");
 require("laravel-mix-merge-manifest");
 require("laravel-mix-svg-vue");
+require("laravel-mix-workbox");
 const webpackConfig = require("./webpack.config");
 
 mix.webpackConfig(webpackConfig)
@@ -31,6 +32,7 @@ mix.webpackConfig(webpackConfig)
     .js("resources/ts/entries/app.ts", "public/js")
     .js("resources/ts/entries/docs.ts", "public/js");
 
+
 if (mix.inProduction()) {
     mix.version();
 } else {
@@ -38,3 +40,5 @@ if (mix.inProduction()) {
 }
 
 mix.svgVue().mergeManifest();
+
+mix.generateSW();
