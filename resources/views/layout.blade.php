@@ -19,7 +19,7 @@
             name="description"
             content="PhpUnitGen is a simple, powerful and modular tool to generate your PHPUnit tests skeletons. It is free and open-source."
     >
-
+    <link rel="manifest" href="/manifest.json">
     <script>
         // Check that service workers are supported
         if ('serviceWorker' in navigator) {
