@@ -1,5 +1,8 @@
 <template>
-  <a href="/">
+  <a
+    href="/"
+    aria-label="Home"
+  >
     <PhpUnitGenLogo />
   </a>
 </template>

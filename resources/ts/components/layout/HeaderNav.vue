@@ -9,6 +9,7 @@
     <BContainer>
       <BNavbarBrand
         :to="{ name: 'home' }"
+        aria-label="Home"
         @click="handleCloseNavIfNeeded"
       >
         <PhpUnitGenLogo />
@@ -17,6 +18,7 @@
       <BButton
         v-b-toggle.nav-collapse
         class="d-lg-none rounded-full"
+        aria-label="Menu"
       >
         <FontAwesomeIcon
           class="when-closed"
