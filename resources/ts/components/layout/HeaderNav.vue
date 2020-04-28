@@ -75,15 +75,14 @@
               {{ $t(`layout.header.viewAll`) }}
             </BDropdownItem>
           </BNavItemDropdown>
-
-          <BButton
-            :to="{ name: 'tool' }"
-            class="mt-2 mt-lg-0 rounded-pill px-4 py-2"
-            @click="handleCloseNavIfNeeded"
-          >
-            {{ $t("layout.header.useOnline") }}
-          </BButton>
         </BNavbarNav>
+        <BButton
+          :to="{ name: 'tool' }"
+          class="mt-2 mt-lg-0 rounded-pill px-4 py-2"
+          @click="handleCloseNavIfNeeded"
+        >
+          {{ $t("layout.header.useOnline") }}
+        </BButton>
       </BCollapse>
     </BContainer>
   </BNavbar>
