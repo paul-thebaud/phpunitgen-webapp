@@ -1,0 +1,27 @@
+version: '2'
+services:
+  laravel:
+    build: .
+    ports:
+      - "9000:9000"
+    networks:
+      - app-network
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./app.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./local.pem:/local.pem
+      - ./local-key.pem:/local-key.pem
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
