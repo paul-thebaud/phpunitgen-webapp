@@ -96,7 +96,7 @@
             <div class="home-features-img-wrapper">
               <img
                 :alt="$t('views.home.features.documentation.title')"
-                src="/img/features/docs.png"
+                src="/img/features/docs.webp"
                 class="rounded shadow"
               >
             </div>
@@ -121,7 +121,7 @@
             <div class="home-features-img-wrapper">
               <img
                 :alt="$t('views.home.features.modularity.title')"
-                src="/img/features/modularity.png"
+                src="/img/features/modularity.webp"
                 class="rounded shadow"
               >
             </div>
