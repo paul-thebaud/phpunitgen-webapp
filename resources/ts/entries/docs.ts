@@ -1,3 +1,4 @@
+import "@scss/entries/docs";
 import "@/entries/bootstrap";
 import "@/docs";
 import "docsify";

@@ -1,3 +1,4 @@
+import "@scss/entries/vendor";
 import "reflect-metadata";
 import Vue from "vue";
 import VueI18n from "vue-i18n";

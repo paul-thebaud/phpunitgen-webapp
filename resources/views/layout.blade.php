@@ -19,27 +19,26 @@
             name="description"
             content="PhpUnitGen is a simple, powerful and modular tool to generate your PHPUnit tests skeletons. It is free and open-source."
     >
-    <link rel="manifest" href="/manifest.json">
+    <link
+            rel="manifest"
+            href="/manifest.json"
+    >
+    <link
+            rel="preload"
+            href="/fonts/SourceSansPro/SourceSansPro-Regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+    >
     <script>
         // Check that service workers are supported
-        if ('serviceWorker' in navigator) {
+        if ("serviceWorker" in navigator) {
             // Use the window load event to keep the page load performant
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js');
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("/service-worker.js");
             });
         }
     </script>
-    <link
-            rel="preload"
-            href="{{ mix('css/vendor.css') }}"
-            as="style"
-            onload="this.onload=null;this.rel='stylesheet'"
-    >
-    <link
-            rel="stylesheet"
-            href="{{ mix('css/vendor.css') }}"
-    >
-    @stack('style')
 </head>
 
 <body class="@yield('body-classes')">

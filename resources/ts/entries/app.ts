@@ -1,3 +1,4 @@
+import "@scss/entries/app";
 import "whatwg-fetch";
 import "@/entries/bootstrap";
 import "@/bootstrap-vue";

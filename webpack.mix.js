@@ -10,7 +10,6 @@
  */
 
 const mix = require("laravel-mix");
-require("laravel-mix-merge-manifest");
 require("laravel-mix-svg-vue");
 require("laravel-mix-workbox");
 const webpackConfig = require("./webpack.config");
@@ -39,7 +38,7 @@ if (mix.inProduction()) {
     mix.sourceMaps();
 }
 
-mix.svgVue().mergeManifest();
+mix.svgVue();
 
 mix.generateSW({
     runtimeCaching: [{

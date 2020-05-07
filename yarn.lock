@@ -4767,13 +4767,6 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
 
-laravel-mix-merge-manifest@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/laravel-mix-merge-manifest/-/laravel-mix-merge-manifest-0.1.2.tgz#4bce28e64eee9c27bf9e7fd2b27fa8731b0bba0b"
-  integrity sha512-U6FnfIkxMiOA/49JXSxv8OoW5SjHFTVkJCDq66gL0qt639nwy5aJBsttCyhuAa64xgd3oswGM5o3gpgBF00isQ==
-  dependencies:
-    lodash "^4.17.4"
-
 laravel-mix-svg-vue@^0.2.6:
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/laravel-mix-svg-vue/-/laravel-mix-svg-vue-0.2.6.tgz#d2a5327a4efa13bdc403b0d244aee7b9cc7cca16"
@@ -4961,7 +4954,7 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.17.5:
+lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.5:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
