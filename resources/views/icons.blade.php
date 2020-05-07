@@ -1,28 +1,28 @@
 <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="/icons/apple-touch-icon.png"
+        href="/img/icons/apple-touch-icon.png"
 >
 <link
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="/icons/favicon-32x32.png"
+        href="/img/icons/favicon-32x32.png"
 >
 <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="/icons/favicon-16x16.png"
+        href="/img/icons/favicon-16x16.png"
 >
 <link
         rel="mask-icon"
-        href="/icons/safari-pinned-tab.svg"
+        href="/img/icons/safari-pinned-tab.svg"
         color="#ec2f4b"
 >
 <link
         rel="shortcut icon"
-        href="/icons/favicon.ico"
+        href="/img/icons/favicon.ico"
 >
 <meta
         name="apple-mobile-web-app-title"
@@ -38,7 +38,7 @@
 >
 <meta
         name="msapplication-config"
-        content="/icons/browserconfig.xml"
+        content="/img/icons/browserconfig.xml"
 >
 <meta
         name="theme-color"
