@@ -1,4 +1,4 @@
-$fontDirectory: "../../fonts/";
+$fontDirectory: "/fonts/";
 
 @mixin defineFontFace($font, $fontFamily) {
   @font-face {
