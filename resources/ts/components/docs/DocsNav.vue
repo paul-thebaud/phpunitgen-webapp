@@ -40,7 +40,9 @@
                 href="#"
                 :class="theme === targetTheme ? 'active' : ''"
               >
-                {{ targetTheme.getEmoji() }}
+                <span style="margin-right: 0.5rem">
+                  {{ targetTheme.getEmoji() }}
+                </span>
                 {{ $t(`common.themes.${targetTheme.getKey()}`) }}
               </a>
             </li>

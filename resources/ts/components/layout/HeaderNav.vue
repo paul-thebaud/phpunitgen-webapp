@@ -66,7 +66,9 @@
               :active="theme.getKey() === targetTheme.getKey()"
               @click="handleThemeChange(targetTheme)"
             >
-              {{ targetTheme.getEmoji() }}
+              <span class="mr-2">
+                {{ targetTheme.getEmoji() }}
+              </span>
               {{ $t(`common.themes.${targetTheme.getKey()}`) }}
             </BDropdownItem>
             <BDropdownItem :to="{ name: 'themes' }">
