@@ -41,7 +41,10 @@
     </script>
 </head>
 
-<body class="@yield('body-classes')">
+<body
+        class="@yield('body-classes')"
+        style="@yield('body-styles')"
+>
 
 @yield('content')
 
