@@ -2,7 +2,7 @@ FROM node:alpine AS builder
 COPY . /app
 WORKDIR /app/
 RUN yarn install
-RUN yarn prod
+RUN yarn build
 
 
 FROM php:fpm-alpine
