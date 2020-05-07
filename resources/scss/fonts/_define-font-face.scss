@@ -6,7 +6,7 @@ $fontDirectory: "../../fonts/";
     src: local($fontFamily), local($font), url("#{$fontDirectory}#{$font}/#{$font}-Regular.woff2") format('woff2');
     font-weight: normal;
     font-style: normal;
-    font-display: optional;
+    font-display: swap;
   }
 
   @font-face {
@@ -14,7 +14,7 @@ $fontDirectory: "../../fonts/";
     src: local($fontFamily), local($font), url("#{$fontDirectory}#{$font}/#{$font}-Bold.woff2") format('woff2');
     font-weight: bold;
     font-style: normal;
-    font-display: optional;
+    font-display: swap;
   }
 
   @font-face {
@@ -22,7 +22,7 @@ $fontDirectory: "../../fonts/";
     src: local($fontFamily), local($font), url("#{$fontDirectory}#{$font}/#{$font}-Italic.woff2") format('woff2');
     font-weight: normal;
     font-style: italic;
-    font-display: optional;
+    font-display: swap;
   }
 
 }
