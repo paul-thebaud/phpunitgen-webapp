@@ -1,10 +1,3 @@
-FROM node:alpine AS builder
-COPY . /app
-WORKDIR /app/
-RUN yarn install
-RUN yarn build
-
-
 FROM php:fpm-alpine
 
 #################################################
@@ -18,7 +11,6 @@ RUN docker-php-ext-install gd bcmath
 #################################################
 
 COPY . /var/www
-COPY --from=builder /app/public /var/www/public
 WORKDIR /var/www
 RUN chown -R www-data:www-data \
         /var/www/storage
