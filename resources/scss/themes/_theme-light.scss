@@ -3,11 +3,11 @@
   --base-color: #1a202c;
 
   --gradient-start-color: #ec2f4b;
-  --gradient-stop-color: #009fff;
+  --gradient-stop-color: #0073d4;
   --gradient-bg-color: var(--gradient-start-color) 0%, var(--gradient-stop-color) 100%;
   --gradient-color: #ffffff;
 
-  --primary-bg-color: #009fff;
+  --primary-bg-color: #0073d4;
   --primary-color: #ffffff;
 
   --secondary-bg-color: #f8f8f8;
@@ -24,6 +24,8 @@
   --danger-color: var(--base-bg-color);
 
   --muted-color: #6c757d;
+
+  --link-color: #0073d4;
 
   --hover-brightness: 95%;
 }

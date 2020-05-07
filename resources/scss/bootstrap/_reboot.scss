@@ -1,10 +1,10 @@
 @import "~bootstrap/scss/reboot";
 
 a {
-  color: var(--primary-bg-color);
+  color: var(--link-color);
 
   &:hover, &:focus {
-    color: var(--primary-bg-color);
+    color: var(--link-color);
     filter: brightness(var(--hover-brightness));
   }
 }
