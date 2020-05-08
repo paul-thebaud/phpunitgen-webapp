@@ -73,6 +73,32 @@ Run the local PHP server, and go to [http://localhost:8000](http://localhost:800
 php -S localhost:8000 -t public
 ```
 
+## Installing the application with docker-compose
+
+#HTTPS
+
+To issue local certificates for HTTPS we used [https://github.com/FiloSottile/mkcert](https://github.com/FiloSottile/mkcert)
+
+You just need to put your local.pem (certificate) and local-key.pem (private key) in the nginx/local/ folder.
+
+#Development
+
+On the local dev compose file there're different volumes used to facilitate your local development.
+You can use "yarn watch" and edit the blade file directly from your local files.
+However, if you change any php dependencies you will need to rebuild the phpunitgen-phpfpm container.
+
+```bash
+docker-compose -f ./docker-compose.local.dev.yml up --build
+```
+
+#Production-like (Used to test on with an environment near the production architecture)
+
+This compose file will generate two container with less volumes. (Only your local certificates to enable https)
+
+```bash
+docker-compose -f ./docker-compose.local.prod.yml up --build
+```
+
 ## Credits
 
 - [Paul Thébaud](https://github/paul-thebaud)

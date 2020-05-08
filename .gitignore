@@ -23,5 +23,5 @@
 /public/mix-manifest.json
 /public/service-worker.*
 /public/workbox*
-/nginx/local-key.pem
-/nginx/local.pem
+nginx/local/local-key.pem
+nginx/local/local.pem
