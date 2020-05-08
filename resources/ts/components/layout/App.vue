@@ -19,7 +19,7 @@
 
     @Component({
         components: {
-            AppLayout
+            AppLayout,
         },
         provide,
     })

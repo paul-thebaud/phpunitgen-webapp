@@ -16,7 +16,7 @@ export class TestGeneratorResource implements TestGeneratorResourceI {
      * @param {ApiClientI} apiClient
      */
     public constructor(
-        @inject(TYPES.ApiClient) apiClient: ApiClientI
+        @inject(TYPES.ApiClient) apiClient: ApiClientI,
     ) {
         this.apiClient = apiClient;
     }

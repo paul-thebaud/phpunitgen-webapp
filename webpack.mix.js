@@ -31,13 +31,12 @@ mix.webpackConfig(webpackConfig)
     .js("resources/ts/entries/app.ts", "public/js")
     .js("resources/ts/entries/docs.ts", "public/js");
 
-
-if (!mix.inProduction()) {
+if (! mix.inProduction()) {
     mix.sourceMaps();
 }
 
 mix.svgVue();
 
 mix.injectManifest({
-    swSrc: './resources/ts/service-worker/service-worker.js'
+    swSrc: "./resources/ts/service-worker/service-worker.js",
 });

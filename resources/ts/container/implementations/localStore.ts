@@ -55,7 +55,7 @@ export class LocalStore implements StoreI {
      */
     public constructor(
         @inject(TYPES.Window) window: Window,
-        @inject(TYPES.Serializer) serializer: SerializerI
+        @inject(TYPES.Serializer) serializer: SerializerI,
     ) {
         this.window = window;
         this.serializer = serializer;
@@ -185,7 +185,7 @@ export class LocalStore implements StoreI {
     public save(): StoreI {
         this.window.localStorage.setItem(
             this.localeStorageKey,
-            this.serializer.serialize(this.content)
+            this.serializer.serialize(this.content),
         );
 
         return this;
