@@ -16,7 +16,7 @@ export class MockGeneratorResource implements MockGeneratorResourceI {
      * @param {ApiClientI} apiClient
      */
     public constructor(
-        @inject(TYPES.ApiClient) apiClient: ApiClientI
+        @inject(TYPES.ApiClient) apiClient: ApiClientI,
     ) {
         this.apiClient = apiClient;
     }

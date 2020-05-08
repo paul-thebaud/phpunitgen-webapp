@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === "production") {
 
 module.exports = {
     output: {
-        publicPath: "/",
+        publicPath: "",
         filename: "[name].js",
         chunkFilename: chunkFilename,
     },
@@ -48,9 +48,10 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"],
+        extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx", ".scss"],
         alias: {
             "@": path.resolve(__dirname, "./resources/ts"),
+            "@scss": path.resolve(__dirname, "./resources/scss"),
         },
     },
     plugins,

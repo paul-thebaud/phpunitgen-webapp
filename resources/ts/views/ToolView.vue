@@ -36,6 +36,18 @@
         </RouterLink>
       </BCol>
       <BCol
+        v-if="! online"
+        cols="12"
+        class="mb-3"
+      >
+        <BAlert
+          variant="danger"
+          :show="true"
+        >
+          {{ $t("views.tool.offline") }}
+        </BAlert>
+      </BCol>
+      <BCol
         :class="forceTabDisplay ? '' : 'd-xl-none'"
         class="editor-tabs font-weight-bold pb-3 d-flex mt-3"
         cols="12"
@@ -62,6 +74,7 @@
         cols="12"
       >
         <EditorTab
+          :online="online"
           :loading="loading"
           :exception-message="exceptionMessage"
           :exception="exception"
@@ -124,6 +137,8 @@
 
         protected loading = false;
 
+        protected online = true;
+
         protected exceptionMessage: TranslateResult | null = null;
 
         protected exception: object | null = null;
@@ -144,6 +159,18 @@
 
         protected get progressCounter(): string {
             return `${this.generationsCount}${this.nextUnlockedTheme ? ` / ${this.nextUnlockedTheme.getGenerationsToUnlock()}` : ""}`;
+        }
+
+        protected beforeMount(): void {
+            this.handleOnlineStatusChange();
+
+            window.addEventListener("online", this.handleOnlineStatusChange);
+            window.addEventListener("offline", this.handleOnlineStatusChange);
+        }
+
+        protected beforeDestroy(): void {
+            window.removeEventListener("online", this.handleOnlineStatusChange);
+            window.removeEventListener("offline", this.handleOnlineStatusChange);
         }
 
         public async handleGenerate(code: string): Promise<void> {
@@ -202,6 +229,11 @@
                     autoHideDelay: 5000,
                 },
             );
+        }
+
+        protected handleOnlineStatusChange(): void {
+            console.log(window.navigator.onLine);
+            this.online = window.navigator.onLine;
         }
     }
 </script>

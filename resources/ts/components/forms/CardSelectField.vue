@@ -19,6 +19,12 @@
         md="6"
         lg="3"
       >
+        <label
+          :for="`${id}-search-input`"
+          class="sr-only"
+        >
+          {{ $t("components.forms.cardSelect.searchLabel") }}
+        </label>
         <BInputGroup class="ml-auto">
           <BInputGroupPrepend>
             <BInputGroupText>
@@ -26,6 +32,7 @@
             </BInputGroupText>
           </BInputGroupPrepend>
           <BInput
+            :id="`${id}-search-input`"
             v-model="search"
             :placeholder="$t('components.forms.cardSelect.searchPlaceholder')"
             type="text"

@@ -19,6 +19,9 @@
 
 # Build.
 /public/css/
-/public/fonts/
 /public/js/
 /public/mix-manifest.json
+/public/service-worker.*
+/public/workbox*
+/nginx/local-key.pem
+/nginx/local.pem

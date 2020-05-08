@@ -1,9 +1,10 @@
 <template>
   <div :id="id">
-    <label>
+    <label :for="`${id}-input`">
       {{ label }}
     </label>
     <BInput
+      :id="`${id}-input`"
       :value="value"
       :placeholder="placeholder"
       type="text"

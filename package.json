@@ -5,21 +5,12 @@
   "author": "Paul Thébaud <paul.thebaud29@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev-js": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch-js": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "hot-js": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod-js": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod-js-no-progress": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --hide-modules --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "analyze-js": "cross-env NODE_ENV=production ANALYZE=true node_modules/webpack/bin/webpack.js --progress --hide-modules --env.mixfile=webpack.js.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "dev-css": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --env.mixfile=webpack.css.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch-css": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --env.mixfile=webpack.css.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "hot-css": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --env.mixfile=webpack.css.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod-css": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --env.mixfile=webpack.css.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod-css-no-progress": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --hide-modules --env.mixfile=webpack.css.mix.js --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "dev": "yarn run dev-css & yarn run dev-js",
-    "watch": "concurrently --kill-others \"yarn run watch-css\" \"yarn run watch-js\"",
-    "prod": "yarn run prod-css & yarn run prod-js",
-    "prod-no-progress": "yarn run prod-css-no-progress & yarn run prod-js-no-progress",
+    "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod-no-progress": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "analyze": "cross-env NODE_ENV=production ANALYZE=true node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "build": "yarn run prod-no-progress",
     "lint": "node_modules/eslint/bin/eslint.js --ext .js,.vue,.ts resources/ts"
   },
@@ -50,7 +41,6 @@
     "inversify": "^5.0.1",
     "js-cookie": "^2.2.1",
     "laravel-mix": "^5.0.0",
-    "laravel-mix-merge-manifest": "^0.1.2",
     "laravel-mix-svg-vue": "^0.2.6",
     "lodash.debounce": "^4.0.8",
     "marked": "^0.7.0",
@@ -78,5 +68,9 @@
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-chunk-rename-plugin": "^1.0.3",
     "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "laravel-mix-workbox": "^0.1.2",
+    "workbox-webpack-plugin": "^5.1.3"
   }
 }

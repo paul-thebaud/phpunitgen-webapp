@@ -3,7 +3,10 @@
     <nav class="app-nav no-badge">
       <ul>
         <li>
-          <a href="/">
+          <a
+            href="/"
+            :aria-label="$t('layout.header.home')"
+          >
             <FontAwesomeIcon
               icon="home"
               class="home-icon"

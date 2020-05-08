@@ -1,5 +1,5 @@
 .theme-ocean {
-  --base-bg-color: #16213D;
+  --base-bg-color: #16213d;
   --base-color: #ffffff;
 
   --gradient-start-color: #243666;
@@ -7,11 +7,11 @@
   --gradient-bg-color: var(--gradient-start-color) 0%, var(--gradient-stop-color) 100%;
   --gradient-color: #ffffff;
 
-  --primary-bg-color: #4CAAB2;
+  --primary-bg-color: #377780;
   --primary-color: #ffffff;
 
-  --secondary-bg-color: #1B284B;
-  --secondary-bg-color-hover: #{lighten(#1B284B, 5%)};
+  --secondary-bg-color: #1b284b;
+  --secondary-bg-color-hover: #{lighten(#1b284b, 5%)};
   --secondary-color: var(--base-color);
 
   --success-bg-color: #28a745;
@@ -24,6 +24,8 @@
   --danger-color: var(--base-color);
 
   --muted-color: #aeb3b8;
+
+  --link-color: #5ac7d9;
 
   --hover-brightness: 115%;
 }

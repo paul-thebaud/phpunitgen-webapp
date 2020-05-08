@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@import "~docsify/themes/vue";
+@import "../docsify";
 @import "../bootstrap/variables";
 @import "../components/docs/docs-nav";
 
@@ -47,6 +47,10 @@ body {
       margin-top: 1rem;
       font-weight: bold;
     }
+
+    ul li.active > a {
+      color: var(--link-color) !important;
+    }
   }
 
   .sidebar-toggle {
@@ -54,6 +58,10 @@ body {
   }
 
   .markdown-section {
+    a {
+      color: var(--link-color) !important;
+    }
+
     code {
       font-family: $font-family-monospace;
       background-color: var(--secondary-bg-color);

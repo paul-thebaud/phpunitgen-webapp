@@ -24,7 +24,7 @@ export class TestResource implements TestResourceI {
      */
     public constructor(
         @inject(TYPES.ApiClient) apiClient: ApiClientI,
-        @inject(TYPES.Store) store: StoreI
+        @inject(TYPES.Store) store: StoreI,
     ) {
         this.store = store;
         this.apiClient = apiClient;

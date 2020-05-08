@@ -9,6 +9,7 @@
     <BContainer>
       <BNavbarBrand
         :to="{ name: 'home' }"
+        :aria-label="$t('layout.header.home')"
         @click="handleCloseNavIfNeeded"
       >
         <PhpUnitGenLogo />
@@ -17,6 +18,7 @@
       <BButton
         v-b-toggle.nav-collapse
         class="d-lg-none rounded-full"
+        :aria-label="$t('layout.header.menu')"
       >
         <FontAwesomeIcon
           class="when-closed"
@@ -75,15 +77,14 @@
               {{ $t(`layout.header.viewAll`) }}
             </BDropdownItem>
           </BNavItemDropdown>
-
-          <BButton
-            :to="{ name: 'tool' }"
-            class="mt-2 mt-lg-0 rounded-pill px-4 py-2"
-            @click="handleCloseNavIfNeeded"
-          >
-            {{ $t("layout.header.useOnline") }}
-          </BButton>
         </BNavbarNav>
+        <BButton
+          :to="{ name: 'tool' }"
+          class="mt-2 mt-lg-0 rounded-pill px-4 py-2"
+          @click="handleCloseNavIfNeeded"
+        >
+          {{ $t("layout.header.useOnline") }}
+        </BButton>
       </BCollapse>
     </BContainer>
   </BNavbar>

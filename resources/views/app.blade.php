@@ -13,19 +13,6 @@
     </div>
 @endsection
 
-@push('style')
-    <link
-            rel="preload"
-            href="{{ mix('css/app.css') }}"
-            as="style"
-            onload="this.onload=null;this.rel='stylesheet'"
-    >
-    <link
-            rel="stylesheet"
-            href="{{ mix('css/app.css') }}"
-    >
-@endpush
-
 @push('scripts')
     <script
             type="text/javascript"

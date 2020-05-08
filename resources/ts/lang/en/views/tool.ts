@@ -6,4 +6,5 @@ export default {
     "unlockThemes": "Unlock new themes by generating your tests!",
     "allThemesUnlocked": "Congratulations! You have unlocked all the themes!",
     "themeListLink": "See the list of themes.",
+    "offline": "Your internet connection doesn't seem to be working, so the test generation is not available.",
 };

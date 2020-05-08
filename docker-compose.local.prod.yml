@@ -1,0 +1,28 @@
+version: '2'
+services:
+  laravel:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-phpfpmalpine
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    networks:
+      - app-network
+  webserver:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-nginxalpine
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/local.pem:/local.pem
+      - ./nginx/local-key.pem:/local-key.pem
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge

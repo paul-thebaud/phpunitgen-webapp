@@ -1,13 +1,13 @@
 .theme-night {
-  --base-bg-color: #271E54;
+  --base-bg-color: #271e54;
   --base-color: #ffffff;
 
-  --gradient-start-color: #49399A;
-  --gradient-stop-color: #39559A;
+  --gradient-start-color: #49399a;
+  --gradient-stop-color: #39559a;
   --gradient-bg-color: var(--gradient-start-color) 0%, var(--gradient-stop-color) 100%;
   --gradient-color: #ffffff;
 
-  --primary-bg-color: #634DD2;
+  --primary-bg-color: #634dd2;
   --primary-color: #ffffff;
 
   --secondary-bg-color: #362973;
@@ -24,6 +24,8 @@
   --danger-color: var(--base-color);
 
   --muted-color: #aeb3b8;
+
+  --link-color: #937efe;
 
   --hover-brightness: 115%;
 }

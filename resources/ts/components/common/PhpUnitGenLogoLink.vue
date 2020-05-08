@@ -1,5 +1,8 @@
 <template>
-  <a href="/">
+  <a
+    href="/"
+    :aria-label="$t('layout.header.home')"
+  >
     <PhpUnitGenLogo />
   </a>
 </template>
