@@ -27,3 +27,5 @@ public/workbox*
 nginx/local-key.pem
 
 nginx/local.pem
+
+public/public/service-worker.js

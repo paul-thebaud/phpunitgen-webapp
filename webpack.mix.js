@@ -40,14 +40,6 @@ if (mix.inProduction()) {
 
 mix.svgVue();
 
-mix.generateSW({
-    runtimeCaching: [{
-        // Match any request that ends with .png, .jpg, .jpeg or .svg.
-        urlPattern: /\.(?:jpg|webp|mp4|woff2|jpeg|png|gif|ico|css|js)$/,
-
-        // Apply a cache-first strategy.
-        handler: 'NetworkFirst',
-    }],
-
-    skipWaiting: true
+mix.injectManifest({
+    swSrc: './resources/ts/service-worker/service-worker.js'
 });
