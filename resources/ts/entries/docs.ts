@@ -19,9 +19,11 @@ import store from "@/store";
 import DocsNav from "@/components/docs/DocsNav.vue";
 import PhpUnitGenLogoLink from "@/components/common/PhpUnitGenLogoLink.vue";
 
+const i18n = container.get<VueI18n>(TYPES.VueI18n);
+
 new Vue({
     el: "#docs-nav",
-    i18n: container.get<VueI18n>(TYPES.VueI18n),
+    i18n,
     store,
     render: (h): VNode => h(DocsNav),
     provide: {
@@ -38,6 +40,10 @@ if (! window.location.hash.match(`/^#/${locale.currentLocale}//`)) {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 (window as any).$docsify.plugins.push(function (hook: { ready: Function }): void {
     hook.ready(function (): void {
-        (new PhpUnitGenLogoLink).$mount(".app-name-link");
+        new Vue({
+            el: ".app-name-link",
+            i18n,
+            render: (h): VNode => h(PhpUnitGenLogoLink),
+        });
     });
 });
