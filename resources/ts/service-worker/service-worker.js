@@ -1,6 +1,5 @@
 import { precacheAndRoute } from 'workbox-precaching';
 import {registerRoute, setDefaultHandler} from 'workbox-routing';
-import {CacheableResponsePlugin} from 'workbox-cacheable-response';
 import * as strategies from 'workbox-strategies';
 
 self.skipWaiting()
