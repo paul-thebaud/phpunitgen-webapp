@@ -35,23 +35,27 @@
         <FontAwesomeIcon icon="trash" />
         {{ $t("components.tool.editorTab.clear") }}
       </BButton>
-      <BButton
-        :disabled="code === '' || code === null || loading"
-        variant="primary"
-        class="ml-auto"
-        @click="handleGenerate"
-      >
-        <FontAwesomeIcon
-          v-if="! loading"
-          icon="play-circle"
-        />
-        <FontAwesomeIcon
-          v-if="loading"
-          icon="circle-notch"
-          class="fa-spin"
-        />
-        {{ $t("components.tool.editorTab.generate") }}
-      </BButton>
+      <div class="ml-auto">
+        <div v-b-tooltip="{ title: $t('views.tool.offline'), disabled: online }">
+          <BButton
+            :disabled="code === '' || code === null || loading || ! online"
+            variant="primary"
+            class="ml-auto"
+            @click="handleGenerate"
+          >
+            <FontAwesomeIcon
+              v-if="! loading"
+              icon="play-circle"
+            />
+            <FontAwesomeIcon
+              v-if="loading"
+              icon="circle-notch"
+              class="fa-spin"
+            />
+            {{ $t("components.tool.editorTab.generate") }}
+          </BButton>
+        </div>
+      </div>
     </div>
     <div v-if="exceptionMessage !== null && ! loading">
       <div class="d-flex mb-3">
@@ -120,6 +124,9 @@
         @Prop(Boolean)
         protected readonly loading!: boolean;
 
+        @Prop(Boolean)
+        protected readonly online!: boolean;
+
         @Prop(String)
         protected readonly exceptionMessage!: string;
 
@@ -166,12 +173,16 @@
         }
 
         public async handleClearEditor(): Promise<void> {
-            this.testGenerator = await this.testGeneratorResource.find(
-                this.store.getTool().testGenerator,
-            );
+            if (this.online) {
+                this.testGenerator = await this.testGeneratorResource.find(
+                    this.store.getTool().testGenerator,
+                );
 
+                this.code = this.testGenerator.example;
+            } else {
+                this.code = "<?php\n\nclass Person {\n}\n";
+            }
             this.store.setLastEditorContent(undefined);
-            this.code = this.testGenerator.example;
         }
 
         public handleGenerate(): void {
