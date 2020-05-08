@@ -41,7 +41,15 @@
         class="ml-auto"
         @click="handleGenerate"
       >
-        <FontAwesomeIcon icon="play-circle" />
+        <FontAwesomeIcon
+          v-if="! loading"
+          icon="play-circle"
+        />
+        <FontAwesomeIcon
+          v-if="loading"
+          icon="circle-notch"
+          class="fa-spin"
+        />
         {{ $t("components.tool.editorTab.generate") }}
       </BButton>
     </div>

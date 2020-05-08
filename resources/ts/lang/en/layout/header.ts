@@ -1,4 +1,6 @@
 export default {
+    "home": "Home",
+    "menu": "Menu",
     "documentation": "Documentation",
     "language": "Language",
     "theme": "Theme",

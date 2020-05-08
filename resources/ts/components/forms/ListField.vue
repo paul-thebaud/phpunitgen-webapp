@@ -3,12 +3,13 @@
     :id="id"
     class="list-field"
   >
-    <label>
+    <label :for="`${id}-input`">
       {{ label }}
     </label>
 
     <BInputGroup class="mb-2">
       <BInput
+        :id="`${id}-input`"
         v-model="input"
         :placeholder="placeholder"
         type="text"
@@ -18,6 +19,7 @@
       <BInputGroupAppend>
         <BButton
           variant="primary"
+          :aria-label="$t('components.forms.listField.add')"
           :disabled="! input"
           @click="handleAdd"
         >
@@ -40,6 +42,7 @@
       <BInputGroupAppend>
         <BButton
           variant="secondary"
+          :aria-label="$t('components.forms.listField.remove')"
           @click="handleRemove(key)"
         >
           <FontAwesomeIcon icon="times" />
