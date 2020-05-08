@@ -1,9 +1,14 @@
 version: '2'
 services:
   laravel:
-    build: .
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-phpfpmalpine
+    restart: unless-stopped
     ports:
       - "9000:9000"
+    volumes:
+      - ./:/var/www
     networks:
       - app-network
   webserver:
