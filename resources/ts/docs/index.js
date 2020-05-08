@@ -36,7 +36,6 @@ const docsify = {
             "https://github.com/paul-thebaud/phpunitgen-webapp/blob/master/public/docs-content",
             null,
             function (file) {
-                console.log(file);
                 if (file.indexOf("/en") === 0) {
                     return "Edit on GitHub";
                 } else {

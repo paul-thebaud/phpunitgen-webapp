@@ -232,7 +232,6 @@
         }
 
         protected handleOnlineStatusChange(): void {
-            console.log(window.navigator.onLine);
             this.online = window.navigator.onLine;
         }
     }
