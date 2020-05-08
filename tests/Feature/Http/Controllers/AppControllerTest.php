@@ -54,5 +54,6 @@ class AppControllerTest extends TestCase
         $response = $this->get('/anything')->response;
 
         $this->assertSame(404, $response->status());
+        $this->assertSame(view('app')->render(), $response->content());
     }
 }

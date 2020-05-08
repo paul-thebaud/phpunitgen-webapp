@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace PhpUnitGen\WebApp\Http\Controllers;
 
 use Illuminate\Contracts\View\Factory as ViewFactory;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class AppController.
@@ -52,17 +51,17 @@ class AppController extends BaseController
      *
      * @param Request $request
      *
-     * @return View
-     *
-     * @throws NotFoundHttpException
+     * @return Response
      */
-    public function __invoke(Request $request): View
+    public function __invoke(Request $request): Response
     {
+        $status = Response::HTTP_OK;
+
         // Only match frontend routes, to avoid Docsify thinking this is a MarkDown file.
         if (! in_array($request->route('any'), self::AVAILABLE_ROUTES)) {
-            throw new NotFoundHttpException();
+            $status = Response::HTTP_NOT_FOUND;
         }
 
-        return $this->viewFactory->make('app');
+        return new Response($this->viewFactory->make('app'), $status);
     }
 }
