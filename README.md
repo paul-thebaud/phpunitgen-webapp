@@ -73,15 +73,68 @@ Run the local PHP server, and go to [http://localhost:8000](http://localhost:800
 php -S localhost:8000 -t public
 ```
 
+## Build docker images
+
+###PHP-fpm
+
+```bash
+docker build -t phpunitgen-phpfpm -f ./docker/Dockerfile-phpfpmalpine .
+```
+
+###Nginx local
+
+```bash
+docker build -t phpunitgen-nginx -f ./docker/local/Dockerfile-nginxalpine .
+```
+
+###Nginx production
+
+```bash
+docker build -t phpunitgen-nginx -f ./docker/production/Dockerfile-phpfpmalpine .
+```
+
+## Run docker images
+
+###PHP-fpm local
+
+```bash
+docker run -d --name phpunitgen-phpfpm -p 9000:9000 -v <root project directory>:/var/wwww phpunitgen-phpfpm
+```
+
+###Nginx local
+```bash
+docker run -d --name phpunitgen-nginx -p 80:80 443:443 \
+    -v <root project directory>/nginx/local/local.pem:/local.pem \
+    -v <root project directory>/nginx/local/local-key.pem:/local-key.pem \
+    -v <root project directory>:/var/www \
+    -v <root project directory>/nginx/local/app.conf:/etc/nginx/conf.d/default.conf \
+    -v <root project directory>/nginx/nginx.conf:/etc/nginx/nginx.conf \
+    phpunitgen-nginx
+```
+
+###PHP-fpm production
+
+```bash
+docker run -d --name phpunitgen-phpfpm -p 9000:9000 phpunitgen-phpfpm
+```
+
+###Nginx production
+```bash
+docker run -d --name phpunitgen-nginx -p 80:80 443:443 \
+    -v <root project directory>/nginx/local/local.pem:/local.pem \
+    -v <root project directory>/nginx/local/local-key.pem:/local-key.pem \
+    phpunitgen-nginx
+```
+
 ## Installing the application with docker-compose
 
-#HTTPS
+###HTTPS
 
 To issue local certificates for HTTPS we used [https://github.com/FiloSottile/mkcert](https://github.com/FiloSottile/mkcert)
 
 You just need to put your local.pem (certificate) and local-key.pem (private key) in the nginx/local/ folder.
 
-#Development
+###Development
 
 On the local dev compose file there're different volumes used to facilitate your local development.
 You can use "yarn watch" and edit the blade file directly from your local files.
@@ -91,7 +144,7 @@ However, if you change any php dependencies you will need to rebuild the phpunit
 docker-compose -f ./docker-compose.local.dev.yml up --build
 ```
 
-#Production-like (Used to test on with an environment near the production architecture)
+###Production-like (Used to test on with an environment near the production architecture)
 
 This compose file will generate two container with less volumes. (Only your local certificates to enable https)
 
