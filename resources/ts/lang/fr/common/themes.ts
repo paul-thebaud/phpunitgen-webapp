@@ -9,4 +9,5 @@ export default {
     "forest": "Forêt",
     "desert": "Désert",
     "original": "Original",
+    "accessibility": "Accessibilité des couleurs",
 };

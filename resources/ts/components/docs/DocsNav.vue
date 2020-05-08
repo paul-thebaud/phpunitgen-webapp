@@ -41,12 +41,21 @@
             >
               <a
                 href="#"
+                class="d-flex align-items-center"
                 :class="theme === targetTheme ? 'active' : ''"
               >
-                <span style="margin-right: 0.5rem">
+                <span class="mr-2">
                   {{ targetTheme.getEmoji() }}
                 </span>
-                {{ $t(`common.themes.${targetTheme.getKey()}`) }}
+                <span class="mr-2">
+                  {{ $t(`common.themes.${targetTheme.getKey()}`) }}
+                </span>
+                <FontAwesomeIcon
+                  v-if="targetTheme.hasAccessibleColors()"
+                  v-b-tooltip="{ title: $t('common.themes.accessibility'), interactive: false }"
+                  icon="eye"
+                  class="ml-auto"
+                />
               </a>
             </li>
           </ul>

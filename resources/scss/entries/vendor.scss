@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+@import "../bootstrap/variables";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/tooltip";
+//@import "~bootstrap/scss/utilities";
+@import "../bootstrap/utilities";
+@import "../bootstrap-vue";
 @import "~@fortawesome/fontawesome-svg-core/styles.css";
 @import "../fonts";
 @import "../themes";

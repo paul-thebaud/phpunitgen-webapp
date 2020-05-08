@@ -9,4 +9,5 @@ export default {
     "forest": "Forest",
     "desert": "Desert",
     "original": "Original",
+    "accessibility": "Accessibility friendly",
 };

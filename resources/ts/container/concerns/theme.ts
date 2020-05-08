@@ -20,18 +20,25 @@ export class Theme {
     protected generationsToUnlock: number;
 
     /**
+     * If this theme has fully accessible colors..
+     */
+    protected accessibleColors: boolean;
+
+    /**
      * Theme constructor.
      *
      * @param {string} key
      * @param {string} emoji
      * @param {string} codeMirror
      * @param {number} generationsToUnlock
+     * @param {boolean} accessibleColors
      */
-    public constructor(key: string, emoji: string, codeMirror: string, generationsToUnlock: number) {
+    public constructor(key: string, emoji: string, codeMirror: string, generationsToUnlock: number, accessibleColors: boolean) {
         this.key = key;
         this.emoji = emoji;
         this.codeMirror = codeMirror;
         this.generationsToUnlock = generationsToUnlock;
+        this.accessibleColors = accessibleColors;
     }
 
     /**
@@ -60,5 +67,12 @@ export class Theme {
      */
     public getGenerationsToUnlock(): number {
         return this.generationsToUnlock;
+    }
+
+    /**
+     * @returns {boolean}
+     */
+    public hasAccessibleColors(): boolean {
+        return this.accessibleColors;
     }
 }

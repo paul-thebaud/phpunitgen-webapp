@@ -12,12 +12,21 @@
     >
       <template v-slot:value="{ value: targetTheme }">
         <h4 class="mb-0">
-          {{ targetTheme.getEmoji() }}
-          {{ $t(`common.themes.${targetTheme.getKey()}`) }}
+          <span>
+            {{ targetTheme.getEmoji() }}
+            {{ $t(`common.themes.${targetTheme.getKey()}`) }}
+          </span>
         </h4>
         <small>
           {{ getThemeCardText(targetTheme) }}
         </small>
+        <FontAwesomeIcon
+          v-if="targetTheme.hasAccessibleColors()"
+          v-b-tooltip="{ title: $t('common.themes.accessibility'), interactive: false }"
+          class="position-absolute"
+          style="top: 5px; right: 5px"
+          icon="eye"
+        />
       </template>
     </CardSelect>
   </BContainer>

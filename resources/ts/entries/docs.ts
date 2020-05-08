@@ -12,12 +12,15 @@ import "prismjs/components/prism-php";
 import "prismjs/components/prism-json";
 import Vue, { VNode } from "vue";
 import VueI18n from "vue-i18n";
+import { TooltipPlugin } from "bootstrap-vue/src/components/tooltip";
 import { container } from "@/container/docContainer";
 import { TYPES } from "@/container/types";
 import { LocaleI } from "@/container/contracts/localeI";
 import store from "@/store";
 import DocsNav from "@/components/docs/DocsNav.vue";
 import PhpUnitGenLogoLink from "@/components/common/PhpUnitGenLogoLink.vue";
+
+Vue.use(TooltipPlugin);
 
 const i18n = container.get<VueI18n>(TYPES.VueI18n);
 

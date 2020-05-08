@@ -66,12 +66,19 @@
               v-for="targetTheme in unlockedThemes"
               :key="`theme-${targetTheme.getKey()}`"
               :active="theme.getKey() === targetTheme.getKey()"
+              link-class="d-flex align-items-center"
               @click="handleThemeChange(targetTheme)"
             >
               <span class="mr-2">
                 {{ targetTheme.getEmoji() }}
               </span>
               {{ $t(`common.themes.${targetTheme.getKey()}`) }}
+              <FontAwesomeIcon
+                v-if="targetTheme.hasAccessibleColors()"
+                v-b-tooltip="{ title: $t('common.themes.accessibility'), interactive: false }"
+                class="ml-auto"
+                icon="eye"
+              />
             </BDropdownItem>
             <BDropdownItem :to="{ name: 'themes' }">
               {{ $t(`layout.header.viewAll`) }}
