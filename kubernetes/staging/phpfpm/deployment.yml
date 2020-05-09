@@ -6,6 +6,9 @@ metadata:
   name: phpunitgen-phpfpm-staging
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      phpunitgen: phpunitgen-phpfpm-staging
   strategy:
     type: Recreate
   template:
