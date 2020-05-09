@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    phpunitgen: phpunitgen-nginx
+  name: phpunitgen-nginx
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        phpunitgen: phpunitgen-nginx
+        name: phpunitgen-nginx
+    spec:
+      containers:
+      - image: phpunitgen-nginx
+        name: phpunitgen-nginx
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        resources: {}
+        tty: true
+      restartPolicy: Always
+status: {}

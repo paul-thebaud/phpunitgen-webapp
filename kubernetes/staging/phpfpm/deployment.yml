@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    phpunitgen: phpunitgen-phpfpm-staging
+  name: phpunitgen-phpfpm-staging
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        phpunitgen: phpunitgen-phpfpm-staging
+        name: phpunitgen-phpfpm-staging
+    spec:
+      containers:
+      - image: phpunitgen-phpfpm:staging
+        name: phpunitgen-phpfpm-staging
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9000
+        resources: {}
+      restartPolicy: Always
+status: {}

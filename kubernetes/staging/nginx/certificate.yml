@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: phpunitgen-cert-staging
+spec:
+  secretName: phpunitgen-cert-staging
+  issuerRef:
+    name: letsencrypt-prod
+  commonName: phpunitgen.killian.ovh
+  dnsNames:
+    - phpunitgen.killian.ovh

@@ -143,6 +143,19 @@ However, if you change any php dependencies you will need to rebuild the phpunit
 ```bash
 docker-compose -f ./docker-compose.local.dev.yml up --build
 ```
+## Installing with kubernetes
+
+### Staging
+
+```bash
+kubectl apply -k kubernetes/staging/
+```
+
+### Production
+
+```bash
+kubectl apply -k kubernetes/production/
+```
 
 ### Production-like (Used to test on with an environment near the production architecture)
 

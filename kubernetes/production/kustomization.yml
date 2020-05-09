@@ -1,0 +1,9 @@
+resources:
+  - phpfpm/deployment.yml
+  - phpfpm/service.yml
+  - nginx/deployment.yml
+  - nginx/service.yml
+  - nginx/ingress.yml
+  - nginx/certificate.yml
+
+namespace: phpunitgen
