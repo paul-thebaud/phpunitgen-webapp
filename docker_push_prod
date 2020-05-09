@@ -6,3 +6,5 @@ docker push paulthebaud/phpunitgen-nginx
 docker push paulthebaud/phpunitgen-phpfpm
 kubectl create namespace phpunitgen
 kubectl apply -k kubernetes/production/
+kubectl rollout restart deployment/phpunitgen-nginx -n phpunitgen
+kubectl rollout restart deployment/phpunitgen-phpfpm -n phpunitgen
