@@ -29,15 +29,16 @@ nav.app-nav.no-badge {
       color: var(--secondary-color);
 
       border: 1px solid var(--secondary-bg-color-hover);
-
-      padding: 0.5rem 0;
+      padding: 0.5rem;
 
       > li {
         margin: 0;
         padding: 0;
 
         > a {
-          padding: 0.25rem 0.75rem;
+          padding: 0.25rem 0.50rem;
+          margin: 0.25rem 0;
+          border-radius: $border-radius;
 
           &:hover, &:focus {
             background-color: var(--secondary-bg-color);
