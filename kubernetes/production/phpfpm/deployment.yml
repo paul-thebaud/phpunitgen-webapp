@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    phpunitgen: phpunitgen-phpfpm
+  name: phpunitgen-phpfpm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      phpunitgen: phpunitgen-phpfpm
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        phpunitgen: phpunitgen-phpfpm
+        name: phpunitgen-phpfpm
+    spec:
+      containers:
+      - image: paulthebaud/phpunitgen-phpfpm
+        name: phpunitgen-phpfpm
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9000
+        resources: {}
+      restartPolicy: Always
+status: {}

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    phpunitgen: phpunitgen-nginx-staging
+  name: phpunitgen-nginx-staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      phpunitgen: phpunitgen-nginx-staging
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        phpunitgen: phpunitgen-nginx-staging
+        name: phpunitgen-nginx-staging
+    spec:
+      containers:
+      - image: paulthebaud/phpunitgen-nginx:staging
+        name: phpunitgen-nginx-staging
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        resources: {}
+        tty: true
+      restartPolicy: Always
+status: {}

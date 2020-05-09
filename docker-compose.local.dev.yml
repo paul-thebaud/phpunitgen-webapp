@@ -1,9 +1,10 @@
 version: '2'
 services:
-  laravel:
+  phpunitgen-phpfpm:
     build:
       context: .
       dockerfile: docker/Dockerfile-phpfpmalpine
+    container_name: phpunitgen-phpfpm
     restart: unless-stopped
     ports:
       - "9000:9000"
@@ -11,9 +12,9 @@ services:
       - ./:/var/www
     networks:
       - app-network
-  webserver:
+  phpunitgen-nginx:
     image: nginx:alpine
-    container_name: webserver
+    container_name: phpunitgen-nginx
     restart: unless-stopped
     tty: true
     ports:
@@ -21,10 +22,10 @@ services:
       - "443:443"
     volumes:
       - ./:/var/www
-      - ./nginx/app.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/local/app.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/local/local.pem:/local.pem
+      - ./nginx/local/local-key.pem:/local-key.pem
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/local.pem:/local.pem
-      - ./nginx/local-key.pem:/local-key.pem
     networks:
       - app-network
 networks:

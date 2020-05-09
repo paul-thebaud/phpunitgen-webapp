@@ -1,0 +1,32 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: phpunitgen-tls-staging
+spec:
+  entryPoints:
+    - secure
+  routes:
+    - match: Host(`phpunitgen.killian.ovh`)
+      kind: Rule
+      services:
+        - name: phpunitgen-nginx-staging
+          port: 80
+  tls:
+    secretName: phpunitgen-cert-staging
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: phpunitgen-http-staging
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`phpunitgen.killian.ovh`)
+      middlewares:
+        - name: https-only
+      kind: Rule
+      services:
+        - name: phpunitgen-nginx-staging
+          port: 80

@@ -1,6 +1,10 @@
 #!/bin/bash
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker build -t paulthebaud/phpunitgen-phpfpm -f ./docker/Dockerfile-phpfpmalpine .
-docker build -t paulthebaud/phpunitgen-nginx -f ./docker/production/Dockerfile-phpfpmalpine .
+docker build -t paulthebaud/phpunitgen-phpfpm:staging -f ./docker/staging/Dockerfile-phpfpmalpine .
+docker build -t paulthebaud/phpunitgen-nginx:staging -f ./docker/staging/Dockerfile-nginxalpine .
 docker push paulthebaud/phpunitgen-nginx:staging
 docker push paulthebaud/phpunitgen-phpfpm:staging
+kubectl create namespace phpunitgen-staging
+kubectl apply -k kubernetes/staging/
+kubectl rollout restart deployment/phpunitgen-nginx-staging -n phpunitgen-staging
+kubectl rollout restart deployment/phpunitgen-phpfpm-staging -n phpunitgen-staging
