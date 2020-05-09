@@ -3,11 +3,14 @@
 .dropdown-menu {
   background-color: var(--secondary-bg-color);
   border: 1px solid var(--secondary-bg-color-hover);
+  padding: 0.5rem !important;
 
   .dropdown-item {
     background-color: var(--secondary-bg-color);
     color: var(--secondary-color);
-    padding: 0.25rem 0.75rem !important;
+    padding: 0.25rem 0.50rem !important;
+    margin: 0.25rem 0 !important;
+    border-radius: $border-radius;
 
     &:hover, &:focus {
       background-color: var(--secondary-bg-color);
