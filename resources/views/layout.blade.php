@@ -14,6 +14,7 @@
     <title>@yield('title')</title>
 
     @include('icons')
+    @include('socials')
 
     <meta
             name="description"
