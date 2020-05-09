@@ -2,7 +2,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: phpunitgen-tls-staging
+  name: phpunitgen-killian-tls-staging
 spec:
   entryPoints:
     - secure
@@ -13,12 +13,12 @@ spec:
         - name: phpunitgen-nginx-staging
           port: 80
   tls:
-    secretName: phpunitgen-cert-staging
+    secretName: phpunitgen-killian-cert-staging
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: phpunitgen-http-staging
+  name: phpunitgen-killian-http-staging
 spec:
   entryPoints:
     - web
