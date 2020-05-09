@@ -19,11 +19,9 @@ RUN chown -R www-data:www-data \
 #                   Composer                    #
 #################################################
 
-RUN chmod +x composerinstall.sh
-RUN ./composerinstall.sh
-RUN php composer.phar install --no-scripts \
+RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O - -q | php -- --quiet
+RUN php composer.phar install --optimize-autoloader --no-dev --no-scripts \
     && rm composer.phar
-RUN rm composerinstall.sh
 
 #################################################
 #                   Artisan                     #
