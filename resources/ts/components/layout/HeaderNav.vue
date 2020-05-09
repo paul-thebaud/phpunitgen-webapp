@@ -1,8 +1,8 @@
 <template>
   <BNavbar
     v-on-click-away="handleCloseNavIfNeeded"
+    class="position-fixed fixed-top"
     toggleable="lg"
-    fixed="top"
     :class="{ extended, shadow: ! extended }"
     type=""
   >
