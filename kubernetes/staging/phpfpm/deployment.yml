@@ -18,7 +18,7 @@ spec:
         name: phpunitgen-phpfpm-staging
     spec:
       containers:
-      - image: phpunitgen-phpfpm:staging
+      - image: paulthebaud/phpunitgen-phpfpm:staging
         name: phpunitgen-phpfpm-staging
         imagePullPolicy: Always
         ports:

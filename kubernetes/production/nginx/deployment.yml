@@ -18,7 +18,7 @@ spec:
         name: phpunitgen-nginx
     spec:
       containers:
-      - image: phpunitgen-nginx
+      - image: paulthebaud/phpunitgen-nginx
         name: phpunitgen-nginx
         imagePullPolicy: Always
         ports:

@@ -18,7 +18,7 @@ spec:
         name: phpunitgen-phpfpm
     spec:
       containers:
-      - image: phpunitgen-phpfpm
+      - image: paulthebaud/phpunitgen-phpfpm
         name: phpunitgen-phpfpm
         imagePullPolicy: Always
         ports:

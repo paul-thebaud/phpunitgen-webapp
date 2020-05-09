@@ -18,7 +18,7 @@ spec:
         name: phpunitgen-nginx-staging
     spec:
       containers:
-      - image: phpunitgen-nginx:staging
+      - image: paulthebaud/phpunitgen-nginx:staging
         name: phpunitgen-nginx-staging
         imagePullPolicy: Always
         ports:
