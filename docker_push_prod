@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker build -t paulthebaud/phpunitgen-phpfpm -f ./docker/production/Dockerfile-phpfpmalpine .
-docker build -t paulthebaud/phpunitgen-nginx -f ./docker/production/Dockerfile-nginxalpine .
+docker build -t paulthebaud/phpunitgen-phpfpm -f ./docker/production/Dockerfile-phpfpmalpine --build-arg MIX_GOOGLE_ANALYTICS_ID="$MIX_GOOGLE_ANALYTICS_ID" .
+docker build -t paulthebaud/phpunitgen-nginx -f ./docker/production/Dockerfile-nginxalpine --build-arg MIX_GOOGLE_ANALYTICS_ID="$MIX_GOOGLE_ANALYTICS_ID" .
 docker push paulthebaud/phpunitgen-nginx
 docker push paulthebaud/phpunitgen-phpfpm
 kubectl create namespace phpunitgen
