@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
-@import "../bootstrap/variables";
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
+@import "../bootstrap/variables";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/tooltip";
 //@import "~bootstrap/scss/utilities";
@@ -13,6 +13,8 @@
 @import "../themes";
 @import "../components/common/cookies-info";
 @import "../components/common/logo";
+
+@debug $theme-colors;
 
 * {
   -webkit-font-smoothing: antialiased;

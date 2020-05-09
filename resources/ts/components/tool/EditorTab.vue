@@ -64,6 +64,10 @@
           variant="danger"
           class="flex-grow-1 mr-2 mb-0"
         >
+          <FontAwesomeIcon
+            icon="exclamation-circle"
+            class="mr-2"
+          />
           {{ exceptionMessage }}
         </BAlert>
         <BButton

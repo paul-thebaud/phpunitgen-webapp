@@ -44,6 +44,10 @@
           variant="danger"
           :show="true"
         >
+          <FontAwesomeIcon
+            icon="wifi"
+            class="mr-2"
+          />
           {{ $t("views.tool.offline") }}
         </BAlert>
       </BCol>

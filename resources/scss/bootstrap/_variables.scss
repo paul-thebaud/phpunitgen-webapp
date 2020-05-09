@@ -1,10 +1,14 @@
-$font-family-sans-serif: "Source Sans Pro", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
-$font-family-monospace: "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base: $font-family-sans-serif !default;
-$variants: (
+$font-family-sans-serif: "Source Sans Pro", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-monospace: "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base: $font-family-sans-serif;
+$text-colors: (
         "primary",
         "secondary",
         "success",
         "warning",
-        "danger",
+);
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "danger": $danger,
 );

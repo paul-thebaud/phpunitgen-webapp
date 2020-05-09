@@ -5,7 +5,7 @@
   color: var(--muted-color) !important;
 }
 
-@each $variant in $variants {
+@each $variant in $text-colors {
   .text-#{$variant} {
     color: var(--#{$variant}-bg-color) !important;
   }

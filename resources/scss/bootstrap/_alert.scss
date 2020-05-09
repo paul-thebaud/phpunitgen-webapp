@@ -1,0 +1,11 @@
+.alert {
+  position: relative;
+  padding: $alert-padding-y $alert-padding-x;
+  margin-bottom: $alert-margin-bottom;
+  @include border-radius($alert-border-radius);
+}
+
+.alert.alert-danger {
+  background-color: #f98998;
+  color: #3e0012;
+}

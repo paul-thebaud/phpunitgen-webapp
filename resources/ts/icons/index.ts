@@ -7,6 +7,7 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons/faCircleNotch";
 import { faCog } from "@fortawesome/free-solid-svg-icons/faCog";
 import { faCopy } from "@fortawesome/free-solid-svg-icons/faCopy";
 import { faDownload } from "@fortawesome/free-solid-svg-icons/faDownload";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons/faExclamationCircle";
 import { faEye } from "@fortawesome/free-solid-svg-icons/faEye";
 import { faFileImport } from "@fortawesome/free-solid-svg-icons/faFileImport";
 import { faHome } from "@fortawesome/free-solid-svg-icons/faHome";
@@ -20,6 +21,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
 import { faTerminal } from "@fortawesome/free-solid-svg-icons/faTerminal";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
+import { faWifi } from "@fortawesome/free-solid-svg-icons/faWifi";
 
 library.add(
     faBars,
@@ -30,6 +32,7 @@ library.add(
     faCog,
     faCopy,
     faDownload,
+    faExclamationCircle,
     faEye,
     faFileImport,
     faHome,
@@ -43,4 +46,5 @@ library.add(
     faTerminal,
     faTimes,
     faTrash,
+    faWifi,
 );

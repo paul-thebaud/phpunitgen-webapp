@@ -37,12 +37,12 @@
         </BButton>
       </BCol>
     </BRow>
-    <BAlert
-      :show="! hasCode"
-      variant="warning"
+    <p
+      v-if="! hasCode"
+      class="text-center"
     >
       {{ $t("components.tool.generatedTab.missingCode") }}
-    </BAlert>
+    </p>
     <CodeEditor
       :show="hasCode"
       :code="test ? test.code : ''"
