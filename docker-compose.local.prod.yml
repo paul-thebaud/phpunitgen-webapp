@@ -3,7 +3,7 @@ services:
   phpunitgen-phpfpm:
     build:
       context: .
-      dockerfile: docker/Dockerfile-phpfpmalpine
+      dockerfile: docker/local/Dockerfile-phpfpmalpine
     container_name: phpunitgen-phpfpm
     restart: unless-stopped
     ports:

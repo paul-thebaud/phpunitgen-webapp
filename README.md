@@ -143,6 +143,15 @@ However, if you change any php dependencies you will need to rebuild the phpunit
 ```bash
 docker-compose -f ./docker-compose.local.dev.yml up --build
 ```
+
+### Production-like (Used to test on with an environment near the production architecture)
+
+This compose file will generate two container with less volumes. (Only your local certificates to enable https)
+
+```bash
+docker-compose -f ./docker-compose.local.prod.yml up --build
+```
+
 ## Installing with kubernetes
 
 ### Staging
@@ -155,14 +164,6 @@ kubectl apply -k kubernetes/staging/
 
 ```bash
 kubectl apply -k kubernetes/production/
-```
-
-### Production-like (Used to test on with an environment near the production architecture)
-
-This compose file will generate two container with less volumes. (Only your local certificates to enable https)
-
-```bash
-docker-compose -f ./docker-compose.local.prod.yml up --build
 ```
 
 ## Credits

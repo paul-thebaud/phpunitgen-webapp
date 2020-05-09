@@ -46,6 +46,6 @@ deploy:
     on:
       branch: develop
   - provider: script
-    script: bash docker_push_staging
+    script: bash docker_push_prod
     on:
       branch: master

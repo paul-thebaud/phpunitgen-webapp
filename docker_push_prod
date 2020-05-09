@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker build -t paulthebaud/phpunitgen-phpfpm -f ./docker/Dockerfile-phpfpmalpine .
+docker build -t paulthebaud/phpunitgen-phpfpm -f ./docker/production/Dockerfile-phpfpmalpine .
 docker build -t paulthebaud/phpunitgen-nginx -f ./docker/production/Dockerfile-nginxalpine .
 docker push paulthebaud/phpunitgen-nginx
 docker push paulthebaud/phpunitgen-phpfpm

@@ -1,0 +1,43 @@
+FROM node:alpine AS builder
+COPY . /app
+WORKDIR /app/
+RUN yarn install
+RUN yarn build
+
+FROM php:fpm-alpine
+
+#################################################
+#               Install depedencies             #
+#################################################
+RUN apk add libpng-dev wget
+RUN docker-php-ext-install gd bcmath
+
+#################################################
+#                   Workdir                     #
+#################################################
+
+COPY . /var/www
+WORKDIR /var/www
+COPY --from=builder /app/public /var/www/public
+RUN chown -R www-data:www-data \
+        /var/www/storage
+
+#################################################
+#                   Composer                    #
+#################################################
+
+RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O - -q | php -- --quiet
+RUN php composer.phar install --optimize-autoloader --no-dev --no-scripts \
+    && rm composer.phar
+
+#################################################
+#                   Artisan                     #
+#################################################
+RUN mv .env.example .env
+
+#################################################
+#                    Expose                     #
+#################################################
+
+#FPM
+EXPOSE 9000
