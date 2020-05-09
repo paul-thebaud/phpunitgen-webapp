@@ -58,27 +58,27 @@
       </div>
     </div>
     <div v-if="exceptionMessage !== null && ! loading">
-      <div class="d-flex mb-3">
-        <BAlert
-          :show="true"
-          variant="danger"
-          class="flex-grow-1 mr-2 mb-0"
-        >
+      <BAlert
+        :show="true"
+        variant="danger"
+      >
+        <div>
           <FontAwesomeIcon
             icon="exclamation-circle"
             class="mr-2"
           />
           {{ exceptionMessage }}
-        </BAlert>
-        <BButton
-          v-if="exception !== null"
-          variant="danger"
-          class="align-self-center"
-          @click="toggleShowExceptionEditor"
-        >
-          {{ showExceptionButtonLabel }}
-        </BButton>
-      </div>
+        </div>
+        <div class="text-center">
+          <BButton
+            variant="danger"
+            class="mt-2"
+            @click="toggleShowExceptionEditor"
+          >
+            {{ showExceptionButtonLabel }}
+          </BButton>
+        </div>
+      </BAlert>
       <CodeEditor
         v-if="showExceptionEditor"
         :code="JSON.stringify(exception, null, 2)"
