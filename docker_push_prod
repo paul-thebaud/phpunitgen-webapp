@@ -4,4 +4,5 @@ docker build -t paulthebaud/phpunitgen-phpfpm -f ./docker/Dockerfile-phpfpmalpin
 docker build -t paulthebaud/phpunitgen-nginx -f ./docker/production/Dockerfile-nginxalpine .
 docker push paulthebaud/phpunitgen-nginx
 docker push paulthebaud/phpunitgen-phpfpm
+kubectl create namespace phpunitgen
 kubectl apply -k kubernetes/production/
