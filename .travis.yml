@@ -39,7 +39,6 @@ script:
   - yarn prod-no-progress
   - phpdbg -qrr ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
   - sonar-scanner
-  - kubectl get pods
 
 deploy:
   - provider: script
@@ -47,6 +46,6 @@ deploy:
     on:
       branch: develop
   - provider: script
-    script: bash docker_push_prod
+    script: bash docker_push_staging
     on:
       branch: master
