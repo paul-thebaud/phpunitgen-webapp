@@ -125,7 +125,7 @@ PhpUnitGen s'intègre automatiquement à tous les projets Laravel `6` et plus lo
 en dépendance du projet.
 
 Si jamais vous avez désactivé la découverte des paquets via Laravel, il vous suffit d'ajouter le
-`provider` de PhpUnitGen à votre fichier de configuration de l'application :
+`provider` de PhpUnitGen à votre fichier de configuration `app.php` :
 
 ```php
 // config/app.php
