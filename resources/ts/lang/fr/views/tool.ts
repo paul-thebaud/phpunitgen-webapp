@@ -4,7 +4,7 @@ export default {
     "generatedTab": "Code généré",
     "nextUnlock": "Prochain thème",
     "unlockThemes": "Débloquez de nouveaux thèmes en générant vos tests !",
-    "allThemesUnlocked": "Félicitations ! Vous avez débloquez tous les thèmes !",
+    "allThemesUnlocked": "Félicitations ! Vous avez débloqué tous les thèmes !",
     "themeListLink": "Voir la liste des thèmes.",
     "offline": "Votre connexion internet semble ne pas fontionner, la génération de test n'est donc pas disponible.",
 };
