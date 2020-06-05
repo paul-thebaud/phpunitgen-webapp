@@ -18,7 +18,7 @@ php:
   - 7.4
 
 before_install:
-  - nvm install 13.2
+  - nvm install 14.2
 
 before_script:
   - phpenv config-rm xdebug.ini || echo "xdebug not available"
