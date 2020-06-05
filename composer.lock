@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "34b425b03f280650594bdac15c5f78c0",
+    "content-hash": "ee58bc6c85e8de94ecdcc707c57a8808",
     "packages": [
         {
             "name": "brick/math",
@@ -2734,32 +2734,31 @@
         },
         {
             "name": "roave/better-reflection",
-            "version": "4.4.0",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/BetterReflection.git",
-                "reference": "48b8cb8cbfae53481137079010a65b52474ba9d0"
+                "reference": "aa017e698b47feed410721f3d20e2bacfcba59d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/48b8cb8cbfae53481137079010a65b52474ba9d0",
-                "reference": "48b8cb8cbfae53481137079010a65b52474ba9d0",
+                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/aa017e698b47feed410721f3d20e2bacfcba59d5",
+                "reference": "aa017e698b47feed410721f3d20e2bacfcba59d5",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "jetbrains/phpstorm-stubs": "2019.3",
                 "nikic/php-parser": "^4.4.0",
-                "php": ">=7.4.1,<7.5.0",
+                "php": ">=7.2.0,<7.5.0",
                 "phpdocumentor/reflection-docblock": "^5.1.0",
                 "phpdocumentor/type-resolver": "^1.1.0",
                 "roave/signature": "^1.0"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^7.0.2",
-                "infection/infection": "^0.16.3",
                 "phpstan/phpstan": "^0.12.25",
-                "phpunit/phpunit": "^9.1.5",
+                "phpunit/phpunit": "^8.5.4",
                 "vimeo/psalm": "3.11.2"
             },
             "suggest": {
@@ -2803,7 +2802,7 @@
                 }
             ],
             "description": "Better Reflection - an improved code reflection API",
-            "time": "2020-06-04T18:24:24+00:00"
+            "time": "2020-05-28T14:10:32+00:00"
         },
         {
             "name": "roave/signature",
