@@ -120,7 +120,7 @@ phpunitgen -O
 
 ## Integration with Laravel
 
-PhpUnitGen integrates automatically to all Laravel `6` and more projects when installed
+PhpUnitGen integrates automatically to all Laravel `5.8` and up projects when installed
 as a composer dependency on the project.
 
 If you ever disabled package discovery via Laravel, just add the PhpUnitGen `provider` to your

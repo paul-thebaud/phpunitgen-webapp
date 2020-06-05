@@ -121,7 +121,7 @@ phpunitgen -O
 
 ## Intégration à Laravel
 
-PhpUnitGen s'intègre automatiquement à tous les projets Laravel `6` et plus lorsqu'il est installé
+PhpUnitGen s'intègre automatiquement à tous les projets Laravel `5.8` et supérieur lorsqu'il est installé
 en dépendance du projet.
 
 Si jamais vous avez désactivé la découverte des paquets via Laravel, il vous suffit d'ajouter le
