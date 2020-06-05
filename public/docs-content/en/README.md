@@ -37,7 +37,7 @@ Thank you!
 
 - [Paul Thébaud](https://github/paul-thebaud)
 - [Killian Hascoët](https://github.com/KillianH)
-- [Contributeurs GitHub](https://github.com/paul-thebaud/phpunitgen-core/graphs/contributors)
+- [GitHub contributors](https://github.com/paul-thebaud/phpunitgen-core/graphs/contributors)
 
 ## License
 
