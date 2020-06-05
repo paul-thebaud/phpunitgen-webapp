@@ -31,8 +31,8 @@ Launching the tool:
 If you use the command line tool or the core, you must satisfy
 the following requirements:
 
-- PHP `7.2` and up.
-- Laravel `6+` and up if you want to use
+- PHP `7.1` and up.
+- Laravel `5.8` and up if you want to use
 [the integration with Laravel](/en/command-line.md#integration-with-laravel).
 
 **Installation inside a project**
