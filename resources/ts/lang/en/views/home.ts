@@ -19,7 +19,7 @@ export default {
         "console": {
             "title": "Command line interface",
             "description": "Use PhpUnitGen on the command line for your projects. Install it on a Laravel application to have an automatic test generation when you call the \"make\" command!",
-            "button": "Read the documentation",
+            "button": "Install",
         },
         "webapp": {
             "title": "Web application",
