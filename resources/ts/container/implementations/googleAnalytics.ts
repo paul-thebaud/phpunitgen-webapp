@@ -110,7 +110,7 @@ export class GoogleAnalytics implements GoogleAnalyticsI {
     }
 
     /**
-     * Bootstrap and trigger "pageview" for Google Analytics.
+     * @inheritDoc
      */
     public activate(): void {
         if (this.isConfigured() && this.window.location.pathname.indexOf("/docs") !== 0) {
@@ -120,6 +120,20 @@ export class GoogleAnalytics implements GoogleAnalyticsI {
                     "page_path": router.currentRoute.path,
                     "page_location": window.location.href,
                 });
+            });
+        }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public generateEvent(isDefaultCode: boolean): void {
+        if (this.isConfigured() && this.isAccepted()) {
+            const eventLabel = `Code generation request: ${isDefaultCode ? "default" : "custom"}`;
+
+            (Vue as unknown as Vue).$gtag.event("generate", {
+                "event_category": "engagement",
+                "event_label": eventLabel,
             });
         }
     }

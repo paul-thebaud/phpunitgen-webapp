@@ -50,4 +50,12 @@ export interface GoogleAnalyticsI {
      * Bootstrap and trigger "pageview" for Google Analytics.
      */
     activate(): void;
+
+    /**
+     * Emit the event "Code generation request" when activated.
+     * Choose event name if it is default code or not.
+     *
+     * @param {boolean} isDefaultCode
+     */
+    generateEvent(isDefaultCode: boolean): void;
 }

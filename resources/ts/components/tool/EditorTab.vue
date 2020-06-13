@@ -192,12 +192,9 @@
         public handleGenerate(): void {
             this.$emit("generate", this.code);
 
-            if (this.googleAnalytics.isConfigured() && this.googleAnalytics.isAccepted()) {
-                this.$gtag.event("generate", {
-                    "event_category": "engagement",
-                    "event_label": "Code generation request",
-                });
-            }
+            this.googleAnalytics.generateEvent(
+                this.testGenerator !== undefined && this.code === this.testGenerator.example
+            );
         }
 
         public handleEditorChange(code: string): void {
