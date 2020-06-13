@@ -24,9 +24,15 @@ mix.webpackConfig(webpackConfig)
     .extract([
         "vue",
         "vue-i18n",
+        "vue-gtag",
+        "popper.js",
+        "vuex",
         "inversify",
         "reflect-metadata",
         "vue-property-decorator",
+        "vue-class-component",
+        "@fortawesome/fontawesome-svg-core",
+        "@fortawesome/vue-fontawesome",
     ])
     .js("resources/ts/entries/app.ts", "public/js")
     .js("resources/ts/entries/docs.ts", "public/js");
