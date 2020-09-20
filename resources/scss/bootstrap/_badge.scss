@@ -1,0 +1,9 @@
+@import "variables";
+@import "~bootstrap/scss/badge";
+
+@each $variant, $value in $theme-colors {
+  .badge.badge-#{$variant} {
+    background-color: var(--#{$variant}-bg-color) !important;
+    color: var(--#{$variant}-color) !important;
+  }
+}

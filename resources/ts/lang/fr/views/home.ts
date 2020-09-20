@@ -3,6 +3,8 @@ export default {
         "title": "Bienvenue sur PhpUnitGen",
         "description": "PhpUnitGen est un outil simple, puissant et modulaire pour générer vos squelettes de tests unitaires PHP.",
         "open-source": "C'est un logiciel gratuit et open-source.",
+        "new_title": "Nouveau",
+        "new_text": "Intégration avec Laravel 8 !",
     },
     "actions": {
         "online": "Utiliser en ligne",

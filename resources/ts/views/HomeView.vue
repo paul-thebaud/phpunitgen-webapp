@@ -12,6 +12,19 @@
           {{ $t("views.home.welcome.open-source") }}
         </div>
 
+        <div class="mt-2">
+          <BBadge
+            class="mr-1"
+            variant="primary"
+            pill
+          >
+            {{ $t("views.home.welcome.new_title") }}
+          </BBadge>
+          <strong>
+            {{ $t("views.home.welcome.new_text") }}
+          </strong>
+        </div>
+
         <BRow class="home-actions justify-content-center">
           <div class="px-1 text-md-right d-block w-100 w-md-auto">
             <BButton
@@ -178,9 +191,9 @@
 <script lang="ts">
     import Vue from "vue";
     import HomeCard from "@/components/home/HomeCard.vue";
-    import { Component, Inject } from "vue-property-decorator";
-    import { LocaleI } from "@/container/contracts/localeI";
-    import { TYPES } from "@/container/types";
+    import {Component, Inject} from "vue-property-decorator";
+    import {LocaleI} from "@/container/contracts/localeI";
+    import {TYPES} from "@/container/types";
     import HomeVideo from "@/components/home/HomeVideo.vue";
 
     @Component({

@@ -1,5 +1,6 @@
 import Vue from "vue";
 import { AlertPlugin } from "bootstrap-vue/src/components/alert";
+import { BadgePlugin } from "bootstrap-vue/src/components/badge";
 import { ButtonPlugin } from "bootstrap-vue/src/components/button";
 import { CardPlugin } from "bootstrap-vue/src/components/card";
 import { CollapsePlugin } from "bootstrap-vue/src/components/collapse";
@@ -15,6 +16,7 @@ import { ToastPlugin } from "bootstrap-vue/src/components/toast";
 import { TooltipPlugin } from "bootstrap-vue/src/components/tooltip";
 
 Vue.use(AlertPlugin);
+Vue.use(BadgePlugin);
 Vue.use(ButtonPlugin);
 Vue.use(CardPlugin);
 Vue.use(CollapsePlugin);
