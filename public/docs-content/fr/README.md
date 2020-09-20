@@ -13,7 +13,7 @@ L'outil est décomposé en trois répertoires GitHub.
 
 Voici les informations que vous pourrez trouver dans cette documentation :
 
-- [Description du fonctionnement de l'outil](/fr/how-does-it-works.md)
+- [Description du fonctionnement de l'outil](/fr/how-does-it-work.md)
 - [Configuration de l'outil](/fr/configuration.md)
 - [Comment utiliser l'application en ligne ou l'API ?](/fr/webapp.md)
     - [Démarrage rapide avec l'application web](/fr/webapp.md#démarrage-rapide)

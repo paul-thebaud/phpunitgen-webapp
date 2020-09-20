@@ -12,7 +12,7 @@ The tool is divided into three GitHub repositories.
 
 Here is the information you can find in this documentation:
 
-- [Description of the tool's operation](/en/how-does-it-works.md)
+- [Description of the tool's operation](/en/how-does-it-work.md)
 - [Configuration of the tool](/en/configuration.md)
 - [How to use the online application or API?](/en/webapp.md)
     - [Getting started with the web application](/en/webapp.md#getting-started)
