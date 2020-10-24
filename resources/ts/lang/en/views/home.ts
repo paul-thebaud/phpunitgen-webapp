@@ -10,6 +10,7 @@ export default {
         "online": "Use online",
         "try_online": "Try the online tool",
         "documentation": "Read the documentation",
+        "install": "Install the tool",
     },
     "features": {
         "title": "Several platforms for all uses",

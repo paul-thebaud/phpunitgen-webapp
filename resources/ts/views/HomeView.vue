@@ -43,13 +43,13 @@
             <BButton
               class="px-4 py-3 rounded-pill"
               size="lg"
-              :href="locale.localizedDocs()"
+              :href="locale.localizedDocs('command-line')"
             >
               <FontAwesomeIcon
                 class="mr-2"
-                icon="book"
+                icon="terminal"
               />
-              {{ $t("views.home.actions.documentation") }}
+              {{ $t("views.home.actions.install") }}
             </BButton>
           </div>
         </BRow>
@@ -173,11 +173,11 @@
                   {{ $t("views.home.actions.try_online") }}
                 </BButton>
                 <BButton
-                  :href="locale.localizedDocs()"
+                  :href="locale.localizedDocs('command-line')"
                   variant="secondary"
                   class="mt-2 mt-lg-0 ml-lg-1 py-2 px-4"
                 >
-                  {{ $t("views.home.actions.documentation") }}
+                  {{ $t("views.home.actions.install") }}
                 </BButton>
               </div>
             </BCol>

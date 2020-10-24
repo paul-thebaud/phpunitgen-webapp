@@ -10,6 +10,7 @@ export default {
         "online": "Utiliser en ligne",
         "try_online": "Essayer l'outil en ligne",
         "documentation": "Lire la documentation",
+        "install": "Installer l'outil",
     },
     "features": {
         "title": "Plusieurs plateformes pour tous les usages",
