@@ -1,5 +1,5 @@
 * [About](/en/)
-* [How does it works?](/en/how-does-it-work.md)
+* [How does it work?](/en/how-does-it-work.md)
 * [Configuration](/en/configuration.md)
 * [Web application & API](/en/webapp.md)
 * [Command line interface](/en/command-line.md)
