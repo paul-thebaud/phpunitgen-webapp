@@ -51,6 +51,12 @@
 
 <div id="cookies-info"></div>
 
+<script>
+    var PHPUNITGEN_VERSIONS = @json([
+        'web'  => \PhpUnitGen\WebApp\Helpers\PhpUnitGenVersions::getWebVersion(),
+        'core' => \PhpUnitGen\WebApp\Helpers\PhpUnitGenVersions::getCoreVersion(),
+    ]);
+</script>
 <script
         type="text/javascript"
         src="{{ mix('js/manifest.js') }}"

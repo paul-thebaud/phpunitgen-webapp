@@ -1,7 +1,10 @@
 <template>
   <footer class="py-5">
     <BContainer>
-      <PhpUnitGenLogo class="mb-4" />
+      <PhpUnitGenLogo class="mb-2" />
+      <p class="small">
+        {{ $t("layout.footer.versions", versions) }}
+      </p>
       <BRow>
         <FooterNavColumn
           v-for="(linksList, key) in links"
@@ -17,10 +20,15 @@
 <script lang="ts">
     import Vue from "vue";
     import FooterNavColumn from "@/components/layout/FooterNavColumn.vue";
-    import { Component, Inject, Watch } from "vue-property-decorator";
-    import { LocaleI } from "@/container/contracts/localeI";
-    import { TYPES } from "@/container/types";
+    import {Component, Inject, Watch} from "vue-property-decorator";
+    import {LocaleI} from "@/container/contracts/localeI";
+    import {TYPES} from "@/container/types";
     import PhpUnitGenLogo from "@/components/common/PhpUnitGenLogo.vue";
+
+    declare const PHPUNITGEN_VERSIONS: {
+        core: string;
+        web: string;
+    };
 
     @Component({
         components: {
@@ -31,6 +39,8 @@
     export default class FooterNav extends Vue {
         @Inject(TYPES.Locale)
         protected readonly locale!: LocaleI;
+
+        protected versions = {...PHPUNITGEN_VERSIONS};
 
         protected links = {};
 
@@ -76,11 +86,11 @@
                 legal: [
                     {
                         title: this.$t("layout.footer.legal.links.cookies"),
-                        href: { name: "cookies" },
+                        href: {name: "cookies"},
                     },
                     {
                         title: this.$t("layout.footer.legal.links.terms"),
-                        href: { name: "legal" },
+                        href: {name: "legal"},
                     },
                 ],
             };

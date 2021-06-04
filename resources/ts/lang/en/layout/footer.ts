@@ -1,4 +1,5 @@
 export default {
+    "versions": "Version {web} (core {core})",
     "legal": {
         "title": "Legal",
         "links": {
