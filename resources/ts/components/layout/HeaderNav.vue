@@ -87,7 +87,7 @@
         </BNavbarNav>
         <BButton
           :to="{ name: 'tool' }"
-          class="mt-2 mt-lg-0 rounded-pill px-4 py-2"
+          class="mt-2 mt-lg-0 px-4 py-2"
           @click="handleCloseNavIfNeeded"
         >
           {{ $t("layout.header.useOnline") }}

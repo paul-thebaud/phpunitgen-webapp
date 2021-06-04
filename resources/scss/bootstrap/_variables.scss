@@ -1,14 +1,29 @@
 $font-family-sans-serif: "Source Sans Pro", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 $font-family-monospace: "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 $font-family-base: $font-family-sans-serif;
+
 $text-colors: (
         "primary",
         "secondary",
         "success",
         "warning",
 );
+
 $theme-colors: (
         "primary": $primary,
         "secondary": $secondary,
         "danger": $danger,
 );
+
+$border-radius: .6rem;
+$border-radius-lg: .65rem;
+$border-radius-sm: .55rem;
+$btn-border-radius: $border-radius;
+$btn-border-radius-lg: $border-radius-lg;
+$btn-border-radius-sm: $border-radius-sm;
+$input-border-radius: $border-radius;
+$input-border-radius-lg: $border-radius-lg;
+$input-border-radius-sm: $border-radius-sm;
+$custom-select-border-radius: $border-radius;
+$dropdown-border-radius: $border-radius;
+$card-border-radius: $border-radius;

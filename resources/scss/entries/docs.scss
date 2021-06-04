@@ -33,7 +33,7 @@ body {
       }
 
       .input-wrap > input {
-        border-radius: 0.25rem;
+        border-radius: $border-radius;
         background-color: var(--secondary-bg-color);
         color: var(--base-color);
 
@@ -69,9 +69,10 @@ body {
     }
 
     p.tip, blockquote {
-      border-radius: 0.25rem;
+      border-radius: $border-radius;
       background-color: var(--secondary-bg-color);
       color: var(--secondary-color) !important;
+      border-left-width: $border-radius;
 
       code {
         background-color: var(--base-bg-color);
@@ -99,11 +100,11 @@ body {
     }
 
     > pre {
-      border-radius: 0.25rem;
+      border-radius: $border-radius;
       background-color: var(--secondary-bg-color);
 
       .docsify-copy-code-button {
-        border-bottom-left-radius: 0.25rem;
+        border-bottom-left-radius: $border-radius;
       }
     }
   }

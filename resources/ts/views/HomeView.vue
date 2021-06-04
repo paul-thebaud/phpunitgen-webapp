@@ -29,8 +29,9 @@
           <div class="px-1 text-md-right d-block w-100 w-md-auto">
             <BButton
               :to="{ name: 'tool' }"
-              class="px-4 py-3 rounded-pill"
+              class="px-4 py-3"
               size="lg"
+              pill
             >
               <FontAwesomeIcon
                 class="mr-2"
@@ -41,9 +42,10 @@
           </div>
           <div class="px-1 text-md-left mt-2 mt-md-0 d-block w-md-100">
             <BButton
-              class="px-4 py-3 rounded-pill"
+              class="px-4 py-3"
               size="lg"
               :href="locale.localizedDocs('command-line')"
+              pill
             >
               <FontAwesomeIcon
                 class="mr-2"

@@ -2,7 +2,7 @@
 
 .toast {
   border: none;
-  border-radius: 0.25rem;
+  border-radius: $border-radius;
 
   .close {
     color: var(--secondary-color);
