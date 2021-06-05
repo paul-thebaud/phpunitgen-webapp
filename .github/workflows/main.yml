@@ -31,14 +31,6 @@ jobs:
           composer install --no-interaction --no-suggest --no-progress
           yarn install --non-interactive
           
-      - name: install
-        run: |
-          curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-          chmod +x ./kubectl
-          sudo mv ./kubectl /usr/local/bin/kubectl
-          mkdir ${HOME}/.kube
-          echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
-          
       - name: script
         run: |
           yarn lint
@@ -54,3 +46,52 @@ jobs:
           
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1.6
+      
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          
+      - name: Build and push
+        id: docker_build_php
+        uses: docker/build-push-action@v2
+        with:
+          file: ./docker/production/Dockerfile-phpfpmalpine
+          build-args: MIX_GOOGLE_ANALYTICS_ID="$MIX_GOOGLE_ANALYTICS_ID"
+          push: true
+          tags: paulthebaud/phpunitgen-phpfpm
+          
+      - name: Build and push
+        id: docker_build_nginx
+        uses: docker/build-push-action@v2
+        with:
+          file: ./docker/production/Dockerfile-nginxalpine
+          build-args: MIX_GOOGLE_ANALYTICS_ID="$MIX_GOOGLE_ANALYTICS_ID"
+          push: true
+          tags: paulthebaud/phpunitgen-nginx
+          
+      - uses: azure/k8s-set-context@v1
+        with:
+          method: kubeconfig
+          kubeconfig: $KUBE_CONFIG
+        id: setcontext
+        
+      - uses: Azure/k8s-deploy@v1.4
+        with:
+          namespace: 'phpunitgen'
+          manifests: |
+            https.yml
+            issuer.yml
+            phpfpm/deployment.yml
+            phpfpm/service.yml
+            nginx/deployment.yml
+            nginx/service.yml
+            nginx/ingress.yml
+            nginx/certificate.yml
