@@ -43,7 +43,7 @@ jobs:
         run: |
           yarn lint
           yarn build
-          phpdbg -qrr ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
+          phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
           
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1.6
