@@ -1,41 +1,39 @@
-# This is a basic workflow to help you get started with Actions
+name: CICD
 
-name: CI
-
-# Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
+      - name: Setup PHP Action
+        uses: shivammathur/setup-php@2.11.0
+        with:
+          php-version: 7.4
+          
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 14.2
+          
       - name: before_install
         run: nvm install 14.2
-
-      # Runs a set of commands using the runners shell
+        
       - name: before_script
         run: |
           phpenv config-rm xdebug.ini || echo "xdebug not available"
           composer self-update
           composer install --no-interaction --no-suggest --no-progress
           yarn install --non-interactive
+          
       - name: install
         run: |
           curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
@@ -43,10 +41,12 @@ jobs:
           sudo mv ./kubectl /usr/local/bin/kubectl
           mkdir ${HOME}/.kube
           echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
+          
       - name: script
         run: |
           yarn lint
           yarn build
           phpdbg -qrr ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
+          
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1.6
