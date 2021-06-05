@@ -43,7 +43,14 @@ jobs:
         run: |
           yarn lint
           yarn build
-          phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
+          
+      - name: phpunit
+        uses: php-actions/phpunit@v2
+        with:
+          version: 9.2
+          php_version: 7.4
+          configuration: phpunit.xml.dist
+          log_junit: test-report.xml
           
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1.6
