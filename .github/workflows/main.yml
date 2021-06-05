@@ -23,9 +23,6 @@ jobs:
         uses: actions/setup-node@v2.1.5
         with:
           node-version: 14.2
-          
-      - name: before_install
-        run: nvm install 14.2
         
       - name: before_script
         run: |
