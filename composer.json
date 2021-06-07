@@ -24,7 +24,7 @@
     }
   ],
   "require": {
-    "php": "7.4.*",
+    "php": "^7.4.7",
     "ext-json": "*",
     "laravel/lumen-framework": "^8.0",
     "ocramius/package-versions": "^2.1",
