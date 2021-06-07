@@ -43,7 +43,9 @@ jobs:
           coverage: xdebug
           
       - name: phpunit
-        run: ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
+        run: |
+          ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
+          sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage-report.clover
           
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1.6
