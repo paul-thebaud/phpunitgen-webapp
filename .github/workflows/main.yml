@@ -46,7 +46,10 @@ jobs:
           
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1.6
-      
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       
@@ -67,6 +70,8 @@ jobs:
           build-args: MIX_GOOGLE_ANALYTICS_ID="$MIX_GOOGLE_ANALYTICS_ID"
           push: true
           tags: paulthebaud/phpunitgen-phpfpm
+        env:
+          MIX_GOOGLE_ANALYTICS_ID: ${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
           
       - name: Build and push
         id: docker_build_nginx
@@ -76,11 +81,13 @@ jobs:
           build-args: MIX_GOOGLE_ANALYTICS_ID="$MIX_GOOGLE_ANALYTICS_ID"
           push: true
           tags: paulthebaud/phpunitgen-nginx
+        env:
+          MIX_GOOGLE_ANALYTICS_ID: ${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
           
       - uses: azure/k8s-set-context@v1
         with:
           method: kubeconfig
-          kubeconfig: $KUBE_CONFIG
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
         id: setcontext
         
       - uses: Azure/k8s-deploy@v1.4
