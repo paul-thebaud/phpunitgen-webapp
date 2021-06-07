@@ -95,11 +95,11 @@ jobs:
         with:
           namespace: 'phpunitgen'
           manifests: |
-            https.yml
-            issuer.yml
-            phpfpm/deployment.yml
-            phpfpm/service.yml
-            nginx/deployment.yml
-            nginx/service.yml
-            nginx/ingress.yml
-            nginx/certificate.yml
+            kubernetes/production/https.yml
+            kubernetes/production/issuer.yml
+            kubernetes/production/phpfpm/deployment.yml
+            kubernetes/production/phpfpm/service.yml
+            kubernetes/production/nginx/deployment.yml
+            kubernetes/production/nginx/service.yml
+            kubernetes/production/nginx/ingress.yml
+            kubernetes/production/nginx/certificate.yml
