@@ -23,6 +23,8 @@
             stop-color="var(--gradient-stop-color)"
             inner-stroke-color="var(--secondary-bg-color)"
             :diameter="100"
+            :stroke-width="12"
+            :inner-stroke-width="12"
             :completed-steps="generationsCount"
             :total-steps="totalSteps"
           >

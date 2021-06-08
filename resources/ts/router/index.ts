@@ -1,22 +1,22 @@
 import Vue, { Component, CreateElement, RenderContext, VNode } from "vue";
 import VueRouter, { Route } from "vue-router";
 import { Position } from "vue-router/types/router";
-import { AsyncComponentFactory, AsyncComponentPromise } from "vue/types/options";
+import { AsyncComponentFactory, ImportedComponent } from "vue/types/options";
 import AsyncLoadingComponent from "@/components/async/AsyncLoadingComponent.vue";
 import AsyncErrorComponent from "@/components/async/AsyncErrorComponent.vue";
 
 /**
  * Lazy load a view with loading and error components.
  *
- * @param {AsyncComponentPromise} AsyncView
+ * @param {Promise<ImportedComponent>} AsyncView
  *
  * @returns {() => Promise<Component>}
  *
  * @see https://github.com/vuejs/vuejs.org/issues/1534
  */
-function lazyLoadView(AsyncView: AsyncComponentPromise): () => Promise<Component> {
-    const AsyncHandler: AsyncComponentFactory<unknown, unknown, unknown, unknown> = () => ({
-        component: AsyncView,
+function lazyLoadView(AsyncView: Promise<ImportedComponent>): () => Promise<Component> {
+    const AsyncHandler: AsyncComponentFactory = () => ({
+        component: AsyncView as Promise<ImportedComponent>,
         loading: AsyncLoadingComponent,
         delay: 200,
         error: AsyncErrorComponent,
@@ -56,56 +56,56 @@ const routes = [
         path: "/",
         name: "home",
         component: lazyLoadView(
-            import(/* webpackChunkName: "home-view" */"../views/HomeView.vue") as unknown as AsyncComponentPromise,
+            import(/* webpackChunkName: "home-view" */"../views/HomeView.vue") as Promise<ImportedComponent>,
         ),
     },
     {
         path: "/tool",
         name: "tool",
         component: lazyLoadView(
-            import(/* webpackChunkName: "tool-view" */"../views/ToolView.vue") as unknown as AsyncComponentPromise,
+            import(/* webpackChunkName: "tool-view" */"../views/ToolView.vue") as Promise<ImportedComponent>,
         ),
     },
     {
         path: "/themes",
         name: "themes",
         component: lazyLoadView(
-            import(/* webpackChunkName: "themes-view" */"../views/ThemesView.vue") as unknown as AsyncComponentPromise,
+            import(/* webpackChunkName: "themes-view" */"../views/ThemesView.vue") as Promise<ImportedComponent>,
         ),
     },
     {
         path: "/configuration",
         name: "configuration",
         component: lazyLoadView(
-            import(/* webpackChunkName: "configuration-view" */"../views/ConfigurationView.vue") as unknown as AsyncComponentPromise,
+            import(/* webpackChunkName: "configuration-view" */"../views/ConfigurationView.vue") as Promise<ImportedComponent>,
         ),
     },
     {
         path: "/cookies",
         name: "cookies",
         component: lazyLoadView(
-            import(/* webpackChunkName: "cookies-view" */"../views/CookiesView.vue") as unknown as AsyncComponentPromise,
+            import(/* webpackChunkName: "cookies-view" */"../views/CookiesView.vue") as Promise<ImportedComponent>,
         ),
     },
     {
         path: "/legal",
         name: "legal",
         component: lazyLoadView(
-            import(/* webpackChunkName: "legal-view" */"../views/LegalView.vue") as unknown as AsyncComponentPromise,
+            import(/* webpackChunkName: "legal-view" */"../views/LegalView.vue") as Promise<ImportedComponent>,
         ),
     },
     {
         path: "/unicorn",
         name: "unicorn",
         component: lazyLoadView(
-            import(/* webpackChunkName: "unicorn-view" */"../views/UnicornView.vue") as unknown as AsyncComponentPromise,
+            import(/* webpackChunkName: "unicorn-view" */"../views/UnicornView.vue") as Promise<ImportedComponent>,
         ),
     },
     {
         path: "*",
         name: "not-found",
         component: lazyLoadView(
-            import(/* webpackChunkName: "not-found-view" */"../views/NotFoundView.vue") as unknown as AsyncComponentPromise,
+            import(/* webpackChunkName: "not-found-view" */"../views/NotFoundView.vue") as Promise<ImportedComponent>,
         ),
     },
 ];
