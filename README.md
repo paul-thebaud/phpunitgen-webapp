@@ -1,7 +1,7 @@
 <p align="center"><img src="https://raw.githubusercontent.com/paul-thebaud/phpunitgen-webapp/master/resources/svg/logo.svg?sanitize=true" alt="PhpUnitGen" height="50"></p>
 
 <p align="center">
-<a href="https://travis-ci.org/paul-thebaud/phpunitgen-webapp" target="_blank"><img src="https://travis-ci.org/paul-thebaud/phpunitgen-webapp.svg?branch=master" alt="Build Status"></a>
+<a href="https://github.com/paul-thebaud/phpunitgen-webapp/actions/workflows/main.yml" target="_blank"><img src="https://github.com/paul-thebaud/phpunitgen-webapp/actions/workflows/main.yml/badge.svg" alt="Build Status"></a>
 <a href="https://github.styleci.io/repos/190246860" target="_blank"><img src="https://github.styleci.io/repos/190246860/shield?branch=master&style=flat" alt="StyleCI"></a>
 <a href="https://sonarcloud.io/dashboard?id=paul-thebaud_phpunitgen-webapp" target="_blank"><img src="https://sonarcloud.io/api/project_badges/measure?project=paul-thebaud_phpunitgen-webapp&metric=alert_status" alt="Quality Gate Status"></a>
 <a href="https://sonarcloud.io/dashboard?id=paul-thebaud_phpunitgen-webapp" target="_blank"><img src="https://sonarcloud.io/api/project_badges/measure?project=paul-thebaud_phpunitgen-webapp&metric=coverage" alt="Coverage"></a>
