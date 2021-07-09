@@ -87,21 +87,8 @@ jobs:
         env:
           MIX_GOOGLE_ANALYTICS_ID: ${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
           
-      - uses: azure/k8s-set-context@v1
+      - name: Update deployment
+        uses: steebchen/kubectl@v2.0.0
         with:
-          method: kubeconfig
-          kubeconfig: ${{ secrets.KUBE_CONFIG }}
-        id: setcontext
-        
-      - uses: Azure/k8s-deploy@v1.4
-        with:
-          namespace: 'phpunitgen'
-          manifests: |
-            kubernetes/production/https.yml
-            kubernetes/production/issuer.yml
-            kubernetes/production/phpfpm/deployment.yml
-            kubernetes/production/phpfpm/service.yml
-            kubernetes/production/nginx/deployment.yml
-            kubernetes/production/nginx/service.yml
-            kubernetes/production/nginx/ingress.yml
-            kubernetes/production/nginx/certificate.yml
+          config: ${{ secrets.KUBE_CONFIG }}
+          command: apply -k kubernetes/production/
