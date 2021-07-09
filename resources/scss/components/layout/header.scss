@@ -11,6 +11,11 @@ nav.navbar {
     display: none;
   }
 
+  .when-opened, .when-closed {
+    width: 18px;
+    height: 18px;
+  }
+
   &, svg.phpunitgen-logo {
     transition: 400ms ease-out;
   }
