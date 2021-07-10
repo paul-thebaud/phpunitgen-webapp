@@ -5,48 +5,43 @@ on:
     branches:
       - master
       - develop
-
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - name: Setup PHP Action
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
         uses: shivammathur/setup-php@2.11.0
         with:
           php-version: 7.4
-          
-      - name: Setup Node.js environment
+          coverage: xdebug
+
+      - name: Setup Node.js
         uses: actions/setup-node@v2.1.5
         with:
           node-version: 14.2
-        
-      - name: before_script
+
+      - name: Install dependencies
         run: |
-          phpenv config-rm xdebug.ini || echo "xdebug not available"
           composer self-update
-          composer install --no-interaction --no-suggest --no-progress
+          composer install --no-interaction --no-progress
           yarn install --non-interactive
-          
-      - name: script
+
+      - name: JS - Lint and Build
         run: |
           yarn lint
           yarn build
-          
-      - name: Setup PHP with Xdebug
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '7.4'
-          coverage: xdebug
-          
-      - name: phpunit
-        run: |
-          ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
-          sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage-report.clover
-          
+
+      - name: PHP - Execute tests
+        run: vendor/bin/phpunit -c phpunit.xml.dist
+
+      - name: Prepare SonarCloud Scan
+        run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' .coverage/clover.xml
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1.6
         env:
@@ -55,17 +50,17 @@ jobs:
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
-      
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      
+
       - name: Login to DockerHub
-        uses: docker/login-action@v1 
+        uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          
-      - name: Build and push
+
+      - name: Production - Build and push PHP FPM
         id: docker_build_php
         uses: docker/build-push-action@v2
         if: github.ref == 'refs/heads/master'
@@ -76,8 +71,8 @@ jobs:
           tags: paulthebaud/phpunitgen-phpfpm:latest
         env:
           MIX_GOOGLE_ANALYTICS_ID: ${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
-          
-      - name: Build and push
+
+      - name: Production - Build and push Nginx
         id: docker_build_nginx
         uses: docker/build-push-action@v2
         if: github.ref == 'refs/heads/master'
@@ -89,7 +84,7 @@ jobs:
         env:
           MIX_GOOGLE_ANALYTICS_ID: ${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
 
-      - name: Build and push
+      - name: Staging - Build and push PHP FPM
         id: docker_build_php_staging
         uses: docker/build-push-action@v2
         if: github.ref == 'refs/heads/develop'
@@ -100,8 +95,8 @@ jobs:
           tags: paulthebaud/phpunitgen-phpfpm:latest
         env:
           MIX_GOOGLE_ANALYTICS_ID: ${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
-          
-      - name: Build and push
+
+      - name: Staging - Build and push Nginx
         id: docker_build_nginx_staging
         uses: docker/build-push-action@v2
         if: github.ref == 'refs/heads/develop'
@@ -113,42 +108,42 @@ jobs:
         env:
           MIX_GOOGLE_ANALYTICS_ID: ${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
 
-      - name: Update deployment
+      - name: Production - Update deployment
         uses: steebchen/kubectl@v2.0.0
         if: github.ref == 'refs/heads/master'
         with:
           config: ${{ secrets.KUBE_CONFIG }}
           command: apply -k kubernetes/production/
 
-      - name: Update deployment_staging
+      - name: Staging - Update deployment
         uses: steebchen/kubectl@v2.0.0
         if: github.ref == 'refs/heads/develop'
         with:
           config: ${{ secrets.KUBE_CONFIG }}
           command: apply -k kubernetes/staging/
 
-      - name: Restart deployment
+      - name: Production - Restart deployment PHP FPM
         uses: steebchen/kubectl@v2.0.0
         if: github.ref == 'refs/heads/master'
         with:
           config: ${{ secrets.KUBE_CONFIG }}
           command: rollout restart deployment/phpunitgen-phpfpm --namespace=phpunitgen
 
-      - name: Restart deployment_staging
+      - name: Staging - Restart deployment PHP FPM
         uses: steebchen/kubectl@v2.0.0
         if: github.ref == 'refs/heads/develop'
         with:
           config: ${{ secrets.KUBE_CONFIG }}
           command: rollout restart deployment/phpunitgen-phpfpm-staging --namespace=phpunitgen-staging
 
-      - name: Restart deployment nginx
+      - name: Production - Restart deployment Nginx
         uses: steebchen/kubectl@v2.0.0
         if: github.ref == 'refs/heads/master'
         with:
           config: ${{ secrets.KUBE_CONFIG }}
           command: rollout restart deployment/phpunitgen-nginx --namespace=phpunitgen
 
-      - name: Restart deployment_staging nginx
+      - name: Staging - Restart deployment Nginx
         uses: steebchen/kubectl@v2.0.0
         if: github.ref == 'refs/heads/develop'
         with:
