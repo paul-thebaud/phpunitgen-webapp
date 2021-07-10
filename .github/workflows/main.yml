@@ -8,8 +8,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
+    name: Set up
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -31,14 +32,27 @@ jobs:
           composer install --no-interaction --no-progress
           yarn install --non-interactive
 
-      - name: JS - Lint and Build
-        run: |
-          yarn lint
-          yarn build
-
-      - name: PHP - Execute tests
+  php-tests:
+    runs-on: ubuntu-latest
+    needs: setup
+    name: PHP Tests
+    steps:
+      - name: Execute tests
         run: vendor/bin/phpunit -c phpunit.xml.dist
 
+  js-tests:
+    runs-on: ubuntu-latest
+    needs: setup
+    name: JS Tests
+    steps:
+      - name: Execute lint
+        run: yarn lint
+
+  sonar-scan:
+    runs-on: ubuntu-latest
+    needs: php-tests
+    name: Sonar Scan
+    steps:
       - name: Prepare SonarCloud Scan
         run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' .coverage/clover.xml
 
@@ -47,6 +61,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  build:
+    runs-on: ubuntu-latest
+    needs: php-tests
+    name: Build
+    steps:
+      - name: Build JS
+        run: yarn build
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -92,7 +114,7 @@ jobs:
           file: ./docker/production/Dockerfile-phpfpmalpine
           build-args: MIX_GOOGLE_ANALYTICS_ID="$MIX_GOOGLE_ANALYTICS_ID"
           push: true
-          tags: paulthebaud/phpunitgen-phpfpm:latest
+          tags: paulthebaud/phpunitgen-phpfpm:staging
         env:
           MIX_GOOGLE_ANALYTICS_ID: ${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
 
@@ -104,7 +126,7 @@ jobs:
           file: ./docker/production/Dockerfile-nginxalpine
           build-args: MIX_GOOGLE_ANALYTICS_ID="$MIX_GOOGLE_ANALYTICS_ID"
           push: true
-          tags: paulthebaud/phpunitgen-nginx:latest
+          tags: paulthebaud/phpunitgen-nginx:staging
         env:
           MIX_GOOGLE_ANALYTICS_ID: ${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
 
