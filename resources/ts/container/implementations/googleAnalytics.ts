@@ -2,13 +2,9 @@ import Vue from "vue";
 import { inject, injectable } from "inversify";
 import { bootstrap } from "vue-gtag";
 import { GoogleAnalyticsI } from "@/container/contracts/googleAnalyticsI";
-import { Dictionary } from "@/utils/types";
 import { TYPES } from "@/container/types";
 import router from "@/router";
 import Cookies from "js-cookie";
-
-// Declare process to avoid TS compilation errors.
-declare const process: { env: Dictionary<string | undefined> };
 
 // The storage key used to store accept status.
 const cookieStorageKey = "phpunitgen_ga";

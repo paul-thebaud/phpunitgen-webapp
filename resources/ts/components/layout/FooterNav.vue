@@ -4,6 +4,8 @@
       <PhpUnitGenLogo class="mb-2" />
       <p class="small">
         {{ $t("layout.footer.versions", versions) }}
+        <br>
+        {{ $t("layout.footer.buildDateTime", { buildDateTime }) }}
       </p>
       <BRow>
         <FooterNavColumn
@@ -20,9 +22,9 @@
 <script lang="ts">
     import Vue from "vue";
     import FooterNavColumn from "@/components/layout/FooterNavColumn.vue";
-    import {Component, Inject, Watch} from "vue-property-decorator";
-    import {LocaleI} from "@/container/contracts/localeI";
-    import {TYPES} from "@/container/types";
+    import { Component, Inject, Watch } from "vue-property-decorator";
+    import { LocaleI } from "@/container/contracts/localeI";
+    import { TYPES } from "@/container/types";
     import PhpUnitGenLogo from "@/components/common/PhpUnitGenLogo.vue";
 
     declare const PHPUNITGEN_VERSIONS: {
@@ -40,7 +42,9 @@
         @Inject(TYPES.Locale)
         protected readonly locale!: LocaleI;
 
-        protected versions = {...PHPUNITGEN_VERSIONS};
+        protected versions = { ...PHPUNITGEN_VERSIONS };
+
+        protected buildDateTime = process.env.BUILD_DATETIME;
 
         protected links = {};
 
@@ -86,11 +90,11 @@
                 legal: [
                     {
                         title: this.$t("layout.footer.legal.links.cookies"),
-                        href: {name: "cookies"},
+                        href: { name: "cookies" },
                     },
                     {
                         title: this.$t("layout.footer.legal.links.terms"),
-                        href: {name: "legal"},
+                        href: { name: "legal" },
                     },
                 ],
             };
