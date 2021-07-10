@@ -8,9 +8,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup:
+  build:
     runs-on: ubuntu-latest
-    name: Set up
+    name: Build
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -32,27 +32,12 @@ jobs:
           composer install --no-interaction --no-progress
           yarn install --non-interactive
 
-  php-tests:
-    runs-on: ubuntu-latest
-    needs: setup
-    name: PHP Tests
-    steps:
       - name: Execute tests
         run: vendor/bin/phpunit -c phpunit.xml.dist
 
-  js-tests:
-    runs-on: ubuntu-latest
-    needs: setup
-    name: JS Tests
-    steps:
       - name: Execute lint
         run: yarn lint
 
-  sonar-scan:
-    runs-on: ubuntu-latest
-    needs: php-tests
-    name: Sonar Scan
-    steps:
       - name: Prepare SonarCloud Scan
         run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' .coverage/clover.xml
 
@@ -62,11 +47,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  build:
-    runs-on: ubuntu-latest
-    needs: php-tests
-    name: Build
-    steps:
       - name: Build JS
         run: yarn build
 
