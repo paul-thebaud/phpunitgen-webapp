@@ -32,11 +32,14 @@ jobs:
           composer install --no-interaction --no-progress
           yarn install --non-interactive
 
-      - name: Execute tests
-        run: vendor/bin/phpunit -c phpunit.xml.dist
-
       - name: Execute lint
         run: yarn lint
+
+      - name: Build JS
+        run: yarn build
+
+      - name: Execute tests
+        run: vendor/bin/phpunit -c phpunit.xml.dist
 
       - name: Prepare SonarCloud Scan
         run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' .coverage/clover.xml
@@ -46,9 +49,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-      - name: Build JS
-        run: yarn build
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
