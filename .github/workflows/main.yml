@@ -126,3 +126,31 @@ jobs:
         with:
           config: ${{ secrets.KUBE_CONFIG }}
           command: apply -k kubernetes/staging/
+
+      - name: Restart deployment
+        uses: steebchen/kubectl@v2.0.0
+        if: github.ref == 'refs/heads/master'
+        with:
+          config: ${{ secrets.KUBE_CONFIG }}
+          command: rollout restart deployment/phpunitgen-phpfpm --namespace=phpunitgen
+
+      - name: Restart deployment_staging
+        uses: steebchen/kubectl@v2.0.0
+        if: github.ref == 'refs/heads/develop'
+        with:
+          config: ${{ secrets.KUBE_CONFIG }}
+          command: rollout restart deployment/phpunitgen-phpfpm-staging --namespace=phpunitgen-staging
+
+      - name: Restart deployment nginx
+        uses: steebchen/kubectl@v2.0.0
+        if: github.ref == 'refs/heads/master'
+        with:
+          config: ${{ secrets.KUBE_CONFIG }}
+          command: rollout restart deployment/phpunitgen-nginx --namespace=phpunitgen
+
+      - name: Restart deployment_staging nginx
+        uses: steebchen/kubectl@v2.0.0
+        if: github.ref == 'refs/heads/develop'
+        with:
+          config: ${{ secrets.KUBE_CONFIG }}
+          command: rollout restart deployment/phpunitgen-nginx-staging --namespace=phpunitgen-staging
