@@ -18,3 +18,5 @@ declare module "vue-codemirror" {
         codemirror,
     };
 }
+
+declare const process: { env: Record<string, string | undefined> };

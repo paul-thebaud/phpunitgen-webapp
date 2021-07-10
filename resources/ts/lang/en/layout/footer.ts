@@ -1,5 +1,6 @@
 export default {
     "versions": "Version {web} (core {core})",
+    "buildDateTime": "{buildDateTime}",
     "legal": {
         "title": "Legal",
         "links": {

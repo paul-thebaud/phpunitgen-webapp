@@ -10,6 +10,7 @@
 
 const path = require("path");
 const ChunkRenamePlugin = require("webpack-chunk-rename-plugin");
+const { DefinePlugin } = require("webpack");
 
 const plugins = [
     new ChunkRenamePlugin({
@@ -30,6 +31,11 @@ if (process.env.NODE_ENV === "production") {
     chunkFilename = "js/chunks/[name].js";
 }
 
+const buildDateTime = new Date().toISOString().replace(/T/, " ").replace(/\..+/, "").replace(/:[0-9]{2}$/, "");
+
+plugins.push(new DefinePlugin({
+    "process.env.BUILD_DATETIME": JSON.stringify(buildDateTime),
+}))
 
 module.exports = {
     output: {
