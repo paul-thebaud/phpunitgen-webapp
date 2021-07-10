@@ -91,7 +91,7 @@ jobs:
         uses: docker/build-push-action@v2
         if: github.ref == 'refs/heads/develop'
         with:
-          file: ./docker/production/Dockerfile-phpfpmalpine
+          file: ./docker/staging/Dockerfile-phpfpmalpine
           build-args: MIX_GOOGLE_ANALYTICS_ID="$MIX_GOOGLE_ANALYTICS_ID"
           push: true
           tags: paulthebaud/phpunitgen-phpfpm:staging
@@ -103,7 +103,7 @@ jobs:
         uses: docker/build-push-action@v2
         if: github.ref == 'refs/heads/develop'
         with:
-          file: ./docker/production/Dockerfile-nginxalpine
+          file: ./docker/staging/Dockerfile-nginxalpine
           build-args: MIX_GOOGLE_ANALYTICS_ID="$MIX_GOOGLE_ANALYTICS_ID"
           push: true
           tags: paulthebaud/phpunitgen-nginx:staging
