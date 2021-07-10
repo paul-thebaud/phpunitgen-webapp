@@ -1,6 +1,6 @@
 {
   "name": "phpunitgen/webapp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "project",
   "description": "The PhpUnitGen Web Application.",
   "license": "MIT",
