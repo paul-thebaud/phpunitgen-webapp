@@ -10,9 +10,13 @@
 
 const path = require("path");
 const ChunkRenamePlugin = require("webpack-chunk-rename-plugin");
+const RemoveServiceWorkerPlugin = require("webpack-remove-serviceworker-plugin");
 const { DefinePlugin } = require("webpack");
 
 const plugins = [
+    new RemoveServiceWorkerPlugin({
+        filename: "service-worker.js"
+    }),
     new ChunkRenamePlugin({
         initialChunksWithEntry: true,
         "/js/vendor": "/js/vendor.js",
