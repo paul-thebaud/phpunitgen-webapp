@@ -32,7 +32,7 @@ Lancement de l'outil :
 Si vous utilisez l'outil en ligne de commande ou le cœur, vous devez satisfaire
 les exigences suivantes :
 
-- PHP `7.1` et supérieur.
+- PHP `7.1` et supérieur, ou PHP `8.0` et supérieur.
 - Laravel `5.8` et supérieur si vous souhaitez utilisez
 [l'intégration à Laravel](/fr/command-line.md#intégration-à-laravel).
 
