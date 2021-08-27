@@ -11,7 +11,6 @@
 
 const mix = require("laravel-mix");
 require("laravel-mix-svg-vue");
-require("laravel-mix-workbox");
 const webpackConfig = require("./webpack.config");
 
 mix.webpackConfig(webpackConfig)
@@ -42,7 +41,3 @@ if (! mix.inProduction()) {
 }
 
 mix.svgVue();
-
-mix.injectManifest({
-    swSrc: "./resources/ts/service-worker/service-worker.js",
-});
