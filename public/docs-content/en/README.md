@@ -8,6 +8,19 @@ The tool is divided into three GitHub repositories.
 - [phpunitgen-console](https://github.com/paul-thebaud/phpunitgen-console), which contains the command line interface.
 - [phpunitgen-webapp](https://github.com/paul-thebaud/phpunitgen-webapp), which contains the web application and the API.
 
+## Key features
+
+- Generates tests skeletons for your PHP classes
+- Binds with Laravel "make" command
+- Generates class instantiation using dummy parameters or mocks
+- Adapts to PHPUnit or Mockery mocks generation
+
+> PhpUnitGen is not meant to generate your tests content but only the skeleton
+> (except for getters/setters).
+> This is because inspecting your code to generate the appropriate test is
+> way too complex, and might result in missing some of the code's features
+> or marking them as "passed unit test" even if it contains errors.
+
 ## Content of the documentation
 
 Here is the information you can find in this documentation:

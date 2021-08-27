@@ -31,7 +31,7 @@ return [
             'description' => 'Génère un squelette adapté à un job du framework Laravel. Génère un test particulier pour la méthode "handle".',
         ],
         'listener'   => [
-            'name'        => 'Ecouteur Laravel',
+            'name'        => 'Écouteur Laravel',
             'description' => 'Génère un squelette adapté à un écouteur du framework Laravel. Génère un test particulier pour la méthode "handle".',
         ],
         'policy'     => [
