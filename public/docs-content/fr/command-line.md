@@ -131,7 +131,7 @@ Si jamais vous avez désactivé la découverte des paquets via Laravel, il vous 
 // config/app.php
 'providers' => [
     ...
-    \PhpUnitGen\Console\Container\ConsoleServiceProvider::class,
+    \PhpUnitGen\Console\Adapters\Laravel\PhpUnitGenServiceProvider::class,
     ...
 ],
 ```
@@ -160,6 +160,21 @@ en utilisant la commande suivante :
 
 ```
 php artisan vendor:publish --tag=phpunitgen-config
+```
+
+### Laravel Lumen
+
+PhpUnitGen est normalement compatible avec Laravel Lumen `5.8` et supérieur, mais cela n'est pas testé.
+
+Pour activer l'intégration avec Laravel Lumen, vous devrez ajouter la ligne suivante dans votre
+fichier `bootstrap/app.php` après les autres appels à `$app->register()` :
+
+```php
+// bootstrap/app.php
+
+// $app->register(App\Providers\AppServiceProvider::class);
+// ...
+$app->register(PhpUnitGen\Console\Adapters\Laravel\PhpUnitGenServiceProvider::class);
 ```
 
 ## Configuration

@@ -130,7 +130,7 @@ If you ever disabled package discovery via Laravel, just add the PhpUnitGen `pro
 // config/app.php
 'providers' => [
     ...
-    \PhpUnitGen\Console\Container\ConsoleServiceProvider::class,
+    \PhpUnitGen\Console\Adapters\Laravel\PhpUnitGenServiceProvider::class,
     ...
 ],
 ```
@@ -159,6 +159,21 @@ using the following command:
 
 ```
 php artisan vendor:publish --tag=phpunitgen-config
+```
+
+### Laravel Lumen
+
+PhpUnitGen is normally compatible with Laravel Lumen `5.8` and higher, but this is not tested.
+
+To enable integration with Laravel Lumen, you will need to add the following line to your
+`bootstrap/app.php` file after the other calls to `$app->register()`:
+
+```php
+// bootstrap/app.php
+
+// $app->register(App\Providers\AppServiceProvider::class);
+// ...
+$app->register(PhpUnitGen\Console\Adapters\Laravel\PhpUnitGenServiceProvider::class);
 ```
 
 ## Configuration
