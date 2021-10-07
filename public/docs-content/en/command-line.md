@@ -28,12 +28,14 @@ Launching the tool:
 
 **Requirements**
 
-If you use the command line tool or the core, you must satisfy
-the following requirements:
+Depending on your PHP version (and Laravel's one, if you want to use
+[the integration with Laravel](/en/command-line.md#integration-with-laravel)),
+the PhpUnitGen's version to use won't be the same.
 
-- PHP `7.1` and up, or PHP `8.0` and up.
-- Laravel `5.8` and up if you want to use
-[the integration with Laravel](/en/command-line.md#integration-with-laravel).
+| PHP version | Laravel version          | PhpUnitGen version |
+|-------------|--------------------------|--------------------|
+| `^8.0`      | `^9.0`                   | `2.x.x`            |
+| `^7.1`      | `^5.8\|^6.0\|^7.0\|^8.0` | `1.x.x`            |
 
 **Installation inside a project**
 

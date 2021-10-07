@@ -29,12 +29,14 @@ Lancement de l'outil :
 
 **Exigences pour installer l'outil**
 
-Si vous utilisez l'outil en ligne de commande ou le cœur, vous devez satisfaire
-les exigences suivantes :
+En fonction de votre version de PHP (et de Laravel, si vous souhaitez utiliser
+[l'intégration à Laravel](/fr/command-line.md#intégration-à-laravel)),
+la version de PhpUnitGen à utiliser ne sera pas la même.
 
-- PHP `7.1` et supérieur, ou PHP `8.0` et supérieur.
-- Laravel `5.8` et supérieur si vous souhaitez utilisez
-[l'intégration à Laravel](/fr/command-line.md#intégration-à-laravel).
+| Version PHP | Version Laravel          | Version PhpUnitGen |
+|-------------|--------------------------|--------------------|
+| `^8.0`      | `^9.0`                   | `2.x.x`            |
+| `^7.1`      | `^5.8\|^6.0\|^7.0\|^8.0` | `1.x.x`            |
 
 **Installation sur un projet**
 

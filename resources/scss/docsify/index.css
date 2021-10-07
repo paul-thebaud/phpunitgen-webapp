@@ -393,31 +393,20 @@ body.sticky .sidebar-toggle {
 }
 
 .markdown-section table {
-    border-collapse: collapse;
+    border-collapse: separate;
     border-spacing: 0;
-    display: block;
     margin-bottom: 1rem;
     overflow: auto;
     width: 100%;
 }
 
 .markdown-section th {
-    border: 1px solid #dddddd;
     font-weight: bold;
     padding: 6px 13px;
 }
 
 .markdown-section td {
-    border: 1px solid #dddddd;
     padding: 6px 13px;
-}
-
-.markdown-section tr {
-    border-top: 1px solid #cccccc;
-}
-
-.markdown-section tr:nth-child(2n) {
-    background-color: #f8f8f8;
 }
 
 .markdown-section p.tip {
