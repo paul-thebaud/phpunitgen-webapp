@@ -10,13 +10,9 @@
 
 const path = require("path");
 const ChunkRenamePlugin = require("webpack-chunk-rename-plugin");
-const RemoveServiceWorkerPlugin = require("webpack-remove-serviceworker-plugin");
 const { DefinePlugin } = require("webpack");
 
 const plugins = [
-    new RemoveServiceWorkerPlugin({
-        filename: "service-worker.js"
-    }),
     new ChunkRenamePlugin({
         initialChunksWithEntry: true,
         "/js/vendor": "/js/vendor.js",
@@ -39,7 +35,7 @@ const buildDateTime = new Date().toISOString().replace(/T/, " ").replace(/\..+/,
 
 plugins.push(new DefinePlugin({
     "process.env.BUILD_DATETIME": JSON.stringify(buildDateTime),
-}))
+}));
 
 module.exports = {
     output: {

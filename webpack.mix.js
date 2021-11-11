@@ -34,10 +34,10 @@ mix.webpackConfig(webpackConfig)
         "@fortawesome/vue-fontawesome",
     ])
     .js("resources/ts/entries/app.ts", "public/js")
-    .js("resources/ts/entries/docs.ts", "public/js");
+    .js("resources/ts/entries/docs.ts", "public/js")
+    .vue()
+    .svgVue();
 
 if (! mix.inProduction()) {
     mix.sourceMaps();
 }
-
-mix.svgVue();
