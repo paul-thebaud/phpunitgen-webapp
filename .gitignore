@@ -21,7 +21,6 @@
 /public/css/
 /public/js/
 /public/mix-manifest.json
-/public/service-worker.*
 /public/workbox*
 nginx/local/local-key.pem
 nginx/local/local.pem
