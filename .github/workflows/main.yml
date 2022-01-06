@@ -70,11 +70,9 @@ jobs:
         if: github.ref == 'refs/heads/master'
         with:
           file: ./docker/production/Dockerfile-phpfpmalpine
-          build-args: MIX_GOOGLE_ANALYTICS_ID="$MIX_GOOGLE_ANALYTICS_ID"
+          build-args: MIX_GOOGLE_ANALYTICS_ID=${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
           push: true
           tags: paulthebaud/phpunitgen-phpfpm:latest
-        env:
-          MIX_GOOGLE_ANALYTICS_ID: ${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
 
       - name: Production - Build and push Nginx
         id: docker_build_nginx
@@ -82,11 +80,9 @@ jobs:
         if: github.ref == 'refs/heads/master'
         with:
           file: ./docker/production/Dockerfile-nginxalpine
-          build-args: MIX_GOOGLE_ANALYTICS_ID="$MIX_GOOGLE_ANALYTICS_ID"
+          build-args: MIX_GOOGLE_ANALYTICS_ID=${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
           push: true
           tags: paulthebaud/phpunitgen-nginx:latest
-        env:
-          MIX_GOOGLE_ANALYTICS_ID: ${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
 
       - name: Staging - Build and push PHP FPM
         id: docker_build_php_staging
@@ -94,11 +90,8 @@ jobs:
         if: github.ref == 'refs/heads/develop'
         with:
           file: ./docker/staging/Dockerfile-phpfpmalpine
-          build-args: MIX_GOOGLE_ANALYTICS_ID="$MIX_GOOGLE_ANALYTICS_ID"
           push: true
           tags: paulthebaud/phpunitgen-phpfpm:staging
-        env:
-          MIX_GOOGLE_ANALYTICS_ID: ${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
 
       - name: Staging - Build and push Nginx
         id: docker_build_nginx_staging
@@ -106,11 +99,8 @@ jobs:
         if: github.ref == 'refs/heads/develop'
         with:
           file: ./docker/staging/Dockerfile-nginxalpine
-          build-args: MIX_GOOGLE_ANALYTICS_ID="$MIX_GOOGLE_ANALYTICS_ID"
           push: true
           tags: paulthebaud/phpunitgen-nginx:staging
-        env:
-          MIX_GOOGLE_ANALYTICS_ID: ${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
 
       - name: Production - Update deployment
         uses: steebchen/kubectl@v2.0.0
