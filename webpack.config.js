@@ -35,7 +35,7 @@ const buildDateTime = new Date().toISOString().replace(/T/, " ").replace(/\..+/,
 
 plugins.push(new DefinePlugin({
     "process.env.BUILD_DATETIME": JSON.stringify(buildDateTime),
-}))
+}));
 
 module.exports = {
     output: {

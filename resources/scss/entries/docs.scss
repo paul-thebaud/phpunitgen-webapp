@@ -65,7 +65,7 @@ body {
     code {
       font-family: $font-family-monospace;
       background-color: var(--secondary-bg-color);
-      color: var(--muted-color);
+      color: var(--base-color);
     }
 
     p.tip, blockquote {
@@ -76,7 +76,7 @@ body {
 
       code {
         background-color: var(--base-bg-color);
-        color: var(--muted-color);
+        color: var(--base-color);
       }
 
       & em {
@@ -96,6 +96,44 @@ body {
 
       .token.punctuation {
         color: var(--muted-color);
+      }
+    }
+
+    table {
+      border-radius: $border-radius;
+      background-color: var(--secondary-bg-color-hover);
+
+      tr td code {
+        padding: 0 !important;
+        background-color: var(--secondary-bg-color-hover);
+      }
+
+      thead > tr, tbody > tr:nth-child(even), tbody > tr:nth-child(even) code {
+        background-color: var(--secondary-bg-color) !important;
+      }
+
+      tr th, tr td {
+        padding: 8px 12px;
+      }
+
+      tr th {
+        text-align: left;
+      }
+
+      tr:first-child th:first-child {
+        border-top-left-radius: $border-radius;
+      }
+
+      tr:first-child th:last-child {
+        border-top-right-radius: $border-radius;
+      }
+
+      tr:last-child td:first-child {
+        border-bottom-left-radius: $border-radius;
+      }
+
+      tr:last-child td:last-child {
+        border-bottom-right-radius: $border-radius;
       }
     }
 

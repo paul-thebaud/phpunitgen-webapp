@@ -29,12 +29,14 @@ Lancement de l'outil :
 
 **Exigences pour installer l'outil**
 
-Si vous utilisez l'outil en ligne de commande ou le cœur, vous devez satisfaire
-les exigences suivantes :
+En fonction de votre version de PHP (et de Laravel, si vous souhaitez utiliser
+[l'intégration à Laravel](/fr/command-line.md#intégration-à-laravel)),
+la version de PhpUnitGen à utiliser ne sera pas la même.
 
-- PHP `7.1` et supérieur.
-- Laravel `5.8` et supérieur si vous souhaitez utilisez
-[l'intégration à Laravel](/fr/command-line.md#intégration-à-laravel).
+| Version PHP        | Version Laravel          | Version PhpUnitGen |
+|--------------------|--------------------------|--------------------|
+| `^8.0` ou `~8.1.0` | `^9.0`                   | `2.x.x`            |
+| `^7.1`             | `^5.8\|^6.0\|^7.0\|^8.0` | `1.x.x`            |
 
 **Installation sur un projet**
 
@@ -131,7 +133,7 @@ Si jamais vous avez désactivé la découverte des paquets via Laravel, il vous 
 // config/app.php
 'providers' => [
     ...
-    \PhpUnitGen\Console\Container\ConsoleServiceProvider::class,
+    \PhpUnitGen\Console\Adapters\Laravel\PhpUnitGenServiceProvider::class,
     ...
 ],
 ```
@@ -160,6 +162,21 @@ en utilisant la commande suivante :
 
 ```
 php artisan vendor:publish --tag=phpunitgen-config
+```
+
+### Laravel Lumen
+
+PhpUnitGen est normalement compatible avec Laravel Lumen `5.8` et supérieur, mais cela n'est pas testé.
+
+Pour activer l'intégration avec Laravel Lumen, vous devrez ajouter la ligne suivante dans votre
+fichier `bootstrap/app.php` après les autres appels à `$app->register()` :
+
+```php
+// bootstrap/app.php
+
+// $app->register(App\Providers\AppServiceProvider::class);
+// ...
+$app->register(PhpUnitGen\Console\Adapters\Laravel\PhpUnitGenServiceProvider::class);
 ```
 
 ## Configuration

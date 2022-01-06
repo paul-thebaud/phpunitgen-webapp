@@ -102,7 +102,7 @@ class TestControllerTest extends TestCase
     public function testItGeneratesWithDefaultConfig(): void
     {
         $response = $this->json('post', '/api/v1/tests', [
-            'code' => '<?php class Person { public function __construct(Service $service) {} }',
+            'code' => '<?php class Person { public function __construct(Service $s) {} public function dummy() {} }',
         ])->response;
 
         $this->assertSame(200, $response->status());
@@ -117,7 +117,7 @@ class TestControllerTest extends TestCase
     public function testItGeneratesWithCustomConfig(): void
     {
         $response = $this->json('post', '/api/v1/tests', [
-            'code'   => '<?php class Person { public function __construct(Service $service) {} }',
+            'code'   => '<?php class Person { public function __construct(Service $s) {} public function dummy() {} }',
             'config' => [
                 'baseTestNamespace' => 'MyBaseTests',
                 'mockGenerator'     => 'phpunit',
