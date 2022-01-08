@@ -1,6 +1,5 @@
 resources:
   - https.yml
-  - issuer.yml
   - phpfpm/deployment.yml
   - phpfpm/service.yml
   - nginx/deployment.yml
