@@ -1,16 +1,4 @@
-apiVersion: cert-manager.io/v1alpha2
-kind: Certificate
-metadata:
-  name: phpunitgen-killian-cert-staging
-spec:
-  secretName: phpunitgen-killian-cert-staging
-  issuerRef:
-    name: letsencrypt-prod
-  commonName: phpunitgen.killian.ovh
-  dnsNames:
-    - phpunitgen.killian.ovh
----
-apiVersion: cert-manager.io/v1alpha2
+apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: phpunitgen-cert-staging
@@ -18,6 +6,7 @@ spec:
   secretName: phpunitgen-cert-staging
   issuerRef:
     name: letsencrypt-prod
+    kind: ClusterIssuer
   commonName: staging.phpunitgen.io
   dnsNames:
     - staging.phpunitgen.io
