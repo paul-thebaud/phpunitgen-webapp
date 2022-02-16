@@ -47,6 +47,3 @@ rendre ce modèle au format chaîne de caractères : c'est le code source de vot
 
 Chacune de ces étapes utilisent des implémentations d'interfaces, ce qui permert à l'outil de gagner
 en modularité et en maintenabilité.
-
-Si vous estimez qu'une des implémentations n'est pas faite pour vous, vous pouvez tout à fait utiliser
-la votre. [En savoir plus](/fr/advanced-usage.md).

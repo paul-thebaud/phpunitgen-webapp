@@ -3,5 +3,4 @@
 * [Configuration](/fr/configuration.md)
 * [Application Web & API](/fr/webapp.md)
 * [Outil en ligne de commande](/fr/command-line.md)
-* [Utilisation avancée](/fr/advanced-usage.md)
 * [Ancienne version : `phpunit-generator`](/fr/old-version.md)

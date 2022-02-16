@@ -32,7 +32,6 @@ Voici les informations que vous pourrez trouver dans cette documentation :
     - [Démarrage rapide avec l'application web](/fr/webapp.md#démarrage-rapide)
 - [Comment utiliser l'outil en ligne de commande ?](/fr/command-line.md)
     - [Démarrage rapide avec la ligne de commande](/fr/command-line.md#démarrage-rapide)
-- [Utilisation avancée](/fr/advanced-usage.md)
 
 ## Vous voulez supporter le projet ?
 
