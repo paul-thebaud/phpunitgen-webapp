@@ -19,7 +19,7 @@ Here is a list of PhpUnitGen configuration parameters. Regardless of the interfa
 you use, you will find each of these configuration keys.
 
 If a configuration key is not specified, the default value will be used.
-[See the default configuration](https://github.com/paul-thebaud/phpunitgen-core/blob/master/config/phpunitgen.php).
+[See the default configuration](https://github.com/paul-thebaud/phpunitgen-core/blob/main/config/phpunitgen.php).
 
 ### Automatic generation
 

@@ -36,7 +36,7 @@ class TestGeneratorControllerTest extends TestCase
         $this->assertSame([
             'id'          => 'laravel.command',
             'class'       => 'PhpUnitGen\Core\Generators\Tests\Laravel\Command\CommandTestGenerator',
-            'source'      => 'https://github.com/paul-thebaud/phpunitgen-core/tree/master/src/Generators/Tests/Laravel/Command',
+            'source'      => 'https://github.com/paul-thebaud/phpunitgen-core/tree/main/src/Generators/Tests/Laravel/Command',
             'name'        => 'Laravel Command',
             'description' => 'Generates a skeleton adapted to a command of the Laravel Framework. Generates a special test for the "handle" method using the command name.',
         ], $content);
@@ -55,7 +55,7 @@ class TestGeneratorControllerTest extends TestCase
         $this->assertSame([
             'id'          => 'laravel.command',
             'class'       => 'PhpUnitGen\Core\Generators\Tests\Laravel\Command\CommandTestGenerator',
-            'source'      => 'https://github.com/paul-thebaud/phpunitgen-core/tree/master/src/Generators/Tests/Laravel/Command',
+            'source'      => 'https://github.com/paul-thebaud/phpunitgen-core/tree/main/src/Generators/Tests/Laravel/Command',
             'name'        => 'Commande Laravel',
             'description' => 'Génère un squelette adapté à une commande du framework Laravel. Génère un test particulier pour la méthode "handle", en se servant du nom de la commande.',
         ], $content);

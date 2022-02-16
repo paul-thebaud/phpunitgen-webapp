@@ -3,7 +3,7 @@ name: CICD
 on:
   push:
     branches:
-      - master
+      - main
       - develop
   workflow_dispatch:
 
@@ -67,7 +67,7 @@ jobs:
       - name: Production - Build and push PHP FPM
         id: docker_build_php
         uses: docker/build-push-action@v2
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         with:
           file: ./docker/production/Dockerfile-phpfpmalpine
           build-args: MIX_GOOGLE_ANALYTICS_ID=${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
@@ -77,7 +77,7 @@ jobs:
       - name: Production - Build and push Nginx
         id: docker_build_nginx
         uses: docker/build-push-action@v2
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         with:
           file: ./docker/production/Dockerfile-nginxalpine
           build-args: MIX_GOOGLE_ANALYTICS_ID=${{ secrets.MIX_GOOGLE_ANALYTICS_ID }}
@@ -104,7 +104,7 @@ jobs:
 
       - name: Production - Update deployment
         uses: steebchen/kubectl@v2.0.0
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         with:
           config: ${{ secrets.KUBE_CONFIG }}
           command: apply -k kubernetes/production/
@@ -118,7 +118,7 @@ jobs:
 
       - name: Production - Restart deployment PHP FPM
         uses: steebchen/kubectl@v2.0.0
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         with:
           config: ${{ secrets.KUBE_CONFIG }}
           command: rollout restart deployment/phpunitgen-phpfpm --namespace=phpunitgen
@@ -132,7 +132,7 @@ jobs:
 
       - name: Production - Restart deployment Nginx
         uses: steebchen/kubectl@v2.0.0
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         with:
           config: ${{ secrets.KUBE_CONFIG }}
           command: rollout restart deployment/phpunitgen-nginx --namespace=phpunitgen

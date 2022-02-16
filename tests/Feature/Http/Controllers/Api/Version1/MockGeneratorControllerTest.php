@@ -33,7 +33,7 @@ class MockGeneratorControllerTest extends TestCase
             'id'          => 'phpunit',
             'class'       => 'PhpUnitGen\Core\Generators\Mocks\PhpUnitMockGenerator',
             'website'     => 'https://phpunit.de/',
-            'source'      => 'https://github.com/paul-thebaud/phpunitgen-core/blob/master/src/Generators/Mocks/PhpUnitMockGenerator.php',
+            'source'      => 'https://github.com/paul-thebaud/phpunitgen-core/blob/main/src/Generators/Mocks/PhpUnitMockGenerator.php',
             'name'        => 'PHPUnit',
             'description' => 'Mocks will be generated using the PHPUnit syntax, such as "$this->getMock()".',
         ], json_decode($response->content(), true));
@@ -50,7 +50,7 @@ class MockGeneratorControllerTest extends TestCase
             'id'          => 'phpunit',
             'class'       => 'PhpUnitGen\Core\Generators\Mocks\PhpUnitMockGenerator',
             'website'     => 'https://phpunit.de/',
-            'source'      => 'https://github.com/paul-thebaud/phpunitgen-core/blob/master/src/Generators/Mocks/PhpUnitMockGenerator.php',
+            'source'      => 'https://github.com/paul-thebaud/phpunitgen-core/blob/main/src/Generators/Mocks/PhpUnitMockGenerator.php',
             'name'        => 'PHPUnit',
             'description' => 'Les mocks seront générés en utilisant la syntaxe PHPUnit, comme par exemple "$this->getMock()".',
         ], json_decode($response->content(), true));

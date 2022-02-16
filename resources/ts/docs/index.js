@@ -33,7 +33,7 @@ const docsify = {
     },
     plugins: [
         EditOnGithubPlugin.create(
-            "https://github.com/paul-thebaud/phpunitgen-webapp/blob/master/public/docs-content",
+            "https://github.com/paul-thebaud/phpunitgen-webapp/blob/main/public/docs-content",
             null,
             function (file) {
                 if (file.indexOf("/en") === 0) {

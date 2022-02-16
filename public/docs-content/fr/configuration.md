@@ -19,7 +19,7 @@ Voici une liste des paramètres de configuration de PhpUnitGen. Peu importe la v
 que utilisez, vous trouverez chacunes de ces clés de configuration.
 
 Si un clé de configuration n'est pas précisée, la valeur par défaut sera utilisée.
-[Voir la configuration par défaut](https://github.com/paul-thebaud/phpunitgen-core/blob/master/config/phpunitgen.php).
+[Voir la configuration par défaut](https://github.com/paul-thebaud/phpunitgen-core/blob/main/config/phpunitgen.php).
 
 ### Génération automatique
 

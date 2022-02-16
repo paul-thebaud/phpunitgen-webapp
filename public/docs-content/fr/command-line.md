@@ -206,7 +206,7 @@ Si vous fournissez l'option `--config` avec un chemin correct, PhpUnitGen détec
 la manière dont il doit importer cette configuration en analysant l'extension du fichier.
 
 Vous pouvez trouver des fichiers de [configuration d'exemples
-ici](https://github.com/paul-thebaud/phpunitgen-console/tree/master/config).
+ici](https://github.com/paul-thebaud/phpunitgen-console/tree/main/config).
 
 ### Paramètres de la configuration
 
