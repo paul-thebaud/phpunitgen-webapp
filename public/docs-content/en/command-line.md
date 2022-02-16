@@ -32,10 +32,11 @@ Depending on your PHP version (and Laravel's one, if you want to use
 [the integration with Laravel](/en/command-line.md#integration-with-laravel)),
 the PhpUnitGen's version to use won't be the same.
 
-| PHP version           | Laravel version          | PhpUnitGen version |
-|-----------------------|--------------------------|--------------------|
-| `~8.0.12` or `~8.1.0` | `^9.0`                   | `2.x.x`            |
-| `^7.1`                | `^5.8\|^6.0\|^7.0\|^8.0` | `1.x.x`            |
+| PHP version           | Laravel version                         | PhpUnitGen version |
+|-----------------------|-----------------------------------------|--------------------|
+| `~8.0.12` or `~8.1.0` | `^9.0`                                  | `3.x.x`            |
+| `~8.0.12` or `~8.1.0` | `^7.0`  or `^8.0`                       | `2.x.x`            |
+| `^7.1`                | `^5.8`  or `^6.0`  or `^7.0`  or `^8.0` | `1.x.x`            |
 
 **Installation inside a project**
 
