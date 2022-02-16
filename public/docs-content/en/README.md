@@ -31,7 +31,6 @@ Here is the information you can find in this documentation:
     - [Getting started with the web application](/en/webapp.md#getting-started)
 - [How to use the command line interface?](/en/command-line.md)
     - [Getting started with the command line](/en/command-line.md#getting-started)
-- [Advanced usage](/en/advanced-usage.md)
 
 ## Do you want to support the project?
 

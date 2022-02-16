@@ -76,7 +76,7 @@ définir comment un test doit être généré pour un certain code.
   "description": "Ce générateur est dédié à [...]",
   "class": "PhpUnitGen\\Core\\Generators\\Tests\\DelegateTestGenerator",
   "example": "<?php /* Un code d'exemple pour ce type de générateur de test */",
-  "source": "https://github.com/paul-thebaud/phpunitgen-core/tree/master/src/Generators/Tests"
+  "source": "https://github.com/paul-thebaud/phpunitgen-core/tree/main/src/Generators/Tests"
 }
 ```
 
@@ -135,7 +135,7 @@ pour `Mockery`, il sera `Mockery::mock(LogService::class)`.
   "description": "Ce générateur est dédié à [...]",
   "class": "PhpUnitGen\\Core\\Generators\\Mocks\\MockeryMockGenerator",
   "website": "http://docs.mockery.io/",
-  "source": "https://github.com/paul-thebaud/phpunitgen-core/blob/master/src/Generators/Mocks/MockeryMockGenerator.php"
+  "source": "https://github.com/paul-thebaud/phpunitgen-core/blob/main/src/Generators/Mocks/MockeryMockGenerator.php"
 }
 ```
 

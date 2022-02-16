@@ -47,6 +47,3 @@ return this template in string format: this is the source code of your test.
 
 Each of these steps uses interface implementations, which allows the tool to gain
 in modularity and maintainability.
-
-If you feel that one of the implementations is not for you, you can use
-yours. [Learn more](/en/advanced-usage.md).

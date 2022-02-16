@@ -32,10 +32,15 @@ Depending on your PHP version (and Laravel's one, if you want to use
 [the integration with Laravel](/en/command-line.md#integration-with-laravel)),
 the PhpUnitGen's version to use won't be the same.
 
-| PHP version           | Laravel version          | PhpUnitGen version |
-|-----------------------|--------------------------|--------------------|
-| `~8.0.12` or `~8.1.0` | `^9.0`                   | `2.x.x`            |
-| `^7.1`                | `^5.8\|^6.0\|^7.0\|^8.0` | `1.x.x`            |
+| PHP version           | Laravel version                         | PhpUnitGen version | Bug fixes until |
+|-----------------------|-----------------------------------------|--------------------|-----------------|
+| `~8.0.12` or `~8.1.0` | `^9.0`                                  | `3.x.x`            | August 2023     |
+| `~8.0.12` or `~8.1.0` | `^7.0`  or `^8.0`                       | `2.x.x`            | July 2022       |
+| `^7.1`                | `^5.8`  or `^6.0`  or `^7.0`  or `^8.0` | `1.x.x`            | January 2022    |
+
+> For all major releases, we provide bug fixes following the associated
+> Laravel version bug fixes deadline.
+> New features will only ship on the latest major release.
 
 **Installation inside a project**
 
@@ -205,7 +210,7 @@ If you provide the `--config` option with a correct path, PhpUnitGen will detect
 how it should import this configuration by parsing the file extension.
 
 You can find [example configuration files
-here](https://github.com/paul-thebaud/phpunitgen-console/tree/master/config).
+here](https://github.com/paul-thebaud/phpunitgen-console/tree/main/config).
 
 ### Configuration parameters
 

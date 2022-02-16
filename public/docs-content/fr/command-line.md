@@ -33,10 +33,16 @@ En fonction de votre version de PHP (et de Laravel, si vous souhaitez utiliser
 [l'intégration à Laravel](/fr/command-line.md#intégration-à-laravel)),
 la version de PhpUnitGen à utiliser ne sera pas la même.
 
-| Version PHP        | Version Laravel          | Version PhpUnitGen |
-|--------------------|--------------------------|--------------------|
-| `^8.0` ou `~8.1.0` | `^9.0`                   | `2.x.x`            |
-| `^7.1`             | `^5.8\|^6.0\|^7.0\|^8.0` | `1.x.x`            |
+| Version PHP           | Version Laravel                         | Version PhpUnitGen | Corrections de bugs jusqu'en |
+|-----------------------|-----------------------------------------|--------------------|------------------------------|
+| `~8.0.12` ou `~8.1.0` | `^9.0`                                  | `3.x.x`            | Août 2023                    |
+| `~8.0.12` ou `~8.1.0` | `^7.0`  or `^8.0`                       | `2.x.x`            | Juillet 2022                 |
+| `^7.1`                | `^5.8`  or `^6.0`  or `^7.0`  or `^8.0` | `1.x.x`            | Janvier 2022                 |
+
+> Pour toutes les version majeures, nous fournissons des corrections de bugs
+> en suivant les dates limites des versions associées de Laravel.
+> Les nouvelles fonctionnalités ne sont proposées que sur la dernière
+> version majeure.
 
 **Installation sur un projet**
 
@@ -206,7 +212,7 @@ Si vous fournissez l'option `--config` avec un chemin correct, PhpUnitGen détec
 la manière dont il doit importer cette configuration en analysant l'extension du fichier.
 
 Vous pouvez trouver des fichiers de [configuration d'exemples
-ici](https://github.com/paul-thebaud/phpunitgen-console/tree/master/config).
+ici](https://github.com/paul-thebaud/phpunitgen-console/tree/main/config).
 
 ### Paramètres de la configuration
 
