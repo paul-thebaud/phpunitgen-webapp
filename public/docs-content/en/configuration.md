@@ -120,7 +120,7 @@ formatted as a regular expression ("__.*" for example to exclude magic methods).
 * **Description** : Defines the PHPDoc annotations that must be retrieved from the class to be tested and reinjected.
 in the test class ("license" for example).
 
-### Annotation PHPDoc à ajouter
+### PHPDoc annotations to add
 
 * **Parameter Key** : `phpDoc`
 * **Type** : `string[]`
