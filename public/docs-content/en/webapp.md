@@ -42,7 +42,7 @@ of the PhpUnitGen core's version. Here is an example of a return `GET' call on t
 
 ```json
 {
-  "coreVersion": "1.0.0",
+  "coreVersion": "3.0.0",
   "apiVersion": "v1"
 }
 ```
@@ -213,6 +213,9 @@ Here is an example of the payload of a request:
    "baseNamespace": "App",
    "baseTestNamespace": "Tests",
    "testCase": "Tests\\TestCase",
+   "testClassFinal": true,
+   "testClassStrictTypes": false,
+   "testClassTypedProperties": true,
    "excludedMethods": [
      "__construct",
      "__destruct"
