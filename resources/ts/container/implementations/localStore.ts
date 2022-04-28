@@ -3,6 +3,7 @@ import { StoreI, ToolType } from "@/container/contracts/storeI";
 import { locales } from "@/container/implementations/i18nLocale";
 import { TYPES } from "@/container/types";
 import { inject, injectable } from "inversify";
+import merge from "lodash.merge";
 
 /**
  * The type for the local storage content.
@@ -174,7 +175,7 @@ export class LocalStore implements StoreI {
             throw new Error("storage does not contain a save");
         }
 
-        this.content = this.serializer.deserialize(existing) as LocalStoreContent;
+        this.content = merge(this.defaultContent(), this.serializer.deserialize(existing));
 
         return this;
     }
@@ -209,6 +210,9 @@ export class LocalStore implements StoreI {
                 baseNamespace: "App",
                 baseTestNamespace: "Tests",
                 testCase: "Tests\\TestCase",
+                testClassFinal: true,
+                testClassStrictTypes: false,
+                testClassTypedProperties: true,
                 excludedMethods: [
                     "__construct",
                     "__destruct",

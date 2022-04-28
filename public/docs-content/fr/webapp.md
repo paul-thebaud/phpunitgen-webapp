@@ -43,7 +43,7 @@ du coeur de PhpUnitGen. Voici un exemple de retour d'un appel `GET` sur cette UR
 
 ```json
 {
-  "coreVersion": "1.0.0",
+  "coreVersion": "3.0.0",
   "apiVersion": "v1"
 }
 ```
@@ -214,6 +214,9 @@ Voici un exemple de contenu d'une requête :
    "baseNamespace": "App",
    "baseTestNamespace": "Tests",
    "testCase": "Tests\\TestCase",
+   "testClassFinal": true,
+   "testClassStrictTypes": false,
+   "testClassTypedProperties": true,
    "excludedMethods": [
      "__construct",
      "__destruct"

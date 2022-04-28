@@ -104,6 +104,27 @@ namespace de test.
 * **Valeur par défaut**: `"Tests\\TestCase"`
 * **Description** : Définit le nom absolu de la classe "TestCase" à étendre dans le test.
 
+### Classe de tests "final"
+
+* **Clé du paramètre** : `testClassFinal`
+* **Type** : `boolean`
+* **Valeur par défaut**: `true`
+* **Description** : Définit si les classes de tests doivent être déclarées final.
+
+### Déclaration de types stricts
+
+* **Clé du paramètre** : `testClassStrictTypes`
+* **Type** : `boolean`
+* **Valeur par défaut**: `false`
+* **Description** : Définit si l'instruction "declare(strict_types=1);" doit être ajoutée avant les définitions des classes de tests.
+
+### Propriétés de classes typées
+
+* **Clé du paramètre** : `testClassTypedProperties`
+* **Type** : `boolean`
+* **Valeur par défaut**: `true`
+* **Description** : Définit si les propriétés de classes de tests doivent être typées au lieu d'être documentées.
+
 ### Méthodes à exclure de la génération
 
 * **Clé du paramètre** : `excludedMethods`

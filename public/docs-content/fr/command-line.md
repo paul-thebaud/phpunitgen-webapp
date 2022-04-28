@@ -35,6 +35,7 @@ la version de PhpUnitGen à utiliser ne sera pas la même.
 
 | Version PHP           | Version Laravel                         | Version PhpUnitGen | Corrections de bugs jusqu'en |
 |-----------------------|-----------------------------------------|--------------------|------------------------------|
+| `~8.0.12` ou `~8.1.0` | `^9.0`                                  | `4.x.x`            | Août 2023                    |
 | `~8.0.12` ou `~8.1.0` | `^9.0`                                  | `3.x.x`            | Août 2023                    |
 | `~8.0.12` ou `~8.1.0` | `^7.0`  ou `^8.0`                       | `2.x.x`            | Juillet 2022                 |
 | `^7.1`                | `^5.8`  ou `^6.0`  ou `^7.0`  ou `^8.0` | `1.x.x`            | Janvier 2022                 |
