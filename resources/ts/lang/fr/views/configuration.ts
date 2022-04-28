@@ -39,6 +39,18 @@ export default {
         "placeholder": "Tests\\TestCase",
         "help": "Définit le nom absolu de la classe \"TestCase\" à étendre dans le test.",
     },
+    "testClassFinal": {
+        "label": "Classe de tests \"final\"",
+        "help": "Définit si les classes de tests doivent être déclarées final.",
+    },
+    "testClassStrictTypes": {
+        "label": "Déclaration de types stricts",
+        "help": "Définit si l'instruction \"declare(strict_types=1);\" doit être ajoutée avant les définitions des classes de tests.",
+    },
+    "testClassTypedProperties": {
+        "label": "Propriétés de classes typées",
+        "help": "Définit si les propriétés de classes de tests doivent être typées au lieu d'être documentées.",
+    },
     "excludedMethods": {
         "label": "Méthodes à exclure de la génération",
         "placeholder": "__construct",

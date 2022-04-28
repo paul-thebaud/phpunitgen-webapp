@@ -209,6 +209,9 @@ export class LocalStore implements StoreI {
                 baseNamespace: "App",
                 baseTestNamespace: "Tests",
                 testCase: "Tests\\TestCase",
+                testClassFinal: true,
+                testClassStrictTypes: false,
+                testClassTypedProperties: true,
                 excludedMethods: [
                     "__construct",
                     "__destruct",

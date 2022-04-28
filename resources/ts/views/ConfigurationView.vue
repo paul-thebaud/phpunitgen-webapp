@@ -181,6 +181,55 @@
               :help="$t('views.configuration.testCase.help')"
             />
           </BCol>
+        </BRow>
+        <BRow>
+          <BCol
+            sm="6"
+            class="my-3"
+          >
+            <BFormCheckbox
+              id="test-class-final"
+              v-model="tool.testClassFinal"
+              switch
+            >
+              {{ $t("views.configuration.testClassFinal.label") }}
+            </BFormCheckbox>
+            <BFormText>
+              {{ $t("views.configuration.testClassFinal.help") }}
+            </BFormText>
+          </BCol>
+
+          <BCol
+            sm="6"
+            class="my-3"
+          >
+            <BFormCheckbox
+              id="test-class-strict-types"
+              v-model="tool.testClassStrictTypes"
+              switch
+            >
+              {{ $t("views.configuration.testClassStrictTypes.label") }}
+            </BFormCheckbox>
+            <BFormText>
+              {{ $t("views.configuration.testClassStrictTypes.help") }}
+            </BFormText>
+          </BCol>
+
+          <BCol
+            sm="6"
+            class="my-3"
+          >
+            <BFormCheckbox
+              id="test-class-typed-properties"
+              v-model="tool.testClassTypedProperties"
+              switch
+            >
+              {{ $t("views.configuration.testClassTypedProperties.label") }}
+            </BFormCheckbox>
+            <BFormText>
+              {{ $t("views.configuration.testClassTypedProperties.help") }}
+            </BFormText>
+          </BCol>
 
           <BCol
             cols="12"
@@ -321,6 +370,9 @@
                 "baseNamespace",
                 "baseTestNamespace",
                 "testCase",
+                "testClassFinal",
+                "testClassStrictTypes",
+                "testClassTypedProperties",
                 "excludedMethods",
                 "mergedPhpDoc",
                 "phpDoc",

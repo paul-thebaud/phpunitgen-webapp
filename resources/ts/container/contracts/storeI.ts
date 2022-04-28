@@ -8,6 +8,9 @@ export type ToolType = {
     baseNamespace: string;
     baseTestNamespace: string;
     testCase: string;
+    testClassFinal: boolean;
+    testClassStrictTypes: boolean;
+    testClassTypedProperties: boolean;
     excludedMethods: string[];
     mergedPhpDoc: string[];
     phpDoc: string[];
