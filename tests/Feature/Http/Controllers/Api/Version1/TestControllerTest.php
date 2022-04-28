@@ -15,7 +15,7 @@ class TestControllerTest extends TestCase
 
         $this->assertSame(422, $response->status());
         $this->assertSame([
-            'message' => 'The given data was invalid.',
+            'message' => 'validation.required',
             'errors'  => [
                 'code' => [
                     'validation.required',
@@ -25,55 +25,67 @@ class TestControllerTest extends TestCase
 
         $response = $this->json('post', '/api/v1/tests', [
             'config' => [
-                'automaticGeneration' => 'invalid',
-                'mockGenerator'       => 'invalid',
-                'testGenerator'       => 'invalid',
-                'baseNamespace'       => false,
-                'baseTestNamespace'   => false,
-                'testCase'            => false,
-                'excludedMethods'     => 'invalid',
-                'mergedPhpDoc'        => 'invalid',
-                'phpDoc'              => 'invalid',
-                'options'             => 'invalid',
+                'automaticGeneration'      => 'invalid',
+                'mockGenerator'            => 'invalid',
+                'testGenerator'            => 'invalid',
+                'baseNamespace'            => false,
+                'baseTestNamespace'        => false,
+                'testCase'                 => false,
+                'testClassFinal'           => 'invalid',
+                'testClassStrictTypes'     => 'invalid',
+                'testClassTypedProperties' => 'invalid',
+                'excludedMethods'          => 'invalid',
+                'mergedPhpDoc'             => 'invalid',
+                'phpDoc'                   => 'invalid',
+                'options'                  => 'invalid',
             ],
             'code'   => false,
         ])->response;
 
         $this->assertSame(422, $response->status());
         $this->assertSame([
-            'message' => 'The given data was invalid.',
+            'message' => 'validation.boolean (and 13 more errors)',
             'errors'  => [
-                'config.automaticGeneration' => [
+                'config.automaticGeneration'      => [
                     'validation.boolean',
                 ],
-                'config.mockGenerator'       => [
+                'config.mockGenerator'            => [
                     'validation.in',
                 ],
-                'config.testGenerator'       => [
+                'config.testGenerator'            => [
                     'validation.in',
                 ],
-                'config.baseNamespace'       => [
+                'config.baseNamespace'            => [
                     'validation.string',
                 ],
-                'config.baseTestNamespace'   => [
+                'config.baseTestNamespace'        => [
                     'validation.string',
                 ],
-                'config.testCase'            => [
+                'config.testCase'                 => [
                     'validation.string',
                 ],
-                'config.excludedMethods'     => [
+                'config.testClassFinal'           => [
+                    'validation.boolean',
+                ],
+                'config.testClassStrictTypes'     => [
+                    'validation.boolean',
+                ],
+                'config.testClassTypedProperties' => [
+                    'validation.boolean',
+                ],
+                'config.excludedMethods'          => [
                     'validation.array',
                 ],
-                'config.mergedPhpDoc'        => [
+                'config.mergedPhpDoc'             => [
                     'validation.array',
                 ],
-                'config.phpDoc'              => [
+                'config.phpDoc'                   => [
                     'validation.array',
                 ],
-                'config.options'             => [
+                'config.options'                  => [
                     'validation.array',
                 ],
-                'code'                       => [
+                'code'                            => [
                     'validation.string',
                 ],
             ],
