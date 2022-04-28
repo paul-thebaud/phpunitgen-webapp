@@ -104,6 +104,27 @@ test base namespace.
 * **Default value**: `"Tests\\TestCase"`
 * **Description** : Defines the absolute name of the "TestCase" class to be extended in the test.
 
+### "Final" tests class
+
+* **Parameter Key** : `testClassFinal`
+* **Type** : `boolean`
+* **Default value**: `true`
+* **Description** : Defines if the tests classes should be declared final.
+
+### Declare strict types before tests class
+
+* **Parameter Key** : `testClassStrictTypes`
+* **Type** : `boolean`
+* **Default value**: `false`
+* **Description** : Defines if the "declare(strict_types=1);" instruction should be added before test classes definition.
+
+### Typed tests class properties
+
+* **Parameter Key** : `testClassTypedProperties`
+* **Type** : `boolean`
+* **Default value**: `true`
+* **Description** : Defines if the tests classes properties should be typed instead of documented.
+
 ### Methods to be excluded from generation
 
 * **Parameter Key** : `excludedMethods`
