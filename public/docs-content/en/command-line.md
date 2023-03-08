@@ -26,24 +26,23 @@ Launching the tool:
 
 ## Installation
 
-**Requirements**
+### Requirements
 
 Depending on your PHP version (and Laravel's one, if you want to use
 [the integration with Laravel](/en/command-line.md#integration-with-laravel)),
 the PhpUnitGen's version to use won't be the same.
 
-| PHP version           | Laravel version                         | PhpUnitGen version | Bug fixes until |
-|-----------------------|-----------------------------------------|--------------------|-----------------|
-| `~8.0.12` or `~8.1.0` | `^9.0`                                  | `4.x.x`            | August 2023     |
-| `~8.0.12` or `~8.1.0` | `^9.0`                                  | `3.x.x`            | August 2023     |
-| `~8.0.12` or `~8.1.0` | `^7.0`  or `^8.0`                       | `2.x.x`            | July 2022       |
-| `^7.1`                | `^5.8`  or `^6.0`  or `^7.0`  or `^8.0` | `1.x.x`            | January 2022    |
+| PHP            | Laravel                           | PhpUnitGen | Support    |
+|----------------|-----------------------------------|------------|------------|
+| `8.0` and up   | `^9.0` and up                     | `v5`       | Active     |
+| `8.0` and up   | `^9.0`                            | `v4`       | Deprecated |
+| `8.0` or `8.1` | `^9.0`                            | `v3`       | Deprecated |
+| `8.0` or `8.1` | `^7.0`  or `^8.0`                 | `v2`       | Deprecated |
+| `7.1` and up   | `^5.8`, `^6.0`, `^7.0`  or `^8.0` | `v1`       | Deprecated |
 
-> For all major releases, we provide bug fixes following the associated
-> Laravel version bug fixes deadline.
-> New features will only ship on the latest major release.
+> Only the latest PhpUnitGen version gets active support.
 
-**Installation inside a project**
+### Installation inside a project
 
 This installation mode is recommended, as it allows you to use
 integration with Laravel.
@@ -58,7 +57,7 @@ Then you can call the tool from the root of your project:
 ./vendor/bin/phpunitgen path/to/File.php
 ```
 
-**Global installation**
+### Global installation
 
 This installation mode allows you to use PhpUnitGen globally.
 To do this, you will need to have the Composer executables in your `PATH`.
@@ -107,7 +106,9 @@ phpunitgen app/my custom/target
 > some files, `101` if one or more warnings occurred on
 > some files, `0` if no warning/error occurred.
 
-You can also provide a path to the configuration file to use :
+### Custom configuration path
+
+You can also provide a path to the configuration file to use:
 
 ```bash
 phpunitgen --config path/to/config.php
@@ -115,7 +116,9 @@ phpunitgen --config path/to/config.php
 phpunitgen -C path/to/config.php
 ```
 
-Finally, you can tell PhpUnitGen to overwrite existing files with the new ones :
+### Overwriting files
+
+You can tell PhpUnitGen to overwrite existing files with the new ones:
 
 ```bash
 phpunitgen --overwrite
@@ -125,6 +128,48 @@ phpunitgen -O
 
 > Note that the `--overwrite` option will ignore the value of this parameter in the configuration file.
 > This allows you to exceptionally choose to overwrite one or more files.
+
+### JSON output
+
+By default, PhpUnitGen will output a text progress and summary when executing.
+You may output a JSON report using the `json` option.
+
+```bash
+phpunitgen --json
+```
+
+Here is an example of a JSON report:
+
+```json
+{
+  "summary": {
+    "sources": 3,
+    "successes": 1,
+    "warnings": 1,
+    "errors": 1,
+    // Execution time in milliseconds.
+    "time": 3500,
+    // Used memory in bytes.
+    "memory": 78643200
+  },
+  // Map between a source absolute path and a result object.
+  "results": {
+    "path/to/Foo.php": {
+      "status": "success",
+      "path": "path/to/FooTest.php",
+      "message": "Successful generation"
+    },
+    "path/to/Bar.php": {
+      "status": "warning",
+      "message": "A warning message"
+    },
+    "path/to/Baz.php": {
+      "status": "error",
+      "message": "An exception message"
+    }
+  }
+}
+```
 
 ## Integration with Laravel
 
@@ -224,7 +269,7 @@ but here are the CLI parameters.
 * **Type** : `boolean`
 * **Default value**: `false`
 * **Description** : Defines if PhpUnitGen should replace existing files with
-new generated tests or not.
+  new generated tests or not.
 
 #### Files backup
 
@@ -232,7 +277,7 @@ new generated tests or not.
 * **Type** : `boolean`
 * **Default value**: `true`
 * **Description** : Defines if PhpUnitGen should save existing file which will
-be overwritten (available if overwriting is enabled).
+  be overwritten (available if overwriting is enabled).
 
 #### Excluded files
 
@@ -240,7 +285,7 @@ be overwritten (available if overwriting is enabled).
 * **Type** : `string[]`
 * **Default value**: `[ ]`
 * **Description** : Specifies the regular expressions to which the files (for which tests
-will be generated) MUST not match.
+  will be generated) MUST not match.
 
 #### Fichiers inclus
 
@@ -248,7 +293,7 @@ will be generated) MUST not match.
 * **Type** : `string[]`
 * **Default value**: `[ "\.php$" ]`
 * **Description** : Specifies the regular expressions to which the files (for which tests
-will be generated) MUST match.
+  will be generated) MUST match.
 
 #### Generation on a `php artisan make:...` call.
 
@@ -256,4 +301,4 @@ will be generated) MUST match.
 * **Type** : `boolean`
 * **Default value**: `true`
 * **Description** : Defines if PhpUnitGen should execute on each `php artisan make:...`
-calls. This parameter is proper to [the integration with Laravel](/en/command-line.md#integration-with-laravel).
+  calls. This parameter is proper to [the integration with Laravel](/en/command-line.md#integration-with-laravel).
