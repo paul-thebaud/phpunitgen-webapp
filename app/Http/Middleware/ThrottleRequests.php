@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
  * Extracted from ThrottleRequests of the Laravel Framework.
  *
  * @see https://github.com/laravel/framework/blob/5.8/src/Illuminate/Routing/Middleware/ThrottleRequests.php
+ *
  * @codeCoverageIgnore Because it is a Laravel Framework class.
  */
 class ThrottleRequests
