@@ -4,7 +4,7 @@ metadata:
   name: phpunitgen-tls-staging
 spec:
   entryPoints:
-    - secure
+    - websecure
   routes:
     - match: Host(`staging.phpunitgen.io`)
       kind: Rule

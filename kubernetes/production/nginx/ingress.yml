@@ -5,7 +5,7 @@ metadata:
   name: phpunitgen-tls
 spec:
   entryPoints:
-    - secure
+    - websecure
   routes:
     - match: Host(`phpunitgen.io`)
       kind: Rule
