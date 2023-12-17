@@ -34,7 +34,8 @@ the PhpUnitGen's version to use won't be the same.
 
 | PHP            | Laravel                           | PhpUnitGen | Support    |
 |----------------|-----------------------------------|------------|------------|
-| `8.0` and up   | `^9.0` and up                     | `v5`       | Active     |
+| `8.1` and up   | `^9.0` and up                     | `v6`       | Active     |
+| `8.0` and up   | `^9.0`                            | `v5`       | Deprecated |
 | `8.0` and up   | `^9.0`                            | `v4`       | Deprecated |
 | `8.0` or `8.1` | `^9.0`                            | `v3`       | Deprecated |
 | `8.0` or `8.1` | `^7.0`  or `^8.0`                 | `v2`       | Deprecated |

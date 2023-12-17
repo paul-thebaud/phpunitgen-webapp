@@ -149,6 +149,19 @@ in the test class ("license" for example).
 * **Description** : Defines the PHPDoc annotations that should be added to the test class.
 (e.g. "@author John Doe").
 
+### PHPDoc file header
+
+* **Parameter Key** : `phpHeaderDoc`
+* **Type** : `string`
+* **Default value**: `'''`
+* **Description** : Defines the PHPDoc header to prepend to the test class.
+  Example :
+  ```php
+  /*
+   * @license MIT
+   */
+  ```
+
 ### Options
 
 * **Parameter Key** : `options`

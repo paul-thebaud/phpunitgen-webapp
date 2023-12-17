@@ -149,6 +149,19 @@ dans la classe de test ("license" par exemple).
 * **Description** : Définit les annotations PHPDoc qui doivent être ajoutées dans la classe de test
 (par exemple "@author John Doe").
 
+### Entête PHPDoc
+
+* **Clé du paramètre** : `phpHeaderDoc`
+* **Type** : `string`
+* **Valeur par défaut**: `'''`
+* **Description** : Définit l'annotation PHPDoc qui doivent être ajoutées en entête dans la classe de test.
+  Exemple :
+  ```php
+  /*
+   * @license MIT
+   */
+  ```
+
 ### Options
 
 * **Clé du paramètre** : `options`
