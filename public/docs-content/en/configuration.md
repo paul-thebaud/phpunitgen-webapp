@@ -154,13 +154,13 @@ in the test class ("license" for example).
 * **Parameter Key** : `phpHeaderDoc`
 * **Type** : `string`
 * **Default value**: `'''`
-* **Description** : Defines the PHPDoc header to prepend to the test class.
-  Example :
-  ```php
-  /*
-   * @license MIT
-   */
-  ```
+* **Description** : Defines the PHPDoc header to prepend to the test class. Example :
+
+```php
+return [
+    'phpHeaderDoc' => "/*\n * @license MIT\n */",
+];
+```
 
 ### Options
 

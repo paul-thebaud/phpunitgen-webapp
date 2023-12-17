@@ -154,13 +154,13 @@ dans la classe de test ("license" par exemple).
 * **Clé du paramètre** : `phpHeaderDoc`
 * **Type** : `string`
 * **Valeur par défaut**: `'''`
-* **Description** : Définit l'annotation PHPDoc qui doivent être ajoutées en entête dans la classe de test.
-  Exemple :
-  ```php
-  /*
-   * @license MIT
-   */
-  ```
+* **Description** : Définit l'annotation PHPDoc qui doivent être ajoutées en entête dans la classe de test. Exemple :
+
+```php
+return [
+    'phpHeaderDoc' => "/*\n * @license MIT\n */",
+];
+```
 
 ### Options
 
