@@ -2,6 +2,18 @@
   <div class="home-container">
     <div class="home-wrapper">
       <BContainer class="text-center">
+        <div style="border-radius: 16px; padding: 16px; background: var(--danger-bg-color); color: var(--danger-color);">
+          {{ $t("views.home.welcome.end-of-life.text") }}
+          <a
+            href="https://github.com/paul-thebaud/phpunitgen-core/issues/32"
+            target="_blank"
+            rel="noopener"
+            style="color: var(--danger-color); text-decoration: underline;"
+          >
+            {{ $t("views.home.welcome.end-of-life.action") }}
+          </a>
+        </div>
+
         <div class="home-title">
           {{ $t("views.home.welcome.title") }}
         </div>
@@ -10,19 +22,6 @@
           {{ $t("views.home.welcome.description") }}
           <br>
           {{ $t("views.home.welcome.open-source") }}
-        </div>
-
-        <div class="mt-2">
-          <BBadge
-            class="mr-1"
-            variant="primary"
-            pill
-          >
-            {{ $t("views.home.welcome.new_title") }}
-          </BBadge>
-          <strong>
-            {{ $t("views.home.welcome.new_text") }}
-          </strong>
         </div>
 
         <BRow class="home-actions justify-content-center">

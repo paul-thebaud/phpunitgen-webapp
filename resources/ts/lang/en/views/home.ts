@@ -3,8 +3,10 @@ export default {
         "title": "Welcome to PhpUnitGen",
         "description": "PhpUnitGen is a simple, powerful and modular tool to generate your PHP unit test templates.",
         "open-source": "It is a free and open-source software.",
-        "new_title": "New",
-        "new_text": "PHP 8 and Laravel 9 compatibility!",
+        "end-of-life": {
+            "text": "End of life: PhpUnitGen website will shutdown soon.",
+            "action": "Read the post"
+        }
     },
     "actions": {
         "online": "Use online",
