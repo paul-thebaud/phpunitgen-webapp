@@ -38,15 +38,6 @@ jobs:
       - name: Execute tests
         run: vendor/bin/phpunit -c phpunit.xml.dist
 
-      - name: Prepare SonarCloud Scan
-        run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' .coverage/clover.xml
-
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v1.6
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
